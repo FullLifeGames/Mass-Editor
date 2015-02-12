@@ -1,0 +1,31 @@
+I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\PKHeX.OverForm.resources
+I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\PKHeX.f2_Text.resources
+I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\PKHeX.About.resources
+I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\PKHeX.CodeGenerator.resources
+I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\PKHeX.Form1.resources
+I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\PKHeX.RibbMedal.resources
+I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\PKHeX.MemoryAmie.resources
+I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\PKHeX.SAV_PokedexORAS.resources
+I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\PKHeX.SAV_SecretBase.resources
+I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\PKHeX.SAV_EventFlagsORAS.resources
+I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\PKHeX.frmReport.resources
+I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\PKHeX.Properties.Resources.resources
+I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\PKHeX.SAV_BerryField.resources
+I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\PKHeX.SAV_BoxLayout.resources
+I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\PKHeX.SAV_EventFlagsXY.resources
+I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\PKHeX.SAV_HallOfFame.resources
+I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\PKHeX.SAV_Inventory.resources
+I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\PKHeX.SAV_OPower.resources
+I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\PKHeX.SAV_PokedexXY.resources
+I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\PKHeX.SAV_Pokepuff.resources
+I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\PKHeX.SAV_SuperTrain.resources
+I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\PKHeX.SAV_Trainer.resources
+I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\PKHeX.SAV_Wondercard.resources
+I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\PKHeX.SplashScreen.resources
+I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\PKHeX.csproj.GenerateResource.Cache
+I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\bin\Release\Mass Editor.exe.config
+I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\bin\Release\Mass Editor.exe
+I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\bin\Release\Mass Editor.pdb
+I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\Mass Editor.exe
+I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\Mass Editor.pdb
+I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\PKHeX.csprojResolveAssemblyReference.cache

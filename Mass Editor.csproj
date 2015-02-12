@@ -1,0 +1,2361 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B4EFF030-C75A-49F9-A4BC-738D1B61C4AF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Mass_Editor</RootNamespace>
+    <AssemblyName>Mass Editor</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Mass_Editor.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Mass Editor\Met.cs" />
+    <Compile Include="Mass Editor\OverForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mass Editor\OverForm.Designer.cs">
+      <DependentUpon>OverForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mass Editor\OverForm_Changed.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PKHeX\Misc\About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PKHeX\Misc\About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PKHeX\Misc\CodeGenerator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PKHeX\Misc\CodeGenerator.Designer.cs">
+      <DependentUpon>CodeGenerator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PKHeX\Misc\Legal.cs" />
+    <Compile Include="PKHeX\Misc\pk2pk.cs" />
+    <Compile Include="PKHeX\Misc\PKX.cs" />
+    <Compile Include="PKHeX\Misc\ram2sav.cs" />
+    <Compile Include="PKHeX\Misc\SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PKHeX\Misc\SplashScreen.Designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PKHeX\Misc\Util.cs" />
+    <Compile Include="PKHeX\PKX\f1-Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PKHeX\PKX\f1-Main.Designer.cs">
+      <DependentUpon>f1-Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PKHeX\PKX\f2-Text.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PKHeX\PKX\f2-Text.Designer.cs">
+      <DependentUpon>f2-Text.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PKHeX\PKX\f3-MemoryAmie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PKHeX\PKX\f3-MemoryAmie.Designer.cs">
+      <DependentUpon>f3-MemoryAmie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PKHeX\PKX\f4-RibbMedal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PKHeX\PKX\f4-RibbMedal.Designer.cs">
+      <DependentUpon>f4-RibbMedal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PKHeX\SAV\frmReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PKHeX\SAV\frmReport.Designer.cs">
+      <DependentUpon>frmReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PKHeX\SAV\SAV_BerryField.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PKHeX\SAV\SAV_BerryField.Designer.cs">
+      <DependentUpon>SAV_BerryField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PKHeX\SAV\SAV_BoxLayout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PKHeX\SAV\SAV_BoxLayout.Designer.cs">
+      <DependentUpon>SAV_BoxLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PKHeX\SAV\SAV_EventFlagsORAS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PKHeX\SAV\SAV_EventFlagsORAS.Designer.cs">
+      <DependentUpon>SAV_EventFlagsORAS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PKHeX\SAV\SAV_EventFlagsXY.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PKHeX\SAV\SAV_EventFlagsXY.Designer.cs">
+      <DependentUpon>SAV_EventFlagsXY.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PKHeX\SAV\SAV_HallOfFame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PKHeX\SAV\SAV_HallOfFame.Designer.cs">
+      <DependentUpon>SAV_HallOfFame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PKHeX\SAV\SAV_Inventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PKHeX\SAV\SAV_Inventory.Designer.cs">
+      <DependentUpon>SAV_Inventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PKHeX\SAV\SAV_OPower.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PKHeX\SAV\SAV_OPower.Designer.cs">
+      <DependentUpon>SAV_OPower.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PKHeX\SAV\SAV_PokedexORAS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PKHeX\SAV\SAV_PokedexORAS.Designer.cs">
+      <DependentUpon>SAV_PokedexORAS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PKHeX\SAV\SAV_PokedexXY.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PKHeX\SAV\SAV_PokedexXY.Designer.cs">
+      <DependentUpon>SAV_PokedexXY.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PKHeX\SAV\SAV_Pokepuff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PKHeX\SAV\SAV_Pokepuff.Designer.cs">
+      <DependentUpon>SAV_Pokepuff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PKHeX\SAV\SAV_SecretBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PKHeX\SAV\SAV_SecretBase.Designer.cs">
+      <DependentUpon>SAV_SecretBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PKHeX\SAV\SAV_SuperTrain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PKHeX\SAV\SAV_SuperTrain.Designer.cs">
+      <DependentUpon>SAV_SuperTrain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PKHeX\SAV\SAV_Trainer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PKHeX\SAV\SAV_Trainer.Designer.cs">
+      <DependentUpon>SAV_Trainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PKHeX\SAV\SAV_Wondercard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PKHeX\SAV\SAV_Wondercard.Designer.cs">
+      <DependentUpon>SAV_Wondercard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Mass Editor\OverForm.resx">
+      <DependentUpon>OverForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PKHeX\Misc\About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PKHeX\Misc\CodeGenerator.resx">
+      <DependentUpon>CodeGenerator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PKHeX\Misc\SplashScreen.resx">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PKHeX\PKX\f1-Main.resx">
+      <DependentUpon>f1-Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PKHeX\PKX\f2-Text.resx">
+      <DependentUpon>f2-Text.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PKHeX\PKX\f3-MemoryAmie.resx">
+      <DependentUpon>f3-MemoryAmie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PKHeX\PKX\f4-RibbMedal.resx">
+      <DependentUpon>f4-RibbMedal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PKHeX\SAV\frmReport.resx">
+      <DependentUpon>frmReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PKHeX\SAV\SAV_BerryField.resx">
+      <DependentUpon>SAV_BerryField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PKHeX\SAV\SAV_BoxLayout.resx">
+      <DependentUpon>SAV_BoxLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PKHeX\SAV\SAV_EventFlagsORAS.resx">
+      <DependentUpon>SAV_EventFlagsORAS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PKHeX\SAV\SAV_EventFlagsXY.resx">
+      <DependentUpon>SAV_EventFlagsXY.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PKHeX\SAV\SAV_HallOfFame.resx">
+      <DependentUpon>SAV_HallOfFame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PKHeX\SAV\SAV_Inventory.resx">
+      <DependentUpon>SAV_Inventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PKHeX\SAV\SAV_OPower.resx">
+      <DependentUpon>SAV_OPower.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PKHeX\SAV\SAV_PokedexORAS.resx">
+      <DependentUpon>SAV_PokedexORAS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PKHeX\SAV\SAV_PokedexXY.resx">
+      <DependentUpon>SAV_PokedexXY.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PKHeX\SAV\SAV_Pokepuff.resx">
+      <DependentUpon>SAV_Pokepuff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PKHeX\SAV\SAV_SecretBase.resx">
+      <DependentUpon>SAV_SecretBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PKHeX\SAV\SAV_SuperTrain.resx">
+      <DependentUpon>SAV_SuperTrain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PKHeX\SAV\SAV_Trainer.resx">
+      <DependentUpon>SAV_Trainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PKHeX\SAV\SAV_Wondercard.resx">
+      <DependentUpon>SAV_Wondercard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Resources\byte\fulldex_XY" />
+    <None Include="Resources\byte\personal" />
+    <None Include="Resources\byte\PGLDings-NormalRegular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SQL.Server.Compact.3.5">
+      <Visible>False</Visible>
+      <ProductName>SQL Server Compact 3.5 SP2</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\icon.ico" />
+    <Content Include="Resources\img\badges\badge_01.png" />
+    <Content Include="Resources\img\badges\badge_02.png" />
+    <Content Include="Resources\img\badges\badge_03.png" />
+    <Content Include="Resources\img\badges\badge_04.png" />
+    <Content Include="Resources\img\badges\badge_05.png" />
+    <Content Include="Resources\img\badges\badge_06.png" />
+    <Content Include="Resources\img\badges\badge_07.png" />
+    <Content Include="Resources\img\badges\badge_08.png" />
+    <Content Include="Resources\img\badges\badge_1.png" />
+    <Content Include="Resources\img\badges\badge_2.png" />
+    <Content Include="Resources\img\badges\badge_3.png" />
+    <Content Include="Resources\img\badges\badge_4.png" />
+    <Content Include="Resources\img\badges\badge_5.png" />
+    <Content Include="Resources\img\badges\badge_6.png" />
+    <Content Include="Resources\img\badges\badge_7.png" />
+    <Content Include="Resources\img\badges\badge_8.png" />
+    <Content Include="Resources\img\box\box_wp01.png" />
+    <Content Include="Resources\img\box\box_wp02.png" />
+    <Content Include="Resources\img\box\box_wp03.png" />
+    <Content Include="Resources\img\box\box_wp04.png" />
+    <Content Include="Resources\img\box\box_wp05.png" />
+    <Content Include="Resources\img\box\box_wp06.png" />
+    <Content Include="Resources\img\box\box_wp07.png" />
+    <Content Include="Resources\img\box\box_wp08.png" />
+    <Content Include="Resources\img\box\box_wp09.png" />
+    <Content Include="Resources\img\box\box_wp10.png" />
+    <Content Include="Resources\img\box\box_wp11.png" />
+    <Content Include="Resources\img\box\box_wp12.png" />
+    <Content Include="Resources\img\box\box_wp13.png" />
+    <Content Include="Resources\img\box\box_wp14.png" />
+    <Content Include="Resources\img\box\box_wp15.png" />
+    <Content Include="Resources\img\box\box_wp16.png" />
+    <Content Include="Resources\img\box\box_wp17.png" />
+    <Content Include="Resources\img\box\box_wp17o.png" />
+    <Content Include="Resources\img\box\box_wp18.png" />
+    <Content Include="Resources\img\box\box_wp18o.png" />
+    <Content Include="Resources\img\box\box_wp19.png" />
+    <Content Include="Resources\img\box\box_wp19o.png" />
+    <Content Include="Resources\img\box\box_wp20.png" />
+    <Content Include="Resources\img\box\box_wp20o.png" />
+    <Content Include="Resources\img\box\box_wp21.png" />
+    <Content Include="Resources\img\box\box_wp21o.png" />
+    <Content Include="Resources\img\box\box_wp22.png" />
+    <Content Include="Resources\img\box\box_wp22o.png" />
+    <Content Include="Resources\img\box\box_wp23.png" />
+    <Content Include="Resources\img\box\box_wp23o.png" />
+    <Content Include="Resources\img\box\box_wp24.png" />
+    <Content Include="Resources\img\box\box_wp24o.png" />
+    <Content Include="Resources\img\box\slotDel.png" />
+    <Content Include="Resources\img\box\slotSet.png" />
+    <Content Include="Resources\img\box\slotTrans.png" />
+    <Content Include="Resources\img\box\slotView.png" />
+    <Content Include="Resources\img\icon.png" />
+    <Content Include="Resources\img\item\item_1.png" />
+    <Content Include="Resources\img\item\item_10.png" />
+    <Content Include="Resources\img\item\item_100.png" />
+    <Content Include="Resources\img\item\item_101.png" />
+    <Content Include="Resources\img\item\item_102.png" />
+    <Content Include="Resources\img\item\item_103.png" />
+    <Content Include="Resources\img\item\item_104.png" />
+    <Content Include="Resources\img\item\item_105.png" />
+    <Content Include="Resources\img\item\item_106.png" />
+    <Content Include="Resources\img\item\item_107.png" />
+    <Content Include="Resources\img\item\item_108.png" />
+    <Content Include="Resources\img\item\item_109.png" />
+    <Content Include="Resources\img\item\item_11.png" />
+    <Content Include="Resources\img\item\item_110.png" />
+    <Content Include="Resources\img\item\item_112.png" />
+    <Content Include="Resources\img\item\item_116.png" />
+    <Content Include="Resources\img\item\item_117.png" />
+    <Content Include="Resources\img\item\item_118.png" />
+    <Content Include="Resources\img\item\item_119.png" />
+    <Content Include="Resources\img\item\item_12.png" />
+    <Content Include="Resources\img\item\item_13.png" />
+    <Content Include="Resources\img\item\item_134.png" />
+    <Content Include="Resources\img\item\item_135.png" />
+    <Content Include="Resources\img\item\item_136.png" />
+    <Content Include="Resources\img\item\item_14.png" />
+    <Content Include="Resources\img\item\item_149.png" />
+    <Content Include="Resources\img\item\item_15.png" />
+    <Content Include="Resources\img\item\item_150.png" />
+    <Content Include="Resources\img\item\item_151.png" />
+    <Content Include="Resources\img\item\item_152.png" />
+    <Content Include="Resources\img\item\item_153.png" />
+    <Content Include="Resources\img\item\item_154.png" />
+    <Content Include="Resources\img\item\item_155.png" />
+    <Content Include="Resources\img\item\item_156.png" />
+    <Content Include="Resources\img\item\item_157.png" />
+    <Content Include="Resources\img\item\item_158.png" />
+    <Content Include="Resources\img\item\item_159.png" />
+    <Content Include="Resources\img\item\item_16.png" />
+    <Content Include="Resources\img\item\item_160.png" />
+    <Content Include="Resources\img\item\item_161.png" />
+    <Content Include="Resources\img\item\item_162.png" />
+    <Content Include="Resources\img\item\item_163.png" />
+    <Content Include="Resources\img\item\item_164.png" />
+    <Content Include="Resources\img\item\item_165.png" />
+    <Content Include="Resources\img\item\item_166.png" />
+    <Content Include="Resources\img\item\item_167.png" />
+    <Content Include="Resources\img\item\item_168.png" />
+    <Content Include="Resources\img\item\item_169.png" />
+    <Content Include="Resources\img\item\item_17.png" />
+    <Content Include="Resources\img\item\item_170.png" />
+    <Content Include="Resources\img\item\item_171.png" />
+    <Content Include="Resources\img\item\item_172.png" />
+    <Content Include="Resources\img\item\item_173.png" />
+    <Content Include="Resources\img\item\item_174.png" />
+    <Content Include="Resources\img\item\item_175.png" />
+    <Content Include="Resources\img\item\item_176.png" />
+    <Content Include="Resources\img\item\item_177.png" />
+    <Content Include="Resources\img\item\item_178.png" />
+    <Content Include="Resources\img\item\item_179.png" />
+    <Content Include="Resources\img\item\item_18.png" />
+    <Content Include="Resources\img\item\item_180.png" />
+    <Content Include="Resources\img\item\item_181.png" />
+    <Content Include="Resources\img\item\item_182.png" />
+    <Content Include="Resources\img\item\item_183.png" />
+    <Content Include="Resources\img\item\item_184.png" />
+    <Content Include="Resources\img\item\item_185.png" />
+    <Content Include="Resources\img\item\item_186.png" />
+    <Content Include="Resources\img\item\item_187.png" />
+    <Content Include="Resources\img\item\item_188.png" />
+    <Content Include="Resources\img\item\item_189.png" />
+    <Content Include="Resources\img\item\item_19.png" />
+    <Content Include="Resources\img\item\item_190.png" />
+    <Content Include="Resources\img\item\item_191.png" />
+    <Content Include="Resources\img\item\item_192.png" />
+    <Content Include="Resources\img\item\item_193.png" />
+    <Content Include="Resources\img\item\item_194.png" />
+    <Content Include="Resources\img\item\item_195.png" />
+    <Content Include="Resources\img\item\item_196.png" />
+    <Content Include="Resources\img\item\item_197.png" />
+    <Content Include="Resources\img\item\item_198.png" />
+    <Content Include="Resources\img\item\item_199.png" />
+    <Content Include="Resources\img\item\item_2.png" />
+    <Content Include="Resources\img\item\item_20.png" />
+    <Content Include="Resources\img\item\item_200.png" />
+    <Content Include="Resources\img\item\item_201.png" />
+    <Content Include="Resources\img\item\item_202.png" />
+    <Content Include="Resources\img\item\item_203.png" />
+    <Content Include="Resources\img\item\item_204.png" />
+    <Content Include="Resources\img\item\item_205.png" />
+    <Content Include="Resources\img\item\item_206.png" />
+    <Content Include="Resources\img\item\item_207.png" />
+    <Content Include="Resources\img\item\item_208.png" />
+    <Content Include="Resources\img\item\item_209.png" />
+    <Content Include="Resources\img\item\item_21.png" />
+    <Content Include="Resources\img\item\item_210.png" />
+    <Content Include="Resources\img\item\item_211.png" />
+    <Content Include="Resources\img\item\item_212.png" />
+    <Content Include="Resources\img\item\item_213.png" />
+    <Content Include="Resources\img\item\item_214.png" />
+    <Content Include="Resources\img\item\item_215.png" />
+    <Content Include="Resources\img\item\item_217.png" />
+    <Content Include="Resources\img\item\item_218.png" />
+    <Content Include="Resources\img\item\item_219.png" />
+    <Content Include="Resources\img\item\item_22.png" />
+    <Content Include="Resources\img\item\item_220.png" />
+    <Content Include="Resources\img\item\item_221.png" />
+    <Content Include="Resources\img\item\item_222.png" />
+    <Content Include="Resources\img\item\item_223.png" />
+    <Content Include="Resources\img\item\item_224.png" />
+    <Content Include="Resources\img\item\item_225.png" />
+    <Content Include="Resources\img\item\item_226.png" />
+    <Content Include="Resources\img\item\item_227.png" />
+    <Content Include="Resources\img\item\item_228.png" />
+    <Content Include="Resources\img\item\item_229.png" />
+    <Content Include="Resources\img\item\item_23.png" />
+    <Content Include="Resources\img\item\item_230.png" />
+    <Content Include="Resources\img\item\item_231.png" />
+    <Content Include="Resources\img\item\item_232.png" />
+    <Content Include="Resources\img\item\item_233.png" />
+    <Content Include="Resources\img\item\item_234.png" />
+    <Content Include="Resources\img\item\item_235.png" />
+    <Content Include="Resources\img\item\item_236.png" />
+    <Content Include="Resources\img\item\item_237.png" />
+    <Content Include="Resources\img\item\item_238.png" />
+    <Content Include="Resources\img\item\item_239.png" />
+    <Content Include="Resources\img\item\item_24.png" />
+    <Content Include="Resources\img\item\item_240.png" />
+    <Content Include="Resources\img\item\item_241.png" />
+    <Content Include="Resources\img\item\item_242.png" />
+    <Content Include="Resources\img\item\item_243.png" />
+    <Content Include="Resources\img\item\item_244.png" />
+    <Content Include="Resources\img\item\item_245.png" />
+    <Content Include="Resources\img\item\item_246.png" />
+    <Content Include="Resources\img\item\item_247.png" />
+    <Content Include="Resources\img\item\item_248.png" />
+    <Content Include="Resources\img\item\item_249.png" />
+    <Content Include="Resources\img\item\item_25.png" />
+    <Content Include="Resources\img\item\item_250.png" />
+    <Content Include="Resources\img\item\item_251.png" />
+    <Content Include="Resources\img\item\item_252.png" />
+    <Content Include="Resources\img\item\item_253.png" />
+    <Content Include="Resources\img\item\item_254.png" />
+    <Content Include="Resources\img\item\item_255.png" />
+    <Content Include="Resources\img\item\item_256.png" />
+    <Content Include="Resources\img\item\item_257.png" />
+    <Content Include="Resources\img\item\item_258.png" />
+    <Content Include="Resources\img\item\item_259.png" />
+    <Content Include="Resources\img\item\item_26.png" />
+    <Content Include="Resources\img\item\item_260.png" />
+    <Content Include="Resources\img\item\item_261.png" />
+    <Content Include="Resources\img\item\item_262.png" />
+    <Content Include="Resources\img\item\item_263.png" />
+    <Content Include="Resources\img\item\item_264.png" />
+    <Content Include="Resources\img\item\item_265.png" />
+    <Content Include="Resources\img\item\item_266.png" />
+    <Content Include="Resources\img\item\item_267.png" />
+    <Content Include="Resources\img\item\item_268.png" />
+    <Content Include="Resources\img\item\item_269.png" />
+    <Content Include="Resources\img\item\item_27.png" />
+    <Content Include="Resources\img\item\item_270.png" />
+    <Content Include="Resources\img\item\item_271.png" />
+    <Content Include="Resources\img\item\item_272.png" />
+    <Content Include="Resources\img\item\item_273.png" />
+    <Content Include="Resources\img\item\item_274.png" />
+    <Content Include="Resources\img\item\item_275.png" />
+    <Content Include="Resources\img\item\item_276.png" />
+    <Content Include="Resources\img\item\item_277.png" />
+    <Content Include="Resources\img\item\item_278.png" />
+    <Content Include="Resources\img\item\item_279.png" />
+    <Content Include="Resources\img\item\item_28.png" />
+    <Content Include="Resources\img\item\item_280.png" />
+    <Content Include="Resources\img\item\item_281.png" />
+    <Content Include="Resources\img\item\item_282.png" />
+    <Content Include="Resources\img\item\item_283.png" />
+    <Content Include="Resources\img\item\item_284.png" />
+    <Content Include="Resources\img\item\item_285.png" />
+    <Content Include="Resources\img\item\item_286.png" />
+    <Content Include="Resources\img\item\item_287.png" />
+    <Content Include="Resources\img\item\item_288.png" />
+    <Content Include="Resources\img\item\item_289.png" />
+    <Content Include="Resources\img\item\item_29.png" />
+    <Content Include="Resources\img\item\item_290.png" />
+    <Content Include="Resources\img\item\item_291.png" />
+    <Content Include="Resources\img\item\item_292.png" />
+    <Content Include="Resources\img\item\item_293.png" />
+    <Content Include="Resources\img\item\item_294.png" />
+    <Content Include="Resources\img\item\item_295.png" />
+    <Content Include="Resources\img\item\item_296.png" />
+    <Content Include="Resources\img\item\item_297.png" />
+    <Content Include="Resources\img\item\item_298.png" />
+    <Content Include="Resources\img\item\item_299.png" />
+    <Content Include="Resources\img\item\item_3.png" />
+    <Content Include="Resources\img\item\item_30.png" />
+    <Content Include="Resources\img\item\item_300.png" />
+    <Content Include="Resources\img\item\item_301.png" />
+    <Content Include="Resources\img\item\item_302.png" />
+    <Content Include="Resources\img\item\item_303.png" />
+    <Content Include="Resources\img\item\item_304.png" />
+    <Content Include="Resources\img\item\item_305.png" />
+    <Content Include="Resources\img\item\item_306.png" />
+    <Content Include="Resources\img\item\item_307.png" />
+    <Content Include="Resources\img\item\item_308.png" />
+    <Content Include="Resources\img\item\item_309.png" />
+    <Content Include="Resources\img\item\item_31.png" />
+    <Content Include="Resources\img\item\item_310.png" />
+    <Content Include="Resources\img\item\item_311.png" />
+    <Content Include="Resources\img\item\item_312.png" />
+    <Content Include="Resources\img\item\item_313.png" />
+    <Content Include="Resources\img\item\item_314.png" />
+    <Content Include="Resources\img\item\item_315.png" />
+    <Content Include="Resources\img\item\item_316.png" />
+    <Content Include="Resources\img\item\item_317.png" />
+    <Content Include="Resources\img\item\item_318.png" />
+    <Content Include="Resources\img\item\item_319.png" />
+    <Content Include="Resources\img\item\item_32.png" />
+    <Content Include="Resources\img\item\item_320.png" />
+    <Content Include="Resources\img\item\item_321.png" />
+    <Content Include="Resources\img\item\item_322.png" />
+    <Content Include="Resources\img\item\item_323.png" />
+    <Content Include="Resources\img\item\item_324.png" />
+    <Content Include="Resources\img\item\item_325.png" />
+    <Content Include="Resources\img\item\item_326.png" />
+    <Content Include="Resources\img\item\item_327.png" />
+    <Content Include="Resources\img\item\item_33.png" />
+    <Content Include="Resources\img\item\item_34.png" />
+    <Content Include="Resources\img\item\item_35.png" />
+    <Content Include="Resources\img\item\item_36.png" />
+    <Content Include="Resources\img\item\item_37.png" />
+    <Content Include="Resources\img\item\item_38.png" />
+    <Content Include="Resources\img\item\item_39.png" />
+    <Content Include="Resources\img\item\item_4.png" />
+    <Content Include="Resources\img\item\item_40.png" />
+    <Content Include="Resources\img\item\item_41.png" />
+    <Content Include="Resources\img\item\item_42.png" />
+    <Content Include="Resources\img\item\item_43.png" />
+    <Content Include="Resources\img\item\item_44.png" />
+    <Content Include="Resources\img\item\item_45.png" />
+    <Content Include="Resources\img\item\item_46.png" />
+    <Content Include="Resources\img\item\item_47.png" />
+    <Content Include="Resources\img\item\item_48.png" />
+    <Content Include="Resources\img\item\item_49.png" />
+    <Content Include="Resources\img\item\item_5.png" />
+    <Content Include="Resources\img\item\item_50.png" />
+    <Content Include="Resources\img\item\item_504.png" />
+    <Content Include="Resources\img\item\item_51.png" />
+    <Content Include="Resources\img\item\item_52.png" />
+    <Content Include="Resources\img\item\item_53.png" />
+    <Content Include="Resources\img\item\item_534.png" />
+    <Content Include="Resources\img\item\item_535.png" />
+    <Content Include="Resources\img\item\item_537.png" />
+    <Content Include="Resources\img\item\item_538.png" />
+    <Content Include="Resources\img\item\item_539.png" />
+    <Content Include="Resources\img\item\item_54.png" />
+    <Content Include="Resources\img\item\item_540.png" />
+    <Content Include="Resources\img\item\item_541.png" />
+    <Content Include="Resources\img\item\item_542.png" />
+    <Content Include="Resources\img\item\item_543.png" />
+    <Content Include="Resources\img\item\item_544.png" />
+    <Content Include="Resources\img\item\item_545.png" />
+    <Content Include="Resources\img\item\item_546.png" />
+    <Content Include="Resources\img\item\item_547.png" />
+    <Content Include="Resources\img\item\item_548.png" />
+    <Content Include="Resources\img\item\item_549.png" />
+    <Content Include="Resources\img\item\item_55.png" />
+    <Content Include="Resources\img\item\item_550.png" />
+    <Content Include="Resources\img\item\item_551.png" />
+    <Content Include="Resources\img\item\item_552.png" />
+    <Content Include="Resources\img\item\item_553.png" />
+    <Content Include="Resources\img\item\item_554.png" />
+    <Content Include="Resources\img\item\item_555.png" />
+    <Content Include="Resources\img\item\item_556.png" />
+    <Content Include="Resources\img\item\item_557.png" />
+    <Content Include="Resources\img\item\item_558.png" />
+    <Content Include="Resources\img\item\item_559.png" />
+    <Content Include="Resources\img\item\item_56.png" />
+    <Content Include="Resources\img\item\item_560.png" />
+    <Content Include="Resources\img\item\item_561.png" />
+    <Content Include="Resources\img\item\item_562.png" />
+    <Content Include="Resources\img\item\item_563.png" />
+    <Content Include="Resources\img\item\item_564.png" />
+    <Content Include="Resources\img\item\item_565.png" />
+    <Content Include="Resources\img\item\item_566.png" />
+    <Content Include="Resources\img\item\item_567.png" />
+    <Content Include="Resources\img\item\item_568.png" />
+    <Content Include="Resources\img\item\item_569.png" />
+    <Content Include="Resources\img\item\item_57.png" />
+    <Content Include="Resources\img\item\item_570.png" />
+    <Content Include="Resources\img\item\item_571.png" />
+    <Content Include="Resources\img\item\item_572.png" />
+    <Content Include="Resources\img\item\item_573.png" />
+    <Content Include="Resources\img\item\item_577.png" />
+    <Content Include="Resources\img\item\item_58.png" />
+    <Content Include="Resources\img\item\item_580.png" />
+    <Content Include="Resources\img\item\item_581.png" />
+    <Content Include="Resources\img\item\item_582.png" />
+    <Content Include="Resources\img\item\item_583.png" />
+    <Content Include="Resources\img\item\item_584.png" />
+    <Content Include="Resources\img\item\item_585.png" />
+    <Content Include="Resources\img\item\item_586.png" />
+    <Content Include="Resources\img\item\item_587.png" />
+    <Content Include="Resources\img\item\item_588.png" />
+    <Content Include="Resources\img\item\item_589.png" />
+    <Content Include="Resources\img\item\item_59.png" />
+    <Content Include="Resources\img\item\item_590.png" />
+    <Content Include="Resources\img\item\item_591.png" />
+    <Content Include="Resources\img\item\item_6.png" />
+    <Content Include="Resources\img\item\item_60.png" />
+    <Content Include="Resources\img\item\item_61.png" />
+    <Content Include="Resources\img\item\item_62.png" />
+    <Content Include="Resources\img\item\item_63.png" />
+    <Content Include="Resources\img\item\item_639.png" />
+    <Content Include="Resources\img\item\item_64.png" />
+    <Content Include="Resources\img\item\item_640.png" />
+    <Content Include="Resources\img\item\item_644.png" />
+    <Content Include="Resources\img\item\item_645.png" />
+    <Content Include="Resources\img\item\item_646.png" />
+    <Content Include="Resources\img\item\item_647.png" />
+    <Content Include="Resources\img\item\item_648.png" />
+    <Content Include="Resources\img\item\item_649.png" />
+    <Content Include="Resources\img\item\item_65.png" />
+    <Content Include="Resources\img\item\item_650.png" />
+    <Content Include="Resources\img\item\item_652.png" />
+    <Content Include="Resources\img\item\item_653.png" />
+    <Content Include="Resources\img\item\item_654.png" />
+    <Content Include="Resources\img\item\item_655.png" />
+    <Content Include="Resources\img\item\item_656.png" />
+    <Content Include="Resources\img\item\item_657.png" />
+    <Content Include="Resources\img\item\item_658.png" />
+    <Content Include="Resources\img\item\item_659.png" />
+    <Content Include="Resources\img\item\item_66.png" />
+    <Content Include="Resources\img\item\item_660.png" />
+    <Content Include="Resources\img\item\item_661.png" />
+    <Content Include="Resources\img\item\item_662.png" />
+    <Content Include="Resources\img\item\item_663.png" />
+    <Content Include="Resources\img\item\item_664.png" />
+    <Content Include="Resources\img\item\item_665.png" />
+    <Content Include="Resources\img\item\item_666.png" />
+    <Content Include="Resources\img\item\item_667.png" />
+    <Content Include="Resources\img\item\item_668.png" />
+    <Content Include="Resources\img\item\item_669.png" />
+    <Content Include="Resources\img\item\item_67.png" />
+    <Content Include="Resources\img\item\item_670.png" />
+    <Content Include="Resources\img\item\item_671.png" />
+    <Content Include="Resources\img\item\item_672.png" />
+    <Content Include="Resources\img\item\item_673.png" />
+    <Content Include="Resources\img\item\item_674.png" />
+    <Content Include="Resources\img\item\item_675.png" />
+    <Content Include="Resources\img\item\item_676.png" />
+    <Content Include="Resources\img\item\item_677.png" />
+    <Content Include="Resources\img\item\item_678.png" />
+    <Content Include="Resources\img\item\item_679.png" />
+    <Content Include="Resources\img\item\item_68.png" />
+    <Content Include="Resources\img\item\item_680.png" />
+    <Content Include="Resources\img\item\item_681.png" />
+    <Content Include="Resources\img\item\item_682.png" />
+    <Content Include="Resources\img\item\item_683.png" />
+    <Content Include="Resources\img\item\item_684.png" />
+    <Content Include="Resources\img\item\item_685.png" />
+    <Content Include="Resources\img\item\item_686.png" />
+    <Content Include="Resources\img\item\item_687.png" />
+    <Content Include="Resources\img\item\item_688.png" />
+    <Content Include="Resources\img\item\item_69.png" />
+    <Content Include="Resources\img\item\item_699.png" />
+    <Content Include="Resources\img\item\item_7.png" />
+    <Content Include="Resources\img\item\item_70.png" />
+    <Content Include="Resources\img\item\item_704.png" />
+    <Content Include="Resources\img\item\item_708.png" />
+    <Content Include="Resources\img\item\item_709.png" />
+    <Content Include="Resources\img\item\item_71.png" />
+    <Content Include="Resources\img\item\item_710.png" />
+    <Content Include="Resources\img\item\item_711.png" />
+    <Content Include="Resources\img\item\item_715.png" />
+    <Content Include="Resources\img\item\item_72.png" />
+    <Content Include="Resources\img\item\item_73.png" />
+    <Content Include="Resources\img\item\item_74.png" />
+    <Content Include="Resources\img\item\item_75.png" />
+    <Content Include="Resources\img\item\item_752.png" />
+    <Content Include="Resources\img\item\item_753.png" />
+    <Content Include="Resources\img\item\item_754.png" />
+    <Content Include="Resources\img\item\item_755.png" />
+    <Content Include="Resources\img\item\item_756.png" />
+    <Content Include="Resources\img\item\item_757.png" />
+    <Content Include="Resources\img\item\item_758.png" />
+    <Content Include="Resources\img\item\item_759.png" />
+    <Content Include="Resources\img\item\item_76.png" />
+    <Content Include="Resources\img\item\item_760.png" />
+    <Content Include="Resources\img\item\item_761.png" />
+    <Content Include="Resources\img\item\item_762.png" />
+    <Content Include="Resources\img\item\item_763.png" />
+    <Content Include="Resources\img\item\item_764.png" />
+    <Content Include="Resources\img\item\item_767.png" />
+    <Content Include="Resources\img\item\item_768.png" />
+    <Content Include="Resources\img\item\item_769.png" />
+    <Content Include="Resources\img\item\item_77.png" />
+    <Content Include="Resources\img\item\item_770.png" />
+    <Content Include="Resources\img\item\item_78.png" />
+    <Content Include="Resources\img\item\item_79.png" />
+    <Content Include="Resources\img\item\item_8.png" />
+    <Content Include="Resources\img\item\item_80.png" />
+    <Content Include="Resources\img\item\item_81.png" />
+    <Content Include="Resources\img\item\item_82.png" />
+    <Content Include="Resources\img\item\item_83.png" />
+    <Content Include="Resources\img\item\item_84.png" />
+    <Content Include="Resources\img\item\item_85.png" />
+    <Content Include="Resources\img\item\item_86.png" />
+    <Content Include="Resources\img\item\item_87.png" />
+    <Content Include="Resources\img\item\item_88.png" />
+    <Content Include="Resources\img\item\item_89.png" />
+    <Content Include="Resources\img\item\item_9.png" />
+    <Content Include="Resources\img\item\item_90.png" />
+    <Content Include="Resources\img\item\item_91.png" />
+    <Content Include="Resources\img\item\item_92.png" />
+    <Content Include="Resources\img\item\item_93.png" />
+    <Content Include="Resources\img\item\item_94.png" />
+    <Content Include="Resources\img\item\item_95.png" />
+    <Content Include="Resources\img\item\item_96.png" />
+    <Content Include="Resources\img\item\item_97.png" />
+    <Content Include="Resources\img\item\item_98.png" />
+    <Content Include="Resources\img\item\item_99.png" />
+    <Content Include="Resources\img\misc\anti_pokerus_icon.png" />
+    <Content Include="Resources\img\misc\box_mark_01.png" />
+    <Content Include="Resources\img\misc\box_mark_02.png" />
+    <Content Include="Resources\img\misc\box_mark_03.png" />
+    <Content Include="Resources\img\misc\box_mark_04.png" />
+    <Content Include="Resources\img\misc\box_mark_05.png" />
+    <Content Include="Resources\img\misc\box_mark_06.png" />
+    <Content Include="Resources\img\misc\else_icon.png" />
+    <Content Include="Resources\img\misc\helditem.png" />
+    <Content Include="Resources\img\misc\locked.png" />
+    <Content Include="Resources\img\misc\party.png" />
+    <Content Include="Resources\img\misc\rare_icon.png" />
+    <Content Include="Resources\img\misc\trainingmedal.png" />
+    <Content Include="Resources\img\Pokemon Sprites\0.png" />
+    <Content Include="Resources\img\Pokemon Sprites\1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\10.png" />
+    <Content Include="Resources\img\Pokemon Sprites\100.png" />
+    <Content Include="Resources\img\Pokemon Sprites\101.png" />
+    <Content Include="Resources\img\Pokemon Sprites\102.png" />
+    <Content Include="Resources\img\Pokemon Sprites\103.png" />
+    <Content Include="Resources\img\Pokemon Sprites\104.png" />
+    <Content Include="Resources\img\Pokemon Sprites\105.png" />
+    <Content Include="Resources\img\Pokemon Sprites\106.png" />
+    <Content Include="Resources\img\Pokemon Sprites\107.png" />
+    <Content Include="Resources\img\Pokemon Sprites\108.png" />
+    <Content Include="Resources\img\Pokemon Sprites\109.png" />
+    <Content Include="Resources\img\Pokemon Sprites\11.png" />
+    <Content Include="Resources\img\Pokemon Sprites\110.png" />
+    <Content Include="Resources\img\Pokemon Sprites\111.png" />
+    <Content Include="Resources\img\Pokemon Sprites\112.png" />
+    <Content Include="Resources\img\Pokemon Sprites\113.png" />
+    <Content Include="Resources\img\Pokemon Sprites\114.png" />
+    <Content Include="Resources\img\Pokemon Sprites\115-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\115.png" />
+    <Content Include="Resources\img\Pokemon Sprites\116.png" />
+    <Content Include="Resources\img\Pokemon Sprites\117.png" />
+    <Content Include="Resources\img\Pokemon Sprites\118.png" />
+    <Content Include="Resources\img\Pokemon Sprites\119.png" />
+    <Content Include="Resources\img\Pokemon Sprites\12.png" />
+    <Content Include="Resources\img\Pokemon Sprites\120.png" />
+    <Content Include="Resources\img\Pokemon Sprites\121.png" />
+    <Content Include="Resources\img\Pokemon Sprites\122.png" />
+    <Content Include="Resources\img\Pokemon Sprites\123.png" />
+    <Content Include="Resources\img\Pokemon Sprites\124.png" />
+    <Content Include="Resources\img\Pokemon Sprites\125.png" />
+    <Content Include="Resources\img\Pokemon Sprites\126.png" />
+    <Content Include="Resources\img\Pokemon Sprites\127-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\127.png" />
+    <Content Include="Resources\img\Pokemon Sprites\128.png" />
+    <Content Include="Resources\img\Pokemon Sprites\129.png" />
+    <Content Include="Resources\img\Pokemon Sprites\13.png" />
+    <Content Include="Resources\img\Pokemon Sprites\130-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\130.png" />
+    <Content Include="Resources\img\Pokemon Sprites\131.png" />
+    <Content Include="Resources\img\Pokemon Sprites\132.png" />
+    <Content Include="Resources\img\Pokemon Sprites\133.png" />
+    <Content Include="Resources\img\Pokemon Sprites\134.png" />
+    <Content Include="Resources\img\Pokemon Sprites\135.png" />
+    <Content Include="Resources\img\Pokemon Sprites\136.png" />
+    <Content Include="Resources\img\Pokemon Sprites\137.png" />
+    <Content Include="Resources\img\Pokemon Sprites\138.png" />
+    <Content Include="Resources\img\Pokemon Sprites\139.png" />
+    <Content Include="Resources\img\Pokemon Sprites\14.png" />
+    <Content Include="Resources\img\Pokemon Sprites\140.png" />
+    <Content Include="Resources\img\Pokemon Sprites\141.png" />
+    <Content Include="Resources\img\Pokemon Sprites\142-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\142.png" />
+    <Content Include="Resources\img\Pokemon Sprites\143.png" />
+    <Content Include="Resources\img\Pokemon Sprites\144.png" />
+    <Content Include="Resources\img\Pokemon Sprites\145.png" />
+    <Content Include="Resources\img\Pokemon Sprites\146.png" />
+    <Content Include="Resources\img\Pokemon Sprites\147.png" />
+    <Content Include="Resources\img\Pokemon Sprites\148.png" />
+    <Content Include="Resources\img\Pokemon Sprites\149.png" />
+    <Content Include="Resources\img\Pokemon Sprites\15-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\15.png" />
+    <Content Include="Resources\img\Pokemon Sprites\150-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\150-2.png" />
+    <Content Include="Resources\img\Pokemon Sprites\150.png" />
+    <Content Include="Resources\img\Pokemon Sprites\151.png" />
+    <Content Include="Resources\img\Pokemon Sprites\152.png" />
+    <Content Include="Resources\img\Pokemon Sprites\153.png" />
+    <Content Include="Resources\img\Pokemon Sprites\154.png" />
+    <Content Include="Resources\img\Pokemon Sprites\155.png" />
+    <Content Include="Resources\img\Pokemon Sprites\156.png" />
+    <Content Include="Resources\img\Pokemon Sprites\157.png" />
+    <Content Include="Resources\img\Pokemon Sprites\158.png" />
+    <Content Include="Resources\img\Pokemon Sprites\159.png" />
+    <Content Include="Resources\img\Pokemon Sprites\159b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\16.png" />
+    <Content Include="Resources\img\Pokemon Sprites\160.png" />
+    <Content Include="Resources\img\Pokemon Sprites\161.png" />
+    <Content Include="Resources\img\Pokemon Sprites\162.png" />
+    <Content Include="Resources\img\Pokemon Sprites\163.png" />
+    <Content Include="Resources\img\Pokemon Sprites\164.png" />
+    <Content Include="Resources\img\Pokemon Sprites\165.png" />
+    <Content Include="Resources\img\Pokemon Sprites\166.png" />
+    <Content Include="Resources\img\Pokemon Sprites\167.png" />
+    <Content Include="Resources\img\Pokemon Sprites\168.png" />
+    <Content Include="Resources\img\Pokemon Sprites\169.png" />
+    <Content Include="Resources\img\Pokemon Sprites\17.png" />
+    <Content Include="Resources\img\Pokemon Sprites\170.png" />
+    <Content Include="Resources\img\Pokemon Sprites\171.png" />
+    <Content Include="Resources\img\Pokemon Sprites\172.png" />
+    <Content Include="Resources\img\Pokemon Sprites\173.png" />
+    <Content Include="Resources\img\Pokemon Sprites\173b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\174.png" />
+    <Content Include="Resources\img\Pokemon Sprites\174b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\175.png" />
+    <Content Include="Resources\img\Pokemon Sprites\176.png" />
+    <Content Include="Resources\img\Pokemon Sprites\177.png" />
+    <Content Include="Resources\img\Pokemon Sprites\178.png" />
+    <Content Include="Resources\img\Pokemon Sprites\179.png" />
+    <Content Include="Resources\img\Pokemon Sprites\18-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\18.png" />
+    <Content Include="Resources\img\Pokemon Sprites\180.png" />
+    <Content Include="Resources\img\Pokemon Sprites\181-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\181.png" />
+    <Content Include="Resources\img\Pokemon Sprites\182.png" />
+    <Content Include="Resources\img\Pokemon Sprites\183.png" />
+    <Content Include="Resources\img\Pokemon Sprites\184.png" />
+    <Content Include="Resources\img\Pokemon Sprites\185.png" />
+    <Content Include="Resources\img\Pokemon Sprites\186.png" />
+    <Content Include="Resources\img\Pokemon Sprites\186b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\187.png" />
+    <Content Include="Resources\img\Pokemon Sprites\188.png" />
+    <Content Include="Resources\img\Pokemon Sprites\189.png" />
+    <Content Include="Resources\img\Pokemon Sprites\19.png" />
+    <Content Include="Resources\img\Pokemon Sprites\190.png" />
+    <Content Include="Resources\img\Pokemon Sprites\191.png" />
+    <Content Include="Resources\img\Pokemon Sprites\192.png" />
+    <Content Include="Resources\img\Pokemon Sprites\193.png" />
+    <Content Include="Resources\img\Pokemon Sprites\194.png" />
+    <Content Include="Resources\img\Pokemon Sprites\195.png" />
+    <Content Include="Resources\img\Pokemon Sprites\196.png" />
+    <Content Include="Resources\img\Pokemon Sprites\197.png" />
+    <Content Include="Resources\img\Pokemon Sprites\198.png" />
+    <Content Include="Resources\img\Pokemon Sprites\199.png" />
+    <Content Include="Resources\img\Pokemon Sprites\2.png" />
+    <Content Include="Resources\img\Pokemon Sprites\20.png" />
+    <Content Include="Resources\img\Pokemon Sprites\200.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-10.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-10b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-11.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-11b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-12.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-12b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-13.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-13b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-14.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-15.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-15b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-16.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-16b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-17.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-17b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-18.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-18b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-19.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-19b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-1b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-2.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-20.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-21.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-21b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-22.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-23.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-24.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-25.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-25b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-26.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-27.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-27b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-2b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-3.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-3b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-4.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-4b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-5.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-5b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-6.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-6b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-7.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-7b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-8.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-9.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201-9b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\201.png" />
+    <Content Include="Resources\img\Pokemon Sprites\202.png" />
+    <Content Include="Resources\img\Pokemon Sprites\203.png" />
+    <Content Include="Resources\img\Pokemon Sprites\204.png" />
+    <Content Include="Resources\img\Pokemon Sprites\205.png" />
+    <Content Include="Resources\img\Pokemon Sprites\206.png" />
+    <Content Include="Resources\img\Pokemon Sprites\207.png" />
+    <Content Include="Resources\img\Pokemon Sprites\208-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\208.png" />
+    <Content Include="Resources\img\Pokemon Sprites\209.png" />
+    <Content Include="Resources\img\Pokemon Sprites\21.png" />
+    <Content Include="Resources\img\Pokemon Sprites\210.png" />
+    <Content Include="Resources\img\Pokemon Sprites\211.png" />
+    <Content Include="Resources\img\Pokemon Sprites\212-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\212.png" />
+    <Content Include="Resources\img\Pokemon Sprites\213.png" />
+    <Content Include="Resources\img\Pokemon Sprites\214-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\214.png" />
+    <Content Include="Resources\img\Pokemon Sprites\215.png" />
+    <Content Include="Resources\img\Pokemon Sprites\215b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\216.png" />
+    <Content Include="Resources\img\Pokemon Sprites\216b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\217.png" />
+    <Content Include="Resources\img\Pokemon Sprites\218.png" />
+    <Content Include="Resources\img\Pokemon Sprites\219.png" />
+    <Content Include="Resources\img\Pokemon Sprites\22.png" />
+    <Content Include="Resources\img\Pokemon Sprites\220.png" />
+    <Content Include="Resources\img\Pokemon Sprites\221.png" />
+    <Content Include="Resources\img\Pokemon Sprites\222.png" />
+    <Content Include="Resources\img\Pokemon Sprites\223.png" />
+    <Content Include="Resources\img\Pokemon Sprites\224.png" />
+    <Content Include="Resources\img\Pokemon Sprites\225.png" />
+    <Content Include="Resources\img\Pokemon Sprites\226.png" />
+    <Content Include="Resources\img\Pokemon Sprites\227.png" />
+    <Content Include="Resources\img\Pokemon Sprites\228.png" />
+    <Content Include="Resources\img\Pokemon Sprites\229-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\229.png" />
+    <Content Include="Resources\img\Pokemon Sprites\23.png" />
+    <Content Include="Resources\img\Pokemon Sprites\230.png" />
+    <Content Include="Resources\img\Pokemon Sprites\231.png" />
+    <Content Include="Resources\img\Pokemon Sprites\232.png" />
+    <Content Include="Resources\img\Pokemon Sprites\233.png" />
+    <Content Include="Resources\img\Pokemon Sprites\234.png" />
+    <Content Include="Resources\img\Pokemon Sprites\235.png" />
+    <Content Include="Resources\img\Pokemon Sprites\236.png" />
+    <Content Include="Resources\img\Pokemon Sprites\237.png" />
+    <Content Include="Resources\img\Pokemon Sprites\238.png" />
+    <Content Include="Resources\img\Pokemon Sprites\239.png" />
+    <Content Include="Resources\img\Pokemon Sprites\24.png" />
+    <Content Include="Resources\img\Pokemon Sprites\240.png" />
+    <Content Include="Resources\img\Pokemon Sprites\241.png" />
+    <Content Include="Resources\img\Pokemon Sprites\242.png" />
+    <Content Include="Resources\img\Pokemon Sprites\243.png" />
+    <Content Include="Resources\img\Pokemon Sprites\244.png" />
+    <Content Include="Resources\img\Pokemon Sprites\244b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\245.png" />
+    <Content Include="Resources\img\Pokemon Sprites\246.png" />
+    <Content Include="Resources\img\Pokemon Sprites\247.png" />
+    <Content Include="Resources\img\Pokemon Sprites\248-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\248.png" />
+    <Content Include="Resources\img\Pokemon Sprites\249.png" />
+    <Content Include="Resources\img\Pokemon Sprites\25-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\25-2.png" />
+    <Content Include="Resources\img\Pokemon Sprites\25-3.png" />
+    <Content Include="Resources\img\Pokemon Sprites\25-4.png" />
+    <Content Include="Resources\img\Pokemon Sprites\25-5.png" />
+    <Content Include="Resources\img\Pokemon Sprites\25-6.png" />
+    <Content Include="Resources\img\Pokemon Sprites\25.png" />
+    <Content Include="Resources\img\Pokemon Sprites\250.png" />
+    <Content Include="Resources\img\Pokemon Sprites\251.png" />
+    <Content Include="Resources\img\Pokemon Sprites\252.png" />
+    <Content Include="Resources\img\Pokemon Sprites\253.png" />
+    <Content Include="Resources\img\Pokemon Sprites\254-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\254.png" />
+    <Content Include="Resources\img\Pokemon Sprites\255.png" />
+    <Content Include="Resources\img\Pokemon Sprites\256.png" />
+    <Content Include="Resources\img\Pokemon Sprites\257-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\257.png" />
+    <Content Include="Resources\img\Pokemon Sprites\258.png" />
+    <Content Include="Resources\img\Pokemon Sprites\259.png" />
+    <Content Include="Resources\img\Pokemon Sprites\26.png" />
+    <Content Include="Resources\img\Pokemon Sprites\260-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\260.png" />
+    <Content Include="Resources\img\Pokemon Sprites\261.png" />
+    <Content Include="Resources\img\Pokemon Sprites\262.png" />
+    <Content Include="Resources\img\Pokemon Sprites\263.png" />
+    <Content Include="Resources\img\Pokemon Sprites\264.png" />
+    <Content Include="Resources\img\Pokemon Sprites\265.png" />
+    <Content Include="Resources\img\Pokemon Sprites\266.png" />
+    <Content Include="Resources\img\Pokemon Sprites\267.png" />
+    <Content Include="Resources\img\Pokemon Sprites\268.png" />
+    <Content Include="Resources\img\Pokemon Sprites\269.png" />
+    <Content Include="Resources\img\Pokemon Sprites\27.png" />
+    <Content Include="Resources\img\Pokemon Sprites\270.png" />
+    <Content Include="Resources\img\Pokemon Sprites\271.png" />
+    <Content Include="Resources\img\Pokemon Sprites\272.png" />
+    <Content Include="Resources\img\Pokemon Sprites\273.png" />
+    <Content Include="Resources\img\Pokemon Sprites\274.png" />
+    <Content Include="Resources\img\Pokemon Sprites\275.png" />
+    <Content Include="Resources\img\Pokemon Sprites\276.png" />
+    <Content Include="Resources\img\Pokemon Sprites\277.png" />
+    <Content Include="Resources\img\Pokemon Sprites\278.png" />
+    <Content Include="Resources\img\Pokemon Sprites\279.png" />
+    <Content Include="Resources\img\Pokemon Sprites\28.png" />
+    <Content Include="Resources\img\Pokemon Sprites\280.png" />
+    <Content Include="Resources\img\Pokemon Sprites\281.png" />
+    <Content Include="Resources\img\Pokemon Sprites\282-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\282.png" />
+    <Content Include="Resources\img\Pokemon Sprites\283.png" />
+    <Content Include="Resources\img\Pokemon Sprites\284.png" />
+    <Content Include="Resources\img\Pokemon Sprites\285.png" />
+    <Content Include="Resources\img\Pokemon Sprites\286.png" />
+    <Content Include="Resources\img\Pokemon Sprites\287.png" />
+    <Content Include="Resources\img\Pokemon Sprites\288.png" />
+    <Content Include="Resources\img\Pokemon Sprites\289.png" />
+    <Content Include="Resources\img\Pokemon Sprites\29.png" />
+    <Content Include="Resources\img\Pokemon Sprites\290.png" />
+    <Content Include="Resources\img\Pokemon Sprites\291.png" />
+    <Content Include="Resources\img\Pokemon Sprites\292.png" />
+    <Content Include="Resources\img\Pokemon Sprites\293.png" />
+    <Content Include="Resources\img\Pokemon Sprites\294.png" />
+    <Content Include="Resources\img\Pokemon Sprites\295.png" />
+    <Content Include="Resources\img\Pokemon Sprites\296.png" />
+    <Content Include="Resources\img\Pokemon Sprites\297.png" />
+    <Content Include="Resources\img\Pokemon Sprites\298.png" />
+    <Content Include="Resources\img\Pokemon Sprites\299.png" />
+    <Content Include="Resources\img\Pokemon Sprites\3-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\3.png" />
+    <Content Include="Resources\img\Pokemon Sprites\30.png" />
+    <Content Include="Resources\img\Pokemon Sprites\300.png" />
+    <Content Include="Resources\img\Pokemon Sprites\301.png" />
+    <Content Include="Resources\img\Pokemon Sprites\302-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\302.png" />
+    <Content Include="Resources\img\Pokemon Sprites\303-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\303.png" />
+    <Content Include="Resources\img\Pokemon Sprites\304.png" />
+    <Content Include="Resources\img\Pokemon Sprites\305.png" />
+    <Content Include="Resources\img\Pokemon Sprites\306-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\306.png" />
+    <Content Include="Resources\img\Pokemon Sprites\307.png" />
+    <Content Include="Resources\img\Pokemon Sprites\308-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\308.png" />
+    <Content Include="Resources\img\Pokemon Sprites\309.png" />
+    <Content Include="Resources\img\Pokemon Sprites\31.png" />
+    <Content Include="Resources\img\Pokemon Sprites\310-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\310.png" />
+    <Content Include="Resources\img\Pokemon Sprites\311.png" />
+    <Content Include="Resources\img\Pokemon Sprites\312.png" />
+    <Content Include="Resources\img\Pokemon Sprites\313.png" />
+    <Content Include="Resources\img\Pokemon Sprites\314.png" />
+    <Content Include="Resources\img\Pokemon Sprites\315.png" />
+    <Content Include="Resources\img\Pokemon Sprites\315b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\316.png" />
+    <Content Include="Resources\img\Pokemon Sprites\317.png" />
+    <Content Include="Resources\img\Pokemon Sprites\318.png" />
+    <Content Include="Resources\img\Pokemon Sprites\319-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\319.png" />
+    <Content Include="Resources\img\Pokemon Sprites\32.png" />
+    <Content Include="Resources\img\Pokemon Sprites\320.png" />
+    <Content Include="Resources\img\Pokemon Sprites\321.png" />
+    <Content Include="Resources\img\Pokemon Sprites\322.png" />
+    <Content Include="Resources\img\Pokemon Sprites\323-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\323.png" />
+    <Content Include="Resources\img\Pokemon Sprites\324.png" />
+    <Content Include="Resources\img\Pokemon Sprites\325.png" />
+    <Content Include="Resources\img\Pokemon Sprites\326.png" />
+    <Content Include="Resources\img\Pokemon Sprites\327.png" />
+    <Content Include="Resources\img\Pokemon Sprites\328.png" />
+    <Content Include="Resources\img\Pokemon Sprites\329.png" />
+    <Content Include="Resources\img\Pokemon Sprites\33.png" />
+    <Content Include="Resources\img\Pokemon Sprites\330.png" />
+    <Content Include="Resources\img\Pokemon Sprites\331.png" />
+    <Content Include="Resources\img\Pokemon Sprites\332.png" />
+    <Content Include="Resources\img\Pokemon Sprites\333.png" />
+    <Content Include="Resources\img\Pokemon Sprites\334-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\334.png" />
+    <Content Include="Resources\img\Pokemon Sprites\335.png" />
+    <Content Include="Resources\img\Pokemon Sprites\335b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\336.png" />
+    <Content Include="Resources\img\Pokemon Sprites\336b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\337.png" />
+    <Content Include="Resources\img\Pokemon Sprites\338.png" />
+    <Content Include="Resources\img\Pokemon Sprites\339.png" />
+    <Content Include="Resources\img\Pokemon Sprites\34.png" />
+    <Content Include="Resources\img\Pokemon Sprites\340.png" />
+    <Content Include="Resources\img\Pokemon Sprites\341.png" />
+    <Content Include="Resources\img\Pokemon Sprites\342.png" />
+    <Content Include="Resources\img\Pokemon Sprites\343.png" />
+    <Content Include="Resources\img\Pokemon Sprites\344.png" />
+    <Content Include="Resources\img\Pokemon Sprites\345.png" />
+    <Content Include="Resources\img\Pokemon Sprites\346.png" />
+    <Content Include="Resources\img\Pokemon Sprites\347.png" />
+    <Content Include="Resources\img\Pokemon Sprites\348.png" />
+    <Content Include="Resources\img\Pokemon Sprites\349.png" />
+    <Content Include="Resources\img\Pokemon Sprites\35.png" />
+    <Content Include="Resources\img\Pokemon Sprites\350.png" />
+    <Content Include="Resources\img\Pokemon Sprites\351-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\351-2.png" />
+    <Content Include="Resources\img\Pokemon Sprites\351-3.png" />
+    <Content Include="Resources\img\Pokemon Sprites\351-3b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\351.png" />
+    <Content Include="Resources\img\Pokemon Sprites\352.png" />
+    <Content Include="Resources\img\Pokemon Sprites\353.png" />
+    <Content Include="Resources\img\Pokemon Sprites\354-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\354.png" />
+    <Content Include="Resources\img\Pokemon Sprites\355.png" />
+    <Content Include="Resources\img\Pokemon Sprites\356.png" />
+    <Content Include="Resources\img\Pokemon Sprites\357.png" />
+    <Content Include="Resources\img\Pokemon Sprites\358.png" />
+    <Content Include="Resources\img\Pokemon Sprites\359-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\359-1b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\359.png" />
+    <Content Include="Resources\img\Pokemon Sprites\359b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\35b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\36.png" />
+    <Content Include="Resources\img\Pokemon Sprites\360.png" />
+    <Content Include="Resources\img\Pokemon Sprites\361.png" />
+    <Content Include="Resources\img\Pokemon Sprites\362-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\362.png" />
+    <Content Include="Resources\img\Pokemon Sprites\363.png" />
+    <Content Include="Resources\img\Pokemon Sprites\364.png" />
+    <Content Include="Resources\img\Pokemon Sprites\365.png" />
+    <Content Include="Resources\img\Pokemon Sprites\366.png" />
+    <Content Include="Resources\img\Pokemon Sprites\367.png" />
+    <Content Include="Resources\img\Pokemon Sprites\368.png" />
+    <Content Include="Resources\img\Pokemon Sprites\369.png" />
+    <Content Include="Resources\img\Pokemon Sprites\36b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\37.png" />
+    <Content Include="Resources\img\Pokemon Sprites\370.png" />
+    <Content Include="Resources\img\Pokemon Sprites\371.png" />
+    <Content Include="Resources\img\Pokemon Sprites\372.png" />
+    <Content Include="Resources\img\Pokemon Sprites\373-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\373.png" />
+    <Content Include="Resources\img\Pokemon Sprites\374.png" />
+    <Content Include="Resources\img\Pokemon Sprites\375.png" />
+    <Content Include="Resources\img\Pokemon Sprites\376-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\376.png" />
+    <Content Include="Resources\img\Pokemon Sprites\377.png" />
+    <Content Include="Resources\img\Pokemon Sprites\377b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\378.png" />
+    <Content Include="Resources\img\Pokemon Sprites\379.png" />
+    <Content Include="Resources\img\Pokemon Sprites\38.png" />
+    <Content Include="Resources\img\Pokemon Sprites\380-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\380.png" />
+    <Content Include="Resources\img\Pokemon Sprites\381-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\381.png" />
+    <Content Include="Resources\img\Pokemon Sprites\382-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\382.png" />
+    <Content Include="Resources\img\Pokemon Sprites\383-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\383.png" />
+    <Content Include="Resources\img\Pokemon Sprites\384-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\384.png" />
+    <Content Include="Resources\img\Pokemon Sprites\385.png" />
+    <Content Include="Resources\img\Pokemon Sprites\386-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\386-2.png" />
+    <Content Include="Resources\img\Pokemon Sprites\386-3.png" />
+    <Content Include="Resources\img\Pokemon Sprites\386.png" />
+    <Content Include="Resources\img\Pokemon Sprites\387.png" />
+    <Content Include="Resources\img\Pokemon Sprites\388.png" />
+    <Content Include="Resources\img\Pokemon Sprites\389.png" />
+    <Content Include="Resources\img\Pokemon Sprites\389b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\39.png" />
+    <Content Include="Resources\img\Pokemon Sprites\390.png" />
+    <Content Include="Resources\img\Pokemon Sprites\391.png" />
+    <Content Include="Resources\img\Pokemon Sprites\392.png" />
+    <Content Include="Resources\img\Pokemon Sprites\393.png" />
+    <Content Include="Resources\img\Pokemon Sprites\394.png" />
+    <Content Include="Resources\img\Pokemon Sprites\395.png" />
+    <Content Include="Resources\img\Pokemon Sprites\396.png" />
+    <Content Include="Resources\img\Pokemon Sprites\397.png" />
+    <Content Include="Resources\img\Pokemon Sprites\398.png" />
+    <Content Include="Resources\img\Pokemon Sprites\399.png" />
+    <Content Include="Resources\img\Pokemon Sprites\39b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\4.png" />
+    <Content Include="Resources\img\Pokemon Sprites\40.png" />
+    <Content Include="Resources\img\Pokemon Sprites\400.png" />
+    <Content Include="Resources\img\Pokemon Sprites\401.png" />
+    <Content Include="Resources\img\Pokemon Sprites\402.png" />
+    <Content Include="Resources\img\Pokemon Sprites\403.png" />
+    <Content Include="Resources\img\Pokemon Sprites\404.png" />
+    <Content Include="Resources\img\Pokemon Sprites\405.png" />
+    <Content Include="Resources\img\Pokemon Sprites\406.png" />
+    <Content Include="Resources\img\Pokemon Sprites\406b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\407.png" />
+    <Content Include="Resources\img\Pokemon Sprites\407b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\408.png" />
+    <Content Include="Resources\img\Pokemon Sprites\409.png" />
+    <Content Include="Resources\img\Pokemon Sprites\40b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\41.png" />
+    <Content Include="Resources\img\Pokemon Sprites\410.png" />
+    <Content Include="Resources\img\Pokemon Sprites\411.png" />
+    <Content Include="Resources\img\Pokemon Sprites\412-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\412-2.png" />
+    <Content Include="Resources\img\Pokemon Sprites\412.png" />
+    <Content Include="Resources\img\Pokemon Sprites\413-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\413-2.png" />
+    <Content Include="Resources\img\Pokemon Sprites\413.png" />
+    <Content Include="Resources\img\Pokemon Sprites\414.png" />
+    <Content Include="Resources\img\Pokemon Sprites\415.png" />
+    <Content Include="Resources\img\Pokemon Sprites\416.png" />
+    <Content Include="Resources\img\Pokemon Sprites\417.png" />
+    <Content Include="Resources\img\Pokemon Sprites\418.png" />
+    <Content Include="Resources\img\Pokemon Sprites\419.png" />
+    <Content Include="Resources\img\Pokemon Sprites\42.png" />
+    <Content Include="Resources\img\Pokemon Sprites\420.png" />
+    <Content Include="Resources\img\Pokemon Sprites\421-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\421.png" />
+    <Content Include="Resources\img\Pokemon Sprites\422-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\422.png" />
+    <Content Include="Resources\img\Pokemon Sprites\423-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\423.png" />
+    <Content Include="Resources\img\Pokemon Sprites\424.png" />
+    <Content Include="Resources\img\Pokemon Sprites\425.png" />
+    <Content Include="Resources\img\Pokemon Sprites\426.png" />
+    <Content Include="Resources\img\Pokemon Sprites\427.png" />
+    <Content Include="Resources\img\Pokemon Sprites\428-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\428.png" />
+    <Content Include="Resources\img\Pokemon Sprites\429.png" />
+    <Content Include="Resources\img\Pokemon Sprites\43.png" />
+    <Content Include="Resources\img\Pokemon Sprites\430.png" />
+    <Content Include="Resources\img\Pokemon Sprites\431.png" />
+    <Content Include="Resources\img\Pokemon Sprites\432.png" />
+    <Content Include="Resources\img\Pokemon Sprites\433.png" />
+    <Content Include="Resources\img\Pokemon Sprites\434.png" />
+    <Content Include="Resources\img\Pokemon Sprites\435.png" />
+    <Content Include="Resources\img\Pokemon Sprites\436.png" />
+    <Content Include="Resources\img\Pokemon Sprites\437.png" />
+    <Content Include="Resources\img\Pokemon Sprites\438.png" />
+    <Content Include="Resources\img\Pokemon Sprites\439.png" />
+    <Content Include="Resources\img\Pokemon Sprites\44.png" />
+    <Content Include="Resources\img\Pokemon Sprites\440.png" />
+    <Content Include="Resources\img\Pokemon Sprites\441.png" />
+    <Content Include="Resources\img\Pokemon Sprites\442.png" />
+    <Content Include="Resources\img\Pokemon Sprites\443.png" />
+    <Content Include="Resources\img\Pokemon Sprites\444.png" />
+    <Content Include="Resources\img\Pokemon Sprites\445-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\445.png" />
+    <Content Include="Resources\img\Pokemon Sprites\446.png" />
+    <Content Include="Resources\img\Pokemon Sprites\447.png" />
+    <Content Include="Resources\img\Pokemon Sprites\448-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\448.png" />
+    <Content Include="Resources\img\Pokemon Sprites\449.png" />
+    <Content Include="Resources\img\Pokemon Sprites\45.png" />
+    <Content Include="Resources\img\Pokemon Sprites\450.png" />
+    <Content Include="Resources\img\Pokemon Sprites\451.png" />
+    <Content Include="Resources\img\Pokemon Sprites\452.png" />
+    <Content Include="Resources\img\Pokemon Sprites\453.png" />
+    <Content Include="Resources\img\Pokemon Sprites\454.png" />
+    <Content Include="Resources\img\Pokemon Sprites\455.png" />
+    <Content Include="Resources\img\Pokemon Sprites\456.png" />
+    <Content Include="Resources\img\Pokemon Sprites\457.png" />
+    <Content Include="Resources\img\Pokemon Sprites\458.png" />
+    <Content Include="Resources\img\Pokemon Sprites\459.png" />
+    <Content Include="Resources\img\Pokemon Sprites\46.png" />
+    <Content Include="Resources\img\Pokemon Sprites\460-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\460.png" />
+    <Content Include="Resources\img\Pokemon Sprites\461.png" />
+    <Content Include="Resources\img\Pokemon Sprites\462.png" />
+    <Content Include="Resources\img\Pokemon Sprites\463.png" />
+    <Content Include="Resources\img\Pokemon Sprites\464.png" />
+    <Content Include="Resources\img\Pokemon Sprites\465.png" />
+    <Content Include="Resources\img\Pokemon Sprites\466.png" />
+    <Content Include="Resources\img\Pokemon Sprites\467.png" />
+    <Content Include="Resources\img\Pokemon Sprites\467b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\468.png" />
+    <Content Include="Resources\img\Pokemon Sprites\468b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\469.png" />
+    <Content Include="Resources\img\Pokemon Sprites\47.png" />
+    <Content Include="Resources\img\Pokemon Sprites\470.png" />
+    <Content Include="Resources\img\Pokemon Sprites\471.png" />
+    <Content Include="Resources\img\Pokemon Sprites\472.png" />
+    <Content Include="Resources\img\Pokemon Sprites\473.png" />
+    <Content Include="Resources\img\Pokemon Sprites\474.png" />
+    <Content Include="Resources\img\Pokemon Sprites\475-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\475.png" />
+    <Content Include="Resources\img\Pokemon Sprites\476.png" />
+    <Content Include="Resources\img\Pokemon Sprites\477.png" />
+    <Content Include="Resources\img\Pokemon Sprites\478.png" />
+    <Content Include="Resources\img\Pokemon Sprites\479-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\479-2.png" />
+    <Content Include="Resources\img\Pokemon Sprites\479-2b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\479-3.png" />
+    <Content Include="Resources\img\Pokemon Sprites\479-4.png" />
+    <Content Include="Resources\img\Pokemon Sprites\479-5.png" />
+    <Content Include="Resources\img\Pokemon Sprites\479.png" />
+    <Content Include="Resources\img\Pokemon Sprites\48.png" />
+    <Content Include="Resources\img\Pokemon Sprites\480.png" />
+    <Content Include="Resources\img\Pokemon Sprites\481.png" />
+    <Content Include="Resources\img\Pokemon Sprites\482.png" />
+    <Content Include="Resources\img\Pokemon Sprites\483.png" />
+    <Content Include="Resources\img\Pokemon Sprites\484.png" />
+    <Content Include="Resources\img\Pokemon Sprites\485.png" />
+    <Content Include="Resources\img\Pokemon Sprites\486.png" />
+    <Content Include="Resources\img\Pokemon Sprites\487-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\487.png" />
+    <Content Include="Resources\img\Pokemon Sprites\488.png" />
+    <Content Include="Resources\img\Pokemon Sprites\489.png" />
+    <Content Include="Resources\img\Pokemon Sprites\49.png" />
+    <Content Include="Resources\img\Pokemon Sprites\490.png" />
+    <Content Include="Resources\img\Pokemon Sprites\491.png" />
+    <Content Include="Resources\img\Pokemon Sprites\492-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\492-1b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\492.png" />
+    <Content Include="Resources\img\Pokemon Sprites\493-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\493-10.png" />
+    <Content Include="Resources\img\Pokemon Sprites\493-11.png" />
+    <Content Include="Resources\img\Pokemon Sprites\493-12.png" />
+    <Content Include="Resources\img\Pokemon Sprites\493-13.png" />
+    <Content Include="Resources\img\Pokemon Sprites\493-14.png" />
+    <Content Include="Resources\img\Pokemon Sprites\493-15.png" />
+    <Content Include="Resources\img\Pokemon Sprites\493-16.png" />
+    <Content Include="Resources\img\Pokemon Sprites\493-17.png" />
+    <Content Include="Resources\img\Pokemon Sprites\493-18.png" />
+    <Content Include="Resources\img\Pokemon Sprites\493-2.png" />
+    <Content Include="Resources\img\Pokemon Sprites\493-3.png" />
+    <Content Include="Resources\img\Pokemon Sprites\493-4.png" />
+    <Content Include="Resources\img\Pokemon Sprites\493-5.png" />
+    <Content Include="Resources\img\Pokemon Sprites\493-6.png" />
+    <Content Include="Resources\img\Pokemon Sprites\493-7.png" />
+    <Content Include="Resources\img\Pokemon Sprites\493-8.png" />
+    <Content Include="Resources\img\Pokemon Sprites\493-9.png" />
+    <Content Include="Resources\img\Pokemon Sprites\493.png" />
+    <Content Include="Resources\img\Pokemon Sprites\494.png" />
+    <Content Include="Resources\img\Pokemon Sprites\495.png" />
+    <Content Include="Resources\img\Pokemon Sprites\496.png" />
+    <Content Include="Resources\img\Pokemon Sprites\497.png" />
+    <Content Include="Resources\img\Pokemon Sprites\498.png" />
+    <Content Include="Resources\img\Pokemon Sprites\499.png" />
+    <Content Include="Resources\img\Pokemon Sprites\5.png" />
+    <Content Include="Resources\img\Pokemon Sprites\50.png" />
+    <Content Include="Resources\img\Pokemon Sprites\500.png" />
+    <Content Include="Resources\img\Pokemon Sprites\500b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\501.png" />
+    <Content Include="Resources\img\Pokemon Sprites\502.png" />
+    <Content Include="Resources\img\Pokemon Sprites\503.png" />
+    <Content Include="Resources\img\Pokemon Sprites\504.png" />
+    <Content Include="Resources\img\Pokemon Sprites\505.png" />
+    <Content Include="Resources\img\Pokemon Sprites\506.png" />
+    <Content Include="Resources\img\Pokemon Sprites\507.png" />
+    <Content Include="Resources\img\Pokemon Sprites\508.png" />
+    <Content Include="Resources\img\Pokemon Sprites\509.png" />
+    <Content Include="Resources\img\Pokemon Sprites\51.png" />
+    <Content Include="Resources\img\Pokemon Sprites\510.png" />
+    <Content Include="Resources\img\Pokemon Sprites\511.png" />
+    <Content Include="Resources\img\Pokemon Sprites\512.png" />
+    <Content Include="Resources\img\Pokemon Sprites\513.png" />
+    <Content Include="Resources\img\Pokemon Sprites\513b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\514.png" />
+    <Content Include="Resources\img\Pokemon Sprites\514b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\515.png" />
+    <Content Include="Resources\img\Pokemon Sprites\516.png" />
+    <Content Include="Resources\img\Pokemon Sprites\517.png" />
+    <Content Include="Resources\img\Pokemon Sprites\518.png" />
+    <Content Include="Resources\img\Pokemon Sprites\519.png" />
+    <Content Include="Resources\img\Pokemon Sprites\52.png" />
+    <Content Include="Resources\img\Pokemon Sprites\520.png" />
+    <Content Include="Resources\img\Pokemon Sprites\521.png" />
+    <Content Include="Resources\img\Pokemon Sprites\521f.png" />
+    <Content Include="Resources\img\Pokemon Sprites\522.png" />
+    <Content Include="Resources\img\Pokemon Sprites\523.png" />
+    <Content Include="Resources\img\Pokemon Sprites\524.png" />
+    <Content Include="Resources\img\Pokemon Sprites\525.png" />
+    <Content Include="Resources\img\Pokemon Sprites\526.png" />
+    <Content Include="Resources\img\Pokemon Sprites\527.png" />
+    <Content Include="Resources\img\Pokemon Sprites\528.png" />
+    <Content Include="Resources\img\Pokemon Sprites\529.png" />
+    <Content Include="Resources\img\Pokemon Sprites\529b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\53.png" />
+    <Content Include="Resources\img\Pokemon Sprites\530.png" />
+    <Content Include="Resources\img\Pokemon Sprites\530b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\531-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\531.png" />
+    <Content Include="Resources\img\Pokemon Sprites\532.png" />
+    <Content Include="Resources\img\Pokemon Sprites\533.png" />
+    <Content Include="Resources\img\Pokemon Sprites\534.png" />
+    <Content Include="Resources\img\Pokemon Sprites\535.png" />
+    <Content Include="Resources\img\Pokemon Sprites\536.png" />
+    <Content Include="Resources\img\Pokemon Sprites\537.png" />
+    <Content Include="Resources\img\Pokemon Sprites\538.png" />
+    <Content Include="Resources\img\Pokemon Sprites\539.png" />
+    <Content Include="Resources\img\Pokemon Sprites\539b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\54.png" />
+    <Content Include="Resources\img\Pokemon Sprites\540.png" />
+    <Content Include="Resources\img\Pokemon Sprites\541.png" />
+    <Content Include="Resources\img\Pokemon Sprites\542.png" />
+    <Content Include="Resources\img\Pokemon Sprites\543.png" />
+    <Content Include="Resources\img\Pokemon Sprites\544.png" />
+    <Content Include="Resources\img\Pokemon Sprites\545.png" />
+    <Content Include="Resources\img\Pokemon Sprites\546.png" />
+    <Content Include="Resources\img\Pokemon Sprites\547.png" />
+    <Content Include="Resources\img\Pokemon Sprites\548.png" />
+    <Content Include="Resources\img\Pokemon Sprites\549.png" />
+    <Content Include="Resources\img\Pokemon Sprites\549b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\55.png" />
+    <Content Include="Resources\img\Pokemon Sprites\550-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\550.png" />
+    <Content Include="Resources\img\Pokemon Sprites\551.png" />
+    <Content Include="Resources\img\Pokemon Sprites\552.png" />
+    <Content Include="Resources\img\Pokemon Sprites\553.png" />
+    <Content Include="Resources\img\Pokemon Sprites\554.png" />
+    <Content Include="Resources\img\Pokemon Sprites\555-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\555.png" />
+    <Content Include="Resources\img\Pokemon Sprites\556.png" />
+    <Content Include="Resources\img\Pokemon Sprites\557.png" />
+    <Content Include="Resources\img\Pokemon Sprites\558.png" />
+    <Content Include="Resources\img\Pokemon Sprites\559.png" />
+    <Content Include="Resources\img\Pokemon Sprites\56.png" />
+    <Content Include="Resources\img\Pokemon Sprites\560.png" />
+    <Content Include="Resources\img\Pokemon Sprites\561.png" />
+    <Content Include="Resources\img\Pokemon Sprites\562.png" />
+    <Content Include="Resources\img\Pokemon Sprites\563.png" />
+    <Content Include="Resources\img\Pokemon Sprites\564.png" />
+    <Content Include="Resources\img\Pokemon Sprites\565.png" />
+    <Content Include="Resources\img\Pokemon Sprites\566.png" />
+    <Content Include="Resources\img\Pokemon Sprites\567.png" />
+    <Content Include="Resources\img\Pokemon Sprites\568.png" />
+    <Content Include="Resources\img\Pokemon Sprites\569.png" />
+    <Content Include="Resources\img\Pokemon Sprites\569b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\57.png" />
+    <Content Include="Resources\img\Pokemon Sprites\570.png" />
+    <Content Include="Resources\img\Pokemon Sprites\571.png" />
+    <Content Include="Resources\img\Pokemon Sprites\572.png" />
+    <Content Include="Resources\img\Pokemon Sprites\573.png" />
+    <Content Include="Resources\img\Pokemon Sprites\574.png" />
+    <Content Include="Resources\img\Pokemon Sprites\575.png" />
+    <Content Include="Resources\img\Pokemon Sprites\576.png" />
+    <Content Include="Resources\img\Pokemon Sprites\577.png" />
+    <Content Include="Resources\img\Pokemon Sprites\577b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\578.png" />
+    <Content Include="Resources\img\Pokemon Sprites\579.png" />
+    <Content Include="Resources\img\Pokemon Sprites\58.png" />
+    <Content Include="Resources\img\Pokemon Sprites\580.png" />
+    <Content Include="Resources\img\Pokemon Sprites\581.png" />
+    <Content Include="Resources\img\Pokemon Sprites\582.png" />
+    <Content Include="Resources\img\Pokemon Sprites\583.png" />
+    <Content Include="Resources\img\Pokemon Sprites\584.png" />
+    <Content Include="Resources\img\Pokemon Sprites\584b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\585-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\585-2.png" />
+    <Content Include="Resources\img\Pokemon Sprites\585-3.png" />
+    <Content Include="Resources\img\Pokemon Sprites\585.png" />
+    <Content Include="Resources\img\Pokemon Sprites\586-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\586-2.png" />
+    <Content Include="Resources\img\Pokemon Sprites\586-3.png" />
+    <Content Include="Resources\img\Pokemon Sprites\586.png" />
+    <Content Include="Resources\img\Pokemon Sprites\587.png" />
+    <Content Include="Resources\img\Pokemon Sprites\588.png" />
+    <Content Include="Resources\img\Pokemon Sprites\589.png" />
+    <Content Include="Resources\img\Pokemon Sprites\59.png" />
+    <Content Include="Resources\img\Pokemon Sprites\590.png" />
+    <Content Include="Resources\img\Pokemon Sprites\591.png" />
+    <Content Include="Resources\img\Pokemon Sprites\591b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\592-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\592.png" />
+    <Content Include="Resources\img\Pokemon Sprites\593-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\593.png" />
+    <Content Include="Resources\img\Pokemon Sprites\594.png" />
+    <Content Include="Resources\img\Pokemon Sprites\595.png" />
+    <Content Include="Resources\img\Pokemon Sprites\596.png" />
+    <Content Include="Resources\img\Pokemon Sprites\597.png" />
+    <Content Include="Resources\img\Pokemon Sprites\598.png" />
+    <Content Include="Resources\img\Pokemon Sprites\599.png" />
+    <Content Include="Resources\img\Pokemon Sprites\599b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\6-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\6-2.png" />
+    <Content Include="Resources\img\Pokemon Sprites\6.png" />
+    <Content Include="Resources\img\Pokemon Sprites\60.png" />
+    <Content Include="Resources\img\Pokemon Sprites\600.png" />
+    <Content Include="Resources\img\Pokemon Sprites\600b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\601.png" />
+    <Content Include="Resources\img\Pokemon Sprites\601b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\602.png" />
+    <Content Include="Resources\img\Pokemon Sprites\603.png" />
+    <Content Include="Resources\img\Pokemon Sprites\604.png" />
+    <Content Include="Resources\img\Pokemon Sprites\605.png" />
+    <Content Include="Resources\img\Pokemon Sprites\606.png" />
+    <Content Include="Resources\img\Pokemon Sprites\607.png" />
+    <Content Include="Resources\img\Pokemon Sprites\607b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\608.png" />
+    <Content Include="Resources\img\Pokemon Sprites\609.png" />
+    <Content Include="Resources\img\Pokemon Sprites\61.png" />
+    <Content Include="Resources\img\Pokemon Sprites\610.png" />
+    <Content Include="Resources\img\Pokemon Sprites\611.png" />
+    <Content Include="Resources\img\Pokemon Sprites\612.png" />
+    <Content Include="Resources\img\Pokemon Sprites\613.png" />
+    <Content Include="Resources\img\Pokemon Sprites\614.png" />
+    <Content Include="Resources\img\Pokemon Sprites\615.png" />
+    <Content Include="Resources\img\Pokemon Sprites\616.png" />
+    <Content Include="Resources\img\Pokemon Sprites\617.png" />
+    <Content Include="Resources\img\Pokemon Sprites\618.png" />
+    <Content Include="Resources\img\Pokemon Sprites\619.png" />
+    <Content Include="Resources\img\Pokemon Sprites\61b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\62.png" />
+    <Content Include="Resources\img\Pokemon Sprites\620.png" />
+    <Content Include="Resources\img\Pokemon Sprites\621.png" />
+    <Content Include="Resources\img\Pokemon Sprites\622.png" />
+    <Content Include="Resources\img\Pokemon Sprites\622b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\623.png" />
+    <Content Include="Resources\img\Pokemon Sprites\623b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\624.png" />
+    <Content Include="Resources\img\Pokemon Sprites\625.png" />
+    <Content Include="Resources\img\Pokemon Sprites\626-2.png" />
+    <Content Include="Resources\img\Pokemon Sprites\626-4.png" />
+    <Content Include="Resources\img\Pokemon Sprites\626-4b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\626-9.png" />
+    <Content Include="Resources\img\Pokemon Sprites\626.png" />
+    <Content Include="Resources\img\Pokemon Sprites\627.png" />
+    <Content Include="Resources\img\Pokemon Sprites\628.png" />
+    <Content Include="Resources\img\Pokemon Sprites\629.png" />
+    <Content Include="Resources\img\Pokemon Sprites\62b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\63.png" />
+    <Content Include="Resources\img\Pokemon Sprites\630.png" />
+    <Content Include="Resources\img\Pokemon Sprites\631.png" />
+    <Content Include="Resources\img\Pokemon Sprites\632.png" />
+    <Content Include="Resources\img\Pokemon Sprites\633.png" />
+    <Content Include="Resources\img\Pokemon Sprites\634.png" />
+    <Content Include="Resources\img\Pokemon Sprites\635.png" />
+    <Content Include="Resources\img\Pokemon Sprites\636.png" />
+    <Content Include="Resources\img\Pokemon Sprites\637.png" />
+    <Content Include="Resources\img\Pokemon Sprites\638.png" />
+    <Content Include="Resources\img\Pokemon Sprites\639.png" />
+    <Content Include="Resources\img\Pokemon Sprites\64.png" />
+    <Content Include="Resources\img\Pokemon Sprites\640.png" />
+    <Content Include="Resources\img\Pokemon Sprites\641-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\641.png" />
+    <Content Include="Resources\img\Pokemon Sprites\642-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\642.png" />
+    <Content Include="Resources\img\Pokemon Sprites\643.png" />
+    <Content Include="Resources\img\Pokemon Sprites\644.png" />
+    <Content Include="Resources\img\Pokemon Sprites\645-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\645.png" />
+    <Content Include="Resources\img\Pokemon Sprites\646-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\646-1b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\646-2.png" />
+    <Content Include="Resources\img\Pokemon Sprites\646-2b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\646.png" />
+    <Content Include="Resources\img\Pokemon Sprites\646b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\647-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\647-1b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\647.png" />
+    <Content Include="Resources\img\Pokemon Sprites\648-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\648.png" />
+    <Content Include="Resources\img\Pokemon Sprites\648b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\649-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\649-2.png" />
+    <Content Include="Resources\img\Pokemon Sprites\649-3.png" />
+    <Content Include="Resources\img\Pokemon Sprites\649-4.png" />
+    <Content Include="Resources\img\Pokemon Sprites\649.png" />
+    <Content Include="Resources\img\Pokemon Sprites\65-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\65.png" />
+    <Content Include="Resources\img\Pokemon Sprites\650.png" />
+    <Content Include="Resources\img\Pokemon Sprites\651.png" />
+    <Content Include="Resources\img\Pokemon Sprites\652.png" />
+    <Content Include="Resources\img\Pokemon Sprites\653.png" />
+    <Content Include="Resources\img\Pokemon Sprites\654.png" />
+    <Content Include="Resources\img\Pokemon Sprites\655.png" />
+    <Content Include="Resources\img\Pokemon Sprites\656.png" />
+    <Content Include="Resources\img\Pokemon Sprites\657.png" />
+    <Content Include="Resources\img\Pokemon Sprites\658.png" />
+    <Content Include="Resources\img\Pokemon Sprites\658b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\659.png" />
+    <Content Include="Resources\img\Pokemon Sprites\66.png" />
+    <Content Include="Resources\img\Pokemon Sprites\660.png" />
+    <Content Include="Resources\img\Pokemon Sprites\661.png" />
+    <Content Include="Resources\img\Pokemon Sprites\662.png" />
+    <Content Include="Resources\img\Pokemon Sprites\663.png" />
+    <Content Include="Resources\img\Pokemon Sprites\664-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\664-10.png" />
+    <Content Include="Resources\img\Pokemon Sprites\664-11.png" />
+    <Content Include="Resources\img\Pokemon Sprites\664-12.png" />
+    <Content Include="Resources\img\Pokemon Sprites\664-13.png" />
+    <Content Include="Resources\img\Pokemon Sprites\664-14.png" />
+    <Content Include="Resources\img\Pokemon Sprites\664-15.png" />
+    <Content Include="Resources\img\Pokemon Sprites\664-16.png" />
+    <Content Include="Resources\img\Pokemon Sprites\664-17.png" />
+    <Content Include="Resources\img\Pokemon Sprites\664-18.png" />
+    <Content Include="Resources\img\Pokemon Sprites\664-19.png" />
+    <Content Include="Resources\img\Pokemon Sprites\664-2.png" />
+    <Content Include="Resources\img\Pokemon Sprites\664-3.png" />
+    <Content Include="Resources\img\Pokemon Sprites\664-4.png" />
+    <Content Include="Resources\img\Pokemon Sprites\664-5.png" />
+    <Content Include="Resources\img\Pokemon Sprites\664-6.png" />
+    <Content Include="Resources\img\Pokemon Sprites\664-7.png" />
+    <Content Include="Resources\img\Pokemon Sprites\664-8.png" />
+    <Content Include="Resources\img\Pokemon Sprites\664-9.png" />
+    <Content Include="Resources\img\Pokemon Sprites\664.png" />
+    <Content Include="Resources\img\Pokemon Sprites\665-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\665-10.png" />
+    <Content Include="Resources\img\Pokemon Sprites\665-11.png" />
+    <Content Include="Resources\img\Pokemon Sprites\665-12.png" />
+    <Content Include="Resources\img\Pokemon Sprites\665-13.png" />
+    <Content Include="Resources\img\Pokemon Sprites\665-14.png" />
+    <Content Include="Resources\img\Pokemon Sprites\665-15.png" />
+    <Content Include="Resources\img\Pokemon Sprites\665-16.png" />
+    <Content Include="Resources\img\Pokemon Sprites\665-17.png" />
+    <Content Include="Resources\img\Pokemon Sprites\665-18.png" />
+    <Content Include="Resources\img\Pokemon Sprites\665-19.png" />
+    <Content Include="Resources\img\Pokemon Sprites\665-2.png" />
+    <Content Include="Resources\img\Pokemon Sprites\665-3.png" />
+    <Content Include="Resources\img\Pokemon Sprites\665-4.png" />
+    <Content Include="Resources\img\Pokemon Sprites\665-5.png" />
+    <Content Include="Resources\img\Pokemon Sprites\665-6.png" />
+    <Content Include="Resources\img\Pokemon Sprites\665-7.png" />
+    <Content Include="Resources\img\Pokemon Sprites\665-8.png" />
+    <Content Include="Resources\img\Pokemon Sprites\665-9.png" />
+    <Content Include="Resources\img\Pokemon Sprites\665.png" />
+    <Content Include="Resources\img\Pokemon Sprites\666-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\666-10.png" />
+    <Content Include="Resources\img\Pokemon Sprites\666-11.png" />
+    <Content Include="Resources\img\Pokemon Sprites\666-12.png" />
+    <Content Include="Resources\img\Pokemon Sprites\666-13.png" />
+    <Content Include="Resources\img\Pokemon Sprites\666-14.png" />
+    <Content Include="Resources\img\Pokemon Sprites\666-15.png" />
+    <Content Include="Resources\img\Pokemon Sprites\666-16.png" />
+    <Content Include="Resources\img\Pokemon Sprites\666-17.png" />
+    <Content Include="Resources\img\Pokemon Sprites\666-18.png" />
+    <Content Include="Resources\img\Pokemon Sprites\666-19.png" />
+    <Content Include="Resources\img\Pokemon Sprites\666-2.png" />
+    <Content Include="Resources\img\Pokemon Sprites\666-3.png" />
+    <Content Include="Resources\img\Pokemon Sprites\666-4.png" />
+    <Content Include="Resources\img\Pokemon Sprites\666-5.png" />
+    <Content Include="Resources\img\Pokemon Sprites\666-6.png" />
+    <Content Include="Resources\img\Pokemon Sprites\666-7.png" />
+    <Content Include="Resources\img\Pokemon Sprites\666-8.png" />
+    <Content Include="Resources\img\Pokemon Sprites\666-9.png" />
+    <Content Include="Resources\img\Pokemon Sprites\666.png" />
+    <Content Include="Resources\img\Pokemon Sprites\667.png" />
+    <Content Include="Resources\img\Pokemon Sprites\668.png" />
+    <Content Include="Resources\img\Pokemon Sprites\668f.png" />
+    <Content Include="Resources\img\Pokemon Sprites\669-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\669-2.png" />
+    <Content Include="Resources\img\Pokemon Sprites\669-3.png" />
+    <Content Include="Resources\img\Pokemon Sprites\669-4.png" />
+    <Content Include="Resources\img\Pokemon Sprites\669.png" />
+    <Content Include="Resources\img\Pokemon Sprites\67.png" />
+    <Content Include="Resources\img\Pokemon Sprites\670-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\670-2.png" />
+    <Content Include="Resources\img\Pokemon Sprites\670-3.png" />
+    <Content Include="Resources\img\Pokemon Sprites\670-4.png" />
+    <Content Include="Resources\img\Pokemon Sprites\670-5.png" />
+    <Content Include="Resources\img\Pokemon Sprites\670.png" />
+    <Content Include="Resources\img\Pokemon Sprites\671-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\671-2.png" />
+    <Content Include="Resources\img\Pokemon Sprites\671-3.png" />
+    <Content Include="Resources\img\Pokemon Sprites\671-4.png" />
+    <Content Include="Resources\img\Pokemon Sprites\671.png" />
+    <Content Include="Resources\img\Pokemon Sprites\672.png" />
+    <Content Include="Resources\img\Pokemon Sprites\673.png" />
+    <Content Include="Resources\img\Pokemon Sprites\674.png" />
+    <Content Include="Resources\img\Pokemon Sprites\675.png" />
+    <Content Include="Resources\img\Pokemon Sprites\676-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\676-2.png" />
+    <Content Include="Resources\img\Pokemon Sprites\676-3.png" />
+    <Content Include="Resources\img\Pokemon Sprites\676-4.png" />
+    <Content Include="Resources\img\Pokemon Sprites\676-5.png" />
+    <Content Include="Resources\img\Pokemon Sprites\676-6.png" />
+    <Content Include="Resources\img\Pokemon Sprites\676-7.png" />
+    <Content Include="Resources\img\Pokemon Sprites\676-8.png" />
+    <Content Include="Resources\img\Pokemon Sprites\676-9.png" />
+    <Content Include="Resources\img\Pokemon Sprites\676.png" />
+    <Content Include="Resources\img\Pokemon Sprites\677.png" />
+    <Content Include="Resources\img\Pokemon Sprites\678-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\678.png" />
+    <Content Include="Resources\img\Pokemon Sprites\679.png" />
+    <Content Include="Resources\img\Pokemon Sprites\68.png" />
+    <Content Include="Resources\img\Pokemon Sprites\680.png" />
+    <Content Include="Resources\img\Pokemon Sprites\681-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\681.png" />
+    <Content Include="Resources\img\Pokemon Sprites\682.png" />
+    <Content Include="Resources\img\Pokemon Sprites\683.png" />
+    <Content Include="Resources\img\Pokemon Sprites\684.png" />
+    <Content Include="Resources\img\Pokemon Sprites\685.png" />
+    <Content Include="Resources\img\Pokemon Sprites\686.png" />
+    <Content Include="Resources\img\Pokemon Sprites\687.png" />
+    <Content Include="Resources\img\Pokemon Sprites\688.png" />
+    <Content Include="Resources\img\Pokemon Sprites\689.png" />
+    <Content Include="Resources\img\Pokemon Sprites\689b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\69.png" />
+    <Content Include="Resources\img\Pokemon Sprites\690.png" />
+    <Content Include="Resources\img\Pokemon Sprites\691.png" />
+    <Content Include="Resources\img\Pokemon Sprites\692.png" />
+    <Content Include="Resources\img\Pokemon Sprites\692b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\693.png" />
+    <Content Include="Resources\img\Pokemon Sprites\693b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\694.png" />
+    <Content Include="Resources\img\Pokemon Sprites\695.png" />
+    <Content Include="Resources\img\Pokemon Sprites\696.png" />
+    <Content Include="Resources\img\Pokemon Sprites\697.png" />
+    <Content Include="Resources\img\Pokemon Sprites\698.png" />
+    <Content Include="Resources\img\Pokemon Sprites\699.png" />
+    <Content Include="Resources\img\Pokemon Sprites\7.png" />
+    <Content Include="Resources\img\Pokemon Sprites\70.png" />
+    <Content Include="Resources\img\Pokemon Sprites\700.png" />
+    <Content Include="Resources\img\Pokemon Sprites\700b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\701.png" />
+    <Content Include="Resources\img\Pokemon Sprites\702.png" />
+    <Content Include="Resources\img\Pokemon Sprites\703.png" />
+    <Content Include="Resources\img\Pokemon Sprites\704.png" />
+    <Content Include="Resources\img\Pokemon Sprites\705.png" />
+    <Content Include="Resources\img\Pokemon Sprites\706.png" />
+    <Content Include="Resources\img\Pokemon Sprites\707.png" />
+    <Content Include="Resources\img\Pokemon Sprites\707b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\708.png" />
+    <Content Include="Resources\img\Pokemon Sprites\709.png" />
+    <Content Include="Resources\img\Pokemon Sprites\71.png" />
+    <Content Include="Resources\img\Pokemon Sprites\710-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\710-2.png" />
+    <Content Include="Resources\img\Pokemon Sprites\710-3.png" />
+    <Content Include="Resources\img\Pokemon Sprites\710.png" />
+    <Content Include="Resources\img\Pokemon Sprites\711-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\711-2.png" />
+    <Content Include="Resources\img\Pokemon Sprites\711-3.png" />
+    <Content Include="Resources\img\Pokemon Sprites\711.png" />
+    <Content Include="Resources\img\Pokemon Sprites\712.png" />
+    <Content Include="Resources\img\Pokemon Sprites\713.png" />
+    <Content Include="Resources\img\Pokemon Sprites\714.png" />
+    <Content Include="Resources\img\Pokemon Sprites\715.png" />
+    <Content Include="Resources\img\Pokemon Sprites\716-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\716.png" />
+    <Content Include="Resources\img\Pokemon Sprites\717.png" />
+    <Content Include="Resources\img\Pokemon Sprites\718.png" />
+    <Content Include="Resources\img\Pokemon Sprites\718b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\719-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\719.png" />
+    <Content Include="Resources\img\Pokemon Sprites\72.png" />
+    <Content Include="Resources\img\Pokemon Sprites\720-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\720.png" />
+    <Content Include="Resources\img\Pokemon Sprites\721.png" />
+    <Content Include="Resources\img\Pokemon Sprites\722.png" />
+    <Content Include="Resources\img\Pokemon Sprites\73.png" />
+    <Content Include="Resources\img\Pokemon Sprites\74.png" />
+    <Content Include="Resources\img\Pokemon Sprites\75.png" />
+    <Content Include="Resources\img\Pokemon Sprites\76.png" />
+    <Content Include="Resources\img\Pokemon Sprites\77.png" />
+    <Content Include="Resources\img\Pokemon Sprites\78.png" />
+    <Content Include="Resources\img\Pokemon Sprites\79.png" />
+    <Content Include="Resources\img\Pokemon Sprites\8.png" />
+    <Content Include="Resources\img\Pokemon Sprites\80-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\80.png" />
+    <Content Include="Resources\img\Pokemon Sprites\81.png" />
+    <Content Include="Resources\img\Pokemon Sprites\82.png" />
+    <Content Include="Resources\img\Pokemon Sprites\83.png" />
+    <Content Include="Resources\img\Pokemon Sprites\84.png" />
+    <Content Include="Resources\img\Pokemon Sprites\85.png" />
+    <Content Include="Resources\img\Pokemon Sprites\86.png" />
+    <Content Include="Resources\img\Pokemon Sprites\87.png" />
+    <Content Include="Resources\img\Pokemon Sprites\88.png" />
+    <Content Include="Resources\img\Pokemon Sprites\89.png" />
+    <Content Include="Resources\img\Pokemon Sprites\9-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\9.png" />
+    <Content Include="Resources\img\Pokemon Sprites\90.png" />
+    <Content Include="Resources\img\Pokemon Sprites\91.png" />
+    <Content Include="Resources\img\Pokemon Sprites\92.png" />
+    <Content Include="Resources\img\Pokemon Sprites\93.png" />
+    <Content Include="Resources\img\Pokemon Sprites\94-1.png" />
+    <Content Include="Resources\img\Pokemon Sprites\94.png" />
+    <Content Include="Resources\img\Pokemon Sprites\95.png" />
+    <Content Include="Resources\img\Pokemon Sprites\96.png" />
+    <Content Include="Resources\img\Pokemon Sprites\97.png" />
+    <Content Include="Resources\img\Pokemon Sprites\98.png" />
+    <Content Include="Resources\img\Pokemon Sprites\99.png" />
+    <Content Include="Resources\img\Pokemon Sprites\99b.png" />
+    <Content Include="Resources\img\Pokemon Sprites\egg.png" />
+    <Content Include="Resources\img\Pokemon Sprites\unknown.png" />
+    <Content Include="Resources\img\ribbons\alert.png" />
+    <Content Include="Resources\img\ribbons\artist.png" />
+    <Content Include="Resources\img\ribbons\battlechamp.png" />
+    <Content Include="Resources\img\ribbons\battlememory.png" />
+    <Content Include="Resources\img\ribbons\battlememory2.png" />
+    <Content Include="Resources\img\ribbons\bestfriends.png" />
+    <Content Include="Resources\img\ribbons\birthday.png" />
+    <Content Include="Resources\img\ribbons\careless.png" />
+    <Content Include="Resources\img\ribbons\classic.png" />
+    <Content Include="Resources\img\ribbons\contestmemory.png" />
+    <Content Include="Resources\img\ribbons\contestmemory2.png" />
+    <Content Include="Resources\img\ribbons\country.png" />
+    <Content Include="Resources\img\ribbons\downcast.png" />
+    <Content Include="Resources\img\ribbons\earth.png" />
+    <Content Include="Resources\img\ribbons\effort.png" />
+    <Content Include="Resources\img\ribbons\event.png" />
+    <Content Include="Resources\img\ribbons\expertbattler.png" />
+    <Content Include="Resources\img\ribbons\footprint.png" />
+    <Content Include="Resources\img\ribbons\gorgeous.png" />
+    <Content Include="Resources\img\ribbons\gorgeousroyal.png" />
+    <Content Include="Resources\img\ribbons\hoennchamp.png" />
+    <Content Include="Resources\img\ribbons\kaloschamp.png" />
+    <Content Include="Resources\img\ribbons\legend.png" />
+    <Content Include="Resources\img\ribbons\national.png" />
+    <Content Include="Resources\img\ribbons\nationalchamp.png" />
+    <Content Include="Resources\img\ribbons\own_no.png" />
+    <Content Include="Resources\img\ribbons\own_yes.png" />
+    <Content Include="Resources\img\ribbons\premier.png" />
+    <Content Include="Resources\img\ribbons\record.png" />
+    <Content Include="Resources\img\ribbons\regionalchamp.png" />
+    <Content Include="Resources\img\ribbons\relax.png" />
+    <Content Include="Resources\img\ribbons\ribbon_40.png" />
+    <Content Include="Resources\img\ribbons\ribbon_41.png" />
+    <Content Include="Resources\img\ribbons\ribbon_42.png" />
+    <Content Include="Resources\img\ribbons\ribbon_43.png" />
+    <Content Include="Resources\img\ribbons\ribbon_44.png" />
+    <Content Include="Resources\img\ribbons\ribbon_45.png" />
+    <Content Include="Resources\img\ribbons\ribbon_46.png" />
+    <Content Include="Resources\img\ribbons\royal.png" />
+    <Content Include="Resources\img\ribbons\shock.png" />
+    <Content Include="Resources\img\ribbons\sinnohchamp.png" />
+    <Content Include="Resources\img\ribbons\skillfullbattler.png" />
+    <Content Include="Resources\img\ribbons\smile.png" />
+    <Content Include="Resources\img\ribbons\snooze.png" />
+    <Content Include="Resources\img\ribbons\souvenir.png" />
+    <Content Include="Resources\img\ribbons\special.png" />
+    <Content Include="Resources\img\ribbons\training.png" />
+    <Content Include="Resources\img\ribbons\wishing.png" />
+    <Content Include="Resources\img\ribbons\world.png" />
+    <Content Include="Resources\img\ribbons\worldchamp.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_00.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_01.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_02.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_03.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_04.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_05.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_06.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_07.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_08.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_09.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_10.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_11.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_12.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_13.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_14.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_15.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_16.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_17.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_18.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_19.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_20.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_21.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_22.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_23.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_24.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_25.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_26.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_27.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_28.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_29.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_30.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_31.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_32.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_33.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_34.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_35.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_36.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_37.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_38.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_39.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_40.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_41.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_42.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_43.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_44.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_45.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_46.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_47.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_48.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_49.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_50.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_51.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_52.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_53.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_54.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_55.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_56.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_57.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_58.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_59.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_60.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_61.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_62.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_63.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_64.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_65.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_66.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_67.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_68.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_69.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_70.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_71.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_72.png" />
+    <Content Include="Resources\img\Trainer Sprites\tr_73.png" />
+    <Content Include="Resources\text\changelog.txt" />
+    <Content Include="Resources\text\de\lang_de.txt" />
+    <Content Include="Resources\text\de\text_Abilities_de.txt" />
+    <Content Include="Resources\text\de\text_bw2_00000_de.txt" />
+    <Content Include="Resources\text\de\text_bw2_30000_de.txt" />
+    <Content Include="Resources\text\de\text_bw2_40000_de.txt" />
+    <Content Include="Resources\text\de\text_bw2_60000_de.txt" />
+    <Content Include="Resources\text\de\text_Character_de.txt" />
+    <Content Include="Resources\text\de\text_EncounterType_de.txt" />
+    <Content Include="Resources\text\de\text_Forms_de.txt" />
+    <Content Include="Resources\text\de\text_Games_de.txt" />
+    <Content Include="Resources\text\de\text_GenLoc_de.txt" />
+    <Content Include="Resources\text\de\text_hgss_00000_de.txt" />
+    <Content Include="Resources\text\de\text_hgss_02000_de.txt" />
+    <Content Include="Resources\text\de\text_hgss_03000_de.txt" />
+    <Content Include="Resources\text\de\text_ItemPouch_de.txt" />
+    <Content Include="Resources\text\de\text_Items_de.txt" />
+    <Content Include="Resources\text\de\text_Memories_de.txt" />
+    <Content Include="Resources\text\de\text_Moves_de.txt" />
+    <Content Include="Resources\text\de\text_Natures_de.txt" />
+    <Content Include="Resources\text\de\text_Puff_de.txt" />
+    <Content Include="Resources\text\de\text_Species_de.txt" />
+    <Content Include="Resources\text\de\text_SuperTraining_de.txt" />
+    <Content Include="Resources\text\de\text_TrainingBag_de.txt" />
+    <Content Include="Resources\text\de\text_Types_de.txt" />
+    <Content Include="Resources\text\de\text_Wallpaper_de.txt" />
+    <Content Include="Resources\text\de\text_xy_00000_de.txt" />
+    <Content Include="Resources\text\de\text_xy_30000_de.txt" />
+    <Content Include="Resources\text\de\text_xy_40000_de.txt" />
+    <Content Include="Resources\text\de\text_xy_60000_de.txt" />
+    <Content Include="Resources\text\en\lang_en.txt" />
+    <Content Include="Resources\text\en\text_Abilities_en.txt" />
+    <Content Include="Resources\text\en\text_bw2_00000_en.txt" />
+    <Content Include="Resources\text\en\text_bw2_30000_en.txt" />
+    <Content Include="Resources\text\en\text_bw2_40000_en.txt" />
+    <Content Include="Resources\text\en\text_bw2_60000_en.txt" />
+    <Content Include="Resources\text\en\text_Character_en.txt" />
+    <Content Include="Resources\text\en\text_EncounterType_en.txt" />
+    <Content Include="Resources\text\en\text_Forms_en.txt" />
+    <Content Include="Resources\text\en\text_Games_en.txt" />
+    <Content Include="Resources\text\en\text_GenLoc_en.txt" />
+    <Content Include="Resources\text\en\text_hgss_00000_en.txt" />
+    <Content Include="Resources\text\en\text_hgss_02000_en.txt" />
+    <Content Include="Resources\text\en\text_hgss_03000_en.txt" />
+    <Content Include="Resources\text\en\text_ItemPouch_en.txt" />
+    <Content Include="Resources\text\en\text_Items_en.txt" />
+    <Content Include="Resources\text\en\text_Memories_en.txt" />
+    <Content Include="Resources\text\en\text_Moves_en.txt" />
+    <Content Include="Resources\text\en\text_Natures_en.txt" />
+    <Content Include="Resources\text\en\text_Puff_en.txt" />
+    <Content Include="Resources\text\en\text_Species_en.txt" />
+    <Content Include="Resources\text\en\text_SuperTraining_en.txt" />
+    <Content Include="Resources\text\en\text_TrainingBag_en.txt" />
+    <Content Include="Resources\text\en\text_Types_en.txt" />
+    <Content Include="Resources\text\en\text_Wallpaper_en.txt" />
+    <Content Include="Resources\text\en\text_xy_00000_en.txt" />
+    <Content Include="Resources\text\en\text_xy_30000_en.txt" />
+    <Content Include="Resources\text\en\text_xy_40000_en.txt" />
+    <Content Include="Resources\text\en\text_xy_60000_en.txt" />
+    <Content Include="Resources\text\es\lang_es.txt" />
+    <Content Include="Resources\text\es\text_Abilities_es.txt" />
+    <Content Include="Resources\text\es\text_bw2_00000_es.txt" />
+    <Content Include="Resources\text\es\text_bw2_30000_es.txt" />
+    <Content Include="Resources\text\es\text_bw2_40000_es.txt" />
+    <Content Include="Resources\text\es\text_bw2_60000_es.txt" />
+    <Content Include="Resources\text\es\text_Character_es.txt" />
+    <Content Include="Resources\text\es\text_EncounterType_es.txt" />
+    <Content Include="Resources\text\es\text_Forms_es.txt" />
+    <Content Include="Resources\text\es\text_Games_es.txt" />
+    <Content Include="Resources\text\es\text_GenLoc_es.txt" />
+    <Content Include="Resources\text\es\text_hgss_00000_es.txt" />
+    <Content Include="Resources\text\es\text_hgss_02000_es.txt" />
+    <Content Include="Resources\text\es\text_hgss_03000_es.txt" />
+    <Content Include="Resources\text\es\text_ItemPouch_es.txt" />
+    <Content Include="Resources\text\es\text_Items_es.txt" />
+    <Content Include="Resources\text\es\text_Memories_es.txt" />
+    <Content Include="Resources\text\es\text_Moves_es.txt" />
+    <Content Include="Resources\text\es\text_Natures_es.txt" />
+    <Content Include="Resources\text\es\text_Puff_es.txt" />
+    <Content Include="Resources\text\es\text_Species_es.txt" />
+    <Content Include="Resources\text\es\text_SuperTraining_es.txt" />
+    <Content Include="Resources\text\es\text_TrainingBag_es.txt" />
+    <Content Include="Resources\text\es\text_Types_es.txt" />
+    <Content Include="Resources\text\es\text_Wallpaper_es.txt" />
+    <Content Include="Resources\text\es\text_xy_00000_es.txt" />
+    <Content Include="Resources\text\es\text_xy_30000_es.txt" />
+    <Content Include="Resources\text\es\text_xy_40000_es.txt" />
+    <Content Include="Resources\text\es\text_xy_60000_es.txt" />
+    <Content Include="Resources\text\fr\lang_fr.txt" />
+    <Content Include="Resources\text\fr\text_Abilities_fr.txt" />
+    <Content Include="Resources\text\fr\text_bw2_00000_fr.txt" />
+    <Content Include="Resources\text\fr\text_bw2_30000_fr.txt" />
+    <Content Include="Resources\text\fr\text_bw2_40000_fr.txt" />
+    <Content Include="Resources\text\fr\text_bw2_60000_fr.txt" />
+    <Content Include="Resources\text\fr\text_Character_fr.txt" />
+    <Content Include="Resources\text\fr\text_EncounterType_fr.txt" />
+    <Content Include="Resources\text\fr\text_Forms_fr.txt" />
+    <Content Include="Resources\text\fr\text_Games_fr.txt" />
+    <Content Include="Resources\text\fr\text_GenLoc_fr.txt" />
+    <Content Include="Resources\text\fr\text_hgss_00000_fr.txt" />
+    <Content Include="Resources\text\fr\text_hgss_02000_fr.txt" />
+    <Content Include="Resources\text\fr\text_hgss_03000_fr.txt" />
+    <Content Include="Resources\text\fr\text_ItemPouch_fr.txt" />
+    <Content Include="Resources\text\fr\text_Items_fr.txt" />
+    <Content Include="Resources\text\fr\text_Memories_fr.txt" />
+    <Content Include="Resources\text\fr\text_Moves_fr.txt" />
+    <Content Include="Resources\text\fr\text_Natures_fr.txt" />
+    <Content Include="Resources\text\fr\text_Puff_fr.txt" />
+    <Content Include="Resources\text\fr\text_Species_fr.txt" />
+    <Content Include="Resources\text\fr\text_SuperTraining_fr.txt" />
+    <Content Include="Resources\text\fr\text_TrainingBag_fr.txt" />
+    <Content Include="Resources\text\fr\text_Types_fr.txt" />
+    <Content Include="Resources\text\fr\text_Wallpaper_fr.txt" />
+    <Content Include="Resources\text\fr\text_xy_00000_fr.txt" />
+    <Content Include="Resources\text\fr\text_xy_30000_fr.txt" />
+    <Content Include="Resources\text\fr\text_xy_40000_fr.txt" />
+    <Content Include="Resources\text\fr\text_xy_60000_fr.txt" />
+    <Content Include="Resources\text\it\text_Abilities_it.txt" />
+    <Content Include="Resources\text\it\text_bw2_00000_it.txt" />
+    <Content Include="Resources\text\it\text_bw2_30000_it.txt" />
+    <Content Include="Resources\text\it\text_bw2_40000_it.txt" />
+    <Content Include="Resources\text\it\text_bw2_60000_it.txt" />
+    <Content Include="Resources\text\it\text_Character_it.txt" />
+    <Content Include="Resources\text\it\text_EncounterType_it.txt" />
+    <Content Include="Resources\text\it\text_Forms_it.txt" />
+    <Content Include="Resources\text\it\text_Games_it.txt" />
+    <Content Include="Resources\text\it\text_GenLoc_it.txt" />
+    <Content Include="Resources\text\it\text_hgss_00000_it.txt" />
+    <Content Include="Resources\text\it\text_hgss_02000_it.txt" />
+    <Content Include="Resources\text\it\text_hgss_03000_it.txt" />
+    <Content Include="Resources\text\it\text_ItemPouch_it.txt" />
+    <Content Include="Resources\text\it\text_Items_it.txt" />
+    <Content Include="Resources\text\it\text_Memories_it.txt" />
+    <Content Include="Resources\text\it\text_Moves_it.txt" />
+    <Content Include="Resources\text\it\text_Natures_it.txt" />
+    <Content Include="Resources\text\it\text_Puff_it.txt" />
+    <Content Include="Resources\text\it\text_Species_it.txt" />
+    <Content Include="Resources\text\it\text_SuperTraining_it.txt" />
+    <Content Include="Resources\text\it\text_TrainingBag_it.txt" />
+    <Content Include="Resources\text\it\text_Types_it.txt" />
+    <Content Include="Resources\text\it\text_Wallpaper_it.txt" />
+    <Content Include="Resources\text\it\text_xy_00000_it.txt" />
+    <Content Include="Resources\text\it\text_xy_30000_it.txt" />
+    <Content Include="Resources\text\it\text_xy_40000_it.txt" />
+    <Content Include="Resources\text\it\text_xy_60000_it.txt" />
+    <Content Include="Resources\text\ja\lang_ja.txt" />
+    <Content Include="Resources\text\ja\text_Abilities_ja.txt" />
+    <Content Include="Resources\text\ja\text_bw2_00000_ja.txt" />
+    <Content Include="Resources\text\ja\text_bw2_30000_ja.txt" />
+    <Content Include="Resources\text\ja\text_bw2_40000_ja.txt" />
+    <Content Include="Resources\text\ja\text_bw2_60000_ja.txt" />
+    <Content Include="Resources\text\ja\text_Character_ja.txt" />
+    <Content Include="Resources\text\ja\text_EncounterType_ja.txt" />
+    <Content Include="Resources\text\ja\text_Forms_ja.txt" />
+    <Content Include="Resources\text\ja\text_Games_ja.txt" />
+    <Content Include="Resources\text\ja\text_GenLoc_ja.txt" />
+    <Content Include="Resources\text\ja\text_hgss_00000_ja.txt" />
+    <Content Include="Resources\text\ja\text_hgss_02000_ja.txt" />
+    <Content Include="Resources\text\ja\text_hgss_03000_ja.txt" />
+    <Content Include="Resources\text\ja\text_ItemPouch_ja.txt" />
+    <Content Include="Resources\text\ja\text_Items_ja.txt" />
+    <Content Include="Resources\text\ja\text_Memories_ja.txt" />
+    <Content Include="Resources\text\ja\text_Moves_ja.txt" />
+    <Content Include="Resources\text\ja\text_Natures_ja.txt" />
+    <Content Include="Resources\text\ja\text_Puff_ja.txt" />
+    <Content Include="Resources\text\ja\text_Species_ja.txt" />
+    <Content Include="Resources\text\ja\text_SuperTraining_ja.txt" />
+    <Content Include="Resources\text\ja\text_TrainingBag_ja.txt" />
+    <Content Include="Resources\text\ja\text_Types_ja.txt" />
+    <Content Include="Resources\text\ja\text_Wallpaper_ja.txt" />
+    <Content Include="Resources\text\ja\text_xy_00000_ja.txt" />
+    <Content Include="Resources\text\ja\text_xy_30000_ja.txt" />
+    <Content Include="Resources\text\ja\text_xy_40000_ja.txt" />
+    <Content Include="Resources\text\ja\text_xy_60000_ja.txt" />
+    <Content Include="Resources\text\ko\text_Abilities_ko.txt" />
+    <Content Include="Resources\text\ko\text_bw2_00000_ko.txt" />
+    <Content Include="Resources\text\ko\text_bw2_30000_ko.txt" />
+    <Content Include="Resources\text\ko\text_bw2_40000_ko.txt" />
+    <Content Include="Resources\text\ko\text_bw2_60000_ko.txt" />
+    <Content Include="Resources\text\ko\text_Character_ko.txt" />
+    <Content Include="Resources\text\ko\text_EncounterType_ko.txt" />
+    <Content Include="Resources\text\ko\text_Forms_ko.txt" />
+    <Content Include="Resources\text\ko\text_Games_ko.txt" />
+    <Content Include="Resources\text\ko\text_GenLoc_ko.txt" />
+    <Content Include="Resources\text\ko\text_hgss_00000_ko.txt" />
+    <Content Include="Resources\text\ko\text_hgss_02000_ko.txt" />
+    <Content Include="Resources\text\ko\text_hgss_03000_ko.txt" />
+    <Content Include="Resources\text\ko\text_ItemPouch_ko.txt" />
+    <Content Include="Resources\text\ko\text_Items_ko.txt" />
+    <Content Include="Resources\text\ko\text_Memories_ko.txt" />
+    <Content Include="Resources\text\ko\text_Moves_ko.txt" />
+    <Content Include="Resources\text\ko\text_Natures_ko.txt" />
+    <Content Include="Resources\text\ko\text_Puff_ko.txt" />
+    <Content Include="Resources\text\ko\text_Species_ko.txt" />
+    <Content Include="Resources\text\ko\text_SuperTraining_ko.txt" />
+    <Content Include="Resources\text\ko\text_TrainingBag_ko.txt" />
+    <Content Include="Resources\text\ko\text_Types_ko.txt" />
+    <Content Include="Resources\text\ko\text_Wallpaper_ko.txt" />
+    <Content Include="Resources\text\ko\text_xy_00000_ko.txt" />
+    <Content Include="Resources\text\ko\text_xy_30000_ko.txt" />
+    <Content Include="Resources\text\ko\text_xy_40000_ko.txt" />
+    <Content Include="Resources\text\ko\text_xy_60000_ko.txt" />
+    <Content Include="Resources\text\locale\countries.txt" />
+    <Content Include="Resources\text\locale\languages.txt" />
+    <Content Include="Resources\text\locale\regions3ds.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_001.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_008.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_009.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_010.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_011.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_012.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_013.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_014.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_015.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_016.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_017.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_018.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_019.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_020.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_021.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_022.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_023.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_024.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_025.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_026.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_027.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_028.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_029.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_030.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_031.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_032.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_033.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_034.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_035.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_036.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_037.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_038.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_039.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_040.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_041.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_042.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_043.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_044.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_045.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_046.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_047.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_048.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_049.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_050.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_051.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_052.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_064.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_065.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_066.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_067.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_068.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_069.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_070.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_071.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_072.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_073.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_074.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_075.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_076.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_077.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_078.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_079.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_080.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_081.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_082.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_083.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_084.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_085.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_086.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_087.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_088.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_089.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_090.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_091.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_092.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_093.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_094.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_095.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_096.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_097.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_098.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_099.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_100.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_101.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_102.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_103.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_104.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_105.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_106.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_107.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_108.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_109.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_110.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_111.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_112.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_113.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_114.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_115.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_116.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_117.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_118.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_119.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_120.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_121.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_122.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_123.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_124.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_125.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_126.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_127.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_128.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_136.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_144.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_153.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_156.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_160.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_168.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_169.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_174.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_184.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_185.txt" />
+    <Content Include="Resources\text\locale\sr_ID\sr_186.txt" />
+    <Content Include="Resources\text\shortcuts.txt" />
+    <Content Include="Resources\text\zh\lang_zh.txt" />
+    <Content Include="Resources\text\zh\text_Abilities_zh.txt" />
+    <Content Include="Resources\text\zh\text_bw2_00000_zh.txt" />
+    <Content Include="Resources\text\zh\text_bw2_30000_zh.txt" />
+    <Content Include="Resources\text\zh\text_bw2_40000_zh.txt" />
+    <Content Include="Resources\text\zh\text_bw2_60000_zh.txt" />
+    <Content Include="Resources\text\zh\text_Character_zh.txt" />
+    <Content Include="Resources\text\zh\text_EncounterType_zh.txt" />
+    <Content Include="Resources\text\zh\text_Forms_zh.txt" />
+    <Content Include="Resources\text\zh\text_Games_zh.txt" />
+    <Content Include="Resources\text\zh\text_GenLoc_zh.txt" />
+    <Content Include="Resources\text\zh\text_hgss_00000_zh.txt" />
+    <Content Include="Resources\text\zh\text_hgss_02000_zh.txt" />
+    <Content Include="Resources\text\zh\text_hgss_03000_zh.txt" />
+    <Content Include="Resources\text\zh\text_ItemPouch_zh.txt" />
+    <Content Include="Resources\text\zh\text_Items_zh.txt" />
+    <Content Include="Resources\text\zh\text_Memories_zh.txt" />
+    <Content Include="Resources\text\zh\text_Moves_zh.txt" />
+    <Content Include="Resources\text\zh\text_Natures_zh.txt" />
+    <Content Include="Resources\text\zh\text_Puff_zh.txt" />
+    <Content Include="Resources\text\zh\text_Species_zh.txt" />
+    <Content Include="Resources\text\zh\text_SuperTraining_zh.txt" />
+    <Content Include="Resources\text\zh\text_TrainingBag_zh.txt" />
+    <Content Include="Resources\text\zh\text_Types_zh.txt" />
+    <Content Include="Resources\text\zh\text_Wallpaper_zh.txt" />
+    <Content Include="Resources\text\zh\text_xy_00000_zh.txt" />
+    <Content Include="Resources\text\zh\text_xy_30000_zh.txt" />
+    <Content Include="Resources\text\zh\text_xy_40000_zh.txt" />
+    <Content Include="Resources\text\zh\text_xy_60000_zh.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\img\Bag\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
