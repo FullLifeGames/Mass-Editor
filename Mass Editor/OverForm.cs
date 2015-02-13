@@ -88,6 +88,7 @@ namespace Mass_Editor
             groupBox3.Enabled = b;
             GB_Met.Enabled = b;
             groupBox4.Enabled = b;
+            CHK_Country.Enabled = b;
         }
 
         private void enableAll()
@@ -126,71 +127,91 @@ namespace Mass_Editor
             groupBox3.Enabled = b;
             GB_Met.Enabled = CHK_Met.Checked;
             groupBox4.Enabled = CHK_Country.Checked;
+            CHK_Country.Enabled = b;
         }
 
         private void B_Mass_Edit_Click(object sender, EventArgs e)
         {
-            disableAll();
-            List<int> modes = new List<int>();
-            this.progressBar1.Value = 0;
-            this.progressBar1.Maximum = listView1.Items.Count;
-            bool bak = CHK_Bak.Checked;
-            string[] ret = { textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text };
-            string friendship = textBox5.Text;
-            string level = textBox6.Text;
-            bool[] countrybool = {checkBox2.Checked,checkBox3.Checked,checkBox4.Checked,checkBox5.Checked};
-            bool[] metbool = { checkBox6.Checked, checkBox7.Checked, checkBox8.Checked, checkBox9.Checked, checkBox10.Checked, checkBox11.Checked, checkBox12.Checked, checkBox13.Checked, checkBox14.Checked, checkBox15.Checked };
-            bool[] otbool = { checkBox16.Checked, checkBox17.Checked, checkBox18.Checked, checkBox19.Checked };
-            int[] otindexes = { CB_Language.SelectedIndex, CB_Country.SelectedIndex, CB_SubRegion.SelectedIndex, CB_3DSReg.SelectedIndex };
+            if (!running)
+            {
+                running = true;
+                disableAll();
+                List<int> modes = new List<int>();
+                this.progressBar1.Value = 0;
+                this.progressBar1.Maximum = listView1.Items.Count;
+                bool bak = CHK_Bak.Checked;
+                string[] ret = { textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text };
+                string friendship = textBox5.Text;
+                string level = textBox6.Text;
+                bool[] countrybool = { checkBox2.Checked, checkBox3.Checked, checkBox4.Checked, checkBox5.Checked };
+                bool[] metbool = { checkBox6.Checked, checkBox7.Checked, checkBox8.Checked, checkBox9.Checked, checkBox10.Checked, checkBox11.Checked, checkBox12.Checked, checkBox13.Checked, checkBox14.Checked, checkBox15.Checked };
+                bool[] otbool = { checkBox16.Checked, checkBox17.Checked, checkBox18.Checked, checkBox19.Checked };
+                int[] otindexes = { CB_Language.SelectedIndex, CB_Country.SelectedIndex, CB_SubRegion.SelectedIndex, CB_3DSReg.SelectedIndex };
+                List<string> litems = new List<string>();
+                foreach (ListViewItem l in listView1.Items)
+                {
+                    litems.Add(l.Text);
+                }
 
-            Met m = new Met(CB_GameOrigin.SelectedIndex,CB_MetLocation.SelectedIndex,CB_Ball.SelectedIndex,TB_MetLevel.Text,CAL_MetDate.Value,CHK_Fateful.Checked, CB_EncounterType.Enabled, CB_EncounterType.SelectedIndex, CHK_AsEgg.Checked, CB_EggLocation.SelectedIndex, CAL_EggDate.Value);
 
-            if (CHK_Shiny.Checked)
-            {
-                modes.Add(0);
+                Met m = new Met(CB_GameOrigin.SelectedIndex, CB_MetLocation.SelectedIndex, CB_Ball.SelectedIndex, TB_MetLevel.Text, CAL_MetDate.Value, CHK_Fateful.Checked, CB_EncounterType.Enabled, CB_EncounterType.SelectedIndex, CHK_AsEgg.Checked, CB_EggLocation.SelectedIndex, CAL_EggDate.Value);
+
+                if (CHK_Shiny.Checked)
+                {
+                    modes.Add(0);
+                }
+                if (CHK_Unshiny.Checked)
+                {
+                    modes.Add(1);
+                }
+                if (CHK_ChangeOT.Checked)
+                {
+                    modes.Add(2);
+                }
+                if (CHK_DeleteNicknames.Checked)
+                {
+                    modes.Add(3);
+                }
+                if (CHK_Perfect_IVs.Checked)
+                {
+                    modes.Add(4);
+                }
+                if (CHK_Reroll.Checked)
+                {
+                    modes.Add(5);
+                }
+                if (CHK_Frienship.Checked)
+                {
+                    modes.Add(6);
+                }
+                if (CHK_Level.Checked)
+                {
+                    modes.Add(7);
+                }
+                if (CHK_Met.Checked)
+                {
+                    modes.Add(8);
+                }
+                if (CHK_Country.Checked)
+                {
+                    modes.Add(9);
+                }
+
+                // thread for free UI
+                thread = new Thread(delegate() { Form1 f1 = new Form1(litems, modes, this.progressBar1, ret, friendship, level, m, bak, otindexes, countrybool, metbool, otbool); f1.Form1_Load(new object(), new EventArgs()); f1.Dispose(); });
+                thread.SetApartmentState(ApartmentState.STA);
+
+                // thread2 is basically my thread_finished_Eventhandler
+                thread2 = new Thread(delegate() { thread.Join(); this.BeginInvoke((MethodInvoker)delegate { enableAll(); running = false; }); });
+                thread.Start();
+                thread2.Start();
             }
-            if (CHK_Unshiny.Checked)
-            {
-                modes.Add(1);
-            }
-            if (CHK_ChangeOT.Checked)
-            {
-                modes.Add(2);
-            }
-            if (CHK_DeleteNicknames.Checked)
-            {
-                modes.Add(3);
-            }
-            if (CHK_Perfect_IVs.Checked)
-            {
-                modes.Add(4);
-            }
-            if (CHK_Reroll.Checked)
-            {
-                modes.Add(5);
-            }
-            if (CHK_Frienship.Checked)
-            {
-                modes.Add(6);
-            }
-            if (CHK_Level.Checked)
-            {
-                modes.Add(7);
-            }
-            if (CHK_Met.Checked)
-            {
-                modes.Add(8);
-            }
-            if (CHK_Country.Checked)
-            {
-                modes.Add(9);
-            }
-            
-            Form1 f1 = new Form1(listView1.Items, modes, this.progressBar1, ret, friendship, level, m, bak, otindexes, countrybool, metbool, otbool);
-            f1.Form1_Load(new object(), new EventArgs());
-            modes.Clear();
-            enableAll();
-        }        
+        }
+
+        bool running = false;
+
+        Thread thread = null;
+        Thread thread2 = null;
 
         private void InitializeComponents()
         {
@@ -350,41 +371,41 @@ namespace Mass_Editor
             this.listView1.DragEnter += new System.Windows.Forms.DragEventHandler(this.listView1_DragEnter);
             this.listView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listView1_KeyDown);
             // 
-            // CB_Unshiny
+            // CHK_Unshiny
             // 
             this.CHK_Unshiny.AutoSize = true;
             this.CHK_Unshiny.Location = new System.Drawing.Point(148, 44);
-            this.CHK_Unshiny.Name = "CB_Unshiny";
+            this.CHK_Unshiny.Name = "CHK_Unshiny";
             this.CHK_Unshiny.Size = new System.Drawing.Size(118, 17);
             this.CHK_Unshiny.TabIndex = 15;
             this.CHK_Unshiny.Text = "Make them unshiny";
             this.CHK_Unshiny.UseVisualStyleBackColor = true;
             // 
-            // CB_Shiny
+            // CHK_Shiny
             // 
             this.CHK_Shiny.AutoSize = true;
             this.CHK_Shiny.Location = new System.Drawing.Point(148, 21);
-            this.CHK_Shiny.Name = "CB_Shiny";
+            this.CHK_Shiny.Name = "CHK_Shiny";
             this.CHK_Shiny.Size = new System.Drawing.Size(106, 17);
             this.CHK_Shiny.TabIndex = 16;
             this.CHK_Shiny.Text = "Make them shiny";
             this.CHK_Shiny.UseVisualStyleBackColor = true;
             // 
-            // CB_Perfect_IVs
+            // CHK_Perfect_IVs
             // 
             this.CHK_Perfect_IVs.AutoSize = true;
             this.CHK_Perfect_IVs.Location = new System.Drawing.Point(148, 67);
-            this.CHK_Perfect_IVs.Name = "CB_Perfect_IVs";
+            this.CHK_Perfect_IVs.Name = "CHK_Perfect_IVs";
             this.CHK_Perfect_IVs.Size = new System.Drawing.Size(104, 17);
             this.CHK_Perfect_IVs.TabIndex = 17;
             this.CHK_Perfect_IVs.Text = "Make perfectIVs";
             this.CHK_Perfect_IVs.UseVisualStyleBackColor = true;
             // 
-            // CB_ChangeOT
+            // CHK_ChangeOT
             // 
             this.CHK_ChangeOT.AutoSize = true;
             this.CHK_ChangeOT.Location = new System.Drawing.Point(610, 7);
-            this.CHK_ChangeOT.Name = "CB_ChangeOT";
+            this.CHK_ChangeOT.Name = "CHK_ChangeOT";
             this.CHK_ChangeOT.Size = new System.Drawing.Size(96, 17);
             this.CHK_ChangeOT.TabIndex = 19;
             this.CHK_ChangeOT.Text = "Change OT to:";
@@ -421,41 +442,41 @@ namespace Mass_Editor
             this.label6.TabIndex = 23;
             this.label6.Text = "Last OT";
             // 
-            // CB_DeleteNicknames
+            // CHK_DeleteNicknames
             // 
             this.CHK_DeleteNicknames.AutoSize = true;
             this.CHK_DeleteNicknames.Location = new System.Drawing.Point(275, 37);
-            this.CHK_DeleteNicknames.Name = "CB_DeleteNicknames";
+            this.CHK_DeleteNicknames.Name = "CHK_DeleteNicknames";
             this.CHK_DeleteNicknames.Size = new System.Drawing.Size(113, 17);
             this.CHK_DeleteNicknames.TabIndex = 24;
             this.CHK_DeleteNicknames.Text = "Delete Nicknames";
             this.CHK_DeleteNicknames.UseVisualStyleBackColor = true;
             // 
-            // CB_Reroll
+            // CHK_Reroll
             // 
             this.CHK_Reroll.AutoSize = true;
             this.CHK_Reroll.Location = new System.Drawing.Point(275, 60);
-            this.CHK_Reroll.Name = "CB_Reroll";
+            this.CHK_Reroll.Name = "CHK_Reroll";
             this.CHK_Reroll.Size = new System.Drawing.Size(136, 17);
             this.CHK_Reroll.TabIndex = 25;
             this.CHK_Reroll.Text = "Reroll Encryption + PID";
             this.CHK_Reroll.UseVisualStyleBackColor = true;
             // 
-            // CB_Bak
+            // CHK_Bak
             // 
             this.CHK_Bak.AutoSize = true;
             this.CHK_Bak.Location = new System.Drawing.Point(15, 21);
-            this.CHK_Bak.Name = "CB_Bak";
+            this.CHK_Bak.Name = "CHK_Bak";
             this.CHK_Bak.Size = new System.Drawing.Size(105, 17);
             this.CHK_Bak.TabIndex = 27;
             this.CHK_Bak.Text = "Create .bak Files";
             this.CHK_Bak.UseVisualStyleBackColor = true;
             // 
-            // CB_Met
+            // CHK_Met
             // 
             this.CHK_Met.AutoSize = true;
             this.CHK_Met.Location = new System.Drawing.Point(610, 127);
-            this.CHK_Met.Name = "CB_Met";
+            this.CHK_Met.Name = "CHK_Met";
             this.CHK_Met.Size = new System.Drawing.Size(15, 14);
             this.CHK_Met.TabIndex = 28;
             this.CHK_Met.UseVisualStyleBackColor = true;
@@ -875,21 +896,21 @@ namespace Mass_Editor
             this.checkBox16.UseVisualStyleBackColor = true;
             this.checkBox16.CheckedChanged += new System.EventHandler(this.checkBox16_CheckedChanged);
             // 
-            // CB_Frienship
+            // CHK_Frienship
             // 
             this.CHK_Frienship.AutoSize = true;
             this.CHK_Frienship.Location = new System.Drawing.Point(9, 27);
-            this.CHK_Frienship.Name = "CB_Frienship";
+            this.CHK_Frienship.Name = "CHK_Frienship";
             this.CHK_Frienship.Size = new System.Drawing.Size(71, 17);
             this.CHK_Frienship.TabIndex = 46;
             this.CHK_Frienship.Text = "Frienship:";
             this.CHK_Frienship.UseVisualStyleBackColor = true;
             // 
-            // CB_Level
+            // CHK_Level
             // 
             this.CHK_Level.AutoSize = true;
             this.CHK_Level.Location = new System.Drawing.Point(9, 62);
-            this.CHK_Level.Name = "CB_Level";
+            this.CHK_Level.Name = "CHK_Level";
             this.CHK_Level.Size = new System.Drawing.Size(55, 17);
             this.CHK_Level.TabIndex = 47;
             this.CHK_Level.Text = "Level:";
@@ -1101,11 +1122,11 @@ namespace Mass_Editor
             this.Label_Language.Text = "Language:";
             this.Label_Language.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // checkBox1
+            // CHK_Country
             // 
             this.CHK_Country.AutoSize = true;
             this.CHK_Country.Location = new System.Drawing.Point(422, 127);
-            this.CHK_Country.Name = "checkBox1";
+            this.CHK_Country.Name = "CHK_Country";
             this.CHK_Country.Size = new System.Drawing.Size(15, 14);
             this.CHK_Country.TabIndex = 51;
             this.CHK_Country.UseVisualStyleBackColor = true;
@@ -1132,6 +1153,7 @@ namespace Mass_Editor
             this.MaximizeBox = false;
             this.Name = "OverForm";
             this.Text = "Mass Editor";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.OverForm_FormClosed);
             this.GB_EggConditions.ResumeLayout(false);
             this.GB_Met.ResumeLayout(false);
             this.GB_Met.PerformLayout();
@@ -1145,6 +1167,24 @@ namespace Mass_Editor
             this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
+        }
+
+        private void OverForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (thread != null)
+            {
+                if (thread.IsAlive)
+                {
+                    thread.Abort();
+                }
+            }
+            if (thread2 != null)
+            {
+                if (thread2.IsAlive)
+                {
+                    thread2.Abort();
+                }
+            }
         }
 
        

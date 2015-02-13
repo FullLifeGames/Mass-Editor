@@ -24,7 +24,7 @@ namespace Mass_Editor
         string level;
         Mass_Editor.Met m;
         bool bak;
-        ListView.ListViewItemCollection listViewItemCollection;
+        List<string> litems;
         string[] ret;
         int[] otindexes;
         bool[] country;
@@ -153,10 +153,10 @@ namespace Mass_Editor
             this.Tab_Main.Controls.Clear();
         }
 
-        public Form1(ListView.ListViewItemCollection listViewItemCollection, List<int> modes, ProgressBar progressBar, string[] ret, string friendship, string level, Mass_Editor.Met m, bool bak, int[] otindexes, bool[] country, bool[] met, bool[] ot)
+        public Form1(List<string> litems, List<int> modes, ProgressBar progressBar, string[] ret, string friendship, string level, Mass_Editor.Met m, bool bak, int[] otindexes, bool[] country, bool[] met, bool[] ot)
         {
             // TODO: Complete member initialization
-            this.listViewItemCollection = listViewItemCollection;
+            this.litems = litems;
             this.modes = modes;
             this.pbr = progressBar;
             this.ret = ret;
@@ -1320,7 +1320,7 @@ namespace Mass_Editor
 
             CB.DataSource = Util.getCBList(type, cl);
 
-            if (index > 0 && index <= CB.Items.Count && init)
+            if (index >= 0 && index < CB.Items.Count && init)
                 CB.SelectedIndex = index;
         }
         public void setForms(int species, ComboBox cb)
@@ -4770,26 +4770,27 @@ namespace Mass_Editor
 
         public void Form1_Load(object sender, EventArgs e)
         {
-            foreach (ListViewItem l in this.listViewItemCollection)
+            foreach (string l in this.litems)
             {
-                if (Directory.Exists(l.Text))
+                if (Directory.Exists(l))
                 {
-                    foreach (string s in Directory.GetDirectories(l.Text))
+                    foreach (string s in Directory.GetDirectories(l))
                     {
                         rekurGo(s);
                     }
-                    foreach (string s in Directory.GetFiles(l.Text))
+                    foreach (string s in Directory.GetFiles(l))
                     {
                         ChangeIt(s);
                     }
                 }
                 else
                 {
-                    ChangeIt(l.Text);
+                    ChangeIt(l);
                 }
                 pbr.BeginInvoke((MethodInvoker)delegate
                 {
                     pbr.Value++;
+                    pbr.Refresh();
                 });
             }
             this.Close();
