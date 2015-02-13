@@ -4820,91 +4820,123 @@ namespace Mass_Editor
             object sender = null;
             EventArgs e = null;
             mainMenuOpen(s);
-            foreach (int mode in modes)
+            try
             {
-                switch (mode)
+                foreach (int mode in modes)
                 {
-                    case 0:
-                        this.updateShinyPID(sender, e);
-                        break;
-                    case 1:
-                        this.updateRandomPID(sender, e);
-                        break;
-                    case 2:
-                        if (ot[0]) 
-                        TB_TID.Text = ret[0];
-                        if (ot[1])  
-                        TB_SID.Text = ret[1];
-                        if (ot[2]) 
-                        TB_OT.Text = ret[2];
-                        if (ot[3]) 
-                        TB_OTt2.Text = ret[3];
-                        break;
-                    case 3:
-                        if (CHK_Nicknamed.Checked)
-                        {
-                            CHK_Nicknamed.Checked = false;
-                        }
-                        Util.cbItem cb = (Util.cbItem)CB_Species.SelectedItem;
-                        TB_Nickname.Text = cb.Text;
-                        break;
-                    case 4:
-                        TB_HPIV.Text = "31";
-                        TB_ATKIV.Text = "31";
-                        TB_DEFIV.Text = "31";
-                        TB_SPAIV.Text = "31";
-                        TB_SPDIV.Text = "31";
-                        TB_SPEIV.Text = "31";
-                        break;
-                    case 5:
-                        this.updateRandomPID(sender, e);
-                        this.updateRandomEC(sender, e);
-                        break;
-                    case 6:
-                        TB_Friendship.Text = friendship;
-                        break;
-                    case 7:
-                        TB_Level.Text = level;
-                        break;
-                    case 8:
-                        if(met[0])
-                        CB_GameOrigin.SelectedIndex = m.p1;
-                        if (met[1])
-                        CB_MetLocation.SelectedIndex = m.p2;
-                        if (met[2])
-                        CB_Ball.SelectedIndex = m.p3;
-                        if (met[3])
-                        TB_MetLevel.Text = m.p4;
-                        if (met[4])
-                        CAL_MetDate.Value = m.dateTime1;
-                        if (met[5])
-                        CHK_Fateful.Checked = m.p5;
-                        if (m.p6)
-                        {
-                            if (met[6])
-                            CB_EncounterType.SelectedIndex = m.p7;
-                        }
-                        if (met[7])
-                        CHK_AsEgg.Checked = m.p8;
-                        if (CHK_AsEgg.Checked)
-                        {
-                            if (met[8])
-                            CB_EggLocation.SelectedIndex = m.p9;
-                            if (met[9])
-                            CAL_EggDate.Value = m.dateTime2;
-                        }
-                        break;
-                    case 9:
-                        if(country[0])
-                        CB_Language.SelectedIndex = otindexes[0];
-                        if (country[1])
-                        CB_Country.SelectedIndex = otindexes[1];
-                        if (country[2])
-                        CB_SubRegion.SelectedIndex = otindexes[2];
-                        if (country[3])
-                        CB_3DSReg.SelectedIndex = otindexes[3];
-                        break;
+                    switch (mode)
+                    {
+                        case 0:
+                            this.updateShinyPID(sender, e);
+                            break;
+                        case 1:
+                            this.updateRandomPID(sender, e);
+                            break;
+                        case 2:
+                            if (ot[0])
+                                TB_TID.Text = ret[0];
+                            if (ot[1])
+                                TB_SID.Text = ret[1];
+                            if (ot[2])
+                                TB_OT.Text = ret[2];
+                            if (ot[3])
+                                TB_OTt2.Text = ret[3];
+                            break;
+                        case 3:
+                            if (CHK_Nicknamed.Checked)
+                            {
+                                CHK_Nicknamed.Checked = false;
+                            }
+                            Util.cbItem cb = (Util.cbItem)CB_Species.SelectedItem;
+                            TB_Nickname.Text = cb.Text;
+                            break;
+                        case 4:
+                            TB_HPIV.Text = "31";
+                            TB_ATKIV.Text = "31";
+                            TB_DEFIV.Text = "31";
+                            TB_SPAIV.Text = "31";
+                            TB_SPDIV.Text = "31";
+                            TB_SPEIV.Text = "31";
+                            break;
+                        case 5:
+                            this.updateRandomPID(sender, e);
+                            this.updateRandomEC(sender, e);
+                            break;
+                        case 6:
+                            TB_Friendship.Text = friendship;
+                            break;
+                        case 7:
+                            TB_Level.Text = level;
+                            break;
+                        case 8:
+                            if (met[0])
+                                CB_GameOrigin.SelectedIndex = m.p1;
+                            if (met[1])
+                            {
+                                if (CB_GameOrigin.SelectedIndex == m.p1)
+                                {
+                                    CB_MetLocation.SelectedIndex = m.p2;
+                                }
+                                else
+                                {
+                                    string before = ((Util.cbItem)CB_GameOrigin.SelectedItem).Text;
+                                    CB_GameOrigin.SelectedIndex = m.p1;
+                                    string after = ((Util.cbItem)CB_GameOrigin.SelectedItem).Text;
+                                    throw new ArgumentException(before + " | " + after);
+                                }
+                            }
+                            if (met[2])
+                                CB_Ball.SelectedIndex = m.p3;
+                            if (met[3])
+                                TB_MetLevel.Text = m.p4;
+                            if (met[4])
+                                CAL_MetDate.Value = m.dateTime1;
+                            if (met[5])
+                                CHK_Fateful.Checked = m.p5;
+                            if (m.p6)
+                            {
+                                if (met[6])
+                                    CB_EncounterType.SelectedIndex = m.p7;
+                            }
+                            if (met[7])
+                                CHK_AsEgg.Checked = m.p8;
+                            if (CHK_AsEgg.Checked)
+                            {
+                                if (met[8])
+                                    CB_EggLocation.SelectedIndex = m.p9;
+                                if (met[9])
+                                    CAL_EggDate.Value = m.dateTime2;
+                            }
+                            break;
+                        case 9:
+                            if (country[0])
+                                CB_Language.SelectedIndex = otindexes[0];
+                            if (country[1])
+                                CB_Country.SelectedIndex = otindexes[1];
+                            if (country[2])
+                            {
+                                if (CB_Country.SelectedIndex == otindexes[1])
+                                {
+                                    CB_SubRegion.SelectedIndex = otindexes[2];
+                                }
+                                else
+                                {
+                                    string before = ((Util.cbItem)CB_Country.SelectedItem).Text;
+                                    CB_Country.SelectedIndex = otindexes[1];
+                                    string after = ((Util.cbItem)CB_Country.SelectedItem).Text;
+                                    throw new ArgumentException(before + " | " + after);
+                                }
+                            }
+                            if (country[3])
+                                CB_3DSReg.SelectedIndex = otindexes[3];
+                            break;
+                    }
                 }
+            }
+            catch (ArgumentException ae)
+            {
+                Util.Error("Illegal Argument Exception", "Incompatible Selections: "+ae.Message);
+                return;
             }
             mainMenuSave(s);
         }
