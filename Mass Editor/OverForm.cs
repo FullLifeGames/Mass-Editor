@@ -76,10 +76,6 @@ namespace Mass_Editor
             CHK_AsEgg.Enabled = b;
             CHK_Fateful.Enabled = b;
             B_Mass_Edit.Enabled = b;
-            textBox1.Enabled = b;
-            textBox2.Enabled = b;
-            textBox3.Enabled = b;
-            textBox4.Enabled = b;
             textBox5.Enabled = b;
             textBox6.Enabled = b;
             listView1.Enabled = b;
@@ -115,10 +111,6 @@ namespace Mass_Editor
             CHK_AsEgg.Enabled = b;
             CHK_Fateful.Enabled = b;
             B_Mass_Edit.Enabled = b;
-            textBox1.Enabled = b;
-            textBox2.Enabled = b;
-            textBox3.Enabled = b;
-            textBox4.Enabled = b;
             textBox5.Enabled = b;
             textBox6.Enabled = b;
             listView1.Enabled = b;
@@ -145,7 +137,7 @@ namespace Mass_Editor
                 string level = textBox6.Text;
                 bool[] countrybool = { checkBox2.Checked, checkBox3.Checked, checkBox4.Checked, checkBox5.Checked };
                 bool[] metbool = { checkBox6.Checked, checkBox7.Checked, checkBox8.Checked, checkBox9.Checked, checkBox10.Checked, checkBox11.Checked, checkBox12.Checked, checkBox13.Checked, checkBox14.Checked, checkBox15.Checked };
-                bool[] otbool = { checkBox16.Checked, checkBox17.Checked, checkBox18.Checked, checkBox19.Checked };
+                bool[] otbool = { checkBox16.Checked, checkBox18.Checked, checkBox17.Checked, checkBox19.Checked };
                 int[] otindexes = { CB_Language.SelectedIndex, CB_Country.SelectedIndex, CB_SubRegion.SelectedIndex, CB_3DSReg.SelectedIndex };
                 List<string> litems = new List<string>();
                 foreach (ListViewItem l in listView1.Items)
