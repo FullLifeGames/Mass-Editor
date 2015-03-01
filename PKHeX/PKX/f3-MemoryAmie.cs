@@ -13,6 +13,9 @@ namespace Mass_Editor
 {
     public partial class MemoryAmie : Form
     {
+        bool[] amienabled;
+        int[] amiindex;
+
         Form1 m_parent;
         public byte[] h = new byte[260]; // Always Visible
         private string disabled = "Disabled";
@@ -29,6 +32,35 @@ namespace Mass_Editor
             string[] arguments = Regex.Split(L_Arguments.Text, " ; ");
 
             for (int i = 5; i < Math.Min(arguments.Length,vartypes.Length+5); i++)
+            {
+                if (arguments[i] == null) continue;
+                vartypes[i - 5] = arguments[i] + ":";
+            }
+            try
+            {
+                disabled = arguments[0];
+                notleft = arguments[1];
+                ot = arguments[2];
+                past = arguments[3];
+                withOT = arguments[4];
+            }
+            catch { };
+            h = m_parent.buff;
+
+            getCountries();
+            getLangStrings();
+            loadFields();
+        }
+        public MemoryAmie(Form1 frm1, bool[] amienabled, int[] amiindex)
+        {
+            this.amienabled = amienabled;
+            this.amiindex = amiindex;
+            InitializeComponent();
+            Util.TranslateInterface(this, Form1.curlanguage);
+            m_parent = frm1;
+            string[] arguments = Regex.Split(L_Arguments.Text, " ; ");
+
+            for (int i = 5; i < Math.Min(arguments.Length, vartypes.Length + 5); i++)
             {
                 if (arguments[i] == null) continue;
                 vartypes[i - 5] = arguments[i] + ":";
@@ -211,7 +243,7 @@ namespace Mass_Editor
 
         private void v1cb(ComboBox cb, int o)
         {
-            cb.SelectedValue = (int)h[o];
+            cb.SelectedValue = 0;
         }
         private void i1cb(ComboBox cb, int o)
         {
@@ -223,7 +255,21 @@ namespace Mass_Editor
         }
         private void cb1v(ComboBox cb, int o)
         {
-            h[o] = (byte)Convert.ToUInt32(cb.SelectedValue);
+            if (cb.SelectedIndex != -1)
+            {
+                if (cb.SelectedValue.GetType() == typeof(Util.cbItem))
+                {
+                    h[o] = (byte)Convert.ToUInt32(((Util.cbItem)cb.SelectedValue).Value);
+                }
+                else
+                {
+                    h[o] = (byte)Convert.ToUInt32(cb.SelectedValue);
+                }
+            }
+            else
+            {
+                h[o] = (byte)0;
+            }
         }
         private void cb1i(ComboBox cb, int o)
         {
@@ -540,5 +586,44 @@ namespace Mass_Editor
             mta[index].DisplayMember = "Text";
             mta[index].ValueMember = "Value";
         }
+
+        public void MemoryAmie_Load(object sender, EventArgs e)
+        {
+            if (amienabled != null && amiindex != null)
+            {
+                M_OT_Friendship.Text = amiindex[0] + "";
+                M_OT_Affection.Text = amiindex[1] + "";
+                CB_OTMemory.SelectedIndex = amiindex[2];
+                if (amienabled[3]) CB_OTVar.SelectedIndex = amiindex[3];
+                if (amienabled[4]) CB_OTQual.SelectedIndex = amiindex[4];
+                if (amienabled[5]) CB_OTFeel.SelectedIndex = amiindex[5];
+
+                M_CT_Friendship.Text = amiindex[6] + "";
+                M_CT_Affection.Text = amiindex[7] + "";
+                CB_CTMemory.SelectedIndex = amiindex[8];
+                if (amienabled[9]) CB_CTVar.SelectedIndex = amiindex[9];
+                if (amienabled[10]) CB_CTQual.SelectedIndex = amiindex[10];
+                if (amienabled[11]) CB_CTFeel.SelectedIndex = amiindex[11];
+                
+                if (amienabled[12]) CB_Country0.SelectedIndex = amiindex[12];
+                if (amienabled[13]) CB_Country1.SelectedIndex = amiindex[13];
+                if (amienabled[14]) CB_Country2.SelectedIndex = amiindex[14];
+                if (amienabled[15]) CB_Country3.SelectedIndex = amiindex[15];
+                if (amienabled[16]) CB_Country4.SelectedIndex = amiindex[16];
+
+                if (amienabled[17]) Region0.SelectedIndex = amiindex[17];
+                if (amienabled[18]) Region1.SelectedIndex = amiindex[18];
+                if (amienabled[19]) Region2.SelectedIndex = amiindex[19];
+                if (amienabled[20]) Region3.SelectedIndex = amiindex[20];
+                if (amienabled[21]) Region4.SelectedIndex = amiindex[21];
+
+                if (amienabled[22] && CB_Handler.Items.Count > 0) CB_Handler.SelectedIndex = amiindex[22];
+                M_Fullness.Text = amiindex[23] + "";
+                M_Enjoyment.Text = amiindex[24] + "";
+
+                B_Save_Click(BTN_Save, null);
+            }            
+        }
+
     }
 }

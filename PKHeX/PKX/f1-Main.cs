@@ -30,6 +30,8 @@ namespace Mass_Editor
         bool[] country;
         bool[] met;
         bool[] ot;
+        bool[] amienabled;
+        int[] amiindex;
 
         #region PKHeX Code
 
@@ -153,7 +155,7 @@ namespace Mass_Editor
             this.Tab_Main.Controls.Clear();
         }
 
-        public Form1(List<string> litems, List<int> modes, ProgressBar progressBar, string[] ret, string friendship, string level, Mass_Editor.Met m, bool bak, int[] otindexes, bool[] country, bool[] met, bool[] ot)
+        public Form1(List<string> litems, List<int> modes, ProgressBar progressBar, string[] ret, string friendship, string level, Mass_Editor.Met m, bool bak, int[] otindexes, bool[] country, bool[] met, bool[] ot, bool[] amienabled, int[] amiindex)
         {
             // TODO: Complete member initialization
             this.litems = litems;
@@ -168,6 +170,8 @@ namespace Mass_Editor
             this.country = country;
             this.met = met;
             this.ot = ot;
+            this.amienabled = amienabled;
+            this.amiindex = amiindex;
 
             #region Initialize Form
             InitializeComponent();
@@ -2480,9 +2484,11 @@ namespace Mass_Editor
         {
             new RibbMedal(this).ShowDialog();
         }
-        private void openHistory(object sender, EventArgs e)
+        public MemoryAmie am;
+        public void openHistory(object sender, EventArgs e)
         {
-            new MemoryAmie(this).ShowDialog();
+            am = new MemoryAmie(this);
+            am.ShowDialog();
         }
         // Open/Save Array Manipulation //
         private bool verifiedPKX()
@@ -4930,6 +4936,10 @@ namespace Mass_Editor
                             }
                             if (country[3])
                                 CB_3DSReg.SelectedIndex = otindexes[3];
+                            break;
+                        case 10:
+                            MemoryAmie ma = new MemoryAmie(this, amienabled, amiindex);
+                            ma.MemoryAmie_Load(ma, null);
                             break;
                     }
                 }

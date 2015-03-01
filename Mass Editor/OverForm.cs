@@ -13,6 +13,7 @@ namespace Mass_Editor
     public partial class OverForm : Form
     {
         Form1 f;
+        MemoryAmie ma;
 
         public OverForm()
         {
@@ -85,6 +86,7 @@ namespace Mass_Editor
             GB_Met.Enabled = b;
             groupBox4.Enabled = b;
             CHK_Country.Enabled = b;
+            groupBox5.Enabled = b;
         }
 
         private void enableAll()
@@ -120,6 +122,7 @@ namespace Mass_Editor
             GB_Met.Enabled = CHK_Met.Checked;
             groupBox4.Enabled = CHK_Country.Checked;
             CHK_Country.Enabled = b;
+            groupBox5.Enabled = CHK_Memories.Checked;
         }
 
         private void B_Mass_Edit_Click(object sender, EventArgs e)
@@ -144,6 +147,17 @@ namespace Mass_Editor
                 {
                     litems.Add(l.Text);
                 }
+
+                bool[] amienabled = { M_OT_Friendship.Enabled, M_OT_Affection.Enabled, CB_OTMemory.Enabled && CB_OTMemory.Visible, CB_OTVar.Enabled && CB_OTVar.Visible, CB_OTQual.Enabled && CB_OTQual.Visible, CB_OTFeel.Enabled && CB_OTFeel.Visible,
+                                    M_CT_Friendship.Enabled, M_CT_Affection.Enabled, CB_CTMemory.Enabled && CB_CTMemory.Visible, CB_CTVar.Enabled && CB_CTVar.Visible, CB_CTQual.Enabled && CB_CTQual.Visible, CB_CTFeel.Enabled && CB_CTFeel.Visible,
+                                    (CB_Country0.SelectedIndex != -1) && CB_Country0.Enabled, (CB_Country1.SelectedIndex != -1) && CB_Country1.Enabled, (CB_Country2.SelectedIndex != -1) && CB_Country2.Enabled, (CB_Country3.SelectedIndex != -1) && CB_Country3.Enabled, (CB_Country4.SelectedIndex != -1) && CB_Country4.Enabled, 
+                                    (Region0.Items.Count > 1) && Region0.Enabled, (Region1.Items.Count > 1) && Region1.Enabled, (Region2.Items.Count > 1) && Region2.Enabled, (Region3.Items.Count > 1) && Region3.Enabled, (Region4.Items.Count > 1) && Region4.Enabled,
+                                    CB_Handler.Enabled, M_Fullness.Enabled, M_Enjoyment.Enabled };
+                int[] amiindex = { int.Parse(M_OT_Friendship.Text), int.Parse(M_OT_Affection.Text), CB_OTMemory.SelectedIndex, CB_OTVar.SelectedIndex, CB_OTQual.SelectedIndex, CB_OTFeel.SelectedIndex,
+                                    int.Parse(M_CT_Friendship.Text), int.Parse(M_CT_Affection.Text), CB_CTMemory.SelectedIndex, CB_CTVar.SelectedIndex, CB_CTQual.SelectedIndex, CB_CTFeel.SelectedIndex,
+                                    CB_Country0.SelectedIndex, CB_Country1.SelectedIndex, CB_Country2.SelectedIndex, CB_Country3.SelectedIndex, CB_Country4.SelectedIndex, 
+                                    Region0.SelectedIndex, Region1.SelectedIndex, Region2.SelectedIndex, Region3.SelectedIndex, Region4.SelectedIndex,
+                                    CB_Handler.SelectedIndex, int.Parse(M_Fullness.Text), int.Parse(M_Enjoyment.Text) };
 
 
                 Met m = new Met(CB_GameOrigin.SelectedIndex, CB_MetLocation.SelectedIndex, CB_Ball.SelectedIndex, TB_MetLevel.Text, CAL_MetDate.Value, CHK_Fateful.Checked, CB_EncounterType.Enabled, CB_EncounterType.SelectedIndex, CHK_AsEgg.Checked, CB_EggLocation.SelectedIndex, CAL_EggDate.Value);
@@ -188,9 +202,13 @@ namespace Mass_Editor
                 {
                     modes.Add(9);
                 }
+                if (CHK_Memories.Checked)
+                {
+                    modes.Add(10);
+                }
 
                 // thread for free UI
-                thread = new Thread(delegate() { Form1 f1 = new Form1(litems, modes, this.progressBar1, ret, friendship, level, m, bak, otindexes, countrybool, metbool, otbool); f1.Form1_Load(new object(), new EventArgs()); f1.Dispose(); });
+                thread = new Thread(delegate() { Form1 f1 = new Form1(litems, modes, this.progressBar1, ret, friendship, level, m, bak, otindexes, countrybool, metbool, otbool, amienabled, amiindex); f1.Form1_Load(new object(), new EventArgs()); f1.Dispose(); });
                 thread.SetApartmentState(ApartmentState.STA);
 
                 // thread2 is basically my thread_finished_Eventhandler
@@ -207,7 +225,10 @@ namespace Mass_Editor
 
         private void InitializeComponents()
         {
-            f = new Form1();           
+            f = new Form1();
+            f.TB_OT.Text = "PKHeX";
+            f.TB_OTt2.Text = "Mass Edit (Last OT)";
+            ma = new MemoryAmie(f);
             CHK_AsEgg = f.getCHK_AsEgg();
             CB_GameOrigin = f.getCB_GameOrigin();
             CB_MetLocation = f.getCB_MetLocation();
@@ -223,6 +244,78 @@ namespace Mass_Editor
             CB_Country = f.getCB_Country();
             CB_SubRegion = f.getCB_SubRegion();
             CB_3DSReg = f.getCB_3DSReg();
+            tabControl1 = ma.tabControl1;
+            M_OT_Friendship = ma.M_OT_Friendship;
+            M_OT_Affection = ma.M_OT_Affection;
+            CB_OTMemory = ma.CB_OTMemory;
+            CB_OTVar = ma.CB_OTVar;
+            CB_OTQual = ma.CB_OTQual;
+            CB_OTFeel = ma.CB_OTFeel;
+
+            Tab_CTMemory = ma.Tab_CTMemory;
+            Tab_OTMemory = ma.Tab_OTMemory;
+            Tab_Residence = ma.Tab_Residence;
+
+            M_CT_Friendship = ma.M_CT_Friendship;
+            M_CT_Affection = ma.M_CT_Affection;
+            CB_CTMemory = ma.CB_CTMemory;
+            CB_CTVar = ma.CB_CTVar;
+            CB_CTQual = ma.CB_CTQual;
+            CB_CTFeel = ma.CB_CTFeel;
+            CB_Country0 = ma.CB_Country0;
+            CB_Country1 = ma.CB_Country1;
+            CB_Country2 = ma.CB_Country2;
+            CB_Country3 = ma.CB_Country3;
+            CB_Country4 = ma.CB_Country4;
+            Region0 = ma.Region0;
+            Region1 = ma.Region1;
+            Region2 = ma.Region2;
+            Region3 = ma.Region3;
+            Region4 = ma.Region4;
+            CB_Handler = ma.CB_Handler;
+            M_Fullness = ma.M_Fullness;
+            M_Enjoyment = ma.M_Enjoyment;
+            GB_M_CT = ma.GB_M_CT;
+            GB_M_OT = ma.GB_M_OT;
+            GB_Residence = ma.GB_Residence;
+            L_Arguments = ma.L_Arguments;
+            L_Handler = ma.L_Handler;
+            RTB_CT = ma.RTB_CT;
+            RTB_OT = ma.RTB_OT;
+            L_CT_Affection = ma.L_CT_Affection;
+            L_Country = ma.L_Country;
+            L_CT_Feeling = ma.L_CT_Feeling;
+            L_CT_Friendship = ma.L_CT_Friendship;
+            L_CT_Quality = ma.L_CT_Quality;
+            L_CT_TextLine = ma.L_CT_TextLine;
+            L_Enjoyment = ma.L_Enjoyment;
+            L_Fullness = ma.L_Fullness;
+            L_Geo0 = ma.L_Geo0;
+            L_Geo1 = ma.L_Geo1;
+            L_Geo2 = ma.L_Geo2;
+            L_Geo3 = ma.L_Geo3;
+            L_Geo4 = ma.L_Geo4;
+            L_OT_Affection = ma.L_OT_Affection;
+            L_OT_Feeling = ma.L_OT_Feeling;
+            L_OT_Friendship = ma.L_OT_Friendship;
+            L_OT_Quality = ma.L_OT_Quality;
+            L_OT_TextLine = ma.L_OT_TextLine;
+            L_Region = ma.L_Region;
+            LOTV = ma.LOTV;
+            LCTV = ma.LCTV;
+
+            ComboBox[] mta = new ComboBox[]
+            {
+                Region0, Region1, Region2, Region3, Region4,
+            };
+            // doesn't work
+            // mta[index].SelectedValue = 0;
+            for (int i = 0; i < 5; i++)
+            {
+                mta[i].DataSource = new[] { new { Text = "", Value = 0 } };
+                mta[i].DisplayMember = "Text";
+                mta[i].ValueMember = "Value";
+            }
 
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -267,6 +360,7 @@ namespace Mass_Editor
             this.textBox6 = new System.Windows.Forms.MaskedTextBox();
 
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.CHK_Country = new System.Windows.Forms.CheckBox();
             this.Label_3DSRegion = new System.Windows.Forms.Label();
             this.Label_SubRegion = new System.Windows.Forms.Label();
@@ -291,14 +385,24 @@ namespace Mass_Editor
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.CHK_Memories = new System.Windows.Forms.CheckBox();
 
+            #region DesignCode
             this.GB_EggConditions.SuspendLayout();
             this.GB_Met.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.Tab_OTMemory.SuspendLayout();
+            this.GB_M_OT.SuspendLayout();
+            this.Tab_CTMemory.SuspendLayout();
+            this.GB_M_CT.SuspendLayout();
+            this.Tab_Residence.SuspendLayout();
+            this.GB_Residence.SuspendLayout();
             this.SuspendLayout();
-
             // 
             // textBox1
             // 
@@ -1124,11 +1228,671 @@ namespace Mass_Editor
             this.CHK_Country.UseVisualStyleBackColor = true;
             this.CHK_Country.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.L_Arguments);
+            this.groupBox5.Controls.Add(this.L_Handler);
+            this.groupBox5.Controls.Add(this.tabControl1);
+            this.groupBox5.Controls.Add(this.CB_Handler);
+            this.groupBox5.Controls.Add(this.L_Enjoyment);
+            this.groupBox5.Controls.Add(this.L_Fullness);
+            this.groupBox5.Controls.Add(this.M_Fullness);
+            this.groupBox5.Controls.Add(this.M_Enjoyment);
+            this.groupBox5.Location = new System.Drawing.Point(878, 7);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(385, 391);
+            this.groupBox5.TabIndex = 52;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Change MemoryAmie to";
+            // 
+            // L_Arguments
+            // 
+            this.L_Arguments.AutoSize = true;
+            this.L_Arguments.Location = new System.Drawing.Point(337, 46);
+            this.L_Arguments.Name = "L_Arguments";
+            this.L_Arguments.Size = new System.Drawing.Size(33, 13);
+            this.L_Arguments.TabIndex = 112;
+            this.L_Arguments.Text = "(args)";
+            this.L_Arguments.Visible = false;
+            // 
+            // L_Handler
+            // 
+            this.L_Handler.Location = new System.Drawing.Point(43, 284);
+            this.L_Handler.Name = "L_Handler";
+            this.L_Handler.Size = new System.Drawing.Size(120, 13);
+            this.L_Handler.TabIndex = 111;
+            this.L_Handler.Text = "Current Handler:";
+            this.L_Handler.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Location = new System.Drawing.Point(20, 49);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(355, 228);
+            this.tabControl1.TabIndex = 109;
+            // 
+            // Tab_OTMemory
+            // 
+            this.Tab_OTMemory.Controls.Add(this.GB_M_OT);
+            this.Tab_OTMemory.Location = new System.Drawing.Point(4, 22);
+            this.Tab_OTMemory.Name = "Tab_OTMemory";
+            this.Tab_OTMemory.Padding = new System.Windows.Forms.Padding(3);
+            this.Tab_OTMemory.Size = new System.Drawing.Size(347, 202);
+            this.Tab_OTMemory.TabIndex = 1;
+            this.Tab_OTMemory.Text = "Memories with OT";
+            this.Tab_OTMemory.UseVisualStyleBackColor = true;
+            // 
+            // GB_M_OT
+            // 
+            this.GB_M_OT.Controls.Add(this.RTB_OT);
+            this.GB_M_OT.Controls.Add(this.CB_OTVar);
+            this.GB_M_OT.Controls.Add(this.CB_OTMemory);
+            this.GB_M_OT.Controls.Add(this.CB_OTQual);
+            this.GB_M_OT.Controls.Add(this.CB_OTFeel);
+            this.GB_M_OT.Controls.Add(this.L_OT_Affection);
+            this.GB_M_OT.Controls.Add(this.M_OT_Affection);
+            this.GB_M_OT.Controls.Add(this.L_OT_Feeling);
+            this.GB_M_OT.Controls.Add(this.LOTV);
+            this.GB_M_OT.Controls.Add(this.L_OT_TextLine);
+            this.GB_M_OT.Controls.Add(this.M_OT_Friendship);
+            this.GB_M_OT.Controls.Add(this.L_OT_Friendship);
+            this.GB_M_OT.Controls.Add(this.L_OT_Quality);
+            this.GB_M_OT.Location = new System.Drawing.Point(7, 7);
+            this.GB_M_OT.Name = "GB_M_OT";
+            this.GB_M_OT.Size = new System.Drawing.Size(332, 188);
+            this.GB_M_OT.TabIndex = 87;
+            this.GB_M_OT.TabStop = false;
+            this.GB_M_OT.Text = "Memories with Original Trainer";
+            // 
+            // RTB_OT
+            // 
+            this.RTB_OT.Location = new System.Drawing.Point(0, 141);
+            this.RTB_OT.Name = "RTB_OT";
+            this.RTB_OT.ReadOnly = true;
+            this.RTB_OT.Size = new System.Drawing.Size(332, 47);
+            this.RTB_OT.TabIndex = 103;
+            this.RTB_OT.Text = "";
+            // 
+            // CB_OTVar
+            // 
+            this.CB_OTVar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_OTVar.FormattingEnabled = true;
+            this.CB_OTVar.Location = new System.Drawing.Point(86, 61);
+            this.CB_OTVar.Name = "CB_OTVar";
+            this.CB_OTVar.Size = new System.Drawing.Size(170, 21);
+            this.CB_OTVar.TabIndex = 96;
+            // 
+            // CB_OTMemory
+            // 
+            this.CB_OTMemory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_OTMemory.DropDownWidth = 440;
+            this.CB_OTMemory.FormattingEnabled = true;
+            this.CB_OTMemory.Location = new System.Drawing.Point(86, 38);
+            this.CB_OTMemory.Name = "CB_OTMemory";
+            this.CB_OTMemory.Size = new System.Drawing.Size(240, 21);
+            this.CB_OTMemory.TabIndex = 95;
+            // 
+            // CB_OTQual
+            // 
+            this.CB_OTQual.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_OTQual.FormattingEnabled = true;
+            this.CB_OTQual.Items.AddRange(new object[] {
+            "The Pokémon remembers",
+            "The Pokémon remembers",
+            "The Pokémon remembers",
+            "The Pokémon remembers",
+            "The Pokémon fondly remembers",
+            "The Pokémon clearly remembers",
+            "The Pokémon definitely remembers"});
+            this.CB_OTQual.Location = new System.Drawing.Point(86, 88);
+            this.CB_OTQual.Name = "CB_OTQual";
+            this.CB_OTQual.Size = new System.Drawing.Size(240, 21);
+            this.CB_OTQual.TabIndex = 90;
+            // 
+            // CB_OTFeel
+            // 
+            this.CB_OTFeel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_OTFeel.FormattingEnabled = true;
+            this.CB_OTFeel.Items.AddRange(new object[] {
+            "it was happy",
+            "it had fun",
+            "it was glad",
+            "it grinned",
+            "it got overwhelmed by emotion",
+            "its feelings were indescribable",
+            "it felt good",
+            "it got teary eyed",
+            "it got lighthearted",
+            "it got nervous",
+            "it felt comfortable",
+            "it was restless",
+            "it got a bit carried away",
+            "it felt sorry",
+            "it got emotional",
+            "it felt nostalgic",
+            "it had some difficulty",
+            "it felt exhausted",
+            "it couldn’t be true to its feelings",
+            "it felt proud",
+            "they ended up in a foul mood",
+            "it got angry",
+            "it got jealous",
+            "it got sleepy"});
+            this.CB_OTFeel.Location = new System.Drawing.Point(86, 111);
+            this.CB_OTFeel.Name = "CB_OTFeel";
+            this.CB_OTFeel.Size = new System.Drawing.Size(170, 21);
+            this.CB_OTFeel.TabIndex = 89;
+            // 
+            // L_OT_Affection
+            // 
+            this.L_OT_Affection.AutoSize = true;
+            this.L_OT_Affection.Location = new System.Drawing.Point(149, 19);
+            this.L_OT_Affection.Name = "L_OT_Affection";
+            this.L_OT_Affection.Size = new System.Drawing.Size(52, 13);
+            this.L_OT_Affection.TabIndex = 88;
+            this.L_OT_Affection.Text = "Affection:";
+            // 
+            // M_OT_Affection
+            // 
+            this.M_OT_Affection.Location = new System.Drawing.Point(227, 16);
+            this.M_OT_Affection.Mask = "000";
+            this.M_OT_Affection.Name = "M_OT_Affection";
+            this.M_OT_Affection.Size = new System.Drawing.Size(24, 20);
+            this.M_OT_Affection.TabIndex = 24;
+            // 
+            // L_OT_Feeling
+            // 
+            this.L_OT_Feeling.AutoSize = true;
+            this.L_OT_Feeling.Location = new System.Drawing.Point(6, 114);
+            this.L_OT_Feeling.Name = "L_OT_Feeling";
+            this.L_OT_Feeling.Size = new System.Drawing.Size(44, 13);
+            this.L_OT_Feeling.TabIndex = 86;
+            this.L_OT_Feeling.Text = "Feeling:";
+            // 
+            // LOTV
+            // 
+            this.LOTV.AutoSize = true;
+            this.LOTV.Location = new System.Drawing.Point(6, 65);
+            this.LOTV.Name = "LOTV";
+            this.LOTV.Size = new System.Drawing.Size(62, 13);
+            this.LOTV.TabIndex = 83;
+            this.LOTV.Text = "VARIABLE:";
+            // 
+            // L_OT_TextLine
+            // 
+            this.L_OT_TextLine.AutoSize = true;
+            this.L_OT_TextLine.Location = new System.Drawing.Point(6, 41);
+            this.L_OT_TextLine.Name = "L_OT_TextLine";
+            this.L_OT_TextLine.Size = new System.Drawing.Size(74, 13);
+            this.L_OT_TextLine.TabIndex = 82;
+            this.L_OT_TextLine.Text = "Memory Type:";
+            // 
+            // M_OT_Friendship
+            // 
+            this.M_OT_Friendship.Location = new System.Drawing.Point(86, 16);
+            this.M_OT_Friendship.Mask = "000";
+            this.M_OT_Friendship.Name = "M_OT_Friendship";
+            this.M_OT_Friendship.Size = new System.Drawing.Size(24, 20);
+            this.M_OT_Friendship.TabIndex = 23;
+            // 
+            // L_OT_Friendship
+            // 
+            this.L_OT_Friendship.AutoSize = true;
+            this.L_OT_Friendship.Location = new System.Drawing.Point(6, 19);
+            this.L_OT_Friendship.Name = "L_OT_Friendship";
+            this.L_OT_Friendship.Size = new System.Drawing.Size(58, 13);
+            this.L_OT_Friendship.TabIndex = 52;
+            this.L_OT_Friendship.Text = "Friendship:";
+            // 
+            // L_OT_Quality
+            // 
+            this.L_OT_Quality.AutoSize = true;
+            this.L_OT_Quality.Location = new System.Drawing.Point(6, 91);
+            this.L_OT_Quality.Name = "L_OT_Quality";
+            this.L_OT_Quality.Size = new System.Drawing.Size(49, 13);
+            this.L_OT_Quality.TabIndex = 80;
+            this.L_OT_Quality.Text = "Intensity:";
+            // 
+            // Tab_CTMemory
+            // 
+            this.Tab_CTMemory.Controls.Add(this.GB_M_CT);
+            this.Tab_CTMemory.Location = new System.Drawing.Point(4, 22);
+            this.Tab_CTMemory.Name = "Tab_CTMemory";
+            this.Tab_CTMemory.Padding = new System.Windows.Forms.Padding(3);
+            this.Tab_CTMemory.Size = new System.Drawing.Size(347, 202);
+            this.Tab_CTMemory.TabIndex = 2;
+            this.Tab_CTMemory.Text = "Memories with notOT";
+            this.Tab_CTMemory.UseVisualStyleBackColor = true;
+            // 
+            // GB_M_CT
+            // 
+            this.GB_M_CT.Controls.Add(this.RTB_CT);
+            this.GB_M_CT.Controls.Add(this.CB_CTVar);
+            this.GB_M_CT.Controls.Add(this.CB_CTMemory);
+            this.GB_M_CT.Controls.Add(this.CB_CTQual);
+            this.GB_M_CT.Controls.Add(this.CB_CTFeel);
+            this.GB_M_CT.Controls.Add(this.L_CT_Affection);
+            this.GB_M_CT.Controls.Add(this.L_CT_Friendship);
+            this.GB_M_CT.Controls.Add(this.M_CT_Affection);
+            this.GB_M_CT.Controls.Add(this.M_CT_Friendship);
+            this.GB_M_CT.Controls.Add(this.LCTV);
+            this.GB_M_CT.Controls.Add(this.L_CT_Feeling);
+            this.GB_M_CT.Controls.Add(this.L_CT_TextLine);
+            this.GB_M_CT.Controls.Add(this.L_CT_Quality);
+            this.GB_M_CT.Location = new System.Drawing.Point(7, 7);
+            this.GB_M_CT.Name = "GB_M_CT";
+            this.GB_M_CT.Size = new System.Drawing.Size(332, 188);
+            this.GB_M_CT.TabIndex = 89;
+            this.GB_M_CT.TabStop = false;
+            this.GB_M_CT.Text = "Memories with Current Trainer";
+            // 
+            // RTB_CT
+            // 
+            this.RTB_CT.Location = new System.Drawing.Point(0, 141);
+            this.RTB_CT.Name = "RTB_CT";
+            this.RTB_CT.ReadOnly = true;
+            this.RTB_CT.Size = new System.Drawing.Size(332, 47);
+            this.RTB_CT.TabIndex = 104;
+            this.RTB_CT.Text = "";
+            // 
+            // CB_CTVar
+            // 
+            this.CB_CTVar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_CTVar.FormattingEnabled = true;
+            this.CB_CTVar.Location = new System.Drawing.Point(86, 61);
+            this.CB_CTVar.Name = "CB_CTVar";
+            this.CB_CTVar.Size = new System.Drawing.Size(170, 21);
+            this.CB_CTVar.TabIndex = 95;
+            // 
+            // CB_CTMemory
+            // 
+            this.CB_CTMemory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_CTMemory.DropDownWidth = 440;
+            this.CB_CTMemory.FormattingEnabled = true;
+            this.CB_CTMemory.Location = new System.Drawing.Point(86, 38);
+            this.CB_CTMemory.Name = "CB_CTMemory";
+            this.CB_CTMemory.Size = new System.Drawing.Size(240, 21);
+            this.CB_CTMemory.TabIndex = 94;
+            // 
+            // CB_CTQual
+            // 
+            this.CB_CTQual.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_CTQual.FormattingEnabled = true;
+            this.CB_CTQual.Items.AddRange(new object[] {
+            "The Pokémon remembers",
+            "The Pokémon remembers",
+            "The Pokémon remembers",
+            "The Pokémon remembers",
+            "The Pokémon fondly remembers",
+            "The Pokémon clearly remembers",
+            "The Pokémon definitely remembers"});
+            this.CB_CTQual.Location = new System.Drawing.Point(86, 88);
+            this.CB_CTQual.Name = "CB_CTQual";
+            this.CB_CTQual.Size = new System.Drawing.Size(240, 21);
+            this.CB_CTQual.TabIndex = 93;
+            // 
+            // CB_CTFeel
+            // 
+            this.CB_CTFeel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_CTFeel.FormattingEnabled = true;
+            this.CB_CTFeel.Items.AddRange(new object[] {
+            "it was happy",
+            "it had fun",
+            "it was glad",
+            "it grinned",
+            "it got overwhelmed by emotion",
+            "its feelings were indescribable",
+            "it felt good",
+            "it got teary eyed",
+            "it got lighthearted",
+            "it got nervous",
+            "it felt comfortable",
+            "it was restless",
+            "it got a bit carried away",
+            "it felt sorry",
+            "it got emotional",
+            "it felt nostalgic",
+            "it had some difficulty",
+            "it felt exhausted",
+            "it couldn’t be true to its feelings",
+            "it felt proud",
+            "they ended up in a foul mood",
+            "it got angry",
+            "it got jealous",
+            "it got sleepy"});
+            this.CB_CTFeel.Location = new System.Drawing.Point(86, 111);
+            this.CB_CTFeel.Name = "CB_CTFeel";
+            this.CB_CTFeel.Size = new System.Drawing.Size(170, 21);
+            this.CB_CTFeel.TabIndex = 92;
+            // 
+            // L_CT_Affection
+            // 
+            this.L_CT_Affection.AutoSize = true;
+            this.L_CT_Affection.Location = new System.Drawing.Point(149, 19);
+            this.L_CT_Affection.Name = "L_CT_Affection";
+            this.L_CT_Affection.Size = new System.Drawing.Size(52, 13);
+            this.L_CT_Affection.TabIndex = 91;
+            this.L_CT_Affection.Text = "Affection:";
+            // 
+            // L_CT_Friendship
+            // 
+            this.L_CT_Friendship.AutoSize = true;
+            this.L_CT_Friendship.Location = new System.Drawing.Point(6, 19);
+            this.L_CT_Friendship.Name = "L_CT_Friendship";
+            this.L_CT_Friendship.Size = new System.Drawing.Size(58, 13);
+            this.L_CT_Friendship.TabIndex = 90;
+            this.L_CT_Friendship.Text = "Friendship:";
+            // 
+            // M_CT_Affection
+            // 
+            this.M_CT_Affection.Location = new System.Drawing.Point(227, 16);
+            this.M_CT_Affection.Mask = "000";
+            this.M_CT_Affection.Name = "M_CT_Affection";
+            this.M_CT_Affection.Size = new System.Drawing.Size(24, 20);
+            this.M_CT_Affection.TabIndex = 16;
+            // 
+            // M_CT_Friendship
+            // 
+            this.M_CT_Friendship.Location = new System.Drawing.Point(86, 16);
+            this.M_CT_Friendship.Mask = "000";
+            this.M_CT_Friendship.Name = "M_CT_Friendship";
+            this.M_CT_Friendship.Size = new System.Drawing.Size(24, 20);
+            this.M_CT_Friendship.TabIndex = 15;
+            // 
+            // LCTV
+            // 
+            this.LCTV.AutoSize = true;
+            this.LCTV.Location = new System.Drawing.Point(6, 65);
+            this.LCTV.Name = "LCTV";
+            this.LCTV.Size = new System.Drawing.Size(59, 13);
+            this.LCTV.TabIndex = 58;
+            this.LCTV.Text = "VARIABLE";
+            // 
+            // L_CT_Feeling
+            // 
+            this.L_CT_Feeling.AutoSize = true;
+            this.L_CT_Feeling.Location = new System.Drawing.Point(6, 114);
+            this.L_CT_Feeling.Name = "L_CT_Feeling";
+            this.L_CT_Feeling.Size = new System.Drawing.Size(44, 13);
+            this.L_CT_Feeling.TabIndex = 56;
+            this.L_CT_Feeling.Text = "Feeling:";
+            // 
+            // L_CT_TextLine
+            // 
+            this.L_CT_TextLine.AutoSize = true;
+            this.L_CT_TextLine.Location = new System.Drawing.Point(6, 41);
+            this.L_CT_TextLine.Name = "L_CT_TextLine";
+            this.L_CT_TextLine.Size = new System.Drawing.Size(74, 13);
+            this.L_CT_TextLine.TabIndex = 55;
+            this.L_CT_TextLine.Text = "Memory Type:";
+            // 
+            // L_CT_Quality
+            // 
+            this.L_CT_Quality.AutoSize = true;
+            this.L_CT_Quality.Location = new System.Drawing.Point(6, 91);
+            this.L_CT_Quality.Name = "L_CT_Quality";
+            this.L_CT_Quality.Size = new System.Drawing.Size(49, 13);
+            this.L_CT_Quality.TabIndex = 54;
+            this.L_CT_Quality.Text = "Intensity:";
+            // 
+            // Tab_Residence
+            // 
+            this.Tab_Residence.Controls.Add(this.GB_Residence);
+            this.Tab_Residence.Location = new System.Drawing.Point(4, 22);
+            this.Tab_Residence.Name = "Tab_Residence";
+            this.Tab_Residence.Padding = new System.Windows.Forms.Padding(3);
+            this.Tab_Residence.Size = new System.Drawing.Size(347, 202);
+            this.Tab_Residence.TabIndex = 0;
+            this.Tab_Residence.Text = "Residence";
+            this.Tab_Residence.UseVisualStyleBackColor = true;
+            // 
+            // GB_Residence
+            // 
+            this.GB_Residence.Controls.Add(this.Region4);
+            this.GB_Residence.Controls.Add(this.Region3);
+            this.GB_Residence.Controls.Add(this.Region2);
+            this.GB_Residence.Controls.Add(this.Region1);
+            this.GB_Residence.Controls.Add(this.Region0);
+            this.GB_Residence.Controls.Add(this.CB_Country4);
+            this.GB_Residence.Controls.Add(this.CB_Country3);
+            this.GB_Residence.Controls.Add(this.CB_Country2);
+            this.GB_Residence.Controls.Add(this.CB_Country1);
+            this.GB_Residence.Controls.Add(this.CB_Country0);
+            this.GB_Residence.Controls.Add(this.L_Geo4);
+            this.GB_Residence.Controls.Add(this.L_Geo3);
+            this.GB_Residence.Controls.Add(this.L_Geo2);
+            this.GB_Residence.Controls.Add(this.L_Country);
+            this.GB_Residence.Controls.Add(this.L_Region);
+            this.GB_Residence.Controls.Add(this.L_Geo1);
+            this.GB_Residence.Controls.Add(this.L_Geo0);
+            this.GB_Residence.Location = new System.Drawing.Point(7, 7);
+            this.GB_Residence.Name = "GB_Residence";
+            this.GB_Residence.Size = new System.Drawing.Size(332, 188);
+            this.GB_Residence.TabIndex = 89;
+            this.GB_Residence.TabStop = false;
+            this.GB_Residence.Text = "Pokémon has Resided in:";
+            // 
+            // Region4
+            // 
+            this.Region4.DropDownWidth = 180;
+            this.Region4.FormattingEnabled = true;
+            this.Region4.Location = new System.Drawing.Point(204, 158);
+            this.Region4.Name = "Region4";
+            this.Region4.Size = new System.Drawing.Size(102, 21);
+            this.Region4.TabIndex = 88;
+            // 
+            // Region3
+            // 
+            this.Region3.DropDownWidth = 180;
+            this.Region3.FormattingEnabled = true;
+            this.Region3.Location = new System.Drawing.Point(204, 126);
+            this.Region3.Name = "Region3";
+            this.Region3.Size = new System.Drawing.Size(102, 21);
+            this.Region3.TabIndex = 87;
+            // 
+            // Region2
+            // 
+            this.Region2.DropDownWidth = 180;
+            this.Region2.FormattingEnabled = true;
+            this.Region2.Location = new System.Drawing.Point(204, 93);
+            this.Region2.Name = "Region2";
+            this.Region2.Size = new System.Drawing.Size(102, 21);
+            this.Region2.TabIndex = 86;
+            // 
+            // Region1
+            // 
+            this.Region1.DropDownWidth = 180;
+            this.Region1.FormattingEnabled = true;
+            this.Region1.Location = new System.Drawing.Point(204, 60);
+            this.Region1.Name = "Region1";
+            this.Region1.Size = new System.Drawing.Size(102, 21);
+            this.Region1.TabIndex = 85;
+            // 
+            // Region0
+            // 
+            this.Region0.DropDownWidth = 180;
+            this.Region0.FormattingEnabled = true;
+            this.Region0.Location = new System.Drawing.Point(204, 27);
+            this.Region0.Name = "Region0";
+            this.Region0.Size = new System.Drawing.Size(102, 21);
+            this.Region0.TabIndex = 84;
+            // 
+            // CB_Country4
+            // 
+            this.CB_Country4.DropDownWidth = 180;
+            this.CB_Country4.FormattingEnabled = true;
+            this.CB_Country4.Location = new System.Drawing.Point(82, 158);
+            this.CB_Country4.Name = "CB_Country4";
+            this.CB_Country4.Size = new System.Drawing.Size(102, 21);
+            this.CB_Country4.TabIndex = 83;
+            // 
+            // CB_Country3
+            // 
+            this.CB_Country3.DropDownWidth = 180;
+            this.CB_Country3.FormattingEnabled = true;
+            this.CB_Country3.Location = new System.Drawing.Point(82, 126);
+            this.CB_Country3.Name = "CB_Country3";
+            this.CB_Country3.Size = new System.Drawing.Size(102, 21);
+            this.CB_Country3.TabIndex = 82;
+            // 
+            // CB_Country2
+            // 
+            this.CB_Country2.DropDownWidth = 180;
+            this.CB_Country2.FormattingEnabled = true;
+            this.CB_Country2.Location = new System.Drawing.Point(82, 93);
+            this.CB_Country2.Name = "CB_Country2";
+            this.CB_Country2.Size = new System.Drawing.Size(102, 21);
+            this.CB_Country2.TabIndex = 81;
+            // 
+            // CB_Country1
+            // 
+            this.CB_Country1.DropDownWidth = 180;
+            this.CB_Country1.FormattingEnabled = true;
+            this.CB_Country1.Location = new System.Drawing.Point(82, 60);
+            this.CB_Country1.Name = "CB_Country1";
+            this.CB_Country1.Size = new System.Drawing.Size(102, 21);
+            this.CB_Country1.TabIndex = 80;
+            // 
+            // CB_Country0
+            // 
+            this.CB_Country0.DropDownWidth = 180;
+            this.CB_Country0.FormattingEnabled = true;
+            this.CB_Country0.Location = new System.Drawing.Point(82, 27);
+            this.CB_Country0.Name = "CB_Country0";
+            this.CB_Country0.Size = new System.Drawing.Size(102, 21);
+            this.CB_Country0.TabIndex = 79;
+            // 
+            // L_Geo4
+            // 
+            this.L_Geo4.Location = new System.Drawing.Point(-1, 162);
+            this.L_Geo4.Name = "L_Geo4";
+            this.L_Geo4.Size = new System.Drawing.Size(80, 13);
+            this.L_Geo4.TabIndex = 78;
+            this.L_Geo4.Text = "Past 4:";
+            this.L_Geo4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // L_Geo3
+            // 
+            this.L_Geo3.Location = new System.Drawing.Point(0, 130);
+            this.L_Geo3.Name = "L_Geo3";
+            this.L_Geo3.Size = new System.Drawing.Size(80, 13);
+            this.L_Geo3.TabIndex = 77;
+            this.L_Geo3.Text = "Past 3:";
+            this.L_Geo3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // L_Geo2
+            // 
+            this.L_Geo2.Location = new System.Drawing.Point(0, 97);
+            this.L_Geo2.Name = "L_Geo2";
+            this.L_Geo2.Size = new System.Drawing.Size(80, 13);
+            this.L_Geo2.TabIndex = 76;
+            this.L_Geo2.Text = "Past 2:";
+            this.L_Geo2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // L_Country
+            // 
+            this.L_Country.Location = new System.Drawing.Point(104, 12);
+            this.L_Country.Name = "L_Country";
+            this.L_Country.Size = new System.Drawing.Size(80, 13);
+            this.L_Country.TabIndex = 74;
+            this.L_Country.Text = "Country";
+            this.L_Country.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // L_Region
+            // 
+            this.L_Region.Location = new System.Drawing.Point(226, 12);
+            this.L_Region.Name = "L_Region";
+            this.L_Region.Size = new System.Drawing.Size(80, 13);
+            this.L_Region.TabIndex = 73;
+            this.L_Region.Text = "Region";
+            this.L_Region.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // L_Geo1
+            // 
+            this.L_Geo1.Location = new System.Drawing.Point(0, 64);
+            this.L_Geo1.Name = "L_Geo1";
+            this.L_Geo1.Size = new System.Drawing.Size(80, 13);
+            this.L_Geo1.TabIndex = 69;
+            this.L_Geo1.Text = "Past 1:";
+            this.L_Geo1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // L_Geo0
+            // 
+            this.L_Geo0.Location = new System.Drawing.Point(-1, 31);
+            this.L_Geo0.Name = "L_Geo0";
+            this.L_Geo0.Size = new System.Drawing.Size(80, 13);
+            this.L_Geo0.TabIndex = 68;
+            this.L_Geo0.Text = "Latest:";
+            this.L_Geo0.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // CB_Handler
+            // 
+            this.CB_Handler.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_Handler.Enabled = true;
+            this.CB_Handler.FormattingEnabled = true;
+            this.CB_Handler.Location = new System.Drawing.Point(174, 281);
+            this.CB_Handler.Name = "CB_Handler";
+            this.CB_Handler.Size = new System.Drawing.Size(117, 21);
+            this.CB_Handler.TabIndex = 110;
+
+            int xmove = 80;
+            // 
+            // L_Enjoyment
+            // 
+            this.L_Enjoyment.Location = new System.Drawing.Point(93+xmove, 313);
+            this.L_Enjoyment.Name = "L_Enjoyment";
+            this.L_Enjoyment.Size = new System.Drawing.Size(70, 13);
+            this.L_Enjoyment.TabIndex = 108;
+            this.L_Enjoyment.Text = "Enjoyment:";
+            this.L_Enjoyment.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // L_Fullness
+            // 
+            this.L_Fullness.Location = new System.Drawing.Point(0 + xmove, 313);
+            this.L_Fullness.Name = "L_Fullness";
+            this.L_Fullness.Size = new System.Drawing.Size(60, 13);
+            this.L_Fullness.TabIndex = 107;
+            this.L_Fullness.Text = "Fullness:";
+            this.L_Fullness.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // M_Fullness
+            // 
+            this.M_Fullness.Location = new System.Drawing.Point(63 + xmove, 310);
+            this.M_Fullness.Mask = "000";
+            this.M_Fullness.Name = "M_Fullness";
+            this.M_Fullness.Size = new System.Drawing.Size(24, 20);
+            this.M_Fullness.TabIndex = 103;
+            this.M_Fullness.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // M_Enjoyment
+            // 
+            this.M_Enjoyment.Location = new System.Drawing.Point(166 + xmove, 310);
+            this.M_Enjoyment.Mask = "000";
+            this.M_Enjoyment.Name = "M_Enjoyment";
+            this.M_Enjoyment.Size = new System.Drawing.Size(24, 20);
+            this.M_Enjoyment.TabIndex = 104;
+            this.M_Enjoyment.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // CHK_Memories
+            // 
+            this.CHK_Memories.AutoSize = true;
+            this.CHK_Memories.Checked = false;
+            this.CHK_Memories.CheckState = System.Windows.Forms.CheckState.Unchecked;
+            this.CHK_Memories.Location = new System.Drawing.Point(862, 10);
+            this.CHK_Memories.Name = "CHK_Memories";
+            this.CHK_Memories.Size = new System.Drawing.Size(15, 14);
+            this.CHK_Memories.TabIndex = 57;
+            this.CHK_Memories.UseVisualStyleBackColor = true;
+            this.CHK_Memories.CheckedChanged += new System.EventHandler(this.CHK_Memories_CheckedChanged);
+            // 
             // OverForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(868, 405);
+            this.ClientSize = new System.Drawing.Size(1275, 405);
+            this.Controls.Add(this.CHK_Memories);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.CHK_Country);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.B_Mass_Edit);
@@ -1157,8 +1921,20 @@ namespace Mass_Editor
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.Tab_OTMemory.ResumeLayout(false);
+            this.GB_M_OT.ResumeLayout(false);
+            this.GB_M_OT.PerformLayout();
+            this.Tab_CTMemory.ResumeLayout(false);
+            this.GB_M_CT.ResumeLayout(false);
+            this.GB_M_CT.PerformLayout();
+            this.Tab_Residence.ResumeLayout(false);
+            this.GB_Residence.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
+            #endregion
         }
 
         private void OverForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -1177,6 +1953,11 @@ namespace Mass_Editor
                     thread2.Abort();
                 }
             }
+        }
+
+        private void CHK_Memories_CheckedChanged(object sender, EventArgs e)
+        {
+            groupBox5.Enabled = CHK_Memories.Checked;
         }
 
        
