@@ -602,8 +602,8 @@ namespace Mass_Editor
             // 
             this.GB_EggConditions.Controls.Add(this.CB_EggLocation);
             this.GB_EggConditions.Controls.Add(this.CAL_EggDate);
-            this.GB_EggConditions.Controls.Add(this.Label_EggDate);
-            this.GB_EggConditions.Controls.Add(this.Label_EggLocation);
+   //         this.GB_EggConditions.Controls.Add(this.Label_EggDate);
+   //         this.GB_EggConditions.Controls.Add(this.Label_EggLocation);
             this.GB_EggConditions.Enabled = false;
             this.GB_EggConditions.Location = new System.Drawing.Point(11, 194);
             this.GB_EggConditions.Name = "GB_EggConditions";
@@ -642,7 +642,7 @@ namespace Mass_Editor
             this.Label_EggDate.Size = new System.Drawing.Size(63, 13);
             this.Label_EggDate.TabIndex = 8;
             this.Label_EggDate.Text = "Date:";
-            this.Label_EggDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Label_EggDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Label_EggLocation
             // 
@@ -651,7 +651,7 @@ namespace Mass_Editor
             this.Label_EggLocation.Size = new System.Drawing.Size(63, 13);
             this.Label_EggLocation.TabIndex = 6;
             this.Label_EggLocation.Text = "Location:";
-            this.Label_EggLocation.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Label_EggLocation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Label_EncounterType
             // 
