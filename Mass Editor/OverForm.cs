@@ -244,6 +244,8 @@ namespace Mass_Editor
             CB_Country = f.getCB_Country();
             CB_SubRegion = f.getCB_SubRegion();
             CB_3DSReg = f.getCB_3DSReg();
+            Label_EggLocation = f.getLabel_EggLocation();
+            Label_EggDate = f.getLabel_EggDate();
             tabControl1 = ma.tabControl1;
             M_OT_Friendship = ma.M_OT_Friendship;
             M_OT_Affection = ma.M_OT_Affection;
@@ -338,8 +340,8 @@ namespace Mass_Editor
             this.CHK_Met = new System.Windows.Forms.CheckBox();
 
 
-            this.Label_EggDate = new System.Windows.Forms.Label();
-            this.Label_EggLocation = new System.Windows.Forms.Label();
+      //      this.Label_EggDate = new System.Windows.Forms.Label();
+      //      this.Label_EggLocation = new System.Windows.Forms.Label();
             this.Label_EncounterType = new System.Windows.Forms.Label();
             this.Label_MetDate = new System.Windows.Forms.Label();
             this.Label_MetLevel = new System.Windows.Forms.Label();

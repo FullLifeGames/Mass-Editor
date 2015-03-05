@@ -5028,5 +5028,16 @@ namespace Mass_Editor
         {
             return CB_3DSReg;
         }
+
+
+        internal Label getLabel_EggDate()
+        {
+            return Label_EggDate;
+        }
+
+        internal Label getLabel_EggLocation()
+        {
+            return Label_EggLocation;
+        }
     }
 }
