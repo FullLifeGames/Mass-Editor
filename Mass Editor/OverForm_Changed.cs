@@ -7,6 +7,7 @@ namespace Mass_Editor
 {
     partial class OverForm
     {
+
         private void textBox6_TextChanged(object sender, EventArgs e)
         {
             if (textBox6.Text != "")
@@ -29,19 +30,77 @@ namespace Mass_Editor
             }
         }
 
-        private void CB_Met_Changed(object sender, System.EventArgs e)
-        {
-            GB_Met.Enabled = CHK_Met.Checked;
-        }
-
         private void CB_ChangeOT_Changed(object sender, System.EventArgs e)
         {
             groupBox1.Enabled = CHK_ChangeOT.Checked;
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void CB_Met_Changed(object sender, System.EventArgs e)
+        {
+            GB_Met.Enabled = CHK_Met.Checked;
+        }
+
+        private void CHK_Country_CheckedChanged(object sender, EventArgs e)
         {
             groupBox4.Enabled = CHK_Country.Checked;
+        }
+
+        private void CHK_Memories_CheckedChanged(object sender, EventArgs e)
+        {
+            groupBox5.Enabled = CHK_Memories.Checked;
+        }
+
+        private void CHK_Reroll_CheckedChanged(object sender, EventArgs e)
+        {
+        /*    if (CHK_Reroll.Checked)
+            {
+                if (CHK_Unshiny.Checked)
+                {
+                    CHK_Unshiny.Checked = !CHK_Unshiny.Checked;
+                }
+
+                if (CHK_Shiny.Checked)
+                {
+                    CHK_Shiny.Checked = !CHK_Shiny.Checked;
+                }
+            }*/
+        }
+
+        private void CHK_Shiny_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CHK_Shiny.Checked)
+            {
+                if (CHK_Unshiny.Checked)
+                {
+                    CHK_Unshiny.Checked = !CHK_Unshiny.Checked;
+                }
+
+       /*         if (CHK_Reroll.Checked)
+                {
+                    CHK_Reroll.Checked = !CHK_Reroll.Checked;
+                }*/
+            }
+        }
+
+        private void CHK_Unshiny_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CHK_Unshiny.Checked)
+            {
+                if (CHK_Shiny.Checked)
+                {
+                    CHK_Shiny.Checked = !CHK_Shiny.Checked;
+                }
+
+  /*              if (CHK_Reroll.Checked)
+                {
+                    CHK_Reroll.Checked = !CHK_Reroll.Checked;
+                }*/
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            Label_OTGender.Enabled = checkBox1.Checked;
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
@@ -63,16 +122,17 @@ namespace Mass_Editor
         {
             CB_3DSReg.Enabled = checkBox5.Checked;
         }
+        
+        private void checkBox6_CheckedChanged(object sender, EventArgs e)
+        {           
+            CB_GameOrigin.Enabled = checkBox6.Checked;
+        }
 
         private void checkBox7_CheckedChanged(object sender, EventArgs e)
         {
             CB_MetLocation.Enabled = checkBox7.Checked;
         }
-
-        private void checkBox6_CheckedChanged(object sender, EventArgs e)
-        {           
-            CB_GameOrigin.Enabled = checkBox6.Checked;
-        }
+  
         private void checkBox8_CheckedChanged(object sender, EventArgs e)
         {
             CB_Ball.Enabled = checkBox8.Checked;
@@ -131,7 +191,12 @@ namespace Mass_Editor
         private void checkBox19_CheckedChanged(object sender, EventArgs e)
         {
             textBox4.Enabled = checkBox19.Checked;
-        }     
+        }
+
+        private void checkBox20_CheckedChanged(object sender, EventArgs e)
+        {
+            Label_CTGender.Enabled = checkBox20.Checked;
+        }
 
     }
 }

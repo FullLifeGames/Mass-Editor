@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -12,14 +13,26 @@ namespace Mass_Editor
 {
     public partial class OverForm : Form
     {
+
+        #region Global Variables: Always Visible!
         Form1 f;
         MemoryAmie ma;
+        bool running = false;
+        Thread thread = null;
+        Thread thread2 = null;
+        #endregion
 
         public OverForm()
         {
             // Using another Initialize Method to use objects from another Form
         //    InitializeComponent();
             InitializeComponents();
+            string filename = Path.GetFileNameWithoutExtension(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
+            if (filename.IndexOf("Mess") >= 0)
+            {
+                this.Text = "Mess Editor";
+                Util.Alert("Illegal mode activated.", "Please behave.");
+            }
             enableAll();
         }
 
@@ -53,6 +66,7 @@ namespace Mass_Editor
         }
         #endregion
 
+        #region Enable & Disable
         private void disableAll()
         {
             bool b = false;
@@ -124,6 +138,7 @@ namespace Mass_Editor
             CHK_Country.Enabled = b;
             groupBox5.Enabled = CHK_Memories.Checked;
         }
+        #endregion
 
         private void B_Mass_Edit_Click(object sender, EventArgs e)
         {
@@ -140,8 +155,9 @@ namespace Mass_Editor
                 string level = textBox6.Text;
                 bool[] countrybool = { checkBox2.Checked, checkBox3.Checked, checkBox4.Checked, checkBox5.Checked };
                 bool[] metbool = { checkBox6.Checked, checkBox7.Checked, checkBox8.Checked, checkBox9.Checked, checkBox10.Checked, checkBox11.Checked, checkBox12.Checked, checkBox13.Checked, checkBox14.Checked, checkBox15.Checked };
-                bool[] otbool = { checkBox16.Checked, checkBox18.Checked, checkBox17.Checked, checkBox19.Checked };
+                bool[] otbool = { checkBox16.Checked, checkBox18.Checked, checkBox17.Checked, checkBox19.Checked, checkBox1.Checked, checkBox20.Checked };
                 int[] otindexes = { CB_Language.SelectedIndex, CB_Country.SelectedIndex, CB_SubRegion.SelectedIndex, CB_3DSReg.SelectedIndex };
+                string[] otgenders = { Label_OTGender.Text, Label_CTGender.Text };
                 List<string> litems = new List<string>();
                 foreach (ListViewItem l in listView1.Items)
                 {
@@ -162,10 +178,6 @@ namespace Mass_Editor
 
                 Met m = new Met(CB_GameOrigin.SelectedIndex, CB_MetLocation.SelectedIndex, CB_Ball.SelectedIndex, TB_MetLevel.Text, CAL_MetDate.Value, CHK_Fateful.Checked, CB_EncounterType.Enabled, CB_EncounterType.SelectedIndex, CHK_AsEgg.Checked, CB_EggLocation.SelectedIndex, CAL_EggDate.Value);
 
-                if (CHK_Shiny.Checked)
-                {
-                    modes.Add(0);
-                }
                 if (CHK_Unshiny.Checked)
                 {
                     modes.Add(1);
@@ -206,9 +218,18 @@ namespace Mass_Editor
                 {
                     modes.Add(10);
                 }
+                if (CHK_PPMax.Checked)
+                {
+                    modes.Add(11);
+                }
+                if (CHK_Shiny.Checked)
+                {
+                    modes.Add(12);
+                }
 
+                string filename = Path.GetFileNameWithoutExtension(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
                 // thread for free UI
-                thread = new Thread(delegate() { Form1 f1 = new Form1(litems, modes, this.progressBar1, ret, friendship, level, m, bak, otindexes, countrybool, metbool, otbool, amienabled, amiindex); f1.Form1_Load(new object(), new EventArgs()); f1.Dispose(); });
+                thread = new Thread(delegate() { Form1 f1 = new Form1(litems, modes, this.progressBar1, ret, friendship, level, m, bak, otindexes, countrybool, metbool, otbool, amienabled, amiindex, otgenders, (filename.IndexOf("Mess") >= 0)); f1.Form1_Load(new object(), new EventArgs()); f1.Dispose(); });
                 thread.SetApartmentState(ApartmentState.STA);
 
                 // thread2 is basically my thread_finished_Eventhandler
@@ -217,11 +238,6 @@ namespace Mass_Editor
                 thread2.Start();
             }
         }
-
-        bool running = false;
-
-        Thread thread = null;
-        Thread thread2 = null;
 
         private void InitializeComponents()
         {
@@ -244,8 +260,8 @@ namespace Mass_Editor
             CB_Country = f.getCB_Country();
             CB_SubRegion = f.getCB_SubRegion();
             CB_3DSReg = f.getCB_3DSReg();
-            Label_EggLocation = f.getLabel_EggLocation();
-            Label_EggDate = f.getLabel_EggDate();
+            Label_OTGender = f.Label_OTGender;
+            Label_CTGender = f.Label_CTGender;
             tabControl1 = ma.tabControl1;
             M_OT_Friendship = ma.M_OT_Friendship;
             M_OT_Affection = ma.M_OT_Affection;
@@ -338,10 +354,12 @@ namespace Mass_Editor
             this.CHK_Reroll = new System.Windows.Forms.CheckBox();
             this.CHK_Bak = new System.Windows.Forms.CheckBox();
             this.CHK_Met = new System.Windows.Forms.CheckBox();
+            this.checkBox20 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.CHK_PPMax = new System.Windows.Forms.CheckBox();
 
-
-      //      this.Label_EggDate = new System.Windows.Forms.Label();
-      //      this.Label_EggLocation = new System.Windows.Forms.Label();
+            this.Label_EggDate = new System.Windows.Forms.Label();
+            this.Label_EggLocation = new System.Windows.Forms.Label();
             this.Label_EncounterType = new System.Windows.Forms.Label();
             this.Label_MetDate = new System.Windows.Forms.Label();
             this.Label_MetLevel = new System.Windows.Forms.Label();
@@ -478,6 +496,7 @@ namespace Mass_Editor
             this.CHK_Unshiny.TabIndex = 15;
             this.CHK_Unshiny.Text = "Make them unshiny";
             this.CHK_Unshiny.UseVisualStyleBackColor = true;
+            this.CHK_Unshiny.CheckedChanged += new System.EventHandler(this.CHK_Unshiny_CheckedChanged);
             // 
             // CHK_Shiny
             // 
@@ -488,11 +507,12 @@ namespace Mass_Editor
             this.CHK_Shiny.TabIndex = 16;
             this.CHK_Shiny.Text = "Make them shiny";
             this.CHK_Shiny.UseVisualStyleBackColor = true;
+            this.CHK_Shiny.CheckedChanged += new System.EventHandler(this.CHK_Shiny_CheckedChanged);
             // 
             // CHK_Perfect_IVs
             // 
             this.CHK_Perfect_IVs.AutoSize = true;
-            this.CHK_Perfect_IVs.Location = new System.Drawing.Point(148, 67);
+            this.CHK_Perfect_IVs.Location = new System.Drawing.Point(290, 44);
             this.CHK_Perfect_IVs.Name = "CHK_Perfect_IVs";
             this.CHK_Perfect_IVs.Size = new System.Drawing.Size(104, 17);
             this.CHK_Perfect_IVs.TabIndex = 17;
@@ -543,7 +563,7 @@ namespace Mass_Editor
             // CHK_DeleteNicknames
             // 
             this.CHK_DeleteNicknames.AutoSize = true;
-            this.CHK_DeleteNicknames.Location = new System.Drawing.Point(275, 37);
+            this.CHK_DeleteNicknames.Location = new System.Drawing.Point(290, 66);
             this.CHK_DeleteNicknames.Name = "CHK_DeleteNicknames";
             this.CHK_DeleteNicknames.Size = new System.Drawing.Size(113, 17);
             this.CHK_DeleteNicknames.TabIndex = 24;
@@ -553,12 +573,13 @@ namespace Mass_Editor
             // CHK_Reroll
             // 
             this.CHK_Reroll.AutoSize = true;
-            this.CHK_Reroll.Location = new System.Drawing.Point(275, 60);
+            this.CHK_Reroll.Location = new System.Drawing.Point(148, 66);
             this.CHK_Reroll.Name = "CHK_Reroll";
             this.CHK_Reroll.Size = new System.Drawing.Size(136, 17);
             this.CHK_Reroll.TabIndex = 25;
             this.CHK_Reroll.Text = "Reroll Encryption + PID";
             this.CHK_Reroll.UseVisualStyleBackColor = true;
+            this.CHK_Reroll.CheckedChanged += new System.EventHandler(this.CHK_Reroll_CheckedChanged);
             // 
             // CHK_Bak
             // 
@@ -927,6 +948,10 @@ namespace Mass_Editor
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.checkBox20);
+            this.groupBox1.Controls.Add(this.checkBox1);
+            this.groupBox1.Controls.Add(this.Label_CTGender);
+            this.groupBox1.Controls.Add(this.Label_OTGender);
             this.groupBox1.Controls.Add(this.checkBox19);
             this.groupBox1.Controls.Add(this.checkBox18);
             this.groupBox1.Controls.Add(this.checkBox17);
@@ -941,10 +966,54 @@ namespace Mass_Editor
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Location = new System.Drawing.Point(626, 7);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(230, 100);
+            this.groupBox1.Size = new System.Drawing.Size(230, 118);
             this.groupBox1.TabIndex = 45;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Change OT to";
+
+            // checkBox20
+            // 
+            this.checkBox20.AutoSize = true;
+            this.checkBox20.Checked = true;
+            this.checkBox20.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox20.Location = new System.Drawing.Point(209, 97);
+            this.checkBox20.Name = "checkBox20";
+            this.checkBox20.Size = new System.Drawing.Size(15, 14);
+            this.checkBox20.TabIndex = 60;
+            this.checkBox20.UseVisualStyleBackColor = true;
+            this.checkBox20.CheckedChanged += new System.EventHandler(this.checkBox20_CheckedChanged);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(99, 96);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(15, 14);
+            this.checkBox1.TabIndex = 59;
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // Label_CTGender
+            // 
+            this.Label_CTGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_CTGender.Location = new System.Drawing.Point(160, 97);
+            this.Label_CTGender.Name = "Label_CTGender";
+            this.Label_CTGender.Size = new System.Drawing.Size(16, 13);
+            this.Label_CTGender.TabIndex = 58;
+            this.Label_CTGender.Text = "G";
+            this.Label_CTGender.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Label_OTGender
+            // 
+            this.Label_OTGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_OTGender.Location = new System.Drawing.Point(51, 97);
+            this.Label_OTGender.Name = "Label_OTGender";
+            this.Label_OTGender.Size = new System.Drawing.Size(16, 13);
+            this.Label_OTGender.TabIndex = 57;
+            this.Label_OTGender.Text = "G";
+            this.Label_OTGender.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // checkBox19
             // 
@@ -1016,6 +1085,7 @@ namespace Mass_Editor
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.CHK_PPMax);
             this.groupBox2.Controls.Add(this.textBox6);
             this.groupBox2.Controls.Add(this.textBox5);
             this.groupBox2.Controls.Add(this.CHK_Frienship);
@@ -1031,6 +1101,16 @@ namespace Mass_Editor
             this.groupBox2.TabIndex = 48;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Set";
+            // 
+            // CHK_PPMax
+            // 
+            this.CHK_PPMax.AutoSize = true;
+            this.CHK_PPMax.Location = new System.Drawing.Point(290, 21);
+            this.CHK_PPMax.Name = "CHK_PPMax";
+            this.CHK_PPMax.Size = new System.Drawing.Size(63, 17);
+            this.CHK_PPMax.TabIndex = 52;
+            this.CHK_PPMax.Text = "PP Max";
+            this.CHK_PPMax.UseVisualStyleBackColor = true;
             // 
             // textBox6
             // 
@@ -1228,7 +1308,7 @@ namespace Mass_Editor
             this.CHK_Country.Size = new System.Drawing.Size(15, 14);
             this.CHK_Country.TabIndex = 51;
             this.CHK_Country.UseVisualStyleBackColor = true;
-            this.CHK_Country.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.CHK_Country.CheckedChanged += new System.EventHandler(this.CHK_Country_CheckedChanged);
             // 
             // groupBox5
             // 
@@ -1911,6 +1991,7 @@ namespace Mass_Editor
             this.MaximizeBox = false;
             this.Name = "OverForm";
             this.Text = "Mass Editor";
+            this.Load += new System.EventHandler(this.OverForm_Load);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.OverForm_FormClosed);
             this.GB_EggConditions.ResumeLayout(false);
             this.GB_Met.ResumeLayout(false);
@@ -1939,6 +2020,7 @@ namespace Mass_Editor
             #endregion
         }
 
+        #region Load & Close
         private void OverForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (thread != null)
@@ -1957,11 +2039,12 @@ namespace Mass_Editor
             }
         }
 
-        private void CHK_Memories_CheckedChanged(object sender, EventArgs e)
+        private void OverForm_Load(object sender, EventArgs e)
         {
-            groupBox5.Enabled = CHK_Memories.Checked;
+            f.clickTRGender(Label_OTGender, e);
+            f.clickTRGender(Label_CTGender, e);
         }
+        #endregion
 
-       
     }
 }
