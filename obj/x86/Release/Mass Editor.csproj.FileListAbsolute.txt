@@ -1,69 +1,6 @@
-I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\Mass Editor.csprojResolveAssemblyReference.cache
-I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\Mass Editor.csproj.GenerateResource.Cache
-I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\Mass Editor.exe
-I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\Mass Editor.pdb
-I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\bin\Release\Mass Editor.exe.config
-I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\bin\Release\Mass Editor.exe
-I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\bin\Release\Mass Editor.pdb
-I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\Mass_Editor.OverForm.resources
-I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\Mass_Editor.About.resources
-I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\Mass_Editor.CodeGenerator.resources
-I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\Mass_Editor.SplashScreen.resources
-I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\Mass_Editor.Form1.resources
-I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\Mass_Editor.f2_Text.resources
-I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\Mass_Editor.MemoryAmie.resources
-I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\Mass_Editor.RibbMedal.resources
-I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\Mass_Editor.frmReport.resources
-I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\Mass_Editor.SAV_BerryField.resources
-I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\Mass_Editor.SAV_BoxLayout.resources
-I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\Mass_Editor.SAV_EventFlagsORAS.resources
-I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\Mass_Editor.SAV_EventFlagsXY.resources
-I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\Mass_Editor.SAV_HallOfFame.resources
-I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\Mass_Editor.SAV_Inventory.resources
-I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\Mass_Editor.SAV_OPower.resources
-I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\Mass_Editor.SAV_PokedexORAS.resources
-I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\Mass_Editor.SAV_PokedexXY.resources
-I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\Mass_Editor.SAV_Pokepuff.resources
-I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\Mass_Editor.SAV_SecretBase.resources
-I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\Mass_Editor.SAV_SuperTrain.resources
-I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\Mass_Editor.SAV_Trainer.resources
-I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\Mass_Editor.SAV_Wondercard.resources
-I:\Aller mögliche Kram\Pokemon\PKHeX-master - Kopie\obj\x86\Release\Mass_Editor.Properties.Resources.resources
-C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\bin\Release\Mass Editor.exe.config
-C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\bin\Release\Mass Editor.exe
-C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\bin\Release\Mass Editor.pdb
-C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass Editor.csprojResolveAssemblyReference.cache
-C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.OverForm.resources
-C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.About.resources
-C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.CodeGenerator.resources
-C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.SplashScreen.resources
-C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.Form1.resources
-C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.f2_Text.resources
-C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.MemoryAmie.resources
-C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.RibbMedal.resources
-C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.frmReport.resources
-C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.SAV_BerryField.resources
-C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.SAV_BoxLayout.resources
-C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.SAV_EventFlagsORAS.resources
-C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.SAV_EventFlagsXY.resources
-C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.SAV_HallOfFame.resources
-C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.SAV_Inventory.resources
-C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.SAV_OPower.resources
-C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.SAV_PokedexORAS.resources
-C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.SAV_PokedexXY.resources
-C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.SAV_Pokepuff.resources
-C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.SAV_SecretBase.resources
-C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.SAV_SuperTrain.resources
-C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.SAV_Trainer.resources
-C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.SAV_Wondercard.resources
-C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.Properties.Resources.resources
-C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass Editor.csproj.GenerateResource.Cache
-C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass Editor.exe
-C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass Editor.pdb
 C:\Ausbildung\Programming\Mass-Editor\bin\Release\Mass Editor.exe.config
 C:\Ausbildung\Programming\Mass-Editor\bin\Release\Mass Editor.exe
 C:\Ausbildung\Programming\Mass-Editor\bin\Release\Mass Editor.pdb
-C:\Ausbildung\Programming\Mass-Editor\obj\x86\Release\Mass Editor.csprojResolveAssemblyReference.cache
 C:\Ausbildung\Programming\Mass-Editor\obj\x86\Release\Mass_Editor.OverForm.resources
 C:\Ausbildung\Programming\Mass-Editor\obj\x86\Release\Mass_Editor.About.resources
 C:\Ausbildung\Programming\Mass-Editor\obj\x86\Release\Mass_Editor.CodeGenerator.resources
