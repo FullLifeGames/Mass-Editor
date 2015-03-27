@@ -78,6 +78,10 @@
             this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkBox20 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.Label_CTGender = new System.Windows.Forms.Label();
+            this.Label_OTGender = new System.Windows.Forms.Label();
             this.checkBox19 = new System.Windows.Forms.CheckBox();
             this.checkBox18 = new System.Windows.Forms.CheckBox();
             this.checkBox17 = new System.Windows.Forms.CheckBox();
@@ -85,6 +89,7 @@
             this.CHK_Frienship = new System.Windows.Forms.CheckBox();
             this.CHK_Level = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.CHK_PPMax = new System.Windows.Forms.CheckBox();
             this.textBox6 = new System.Windows.Forms.MaskedTextBox();
             this.textBox5 = new System.Windows.Forms.MaskedTextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -250,6 +255,7 @@
             this.CHK_Unshiny.TabIndex = 15;
             this.CHK_Unshiny.Text = "Make them unshiny";
             this.CHK_Unshiny.UseVisualStyleBackColor = true;
+            this.CHK_Unshiny.CheckedChanged += new System.EventHandler(this.CHK_Unshiny_CheckedChanged);
             // 
             // CHK_Shiny
             // 
@@ -260,11 +266,12 @@
             this.CHK_Shiny.TabIndex = 16;
             this.CHK_Shiny.Text = "Make them shiny";
             this.CHK_Shiny.UseVisualStyleBackColor = true;
+            this.CHK_Shiny.CheckedChanged += new System.EventHandler(this.CHK_Shiny_CheckedChanged);
             // 
             // CHK_Perfect_IVs
             // 
             this.CHK_Perfect_IVs.AutoSize = true;
-            this.CHK_Perfect_IVs.Location = new System.Drawing.Point(148, 67);
+            this.CHK_Perfect_IVs.Location = new System.Drawing.Point(290, 44);
             this.CHK_Perfect_IVs.Name = "CHK_Perfect_IVs";
             this.CHK_Perfect_IVs.Size = new System.Drawing.Size(104, 17);
             this.CHK_Perfect_IVs.TabIndex = 17;
@@ -315,7 +322,7 @@
             // CHK_DeleteNicknames
             // 
             this.CHK_DeleteNicknames.AutoSize = true;
-            this.CHK_DeleteNicknames.Location = new System.Drawing.Point(275, 37);
+            this.CHK_DeleteNicknames.Location = new System.Drawing.Point(290, 66);
             this.CHK_DeleteNicknames.Name = "CHK_DeleteNicknames";
             this.CHK_DeleteNicknames.Size = new System.Drawing.Size(113, 17);
             this.CHK_DeleteNicknames.TabIndex = 24;
@@ -325,12 +332,13 @@
             // CHK_Reroll
             // 
             this.CHK_Reroll.AutoSize = true;
-            this.CHK_Reroll.Location = new System.Drawing.Point(275, 60);
+            this.CHK_Reroll.Location = new System.Drawing.Point(148, 66);
             this.CHK_Reroll.Name = "CHK_Reroll";
             this.CHK_Reroll.Size = new System.Drawing.Size(136, 17);
             this.CHK_Reroll.TabIndex = 25;
             this.CHK_Reroll.Text = "Reroll Encryption + PID";
             this.CHK_Reroll.UseVisualStyleBackColor = true;
+            this.CHK_Reroll.CheckedChanged += new System.EventHandler(this.CHK_Reroll_CheckedChanged);
             // 
             // CHK_Bak
             // 
@@ -699,6 +707,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.checkBox20);
+            this.groupBox1.Controls.Add(this.checkBox1);
+            this.groupBox1.Controls.Add(this.Label_CTGender);
+            this.groupBox1.Controls.Add(this.Label_OTGender);
             this.groupBox1.Controls.Add(this.checkBox19);
             this.groupBox1.Controls.Add(this.checkBox18);
             this.groupBox1.Controls.Add(this.checkBox17);
@@ -713,10 +725,54 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Location = new System.Drawing.Point(626, 7);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(230, 100);
+            this.groupBox1.Size = new System.Drawing.Size(230, 118);
             this.groupBox1.TabIndex = 45;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Change OT to";
+            // 
+            // checkBox20
+            // 
+            this.checkBox20.AutoSize = true;
+            this.checkBox20.Checked = true;
+            this.checkBox20.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox20.Location = new System.Drawing.Point(209, 97);
+            this.checkBox20.Name = "checkBox20";
+            this.checkBox20.Size = new System.Drawing.Size(15, 14);
+            this.checkBox20.TabIndex = 60;
+            this.checkBox20.UseVisualStyleBackColor = true;
+            this.checkBox20.CheckedChanged += new System.EventHandler(this.checkBox20_CheckedChanged);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(99, 96);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(15, 14);
+            this.checkBox1.TabIndex = 59;
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // Label_CTGender
+            // 
+            this.Label_CTGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_CTGender.Location = new System.Drawing.Point(160, 97);
+            this.Label_CTGender.Name = "Label_CTGender";
+            this.Label_CTGender.Size = new System.Drawing.Size(16, 13);
+            this.Label_CTGender.TabIndex = 58;
+            this.Label_CTGender.Text = "G";
+            this.Label_CTGender.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Label_OTGender
+            // 
+            this.Label_OTGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_OTGender.Location = new System.Drawing.Point(51, 97);
+            this.Label_OTGender.Name = "Label_OTGender";
+            this.Label_OTGender.Size = new System.Drawing.Size(16, 13);
+            this.Label_OTGender.TabIndex = 57;
+            this.Label_OTGender.Text = "G";
+            this.Label_OTGender.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // checkBox19
             // 
@@ -788,6 +844,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.CHK_PPMax);
             this.groupBox2.Controls.Add(this.textBox6);
             this.groupBox2.Controls.Add(this.textBox5);
             this.groupBox2.Controls.Add(this.CHK_Frienship);
@@ -803,6 +860,16 @@
             this.groupBox2.TabIndex = 48;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Set";
+            // 
+            // CHK_PPMax
+            // 
+            this.CHK_PPMax.AutoSize = true;
+            this.CHK_PPMax.Location = new System.Drawing.Point(290, 21);
+            this.CHK_PPMax.Name = "CHK_PPMax";
+            this.CHK_PPMax.Size = new System.Drawing.Size(63, 17);
+            this.CHK_PPMax.TabIndex = 52;
+            this.CHK_PPMax.Text = "PP Max";
+            this.CHK_PPMax.UseVisualStyleBackColor = true;
             // 
             // textBox6
             // 
@@ -1000,7 +1067,7 @@
             this.CHK_Country.Size = new System.Drawing.Size(15, 14);
             this.CHK_Country.TabIndex = 51;
             this.CHK_Country.UseVisualStyleBackColor = true;
-            this.CHK_Country.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.CHK_Country.CheckedChanged += new System.EventHandler(this.CHK_Country_CheckedChanged);
             // 
             // groupBox5
             // 
@@ -1683,6 +1750,7 @@
             this.Name = "OverForm";
             this.Text = "Mass Editor";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.OverForm_FormClosed);
+            this.Load += new System.EventHandler(this.OverForm_Load);
             this.GB_EggConditions.ResumeLayout(false);
             this.GB_Met.ResumeLayout(false);
             this.GB_Met.PerformLayout();
@@ -1846,5 +1914,10 @@
         private System.Windows.Forms.MaskedTextBox M_Fullness;
         private System.Windows.Forms.MaskedTextBox M_Enjoyment;
         private System.Windows.Forms.CheckBox CHK_Memories;
+        private System.Windows.Forms.CheckBox CHK_PPMax;
+        public System.Windows.Forms.Label Label_CTGender;
+        public System.Windows.Forms.Label Label_OTGender;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox20;
     }
 }

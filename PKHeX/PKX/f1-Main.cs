@@ -35,6 +35,7 @@ namespace Mass_Editor
         private bool[] ot;
         private bool[] amienabled;
         private int[] amiindex;
+        private string[] otgenders;
 
         #region PKHeX Code
 
@@ -151,14 +152,14 @@ namespace Mass_Editor
             this.WindowState = FormWindowState.Minimized;
   //          this.Show();
             this.WindowState = FormWindowState.Normal;
-            if (HaX)
-                Util.Alert("Illegal mode activated.", "Please behave.");
+    /*        if (HaX)
+                Util.Alert("Illegal mode activated.", "Please behave.");*/
             #endregion
             this.Hide();
             this.Tab_Main.Controls.Clear();
         }
 
-        public Form1(List<string> litems, List<int> modes, ProgressBar progressBar, string[] ret, string friendship, string level, Mass_Editor.Met m, bool bak, int[] otindexes, bool[] country, bool[] met, bool[] ot, bool[] amienabled, int[] amiindex)
+        public Form1(List<string> litems, List<int> modes, ProgressBar progressBar, string[] ret, string friendship, string level, Mass_Editor.Met m, bool bak, int[] otindexes, bool[] country, bool[] met, bool[] ot, bool[] amienabled, int[] amiindex, string[] otgenders, bool hax)
         {
             // TODO: Complete member initialization
             this.litems = litems;
@@ -175,6 +176,7 @@ namespace Mass_Editor
             this.ot = ot;
             this.amienabled = amienabled;
             this.amiindex = amiindex;
+            this.otgenders = otgenders;
 
             #region Initialize Form
             InitializeComponent();
@@ -191,6 +193,19 @@ namespace Mass_Editor
             byte[] ezeros = PKX.encryptArray(new byte[232]);
             for (int i = 0; i < 30 * 31; i++)
                 Array.Copy(ezeros, 0, savefile, SaveGame.Box + i * 0xE8, 0xE8);
+            #endregion
+            #region HaX
+            HaX = hax;
+            {
+                CHK_HackedStats.Enabled = CHK_HackedStats.Visible =
+                DEV_Ability.Enabled = DEV_Ability.Visible =
+                MT_Level.Enabled = MT_Level.Visible =
+                TB_AbilityNumber.Visible =
+                MT_Form.Enabled = MT_Form.Visible = HaX;
+
+                TB_Level.Visible =
+                CB_Ability.Visible = !HaX;
+            }
             #endregion
             #region Language Detection before loading
             // Set up Language Selection
@@ -287,8 +302,8 @@ namespace Mass_Editor
             this.WindowState = FormWindowState.Minimized;
             //          this.Show();
             this.WindowState = FormWindowState.Normal;
-            if (HaX)
-                Util.Alert("Illegal mode activated.", "Please behave.");
+       /*     if (HaX)
+                Util.Alert("Illegal mode activated.", "Please behave.");*/
             #endregion
 
         }
@@ -1822,7 +1837,7 @@ namespace Mass_Editor
                 GB_nOT.BackgroundImage = mixedHighlight;
             }
         }
-        private void clickTRGender(object sender, EventArgs e)
+        public void clickTRGender(object sender, EventArgs e)
         {
             Label lbl = sender as Label;
             if (lbl.Text == "")
@@ -4974,10 +4989,7 @@ namespace Mass_Editor
             foreach (int mode in modes)
             {
                 switch (mode)
-                {
-                    case 0:
-                        this.updateShinyPID(sender, e);
-                        break;
+                {                   
                     case 1:
                         this.updateRandomPID(sender, e);
                         break;
@@ -4990,6 +5002,10 @@ namespace Mass_Editor
                             TB_OT.Text = ret[2];
                         if (ot[3])
                             TB_OTt2.Text = ret[3];
+                        if (ot[4])
+                            Label_OTGender.Text = otgenders[0];
+                        if (ot[5])
+                            Label_CTGender.Text = otgenders[1];
                         break;
                     case 3:
                         if (CHK_Nicknamed.Checked)
@@ -5083,96 +5099,18 @@ namespace Mass_Editor
                         MemoryAmie ma = new MemoryAmie(this, amienabled, amiindex);
                         ma.MemoryAmie_Load(ma, null);
                         break;
+                    case 11:
+                        CB_PPu1.SelectedIndex = 3;
+                        CB_PPu2.SelectedIndex = 3;
+                        CB_PPu3.SelectedIndex = 3;
+                        CB_PPu4.SelectedIndex = 3;
+                        break;
+                    case 12:
+                        this.updateShinyPID(sender, e);
+                        break;                    
                 }
             }
         }
 
-        internal ComboBox getCB_GameOrigin()
-        {
-            return CB_GameOrigin;
-        }
-
-        internal ComboBox getCB_MetLocation()
-        {
-            return CB_MetLocation;
-        }
-
-        internal ComboBox getCB_Ball()
-        {
-            return CB_Ball;
-        }
-
-        internal ComboBox getCB_EncounterType()
-        {
-            return CB_EncounterType;
-        }
-
-        internal ComboBox getCB_EggLocation()
-        {
-            CB_EggLocation.Enabled = true;
-            return CB_EggLocation;
-        }
-
-        internal MaskedTextBox getTB_MetLevel()
-        {
-            TB_MetLevel.Text = 1+"";
-            return TB_MetLevel;
-        }
-
-        internal DateTimePicker getCAL_MetDate()
-        {
-            return CAL_MetDate;
-        }
-
-        internal CheckBox getCHK_AsEgg()
-        {
-            return CHK_AsEgg;
-        }
-
-        internal CheckBox getCHK_Fateful()
-        {
-            return CHK_Fateful;
-        }
-
-        internal DateTimePicker getCAL_EggDate()
-        {
-            return CAL_EggDate;
-        }
-
-        internal GroupBox getGB_EggConditions()
-        {
-            return GB_EggConditions;
-        }
-
-        internal ComboBox getCB_Language()
-        {
-            return CB_Language;
-        }
-
-        internal ComboBox getCB_Country()
-        {
-            return CB_Country;
-        }
-
-        internal ComboBox getCB_SubRegion()
-        {
-            return CB_SubRegion;
-        }
-
-        internal ComboBox getCB_3DSReg()
-        {
-            return CB_3DSReg;
-        }
-
-
-        internal Label getLabel_EggDate()
-        {
-            return Label_EggDate;
-        }
-
-        internal Label getLabel_EggLocation()
-        {
-            return Label_EggLocation;
-        }
     }
 }

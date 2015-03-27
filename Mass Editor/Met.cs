@@ -7,6 +7,7 @@ namespace Mass_Editor
 {
     public class Met
     {
+
         public int p1;
         public int p2;
         public int p3;
@@ -21,7 +22,6 @@ namespace Mass_Editor
 
         public Met(int p1, int p2, int p3, string p4, DateTime dateTime1, bool p5, bool p6, int p7, bool p8, int p9, DateTime dateTime2)
         {
-            // TODO: Complete member initialization
             this.p1 = p1;
             this.p2 = p2;
             this.p3 = p3;
@@ -34,5 +34,6 @@ namespace Mass_Editor
             this.p9 = p9;
             this.dateTime2 = dateTime2;
         }
+
     }
 }
