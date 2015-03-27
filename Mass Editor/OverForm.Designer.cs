@@ -109,6 +109,14 @@
             this.Label_Language = new System.Windows.Forms.Label();
             this.CHK_Country = new System.Windows.Forms.CheckBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.checkBox24 = new System.Windows.Forms.CheckBox();
+            this.checkBox23 = new System.Windows.Forms.CheckBox();
+            this.checkBox22 = new System.Windows.Forms.CheckBox();
+            this.checkBox21 = new System.Windows.Forms.CheckBox();
             this.L_Arguments = new System.Windows.Forms.Label();
             this.L_Handler = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -1071,6 +1079,14 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.label5);
+            this.groupBox5.Controls.Add(this.maskedTextBox1);
+            this.groupBox5.Controls.Add(this.maskedTextBox2);
+            this.groupBox5.Controls.Add(this.label7);
+            this.groupBox5.Controls.Add(this.checkBox24);
+            this.groupBox5.Controls.Add(this.checkBox23);
+            this.groupBox5.Controls.Add(this.checkBox22);
+            this.groupBox5.Controls.Add(this.checkBox21);
             this.groupBox5.Controls.Add(this.L_Arguments);
             this.groupBox5.Controls.Add(this.L_Handler);
             this.groupBox5.Controls.Add(this.tabControl1);
@@ -1086,10 +1102,90 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "changeMemoryAmie";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(205, 36);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(52, 13);
+            this.label5.TabIndex = 120;
+            this.label5.Text = "Affection:";
+            // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Enabled = false;
+            this.maskedTextBox1.Location = new System.Drawing.Point(283, 33);
+            this.maskedTextBox1.Mask = "000";
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(24, 20);
+            this.maskedTextBox1.TabIndex = 118;
+            // 
+            // maskedTextBox2
+            // 
+            this.maskedTextBox2.Enabled = false;
+            this.maskedTextBox2.Location = new System.Drawing.Point(129, 33);
+            this.maskedTextBox2.Mask = "000";
+            this.maskedTextBox2.Name = "maskedTextBox2";
+            this.maskedTextBox2.Size = new System.Drawing.Size(24, 20);
+            this.maskedTextBox2.TabIndex = 117;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(49, 36);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(58, 13);
+            this.label7.TabIndex = 119;
+            this.label7.Text = "Friendship:";
+            // 
+            // checkBox24
+            // 
+            this.checkBox24.AutoSize = true;
+            this.checkBox24.Checked = true;
+            this.checkBox24.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox24.Location = new System.Drawing.Point(6, 78);
+            this.checkBox24.Name = "checkBox24";
+            this.checkBox24.Size = new System.Drawing.Size(15, 14);
+            this.checkBox24.TabIndex = 116;
+            this.checkBox24.UseVisualStyleBackColor = true;
+            this.checkBox24.CheckedChanged += new System.EventHandler(this.checkBox24_CheckedChanged);
+            // 
+            // checkBox23
+            // 
+            this.checkBox23.AutoSize = true;
+            this.checkBox23.Location = new System.Drawing.Point(6, 36);
+            this.checkBox23.Name = "checkBox23";
+            this.checkBox23.Size = new System.Drawing.Size(15, 14);
+            this.checkBox23.TabIndex = 115;
+            this.checkBox23.UseVisualStyleBackColor = true;
+            this.checkBox23.CheckedChanged += new System.EventHandler(this.checkBox23_CheckedChanged);
+            // 
+            // checkBox22
+            // 
+            this.checkBox22.AutoSize = true;
+            this.checkBox22.Enabled = false;
+            this.checkBox22.Location = new System.Drawing.Point(184, 36);
+            this.checkBox22.Name = "checkBox22";
+            this.checkBox22.Size = new System.Drawing.Size(15, 14);
+            this.checkBox22.TabIndex = 114;
+            this.checkBox22.UseVisualStyleBackColor = true;
+            this.checkBox22.CheckedChanged += new System.EventHandler(this.checkBox22_CheckedChanged);
+            // 
+            // checkBox21
+            // 
+            this.checkBox21.AutoSize = true;
+            this.checkBox21.Enabled = false;
+            this.checkBox21.Location = new System.Drawing.Point(28, 36);
+            this.checkBox21.Name = "checkBox21";
+            this.checkBox21.Size = new System.Drawing.Size(15, 14);
+            this.checkBox21.TabIndex = 113;
+            this.checkBox21.UseVisualStyleBackColor = true;
+            this.checkBox21.CheckedChanged += new System.EventHandler(this.checkBox21_CheckedChanged);
+            // 
             // L_Arguments
             // 
             this.L_Arguments.AutoSize = true;
-            this.L_Arguments.Location = new System.Drawing.Point(337, 46);
+            this.L_Arguments.Location = new System.Drawing.Point(355, 74);
             this.L_Arguments.Name = "L_Arguments";
             this.L_Arguments.Size = new System.Drawing.Size(33, 13);
             this.L_Arguments.TabIndex = 112;
@@ -1098,7 +1194,7 @@
             // 
             // L_Handler
             // 
-            this.L_Handler.Location = new System.Drawing.Point(43, 284);
+            this.L_Handler.Location = new System.Drawing.Point(61, 312);
             this.L_Handler.Name = "L_Handler";
             this.L_Handler.Size = new System.Drawing.Size(120, 13);
             this.L_Handler.TabIndex = 111;
@@ -1110,7 +1206,7 @@
             this.tabControl1.Controls.Add(this.Tab_OTMemory);
             this.tabControl1.Controls.Add(this.Tab_CTMemory);
             this.tabControl1.Controls.Add(this.Tab_Residence);
-            this.tabControl1.Location = new System.Drawing.Point(6, 49);
+            this.tabControl1.Location = new System.Drawing.Point(24, 77);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(355, 228);
@@ -1675,14 +1771,14 @@
             this.CB_Handler.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Handler.Enabled = false;
             this.CB_Handler.FormattingEnabled = true;
-            this.CB_Handler.Location = new System.Drawing.Point(174, 281);
+            this.CB_Handler.Location = new System.Drawing.Point(192, 309);
             this.CB_Handler.Name = "CB_Handler";
             this.CB_Handler.Size = new System.Drawing.Size(117, 21);
             this.CB_Handler.TabIndex = 110;
             // 
             // L_Enjoyment
             // 
-            this.L_Enjoyment.Location = new System.Drawing.Point(93, 313);
+            this.L_Enjoyment.Location = new System.Drawing.Point(111, 341);
             this.L_Enjoyment.Name = "L_Enjoyment";
             this.L_Enjoyment.Size = new System.Drawing.Size(70, 13);
             this.L_Enjoyment.TabIndex = 108;
@@ -1691,7 +1787,7 @@
             // 
             // L_Fullness
             // 
-            this.L_Fullness.Location = new System.Drawing.Point(0, 313);
+            this.L_Fullness.Location = new System.Drawing.Point(18, 341);
             this.L_Fullness.Name = "L_Fullness";
             this.L_Fullness.Size = new System.Drawing.Size(60, 13);
             this.L_Fullness.TabIndex = 107;
@@ -1700,7 +1796,7 @@
             // 
             // M_Fullness
             // 
-            this.M_Fullness.Location = new System.Drawing.Point(63, 310);
+            this.M_Fullness.Location = new System.Drawing.Point(81, 338);
             this.M_Fullness.Mask = "000";
             this.M_Fullness.Name = "M_Fullness";
             this.M_Fullness.Size = new System.Drawing.Size(24, 20);
@@ -1709,7 +1805,7 @@
             // 
             // M_Enjoyment
             // 
-            this.M_Enjoyment.Location = new System.Drawing.Point(166, 310);
+            this.M_Enjoyment.Location = new System.Drawing.Point(184, 338);
             this.M_Enjoyment.Mask = "000";
             this.M_Enjoyment.Name = "M_Enjoyment";
             this.M_Enjoyment.Size = new System.Drawing.Size(24, 20);
@@ -1919,5 +2015,13 @@
         public System.Windows.Forms.Label Label_OTGender;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox20;
+        private System.Windows.Forms.CheckBox checkBox24;
+        private System.Windows.Forms.CheckBox checkBox23;
+        private System.Windows.Forms.CheckBox checkBox22;
+        private System.Windows.Forms.CheckBox checkBox21;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
+        private System.Windows.Forms.Label label7;
     }
 }
