@@ -15,17 +15,18 @@ namespace Mass_Editor
     {
 
         #region Global Variables: Always Visible!
-        Form1 f;
-        MemoryAmie ma;
-        bool running = false;
-        Thread thread = null;
-        Thread thread2 = null;
+        private Form1 f;
+        private MemoryAmie ma;
+        private bool running = false;
+        private Thread thread = null;
+        private Thread thread2 = null;
+        private bool switchChecks = true;
         #endregion
 
         public OverForm()
         {
             // Using another Initialize Method to use objects from another Form
-        //    InitializeComponent();
+            //    InitializeComponent();
             InitializeComponents();
             string filename = Path.GetFileNameWithoutExtension(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
             if (filename.IndexOf("Mess") >= 0)
@@ -169,11 +170,15 @@ namespace Mass_Editor
                                     (CB_Country0.SelectedIndex != -1) && CB_Country0.Enabled, (CB_Country1.SelectedIndex != -1) && CB_Country1.Enabled, (CB_Country2.SelectedIndex != -1) && CB_Country2.Enabled, (CB_Country3.SelectedIndex != -1) && CB_Country3.Enabled, (CB_Country4.SelectedIndex != -1) && CB_Country4.Enabled, 
                                     (Region0.Items.Count > 1) && Region0.Enabled, (Region1.Items.Count > 1) && Region1.Enabled, (Region2.Items.Count > 1) && Region2.Enabled, (Region3.Items.Count > 1) && Region3.Enabled, (Region4.Items.Count > 1) && Region4.Enabled,
                                     CB_Handler.Enabled, M_Fullness.Enabled, M_Enjoyment.Enabled };
-                int[] amiindex = { int.Parse(M_OT_Friendship.Text), int.Parse(M_OT_Affection.Text), CB_OTMemory.SelectedIndex, CB_OTVar.SelectedIndex, CB_OTQual.SelectedIndex, CB_OTFeel.SelectedIndex,
-                                    int.Parse(M_CT_Friendship.Text), int.Parse(M_CT_Affection.Text), CB_CTMemory.SelectedIndex, CB_CTVar.SelectedIndex, CB_CTQual.SelectedIndex, CB_CTFeel.SelectedIndex,
+                int[] amiindex = { (M_OT_Friendship.Text=="")?0:int.Parse(M_OT_Friendship.Text), (M_OT_Affection.Text=="")?0:int.Parse(M_OT_Affection.Text), CB_OTMemory.SelectedIndex, CB_OTVar.SelectedIndex, CB_OTQual.SelectedIndex, CB_OTFeel.SelectedIndex,
+                                    (M_CT_Friendship.Text=="")?0:int.Parse(M_CT_Friendship.Text), (M_CT_Affection.Text=="")?0:int.Parse(M_CT_Affection.Text), CB_CTMemory.SelectedIndex, CB_CTVar.SelectedIndex, CB_CTQual.SelectedIndex, CB_CTFeel.SelectedIndex,
                                     CB_Country0.SelectedIndex, CB_Country1.SelectedIndex, CB_Country2.SelectedIndex, CB_Country3.SelectedIndex, CB_Country4.SelectedIndex, 
                                     Region0.SelectedIndex, Region1.SelectedIndex, Region2.SelectedIndex, Region3.SelectedIndex, Region4.SelectedIndex,
-                                    CB_Handler.SelectedIndex, int.Parse(M_Fullness.Text), int.Parse(M_Enjoyment.Text) };
+                                    CB_Handler.SelectedIndex, (M_Fullness.Text=="")?0:int.Parse(M_Fullness.Text), (M_Enjoyment.Text=="")?0:int.Parse(M_Enjoyment.Text) };
+
+                bool amilite = checkBox23.Checked;
+                bool[] amilitebool = { checkBox21.Checked, checkBox22.Checked };
+                int[] amiliteint = { (maskedTextBox2.Text == "") ? 0 : int.Parse(maskedTextBox2.Text), (maskedTextBox1.Text == "") ? 0 : int.Parse(maskedTextBox1.Text) };
 
 
                 Met m = new Met(CB_GameOrigin.SelectedIndex, CB_MetLocation.SelectedIndex, CB_Ball.SelectedIndex, TB_MetLevel.Text, CAL_MetDate.Value, CHK_Fateful.Checked, CB_EncounterType.Enabled, CB_EncounterType.SelectedIndex, CHK_AsEgg.Checked, CB_EggLocation.SelectedIndex, CAL_EggDate.Value);
@@ -229,7 +234,7 @@ namespace Mass_Editor
 
                 string filename = Path.GetFileNameWithoutExtension(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
                 // thread for free UI
-                thread = new Thread(delegate() { Form1 f1 = new Form1(litems, modes, this.progressBar1, ret, friendship, level, m, bak, otindexes, countrybool, metbool, otbool, amienabled, amiindex, otgenders, (filename.IndexOf("Mess") >= 0)); f1.Form1_Load(new object(), new EventArgs()); f1.Dispose(); });
+                thread = new Thread(delegate() { Form1 f1 = new Form1(litems, modes, this.progressBar1, ret, friendship, level, m, bak, otindexes, countrybool, metbool, otbool, amienabled, amiindex, otgenders, (filename.IndexOf("Mess") >= 0), amilite, amilitebool, amiliteint); f1.Form1_Load(new object(), new EventArgs()); f1.Dispose(); });
                 thread.SetApartmentState(ApartmentState.STA);
 
                 // thread2 is basically my thread_finished_Eventhandler
@@ -381,6 +386,14 @@ namespace Mass_Editor
 
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.checkBox24 = new System.Windows.Forms.CheckBox();
+            this.checkBox23 = new System.Windows.Forms.CheckBox();
+            this.checkBox22 = new System.Windows.Forms.CheckBox();
+            this.checkBox21 = new System.Windows.Forms.CheckBox();
             this.CHK_Country = new System.Windows.Forms.CheckBox();
             this.Label_3DSRegion = new System.Windows.Forms.Label();
             this.Label_SubRegion = new System.Windows.Forms.Label();
@@ -625,8 +638,8 @@ namespace Mass_Editor
             // 
             this.GB_EggConditions.Controls.Add(this.CB_EggLocation);
             this.GB_EggConditions.Controls.Add(this.CAL_EggDate);
-   //         this.GB_EggConditions.Controls.Add(this.Label_EggDate);
-   //         this.GB_EggConditions.Controls.Add(this.Label_EggLocation);
+            //         this.GB_EggConditions.Controls.Add(this.Label_EggDate);
+            //         this.GB_EggConditions.Controls.Add(this.Label_EggLocation);
             this.GB_EggConditions.Enabled = false;
             this.GB_EggConditions.Location = new System.Drawing.Point(11, 194);
             this.GB_EggConditions.Name = "GB_EggConditions";
@@ -1312,6 +1325,14 @@ namespace Mass_Editor
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.label5);
+            this.groupBox5.Controls.Add(this.maskedTextBox1);
+            this.groupBox5.Controls.Add(this.maskedTextBox2);
+            this.groupBox5.Controls.Add(this.label7);
+            this.groupBox5.Controls.Add(this.checkBox24);
+            this.groupBox5.Controls.Add(this.checkBox23);
+            this.groupBox5.Controls.Add(this.checkBox22);
+            this.groupBox5.Controls.Add(this.checkBox21);
             this.groupBox5.Controls.Add(this.L_Arguments);
             this.groupBox5.Controls.Add(this.L_Handler);
             this.groupBox5.Controls.Add(this.tabControl1);
@@ -1327,10 +1348,92 @@ namespace Mass_Editor
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Change MemoryAmie to";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Enabled = true;
+            this.label5.Location = new System.Drawing.Point(205, 36);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(52, 13);
+            this.label5.TabIndex = 120;
+            this.label5.Text = "Affection:";
+            // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Enabled = false;
+            this.maskedTextBox1.Location = new System.Drawing.Point(283, 33);
+            this.maskedTextBox1.Mask = "000";
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(24, 20);
+            this.maskedTextBox1.TabIndex = 118;
+            // 
+            // maskedTextBox2
+            // 
+            this.maskedTextBox2.Enabled = false;
+            this.maskedTextBox2.Location = new System.Drawing.Point(129, 33);
+            this.maskedTextBox2.Mask = "000";
+            this.maskedTextBox2.Name = "maskedTextBox2";
+            this.maskedTextBox2.Size = new System.Drawing.Size(24, 20);
+            this.maskedTextBox2.TabIndex = 117;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Enabled = true;
+            this.label7.Location = new System.Drawing.Point(49, 36);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(58, 13);
+            this.label7.TabIndex = 119;
+            this.label7.Text = "Friendship:";
+            // 
+            // checkBox24
+            // 
+            this.checkBox24.AutoSize = true;
+            this.checkBox24.Checked = true;
+            this.checkBox24.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox24.Location = new System.Drawing.Point(6, 78);
+            this.checkBox24.Name = "checkBox24";
+            this.checkBox24.Size = new System.Drawing.Size(15, 14);
+            this.checkBox24.TabIndex = 116;
+            this.checkBox24.UseVisualStyleBackColor = true;
+            this.checkBox24.CheckedChanged += new System.EventHandler(this.checkBox24_CheckedChanged);
+            // 
+            // checkBox23
+            // 
+            this.checkBox23.AutoSize = true;
+            this.checkBox23.Location = new System.Drawing.Point(6, 36);
+            this.checkBox23.Name = "checkBox23";
+            this.checkBox23.Size = new System.Drawing.Size(15, 14);
+            this.checkBox23.TabIndex = 115;
+            this.checkBox23.UseVisualStyleBackColor = true;
+            this.checkBox23.CheckedChanged += new System.EventHandler(this.checkBox23_CheckedChanged);
+            // 
+            // checkBox22
+            // 
+            this.checkBox22.AutoSize = true;
+            this.checkBox22.Enabled = false;
+            this.checkBox22.Location = new System.Drawing.Point(184, 36);
+            this.checkBox22.Name = "checkBox22";
+            this.checkBox22.Size = new System.Drawing.Size(15, 14);
+            this.checkBox22.TabIndex = 114;
+            this.checkBox22.UseVisualStyleBackColor = true;
+            this.checkBox22.CheckedChanged += new System.EventHandler(this.checkBox22_CheckedChanged);
+            // 
+            // checkBox21
+            // 
+            this.checkBox21.AutoSize = true;
+            this.checkBox21.Enabled = false;
+            this.checkBox21.Location = new System.Drawing.Point(28, 36);
+            this.checkBox21.Name = "checkBox21";
+            this.checkBox21.Size = new System.Drawing.Size(15, 14);
+            this.checkBox21.TabIndex = 113;
+            this.checkBox21.UseVisualStyleBackColor = true;
+            this.checkBox21.CheckedChanged += new System.EventHandler(this.checkBox21_CheckedChanged);
+            // 
             // L_Arguments
             // 
             this.L_Arguments.AutoSize = true;
-            this.L_Arguments.Location = new System.Drawing.Point(337, 46);
+            this.L_Arguments.Location = new System.Drawing.Point(355, 74);
             this.L_Arguments.Name = "L_Arguments";
             this.L_Arguments.Size = new System.Drawing.Size(33, 13);
             this.L_Arguments.TabIndex = 112;
@@ -1339,7 +1442,7 @@ namespace Mass_Editor
             // 
             // L_Handler
             // 
-            this.L_Handler.Location = new System.Drawing.Point(43, 284);
+            this.L_Handler.Location = new System.Drawing.Point(61, 312);
             this.L_Handler.Name = "L_Handler";
             this.L_Handler.Size = new System.Drawing.Size(120, 13);
             this.L_Handler.TabIndex = 111;
@@ -1348,7 +1451,7 @@ namespace Mass_Editor
             // 
             // tabControl1
             // 
-            this.tabControl1.Location = new System.Drawing.Point(20, 49);
+            this.tabControl1.Location = new System.Drawing.Point(24, 77);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(355, 228);
@@ -1913,7 +2016,7 @@ namespace Mass_Editor
             this.CB_Handler.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Handler.Enabled = true;
             this.CB_Handler.FormattingEnabled = true;
-            this.CB_Handler.Location = new System.Drawing.Point(174, 281);
+            this.CB_Handler.Location = new System.Drawing.Point(192, 309);
             this.CB_Handler.Name = "CB_Handler";
             this.CB_Handler.Size = new System.Drawing.Size(117, 21);
             this.CB_Handler.TabIndex = 110;
@@ -1922,7 +2025,7 @@ namespace Mass_Editor
             // 
             // L_Enjoyment
             // 
-            this.L_Enjoyment.Location = new System.Drawing.Point(93+xmove, 313);
+            this.L_Enjoyment.Location = new System.Drawing.Point(110 + xmove, 341);
             this.L_Enjoyment.Name = "L_Enjoyment";
             this.L_Enjoyment.Size = new System.Drawing.Size(70, 13);
             this.L_Enjoyment.TabIndex = 108;
@@ -1931,7 +2034,7 @@ namespace Mass_Editor
             // 
             // L_Fullness
             // 
-            this.L_Fullness.Location = new System.Drawing.Point(0 + xmove, 313);
+            this.L_Fullness.Location = new System.Drawing.Point(18 + xmove, 341);
             this.L_Fullness.Name = "L_Fullness";
             this.L_Fullness.Size = new System.Drawing.Size(60, 13);
             this.L_Fullness.TabIndex = 107;
@@ -1940,7 +2043,7 @@ namespace Mass_Editor
             // 
             // M_Fullness
             // 
-            this.M_Fullness.Location = new System.Drawing.Point(63 + xmove, 310);
+            this.M_Fullness.Location = new System.Drawing.Point(81 + xmove, 338);
             this.M_Fullness.Mask = "000";
             this.M_Fullness.Name = "M_Fullness";
             this.M_Fullness.Size = new System.Drawing.Size(24, 20);
@@ -1949,7 +2052,7 @@ namespace Mass_Editor
             // 
             // M_Enjoyment
             // 
-            this.M_Enjoyment.Location = new System.Drawing.Point(166 + xmove, 310);
+            this.M_Enjoyment.Location = new System.Drawing.Point(184 + xmove, 338);
             this.M_Enjoyment.Mask = "000";
             this.M_Enjoyment.Name = "M_Enjoyment";
             this.M_Enjoyment.Size = new System.Drawing.Size(24, 20);

@@ -36,6 +36,9 @@ namespace Mass_Editor
         private bool[] amienabled;
         private int[] amiindex;
         private string[] otgenders;
+        private bool amilite;
+        private bool[] amilitebool;
+        private int[] amiliteint;
 
         #region PKHeX Code
 
@@ -159,9 +162,9 @@ namespace Mass_Editor
             this.Tab_Main.Controls.Clear();
         }
 
-        public Form1(List<string> litems, List<int> modes, ProgressBar progressBar, string[] ret, string friendship, string level, Mass_Editor.Met m, bool bak, int[] otindexes, bool[] country, bool[] met, bool[] ot, bool[] amienabled, int[] amiindex, string[] otgenders, bool hax)
+        public Form1(List<string> litems, List<int> modes, ProgressBar progressBar, string[] ret, string friendship, string level, Mass_Editor.Met m, bool bak, int[] otindexes, bool[] country, bool[] met, bool[] ot, bool[] amienabled, int[] amiindex, string[] otgenders, bool hax, bool amilite, bool[] amilitebool, int[] amiliteint)
         {
-            // TODO: Complete member initialization
+
             this.litems = litems;
             this.modes = modes;
             this.pbr = progressBar;
@@ -177,6 +180,9 @@ namespace Mass_Editor
             this.amienabled = amienabled;
             this.amiindex = amiindex;
             this.otgenders = otgenders;
+            this.amilite = amilite;
+            this.amilitebool = amilitebool;
+            this.amiliteint = amiliteint;
 
             #region Initialize Form
             InitializeComponent();
@@ -5096,7 +5102,7 @@ namespace Mass_Editor
                             CB_3DSReg.SelectedIndex = otindexes[3];
                         break;
                     case 10:
-                        MemoryAmie ma = new MemoryAmie(this, amienabled, amiindex);
+                        MemoryAmie ma = new MemoryAmie(this, amienabled, amiindex, amilite, amilitebool, amiliteint);
                         ma.MemoryAmie_Load(ma, null);
                         break;
                     case 11:

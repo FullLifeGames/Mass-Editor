@@ -198,5 +198,40 @@ namespace Mass_Editor
             Label_CTGender.Enabled = checkBox20.Checked;
         }
 
+        private void checkBox21_CheckedChanged(object sender, EventArgs e)
+        {
+            maskedTextBox2.Enabled = checkBox21.Checked;
+        }
+
+        private void checkBox22_CheckedChanged(object sender, EventArgs e)
+        {
+            maskedTextBox1.Enabled = checkBox22.Checked;
+        }       
+
+        private void checkBox23_CheckedChanged(object sender, EventArgs e)
+        {
+            if (switchChecks)
+            {
+                switchChecks = false;
+                checkBox24.Checked = !checkBox23.Checked;
+                switchChecks = true;
+            }
+            checkBox21.Enabled = checkBox23.Checked;
+            checkBox22.Enabled = checkBox23.Checked;
+            maskedTextBox1.Enabled = checkBox22.Checked;
+            maskedTextBox2.Enabled = checkBox21.Checked;
+        }
+
+        private void checkBox24_CheckedChanged(object sender, EventArgs e)
+        {
+            if (switchChecks)
+            {
+                switchChecks = false;
+                checkBox23.Checked = !checkBox24.Checked;
+                switchChecks = true;
+            }
+            tabControl1.Enabled = checkBox24.Checked;
+        }
+
     }
 }

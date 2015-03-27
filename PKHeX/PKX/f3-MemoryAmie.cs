@@ -13,10 +13,13 @@ namespace Mass_Editor
 {
     public partial class MemoryAmie : Form
     {
-        bool[] amienabled;
-        int[] amiindex;
+        private bool[] amienabled;
+        private int[] amiindex;
+        private bool amilite;
+        private bool[] amilitebool;
+        private int[] amiliteint;
 
-        Form1 m_parent;
+        private Form1 m_parent;
         public byte[] h = new byte[260]; // Always Visible
         private string disabled = "Disabled";
         private string notleft = "Never left";
@@ -51,10 +54,14 @@ namespace Mass_Editor
             getLangStrings();
             loadFields();
         }
-        public MemoryAmie(Form1 frm1, bool[] amienabled, int[] amiindex)
+        public MemoryAmie(Form1 frm1, bool[] amienabled, int[] amiindex, bool amilite, bool[] amilitebool, int[] amiliteint)
         {
             this.amienabled = amienabled;
             this.amiindex = amiindex;
+            this.amilite = amilite;
+            this.amilitebool = amilitebool;
+            this.amiliteint = amiliteint;
+
             InitializeComponent();
             Util.TranslateInterface(this, Form1.curlanguage);
             m_parent = frm1;
@@ -589,40 +596,50 @@ namespace Mass_Editor
 
         public void MemoryAmie_Load(object sender, EventArgs e)
         {
-            if (amienabled != null && amiindex != null)
+            if (amilite)
             {
-                M_OT_Friendship.Text = amiindex[0] + "";
-                M_OT_Affection.Text = amiindex[1] + "";
-                CB_OTMemory.SelectedIndex = amiindex[2];
-                if (amienabled[3]) CB_OTVar.SelectedIndex = amiindex[3];
-                if (amienabled[4]) CB_OTQual.SelectedIndex = amiindex[4];
-                if (amienabled[5]) CB_OTFeel.SelectedIndex = amiindex[5];
+               if (amilitebool[0]) M_OT_Friendship.Text = amiliteint[0] + "";
+               if (amilitebool[1]) M_OT_Affection.Text = amiliteint[1] + "";
 
-                M_CT_Friendship.Text = amiindex[6] + "";
-                M_CT_Affection.Text = amiindex[7] + "";
-                CB_CTMemory.SelectedIndex = amiindex[8];
-                if (amienabled[9]) CB_CTVar.SelectedIndex = amiindex[9];
-                if (amienabled[10]) CB_CTQual.SelectedIndex = amiindex[10];
-                if (amienabled[11]) CB_CTFeel.SelectedIndex = amiindex[11];
-                
-                if (amienabled[12]) CB_Country0.SelectedIndex = amiindex[12];
-                if (amienabled[13]) CB_Country1.SelectedIndex = amiindex[13];
-                if (amienabled[14]) CB_Country2.SelectedIndex = amiindex[14];
-                if (amienabled[15]) CB_Country3.SelectedIndex = amiindex[15];
-                if (amienabled[16]) CB_Country4.SelectedIndex = amiindex[16];
+               B_Save_Click(BTN_Save, null);
+            }
+            else
+            {
+                if (amienabled != null && amiindex != null)
+                {
+                    M_OT_Friendship.Text = amiindex[0] + "";
+                    M_OT_Affection.Text = amiindex[1] + "";
+                    CB_OTMemory.SelectedIndex = amiindex[2];
+                    if (amienabled[3]) CB_OTVar.SelectedIndex = amiindex[3];
+                    if (amienabled[4]) CB_OTQual.SelectedIndex = amiindex[4];
+                    if (amienabled[5]) CB_OTFeel.SelectedIndex = amiindex[5];
 
-                if (amienabled[17]) Region0.SelectedIndex = amiindex[17];
-                if (amienabled[18]) Region1.SelectedIndex = amiindex[18];
-                if (amienabled[19]) Region2.SelectedIndex = amiindex[19];
-                if (amienabled[20]) Region3.SelectedIndex = amiindex[20];
-                if (amienabled[21]) Region4.SelectedIndex = amiindex[21];
+                    M_CT_Friendship.Text = amiindex[6] + "";
+                    M_CT_Affection.Text = amiindex[7] + "";
+                    CB_CTMemory.SelectedIndex = amiindex[8];
+                    if (amienabled[9]) CB_CTVar.SelectedIndex = amiindex[9];
+                    if (amienabled[10]) CB_CTQual.SelectedIndex = amiindex[10];
+                    if (amienabled[11]) CB_CTFeel.SelectedIndex = amiindex[11];
 
-                if (amienabled[22] && CB_Handler.Items.Count > 0) CB_Handler.SelectedIndex = amiindex[22];
-                M_Fullness.Text = amiindex[23] + "";
-                M_Enjoyment.Text = amiindex[24] + "";
+                    if (amienabled[12]) CB_Country0.SelectedIndex = amiindex[12];
+                    if (amienabled[13]) CB_Country1.SelectedIndex = amiindex[13];
+                    if (amienabled[14]) CB_Country2.SelectedIndex = amiindex[14];
+                    if (amienabled[15]) CB_Country3.SelectedIndex = amiindex[15];
+                    if (amienabled[16]) CB_Country4.SelectedIndex = amiindex[16];
 
-                B_Save_Click(BTN_Save, null);
-            }            
+                    if (amienabled[17]) Region0.SelectedIndex = amiindex[17];
+                    if (amienabled[18]) Region1.SelectedIndex = amiindex[18];
+                    if (amienabled[19]) Region2.SelectedIndex = amiindex[19];
+                    if (amienabled[20]) Region3.SelectedIndex = amiindex[20];
+                    if (amienabled[21]) Region4.SelectedIndex = amiindex[21];
+
+                    if (amienabled[22] && CB_Handler.Items.Count > 0) CB_Handler.SelectedIndex = amiindex[22];
+                    M_Fullness.Text = amiindex[23] + "";
+                    M_Enjoyment.Text = amiindex[24] + "";
+
+                    B_Save_Click(BTN_Save, null);
+                }
+            }
         }
 
     }
