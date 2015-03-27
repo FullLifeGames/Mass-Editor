@@ -60,3 +60,34 @@ C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.Prop
 C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass Editor.csproj.GenerateResource.Cache
 C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass Editor.exe
 C:\Users\Heinrichs\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass Editor.pdb
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\bin\Release\Mass Editor.exe.config
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\bin\Release\Mass Editor.exe
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\bin\Release\Mass Editor.pdb
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass Editor.csprojResolveAssemblyReference.cache
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.OverForm.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.About.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.CodeGenerator.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.SplashScreen.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.Form1.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.f2_Text.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.MemoryAmie.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.RibbMedal.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.frmReport.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.SAV_BerryField.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.SAV_BoxLayout.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.SAV_EventFlagsORAS.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.SAV_EventFlagsXY.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.SAV_HallOfFame.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.SAV_Inventory.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.SAV_OPower.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.SAV_PokedexORAS.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.SAV_PokedexXY.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.SAV_Pokepuff.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.SAV_SecretBase.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.SAV_SuperTrain.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.SAV_Trainer.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.SAV_Wondercard.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.Properties.Resources.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass Editor.csproj.GenerateResource.Cache
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass Editor.exe
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass Editor.pdb

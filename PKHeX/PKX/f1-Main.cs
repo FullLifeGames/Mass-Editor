@@ -18,20 +18,23 @@ namespace Mass_Editor
 {
     public partial class Form1 : Form
     {
-        List<int> modes;
-        ProgressBar pbr;
-        string friendship;
-        string level;
-        Mass_Editor.Met m;
-        bool bak;
-        List<string> litems;
-        string[] ret;
-        int[] otindexes;
-        bool[] country;
-        bool[] met;
-        bool[] ot;
-        bool[] amienabled;
-        int[] amiindex;
+
+        private bool box_load = false;
+
+        private List<int> modes;
+        private ProgressBar pbr;
+        private string friendship;
+        private string level;
+        private Mass_Editor.Met m;
+        private bool bak;
+        private List<string> litems;
+        private string[] ret;
+        private int[] otindexes;
+        private bool[] country;
+        private bool[] met;
+        private bool[] ot;
+        private bool[] amienabled;
+        private int[] amiindex;
 
         #region PKHeX Code
 
@@ -664,7 +667,8 @@ namespace Mass_Editor
                 Array.Copy(input, 0, savefile, SaveGame.Box + 0xE8 * 30 * ((input.Length == 0xE8 * 30) ? C_BoxSelect.SelectedIndex : 0), input.Length);
                 setPKXBoxes();
                 this.Width = largeWidth;
-                Util.Alert("Box Binary loaded.");
+           //     Util.Alert("Box Binary loaded.");
+                box_load = true;
             }
             #endregion
             #region injectiondebug
@@ -4771,6 +4775,7 @@ namespace Mass_Editor
         private void mainMenuOpen(string s)
         {
             string path = s;
+            box_load = false;
             openQuick(path);
         }
 
@@ -4822,134 +4827,264 @@ namespace Mass_Editor
             }
         }
 
+        private bool clickView(object sender)
+        {
+            int slot = getSlot(sender);
+            int offset = getPKXOffset(slot);
+
+            PictureBox[] pba = {
+                                    bpkx1, bpkx2, bpkx3, bpkx4, bpkx5, bpkx6,
+                                    bpkx7, bpkx8, bpkx9, bpkx10,bpkx11,bpkx12,
+                                    bpkx13,bpkx14,bpkx15,bpkx16,bpkx17,bpkx18,
+                                    bpkx19,bpkx20,bpkx21,bpkx22,bpkx23,bpkx24,
+                                    bpkx25,bpkx26,bpkx27,bpkx28,bpkx29,bpkx30,
+
+                                    ppkx1, ppkx2, ppkx3, ppkx4, ppkx5, ppkx6,
+                                    bbpkx1,bbpkx2,bbpkx3,bbpkx4,bbpkx5,bbpkx6,
+
+                                    dcpkx1, dcpkx2, gtspkx, fusedpkx,subepkx1,subepkx2,subepkx3,
+                                };
+
+            PictureBox picturebox = pba[slot];
+            if (picturebox.Image == null)
+            { return false; }
+
+            // Load the PKX file
+            if (BitConverter.ToUInt64(savefile, offset + 8) != 0)
+            {
+                byte[] ekxdata = new byte[0xE8];
+                Array.Copy(savefile, offset, ekxdata, 0, 0xE8);
+                byte[] pkxdata = PKX.decryptArray(ekxdata);
+                int species = BitConverter.ToInt16(pkxdata, 0x08); // Get Species
+                if (species == 0)
+                {
+                    return false;
+                }
+                try
+                {
+                    Array.Copy(pkxdata, buff, 0xE8);
+                    populateFields(buff);
+                }
+                catch // If it fails, try XORing encrypted zeroes
+                {
+                    try
+                    {
+                        byte[] blank = PKX.encryptArray(new byte[0xE8]);
+
+                        for (int i = 0; i < 0xE8; i++)
+                            blank[i] = (byte)(buff[i] ^ blank[i]);
+
+                        populateFields(blank);
+                    }
+                    catch   // Still fails, just let the original errors occur.
+                    { populateFields(buff); }
+                }
+                // Visual to display what slot is currently loaded.
+                getSlotColor(slot, Properties.Resources.slotView);
+            }
+            else
+                return false;
+
+            return true;
+        }
+
         private void ChangeIt(string s)
         {
             object sender = null;
             EventArgs e = null;
             mainMenuOpen(s);
-            try
+            if (box_load)
             {
-                foreach (int mode in modes)
+                for (int i = 0; i < C_BoxSelect.Items.Count; i++)
                 {
-                    switch (mode)
+                    C_BoxSelect.SelectedIndex = i;
+                    PictureBox[] pba = {
+                                    bpkx1, bpkx2, bpkx3, bpkx4, bpkx5, bpkx6,
+                                    bpkx7, bpkx8, bpkx9, bpkx10,bpkx11,bpkx12,
+                                    bpkx13,bpkx14,bpkx15,bpkx16,bpkx17,bpkx18,
+                                    bpkx19,bpkx20,bpkx21,bpkx22,bpkx23,bpkx24,
+                                    bpkx25,bpkx26,bpkx27,bpkx28,bpkx29,bpkx30                                   
+                                };
+                    foreach (PictureBox pictureBox in pba)
                     {
-                        case 0:
-                            this.updateShinyPID(sender, e);
-                            break;
-                        case 1:
-                            this.updateRandomPID(sender, e);
-                            break;
-                        case 2:
-                            if (ot[0])
-                                TB_TID.Text = ret[0];
-                            if (ot[1])
-                                TB_SID.Text = ret[1];
-                            if (ot[2])
-                                TB_OT.Text = ret[2];
-                            if (ot[3])
-                                TB_OTt2.Text = ret[3];
-                            break;
-                        case 3:
-                            if (CHK_Nicknamed.Checked)
+                        bool worked = clickView(pictureBox);
+                        if (worked)
+                        {
+                            try
                             {
-                                CHK_Nicknamed.Checked = false;
+                                massEdit(sender, e);
                             }
-                            Util.cbItem cb = (Util.cbItem)CB_Species.SelectedItem;
-                            TB_Nickname.Text = cb.Text;
-                            break;
-                        case 4:
-                            TB_HPIV.Text = "31";
-                            TB_ATKIV.Text = "31";
-                            TB_DEFIV.Text = "31";
-                            TB_SPAIV.Text = "31";
-                            TB_SPDIV.Text = "31";
-                            TB_SPEIV.Text = "31";
-                            break;
-                        case 5:
-                            this.updateRandomPID(sender, e);
-                            this.updateRandomEC(sender, e);
-                            break;
-                        case 6:
-                            TB_Friendship.Text = friendship;
-                            break;
-                        case 7:
-                            TB_Level.Text = level;
-                            break;
-                        case 8:
-                            if (met[0])
-                                CB_GameOrigin.SelectedIndex = m.p1;
-                            if (met[1])
+                            catch (ArgumentException ae)
                             {
-                                if (CB_GameOrigin.SelectedIndex == m.p1)
-                                {
-                                    CB_MetLocation.SelectedIndex = m.p2;
-                                }
-                                else
-                                {
-                                    string before = ((Util.cbItem)CB_GameOrigin.SelectedItem).Text;
-                                    CB_GameOrigin.SelectedIndex = m.p1;
-                                    string after = ((Util.cbItem)CB_GameOrigin.SelectedItem).Text;
-                                    throw new ArgumentException(before + " | " + after);
-                                }
+                                Util.Error("Illegal Argument Exception", "Incompatible Selections: " + ae.Message);
+                                return;
                             }
-                            if (met[2])
-                                CB_Ball.SelectedIndex = m.p3;
-                            if (met[3])
-                                TB_MetLevel.Text = m.p4;
-                            if (met[4])
-                                CAL_MetDate.Value = m.dateTime1;
-                            if (met[5])
-                                CHK_Fateful.Checked = m.p5;
-                            if (m.p6)
-                            {
-                                if (met[6])
-                                    CB_EncounterType.SelectedIndex = m.p7;
-                            }
-                            if (met[7])
-                                CHK_AsEgg.Checked = m.p8;
-                            if (CHK_AsEgg.Checked)
-                            {
-                                if (met[8])
-                                    CB_EggLocation.SelectedIndex = m.p9;
-                                if (met[9])
-                                    CAL_EggDate.Value = m.dateTime2;
-                            }
-                            break;
-                        case 9:
-                            if (country[0])
-                                CB_Language.SelectedIndex = otindexes[0];
-                            if (country[1])
-                                CB_Country.SelectedIndex = otindexes[1];
-                            if (country[2])
-                            {
-                                if (CB_Country.SelectedIndex == otindexes[1])
-                                {
-                                    CB_SubRegion.SelectedIndex = otindexes[2];
-                                }
-                                else
-                                {
-                                    string before = ((Util.cbItem)CB_Country.SelectedItem).Text;
-                                    CB_Country.SelectedIndex = otindexes[1];
-                                    string after = ((Util.cbItem)CB_Country.SelectedItem).Text;
-                                    throw new ArgumentException(before + " | " + after);
-                                }
-                            }
-                            if (country[3])
-                                CB_3DSReg.SelectedIndex = otindexes[3];
-                            break;
-                        case 10:
-                            MemoryAmie ma = new MemoryAmie(this, amienabled, amiindex);
-                            ma.MemoryAmie_Load(ma, null);
-                            break;
+                            clickSet(pictureBox, e);
+                        }
                     }
                 }
+
+                PictureBox[] pbb = { ppkx1, ppkx2, ppkx3, ppkx4, ppkx5, ppkx6,
+                                    bbpkx1,bbpkx2,bbpkx3,bbpkx4,bbpkx5,bbpkx6,
+                                    dcpkx1, dcpkx2, gtspkx, fusedpkx,subepkx1,subepkx2,subepkx3 };
+
+                foreach (PictureBox pictureBox in pbb)
+                {
+                    bool worked = clickView(pictureBox);
+                    if (worked)
+                    {
+                        try
+                        {
+                            massEdit(sender, e);
+                        }
+                        catch (ArgumentException ae)
+                        {
+                            Util.Error("Illegal Argument Exception", "Incompatible Selections: " + ae.Message);
+                            return;
+                        }
+                        clickSet(pictureBox, e);
+                    }
+                }
+
+                File.WriteAllBytes(s, savefile.Skip(SaveGame.Box).Take(0xE8 * 30 * 31).ToArray());
+
             }
-            catch (ArgumentException ae)
+            else
             {
-                Util.Error("Illegal Argument Exception", "Incompatible Selections: "+ae.Message);
-                return;
+                try
+                {
+                    massEdit(sender, e);
+                }
+                catch (ArgumentException ae)
+                {
+                    Util.Error("Illegal Argument Exception", "Incompatible Selections: " + ae.Message);
+                    return;
+                }
+
+                mainMenuSave(s);
+
             }
-            mainMenuSave(s);
+
+           
+
+        }
+
+        private void massEdit(object sender, EventArgs e)
+        {
+            foreach (int mode in modes)
+            {
+                switch (mode)
+                {
+                    case 0:
+                        this.updateShinyPID(sender, e);
+                        break;
+                    case 1:
+                        this.updateRandomPID(sender, e);
+                        break;
+                    case 2:
+                        if (ot[0])
+                            TB_TID.Text = ret[0];
+                        if (ot[1])
+                            TB_SID.Text = ret[1];
+                        if (ot[2])
+                            TB_OT.Text = ret[2];
+                        if (ot[3])
+                            TB_OTt2.Text = ret[3];
+                        break;
+                    case 3:
+                        if (CHK_Nicknamed.Checked)
+                        {
+                            CHK_Nicknamed.Checked = false;
+                        }
+                        Util.cbItem cb = (Util.cbItem)CB_Species.SelectedItem;
+                        TB_Nickname.Text = cb.Text;
+                        break;
+                    case 4:
+                        TB_HPIV.Text = "31";
+                        TB_ATKIV.Text = "31";
+                        TB_DEFIV.Text = "31";
+                        TB_SPAIV.Text = "31";
+                        TB_SPDIV.Text = "31";
+                        TB_SPEIV.Text = "31";
+                        break;
+                    case 5:
+                        this.updateRandomPID(sender, e);
+                        this.updateRandomEC(sender, e);
+                        break;
+                    case 6:
+                        TB_Friendship.Text = friendship;
+                        break;
+                    case 7:
+                        TB_Level.Text = level;
+                        break;
+                    case 8:
+                        if (met[0])
+                            CB_GameOrigin.SelectedIndex = m.p1;
+                        if (met[1])
+                        {
+                            if (CB_GameOrigin.SelectedIndex == m.p1)
+                            {
+                                CB_MetLocation.SelectedIndex = m.p2;
+                            }
+                            else
+                            {
+                                string before = ((Util.cbItem)CB_GameOrigin.SelectedItem).Text;
+                                CB_GameOrigin.SelectedIndex = m.p1;
+                                string after = ((Util.cbItem)CB_GameOrigin.SelectedItem).Text;
+                                throw new ArgumentException(before + " | " + after);
+                            }
+                        }
+                        if (met[2])
+                            CB_Ball.SelectedIndex = m.p3;
+                        if (met[3])
+                            TB_MetLevel.Text = m.p4;
+                        if (met[4])
+                            CAL_MetDate.Value = m.dateTime1;
+                        if (met[5])
+                            CHK_Fateful.Checked = m.p5;
+                        if (m.p6)
+                        {
+                            if (met[6])
+                                CB_EncounterType.SelectedIndex = m.p7;
+                        }
+                        if (met[7])
+                            CHK_AsEgg.Checked = m.p8;
+                        if (CHK_AsEgg.Checked)
+                        {
+                            if (met[8])
+                                CB_EggLocation.SelectedIndex = m.p9;
+                            if (met[9])
+                                CAL_EggDate.Value = m.dateTime2;
+                        }
+                        break;
+                    case 9:
+                        if (country[0])
+                            CB_Language.SelectedIndex = otindexes[0];
+                        if (country[1])
+                            CB_Country.SelectedIndex = otindexes[1];
+                        if (country[2])
+                        {
+                            if (CB_Country.SelectedIndex == otindexes[1])
+                            {
+                                CB_SubRegion.SelectedIndex = otindexes[2];
+                            }
+                            else
+                            {
+                                string before = ((Util.cbItem)CB_Country.SelectedItem).Text;
+                                CB_Country.SelectedIndex = otindexes[1];
+                                string after = ((Util.cbItem)CB_Country.SelectedItem).Text;
+                                throw new ArgumentException(before + " | " + after);
+                            }
+                        }
+                        if (country[3])
+                            CB_3DSReg.SelectedIndex = otindexes[3];
+                        break;
+                    case 10:
+                        MemoryAmie ma = new MemoryAmie(this, amienabled, amiindex);
+                        ma.MemoryAmie_Load(ma, null);
+                        break;
+                }
+            }
         }
 
         internal ComboBox getCB_GameOrigin()
