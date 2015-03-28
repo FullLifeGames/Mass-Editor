@@ -175,6 +175,7 @@
             this.M_Fullness = new System.Windows.Forms.MaskedTextBox();
             this.M_Enjoyment = new System.Windows.Forms.MaskedTextBox();
             this.CHK_Memories = new System.Windows.Forms.CheckBox();
+            this.CB_ToBox = new System.Windows.Forms.CheckBox();
             this.GB_EggConditions.SuspendLayout();
             this.GB_Met.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -903,10 +904,11 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.CB_ToBox);
             this.groupBox3.Controls.Add(this.CHK_Bak);
             this.groupBox3.Location = new System.Drawing.Point(13, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(131, 48);
+            this.groupBox3.Size = new System.Drawing.Size(145, 66);
             this.groupBox3.TabIndex = 49;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Options";
@@ -914,9 +916,9 @@
             // B_Mass_Edit
             // 
             this.B_Mass_Edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.B_Mass_Edit.Location = new System.Drawing.Point(13, 65);
+            this.B_Mass_Edit.Location = new System.Drawing.Point(12, 83);
             this.B_Mass_Edit.Name = "B_Mass_Edit";
-            this.B_Mass_Edit.Size = new System.Drawing.Size(131, 47);
+            this.B_Mass_Edit.Size = new System.Drawing.Size(143, 47);
             this.B_Mass_Edit.TabIndex = 28;
             this.B_Mass_Edit.Text = "Mass Edit";
             this.B_Mass_Edit.UseVisualStyleBackColor = true;
@@ -1822,6 +1824,16 @@
             this.CHK_Memories.UseVisualStyleBackColor = true;
             this.CHK_Memories.CheckedChanged += new System.EventHandler(this.CHK_Memories_CheckedChanged);
             // 
+            // CB_ToBox
+            // 
+            this.CB_ToBox.AutoSize = true;
+            this.CB_ToBox.Location = new System.Drawing.Point(15, 43);
+            this.CB_ToBox.Name = "CB_ToBox";
+            this.CB_ToBox.Size = new System.Drawing.Size(129, 17);
+            this.CB_ToBox.TabIndex = 28;
+            this.CB_ToBox.Text = "All into Box / PC Data";
+            this.CB_ToBox.UseVisualStyleBackColor = true;
+            // 
             // OverForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2023,5 +2035,6 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
         private System.Windows.Forms.MaskedTextBox maskedTextBox2;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.CheckBox CB_ToBox;
     }
 }

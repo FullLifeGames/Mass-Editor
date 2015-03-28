@@ -39,6 +39,7 @@ namespace Mass_Editor
         private bool amilite;
         private bool[] amilitebool;
         private int[] amiliteint;
+        private bool allintobox;
 
         #region PKHeX Code
 
@@ -162,7 +163,7 @@ namespace Mass_Editor
             this.Tab_Main.Controls.Clear();
         }
 
-        public Form1(List<string> litems, List<int> modes, ProgressBar progressBar, string[] ret, string friendship, string level, Mass_Editor.Met m, bool bak, int[] otindexes, bool[] country, bool[] met, bool[] ot, bool[] amienabled, int[] amiindex, string[] otgenders, bool hax, bool amilite, bool[] amilitebool, int[] amiliteint)
+        public Form1(List<string> litems, List<int> modes, ProgressBar progressBar, string[] ret, string friendship, string level, Mass_Editor.Met m, bool bak, int[] otindexes, bool[] country, bool[] met, bool[] ot, bool[] amienabled, int[] amiindex, string[] otgenders, bool hax, bool amilite, bool[] amilitebool, int[] amiliteint, bool allintobox)
         {
 
             this.litems = litems;
@@ -183,6 +184,7 @@ namespace Mass_Editor
             this.amilite = amilite;
             this.amilitebool = amilitebool;
             this.amiliteint = amiliteint;
+            this.allintobox = allintobox;
 
             #region Initialize Form
             InitializeComponent();
@@ -685,9 +687,12 @@ namespace Mass_Editor
             #region Box Data
             else if ((input.Length == 0xE8 * 30 || input.Length == 0xE8 * 30 * 31) && BitConverter.ToUInt16(input, 4) == 0 && BitConverter.ToUInt32(input, 8) > 0)
             {
-                Array.Copy(input, 0, savefile, SaveGame.Box + 0xE8 * 30 * ((input.Length == 0xE8 * 30) ? C_BoxSelect.SelectedIndex : 0), input.Length);
-                setPKXBoxes();
-                this.Width = largeWidth;
+                if (!allintobox)
+                {
+                    Array.Copy(input, 0, savefile, SaveGame.Box + 0xE8 * 30 * ((input.Length == 0xE8 * 30) ? C_BoxSelect.SelectedIndex : 0), input.Length);
+                    setPKXBoxes();
+                    this.Width = largeWidth;
+                }
            //     Util.Alert("Box Binary loaded.");
                 box_load = true;
             }
@@ -4802,6 +4807,16 @@ namespace Mass_Editor
 
         public void Form1_Load(object sender, EventArgs e)
         {
+
+            if (allintobox)
+            {
+                mainMenuWiden(sender, e);
+                if (this.litems.Count > 0)
+                {
+                    gennedfolder = this.litems[0];
+                }
+            }
+
             foreach (string l in this.litems)
             {
                 if (Directory.Exists(l))
@@ -4825,6 +4840,20 @@ namespace Mass_Editor
                     pbr.Refresh();
                 });
             }
+
+            if (allintobox)
+            {
+
+                if (this.litems.Count > 0)
+                {
+                    FileInfo f = new FileInfo(this.litems[0]);
+
+                    File.WriteAllBytes(f.Directory.FullName + "\\GeneratedBoxFile" + gennedboxfile + ".bin", savefile.Skip(SaveGame.Box).Take(0xE8 * 30 * 31).ToArray());
+                }
+
+            }
+
+
             this.Close();
             this.Dispose();
         }
@@ -4916,6 +4945,12 @@ namespace Mass_Editor
             mainMenuOpen(s);
             if (box_load)
             {
+                if (allintobox)
+                {
+                    Util.Error("Illegal Argument Exception", "\"All into Box / PC Data\" is not compatible with other Box / PC Data", "Ignoring \"" + s + "\"");
+                    return;
+                }
+
                 for (int i = 0; i < C_BoxSelect.Items.Count; i++)
                 {
                     C_BoxSelect.SelectedIndex = i;
@@ -4967,6 +5002,13 @@ namespace Mass_Editor
                     }
                 }
 
+                if (bak)
+                {
+                    // File already exists, save a .bak
+                    byte[] backupfile = File.ReadAllBytes(s);
+                    File.WriteAllBytes(s + ".bak", backupfile);
+                }
+
                 File.WriteAllBytes(s, savefile.Skip(SaveGame.Box).Take(0xE8 * 30 * 31).ToArray());
 
             }
@@ -4982,13 +5024,67 @@ namespace Mass_Editor
                     return;
                 }
 
-                mainMenuSave(s);
+                if (allintobox)
+                {
 
-            }
+                    PictureBox[] pba = {
+                                    bpkx1, bpkx2, bpkx3, bpkx4, bpkx5, bpkx6,
+                                    bpkx7, bpkx8, bpkx9, bpkx10,bpkx11,bpkx12,
+                                    bpkx13,bpkx14,bpkx15,bpkx16,bpkx17,bpkx18,
+                                    bpkx19,bpkx20,bpkx21,bpkx22,bpkx23,bpkx24,
+                                    bpkx25,bpkx26,bpkx27,bpkx28,bpkx29,bpkx30                                   
+                                };
 
-           
+                    if (picturebox == 30)
+                    {
+                        if (box == 30)
+                        {
+
+                            FileInfo f = new FileInfo(gennedfolder);
+
+                            File.WriteAllBytes(f.Directory.FullName + "\\GeneratedBoxFile" + gennedboxfile + ".bin", savefile.Skip(SaveGame.Box).Take(0xE8 * 30 * 31).ToArray());
+
+                            gennedboxfile++;
+
+                            box = 0;
+                            picturebox = 0;
+
+                            for (int i = 0; i < C_BoxSelect.Items.Count; i++)
+                            {
+                                C_BoxSelect.SelectedIndex = i;
+                                foreach (PictureBox pictureBox in pba)
+                                {
+                                    clickDelete(pictureBox, e);
+                                }
+                            }
+
+                        }
+                        else
+                        {
+                            picturebox = 0;
+                            box++;
+                        }
+                        C_BoxSelect.SelectedIndex = box;
+                    }
+
+                    clickSet(pba[picturebox], e);
+
+                    picturebox++;
+
+                }
+                else
+                {
+                    mainMenuSave(s);
+                }
+
+            }           
 
         }
+
+        private int picturebox = 0;
+        private int box = 0;
+        private int gennedboxfile = 0;
+        private string gennedfolder = "";
 
         private void massEdit(object sender, EventArgs e)
         {

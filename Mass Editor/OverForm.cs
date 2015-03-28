@@ -180,6 +180,7 @@ namespace Mass_Editor
                 bool[] amilitebool = { checkBox21.Checked, checkBox22.Checked };
                 int[] amiliteint = { (maskedTextBox2.Text == "") ? 0 : int.Parse(maskedTextBox2.Text), (maskedTextBox1.Text == "") ? 0 : int.Parse(maskedTextBox1.Text) };
 
+                bool allintobox = CB_ToBox.Checked;
 
                 Met m = new Met(CB_GameOrigin.SelectedIndex, CB_MetLocation.SelectedIndex, CB_Ball.SelectedIndex, TB_MetLevel.Text, CAL_MetDate.Value, CHK_Fateful.Checked, CB_EncounterType.Enabled, CB_EncounterType.SelectedIndex, CHK_AsEgg.Checked, CB_EggLocation.SelectedIndex, CAL_EggDate.Value);
 
@@ -234,7 +235,7 @@ namespace Mass_Editor
 
                 string filename = Path.GetFileNameWithoutExtension(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
                 // thread for free UI
-                thread = new Thread(delegate() { Form1 f1 = new Form1(litems, modes, this.progressBar1, ret, friendship, level, m, bak, otindexes, countrybool, metbool, otbool, amienabled, amiindex, otgenders, (filename.IndexOf("Mess") >= 0), amilite, amilitebool, amiliteint); f1.Form1_Load(new object(), new EventArgs()); f1.Dispose(); });
+                thread = new Thread(delegate() { Form1 f1 = new Form1(litems, modes, this.progressBar1, ret, friendship, level, m, bak, otindexes, countrybool, metbool, otbool, amienabled, amiindex, otgenders, (filename.IndexOf("Mess") >= 0), amilite, amilitebool, amiliteint, allintobox); f1.Form1_Load(new object(), new EventArgs()); f1.Dispose(); });
                 thread.SetApartmentState(ApartmentState.STA);
 
                 // thread2 is basically my thread_finished_Eventhandler
@@ -419,6 +420,7 @@ namespace Mass_Editor
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.CHK_Memories = new System.Windows.Forms.CheckBox();
+            this.CB_ToBox = new System.Windows.Forms.CheckBox();
 
             #region DesignCode
             this.GB_EggConditions.SuspendLayout();
@@ -1149,10 +1151,11 @@ namespace Mass_Editor
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.CB_ToBox);
             this.groupBox3.Controls.Add(this.CHK_Bak);
             this.groupBox3.Location = new System.Drawing.Point(13, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(131, 48);
+            this.groupBox3.Size = new System.Drawing.Size(145, 66);
             this.groupBox3.TabIndex = 49;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Options";
@@ -1160,9 +1163,9 @@ namespace Mass_Editor
             // B_Mass_Edit
             // 
             this.B_Mass_Edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.B_Mass_Edit.Location = new System.Drawing.Point(13, 65);
+            this.B_Mass_Edit.Location = new System.Drawing.Point(12, 83);
             this.B_Mass_Edit.Name = "B_Mass_Edit";
-            this.B_Mass_Edit.Size = new System.Drawing.Size(131, 47);
+            this.B_Mass_Edit.Size = new System.Drawing.Size(143, 47);
             this.B_Mass_Edit.TabIndex = 28;
             this.B_Mass_Edit.Text = "Mass Edit";
             this.B_Mass_Edit.UseVisualStyleBackColor = true;
@@ -2071,6 +2074,16 @@ namespace Mass_Editor
             this.CHK_Memories.UseVisualStyleBackColor = true;
             this.CHK_Memories.CheckedChanged += new System.EventHandler(this.CHK_Memories_CheckedChanged);
             // 
+            // CB_ToBox
+            // 
+            this.CB_ToBox.AutoSize = true;
+            this.CB_ToBox.Location = new System.Drawing.Point(15, 43);
+            this.CB_ToBox.Name = "CB_ToBox";
+            this.CB_ToBox.Size = new System.Drawing.Size(129, 17);
+            this.CB_ToBox.TabIndex = 28;
+            this.CB_ToBox.Text = "All into Box / PC Data";
+            this.CB_ToBox.UseVisualStyleBackColor = true;
+            //
             // OverForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
