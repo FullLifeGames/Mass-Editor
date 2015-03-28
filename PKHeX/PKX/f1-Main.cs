@@ -4846,9 +4846,18 @@ namespace Mass_Editor
 
                 if (this.litems.Count > 0)
                 {
+
                     FileInfo f = new FileInfo(this.litems[0]);
 
-                    File.WriteAllBytes(f.Directory.FullName + "\\GeneratedBoxFile" + gennedboxfile + ".bin", savefile.Skip(SaveGame.Box).Take(0xE8 * 30 * 31).ToArray());
+                    if (box == 0)
+                    {
+                        File.WriteAllBytes(f.Directory.FullName + "\\GeneratedBoxFile" + gennedboxfile + ".bin", savefile.Skip(SaveGame.Box + 0xE8 * 30 * C_BoxSelect.SelectedIndex).Take(0xE8 * 30).ToArray());
+                    }
+                    else
+                    {
+                        File.WriteAllBytes(f.Directory.FullName + "\\GeneratedBoxFile" + gennedboxfile + ".bin", savefile.Skip(SaveGame.Box).Take(0xE8 * 30 * 31).ToArray());
+                    }
+                    
                 }
 
             }
