@@ -10,7 +10,7 @@ using System.Text.RegularExpressions;
 
 namespace Mass_Editor
 {
-    public partial class Util
+    public class Util
     {
         // Image Layering/Blending Utility
         internal static Bitmap LayerImage(Image baseLayer, Image overLayer, int x, int y, double trans)
@@ -22,7 +22,7 @@ namespace Mass_Editor
             {
                 Color newColor = overlayImage.GetPixel(i % (overlayImage.Width), i / (overlayImage.Width));
                 Color oldColor = newImage.GetPixel(i % (overlayImage.Width) + x, i / (overlayImage.Width) + y);
-                newColor = Color.FromArgb((int)((double)(newColor.A) * trans), newColor.R, newColor.G, newColor.B); // Apply transparency change
+                newColor = Color.FromArgb((int)(newColor.A * trans), newColor.R, newColor.G, newColor.B); // Apply transparency change
                 // if (newColor.A != 0) // If Pixel isn't transparent, we'll overwrite the color.
                 {
                     // if (newColor.A < 100) 
@@ -40,8 +40,7 @@ namespace Mass_Editor
             if (img == null) return null;
             Bitmap bmp = new Bitmap(img.Width, img.Height); // Determining Width and Height of Source Image
             Graphics graphics = Graphics.FromImage(bmp);
-            ColorMatrix colormatrix = new ColorMatrix();
-            colormatrix.Matrix33 = (float)trans;
+            ColorMatrix colormatrix = new ColorMatrix {Matrix33 = (float) trans};
             ImageAttributes imgAttribute = new ImageAttributes();
             imgAttribute.SetColorMatrix(colormatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
             graphics.DrawImage(img, new Rectangle(0, 0, bmp.Width, bmp.Height), 0, 0, img.Width, img.Height, GraphicsUnit.Pixel, imgAttribute);
@@ -78,7 +77,7 @@ namespace Mass_Editor
         internal static FileInfo GetNewestFile(DirectoryInfo directory)
         {
             return directory.GetFiles()
-                .Union(directory.GetDirectories().Select(d => GetNewestFile(d)))
+                .Union(directory.GetDirectories().Select(GetNewestFile))
                 .OrderByDescending(f => (f == null ? DateTime.MinValue : f.LastWriteTime))
                 .FirstOrDefault();
         }
@@ -132,13 +131,13 @@ namespace Mass_Editor
                 for (int i = 1; i < DriveList.Length; i++) // Skip first drive (some users still have floppy drives and would chew up time!)
                 {
                     string potentialPath = DriveList[i] + Path.DirectorySeparatorChar + "Nintendo 3DS";
-                    if (Directory.Exists(potentialPath))
-                    { path_3DS = potentialPath; break; }
+                    if (!Directory.Exists(potentialPath)) continue;
+
+                    path_3DS = potentialPath; break;
                 }
                 return path_3DS;
             }
-            catch { }
-            return null;
+            catch { return null; }
         }
         internal static string GetSDFLocation()
         {
@@ -150,27 +149,25 @@ namespace Mass_Editor
                 for (int i = 1; i < DriveList.Length; i++) // Skip first drive (some users still have floppy drives and would chew up time!)
                 {
                     string potentialPath_SDF = NormalizePath(Path.Combine(DriveList[i], "filer" + Path.DirectorySeparatorChar + "UserSaveData"));
-                    if (Directory.Exists(potentialPath_SDF))
-                    { path_SDF = potentialPath_SDF; break; }
+                    if (!Directory.Exists(potentialPath_SDF)) continue;
+
+                    path_SDF = potentialPath_SDF; break;
                 }
                 if (path_SDF == null)
                     return null;
-                else
-                {
-                    // 3DS data found in SD card reader. Let's get the title folder location!
-                    string[] folders = Directory.GetDirectories(path_SDF, "*", System.IO.SearchOption.TopDirectoryOnly);
-                    Array.Sort(folders); // Don't need Modified Date, sort by path names just in case.
+                // 3DS data found in SD card reader. Let's get the title folder location!
+                string[] folders = Directory.GetDirectories(path_SDF, "*", SearchOption.TopDirectoryOnly);
+                Array.Sort(folders); // Don't need Modified Date, sort by path names just in case.
 
-                    // Loop through all the folders in the Nintendo 3DS folder to see if any of them contain 'title'.
-                    for (int i = folders.Length - 1; i >= 0; i--)
-                    {
-                        if (File.Exists(Path.Combine(folders[i], "000011c4" + Path.DirectorySeparatorChar + "main"))) return Path.Combine(folders[i], "000011c4"); // OR
-                        if (File.Exists(Path.Combine(folders[i], "000011c5" + Path.DirectorySeparatorChar + "main"))) return Path.Combine(folders[i], "000011c5"); // AS
-                        if (File.Exists(Path.Combine(folders[i], "0000055d" + Path.DirectorySeparatorChar + "main"))) return Path.Combine(folders[i], "0000055d"); // X
-                        if (File.Exists(Path.Combine(folders[i], "0000055e" + Path.DirectorySeparatorChar + "main"))) return Path.Combine(folders[i], "0000055e"); // Y
-                    }
-                    return null; // Fallthrough
+                // Loop through all the folders in the Nintendo 3DS folder to see if any of them contain 'title'.
+                for (int i = folders.Length - 1; i >= 0; i--)
+                {
+                    if (File.Exists(Path.Combine(folders[i], "000011c4" + Path.DirectorySeparatorChar + "main"))) return Path.Combine(folders[i], "000011c4"); // OR
+                    if (File.Exists(Path.Combine(folders[i], "000011c5" + Path.DirectorySeparatorChar + "main"))) return Path.Combine(folders[i], "000011c5"); // AS
+                    if (File.Exists(Path.Combine(folders[i], "0000055d" + Path.DirectorySeparatorChar + "main"))) return Path.Combine(folders[i], "0000055d"); // X
+                    if (File.Exists(Path.Combine(folders[i], "0000055e" + Path.DirectorySeparatorChar + "main"))) return Path.Combine(folders[i], "0000055e"); // Y
                 }
+                return null; // Fallthrough
             }
             catch { return null; }
         }
@@ -181,15 +178,12 @@ namespace Mass_Editor
         internal static string TrimFromZero(string input)
         {
             int index = input.IndexOf('\0');
-            if (index < 0)
-                return input;
-
-            return input.Substring(0, index);
+            return index < 0 ? input : input.Substring(0, index);
         }
         internal static string[] getStringList(string f, string l)
         {
             object txt = Properties.Resources.ResourceManager.GetObject("text_" + f + "_" + l); // Fetch File, \n to list.
-            List<string> rawlist = ((string)txt).Split(new char[] { '\n' }).ToList();
+            List<string> rawlist = ((string)txt).Split(new[] { '\n' }).ToList();
 
             string[] stringdata = new string[rawlist.Count];
             for (int i = 0; i < rawlist.Count; i++)
@@ -200,7 +194,7 @@ namespace Mass_Editor
         internal static string[] getSimpleStringList(string f)
         {
             object txt = Properties.Resources.ResourceManager.GetObject(f); // Fetch File, \n to list.
-            List<string> rawlist = ((string)txt).Split(new char[] { '\n' }).ToList();
+            List<string> rawlist = ((string)txt).Split(new[] { '\n' }).ToList();
 
             string[] stringdata = new string[rawlist.Count];
             for (int i = 0; i < rawlist.Count; i++)
@@ -212,9 +206,9 @@ namespace Mass_Editor
         {
             try
             {
-                string[] newlist = new string[Util.ToInt32(SimpleStringList[SimpleStringList.Length - 1].Split(',')[0]) + 1];
+                string[] newlist = new string[ToInt32(SimpleStringList[SimpleStringList.Length - 1].Split(',')[0]) + 1];
                 for (int i = 1; i < SimpleStringList.Length; i++)
-                    newlist[Util.ToInt32(SimpleStringList[i].Split(',')[0])] = SimpleStringList[i].Split(',')[1];
+                    newlist[ToInt32(SimpleStringList[i].Split(',')[0])] = SimpleStringList[i].Split(',')[1];
                 return newlist;
             }
             catch { return null; }
@@ -255,7 +249,7 @@ namespace Mass_Editor
                 return 0;
             try
             {
-                value = value.TrimEnd(new char[] { '_' });
+                value = value.TrimEnd(new[] { '_' });
                 return Int32.Parse(value);
             }
             catch { return 0; }
@@ -267,7 +261,7 @@ namespace Mass_Editor
                 return 0;
             try
             {
-                value = value.TrimEnd(new char[] { '_' });
+                value = value.TrimEnd(new[] { '_' });
                 return UInt32.Parse(value);
             }
             catch { return 0; }
@@ -281,10 +275,11 @@ namespace Mass_Editor
         }
         internal static int getIndex(ComboBox cb)
         {
-            int val = 0;
-            if (cb.SelectedValue != null)
-                try { val = int.Parse(cb.SelectedValue.ToString()); }
-                catch { val = cb.SelectedIndex; if (val < 0) val = 0; }
+            int val;
+            if (cb.SelectedValue == null) return 0;
+
+            try { val = int.Parse(cb.SelectedValue.ToString()); }
+            catch { val = cb.SelectedIndex; if (val < 0) val = 0; }
 
             return val;
         }
@@ -292,12 +287,10 @@ namespace Mass_Editor
         {
             if (str == null) return "0";
 
-            char c;
             string s = "";
 
-            for (int i = 0; i < str.Length; i++)
+            foreach (char c in str)
             {
-                c = str[i];
                 // filter for hex
                 if ((c < 0x0047 && c > 0x002F) || (c < 0x0067 && c > 0x0060))
                     s += c;
@@ -330,16 +323,15 @@ namespace Mass_Editor
             // debug(Controls);
             // Fetch a File
             // Check to see if a the translation file exists in the same folder as the executable
-            string externalLangPath = System.Windows.Forms.Application.StartupPath + Path.DirectorySeparatorChar + "lang_" + lang + ".txt";
+            string externalLangPath = Application.StartupPath + Path.DirectorySeparatorChar + "lang_" + lang + ".txt";
             string[] rawlist;
             if (File.Exists(externalLangPath))
                 rawlist = File.ReadAllLines(externalLangPath);
             else
             {
-                object txt;
-                txt = Properties.Resources.ResourceManager.GetObject("lang_" + lang); // Fetch File, \n to list.
+                object txt = Properties.Resources.ResourceManager.GetObject("lang_" + lang);
                 if (txt == null) return; // Translation file does not exist as a resource; abort this function and don't translate UI.
-                rawlist = ((string)txt).Split(new string[] { "\n" }, StringSplitOptions.None);
+                rawlist = ((string)txt).Split(new[] { "\n" }, StringSplitOptions.None);
                 rawlist = rawlist.Select(i => i.Trim()).ToArray(); // Remove trailing spaces
             }
 
@@ -348,24 +340,20 @@ namespace Mass_Editor
             for (int i = 0; i < rawlist.Length; i++)
             {
                 // Find our starting point
-                if (rawlist[i].Contains("! " + FORM_NAME)) // Start our data
+                if (!rawlist[i].Contains("! " + FORM_NAME)) continue;
+
+                // Allow renaming of the Window Title
+                string[] WindowName = Regex.Split(rawlist[i], " = ");
+                if (WindowName.Length > 1) form.Text = WindowName[1];
+                // Copy our Control Names and Text to a new array for later processing.
+                for (int j = i + 1; j < rawlist.Length; j++)
                 {
-                    // Allow renaming of the Window Title
-                    string[] WindowName = Regex.Split(rawlist[i], " = ");
-                    if (WindowName.Length > 1) form.Text = WindowName[1];
-                    // Copy our Control Names and Text to a new array for later processing.
-                    for (int j = i + 1; j < rawlist.Length; j++)
-                    {
-                        if (rawlist[j].Length == 0)
-                            continue; // Skip Over Empty Lines, errhandled
-                        if (rawlist[j][0].ToString() != "-") // If line is not a comment line...
-                        {
-                            if (rawlist[j][0].ToString() == "!") // Stop if we have reached the end of translation
-                                goto rename;
-                            stringdata[itemsToRename] = rawlist[j]; // Add the entry to process later.
-                            itemsToRename++;
-                        }
-                    }
+                    if (rawlist[j].Length == 0) continue; // Skip Over Empty Lines, errhandled
+                    if (rawlist[j][0].ToString() == "-") continue; // Keep translating if line is a comment line
+                    if (rawlist[j][0].ToString() == "!") // Stop if we have reached the end of translation
+                        goto rename;
+                    stringdata[itemsToRename] = rawlist[j]; // Add the entry to process later.
+                    itemsToRename++;
                 }
             }
             return; // Not Found
@@ -385,16 +373,15 @@ namespace Mass_Editor
                     {
                         // Menu Items can't be found with Controls.Find as they aren't Controls
                         ToolStripDropDownItem TSI = (ToolStripDropDownItem)menu.Items[ctrl];
-                        if (TSI != null)
-                        {
-                            // We'll rename the main and child in a row.
-                            string[] ToolItems = Regex.Split(SplitString[1], " ; ");
-                            TSI.Text = ToolItems[0]; // Set parent's text first
-                            if (TSI.DropDownItems.Count != ToolItems.Length - 1)
-                                continue; // Error in Input, errhandled
-                            for (int ti = 1; ti <= TSI.DropDownItems.Count; ti++)
-                                TSI.DropDownItems[ti - 1].Text = ToolItems[ti]; // Set child text
-                        }
+                        if (TSI == null) continue;
+
+                        // We'll rename the main and child in a row.
+                        string[] ToolItems = Regex.Split(SplitString[1], " ; ");
+                        TSI.Text = ToolItems[0]; // Set parent's text first
+                        if (TSI.DropDownItems.Count != ToolItems.Length - 1)
+                            continue; // Error in Input, errhandled
+                        for (int ti = 1; ti <= TSI.DropDownItems.Count; ti++)
+                            TSI.DropDownItems[ti - 1].Text = ToolItems[ti]; // Set child text
                         // If not found, it is not something to rename and is thus skipped.
                     }
                     catch { }
@@ -408,19 +395,19 @@ namespace Mass_Editor
         {
             System.Media.SystemSounds.Exclamation.Play();
             string msg = String.Join(Environment.NewLine + Environment.NewLine, lines);
-            return (DialogResult)MessageBox.Show(msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return MessageBox.Show(msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         internal static DialogResult Alert(params string[] lines)
         {
             System.Media.SystemSounds.Asterisk.Play();
             string msg = String.Join(Environment.NewLine + Environment.NewLine, lines);
-            return (DialogResult)MessageBox.Show(msg, "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return MessageBox.Show(msg, "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         internal static DialogResult Prompt(MessageBoxButtons btn, params string[] lines)
         {
             System.Media.SystemSounds.Question.Play();
             string msg = String.Join(Environment.NewLine + Environment.NewLine, lines);
-            return (DialogResult)MessageBox.Show(msg, "Prompt", btn, MessageBoxIcon.Asterisk);
+            return MessageBox.Show(msg, "Prompt", btn, MessageBoxIcon.Asterisk);
         }
 
         // DataSource Providing
@@ -432,11 +419,10 @@ namespace Mass_Editor
         internal static List<cbItem> getCBList(string textfile, string lang)
         {
             // Set up
-            List<cbItem> cbList = new List<cbItem>();
-            string[] inputCSV = Util.getSimpleStringList(textfile);
+            string[] inputCSV = getSimpleStringList(textfile);
 
             // Get Language we're fetching for
-            int index = Array.IndexOf(new string[] { "ja", "en", "fr", "de", "it", "es", "ko", "zh", }, lang);
+            int index = Array.IndexOf(new[] { "ja", "en", "fr", "de", "it", "es", "ko", "zh", }, lang);
 
             // Set up our Temporary Storage
             string[] unsortedList = new string[inputCSV.Length - 1];
@@ -456,20 +442,17 @@ namespace Mass_Editor
             Array.Sort(sortedList);
 
             // Arrange the input data based on original number
-            for (int i = 0; i < sortedList.Length; i++)
+            return sortedList.Select(s => new cbItem
             {
-                cbItem ncbi = new cbItem();
-                ncbi.Text = sortedList[i];
-                ncbi.Value = indexes[Array.IndexOf(unsortedList, sortedList[i])];
-                cbList.Add(ncbi);
-            }
-            return cbList;
+                Text = s, 
+                Value = indexes[Array.IndexOf(unsortedList, s)]
+            }).ToList();
         }
         internal static List<cbItem> getCBList(string[] inStrings, params int[][] allowed)
         {
             List<cbItem> cbList = new List<cbItem>();
             if (allowed == null)
-                allowed = new int[][] { Enumerable.Range(0, inStrings.Length).ToArray() };
+                allowed = new[] { Enumerable.Range(0, inStrings.Length).ToArray() };
 
             foreach (int[] list in allowed)
             {
@@ -483,13 +466,11 @@ namespace Mass_Editor
                 Array.Sort(sortedChoices);
 
                 // Add the rest of the items
-                for (int i = 0; i < sortedChoices.Length; i++)
+                cbList.AddRange(sortedChoices.Select(t => new cbItem
                 {
-                    cbItem ncbi = new cbItem();
-                    ncbi.Text = sortedChoices[i];
-                    ncbi.Value = list[Array.IndexOf(unsortedChoices, sortedChoices[i])];
-                    cbList.Add(ncbi);
-                }
+                    Text = t, 
+                    Value = list[Array.IndexOf(unsortedChoices, t)]
+                }));
             }
             return cbList;
         }
@@ -513,13 +494,10 @@ namespace Mass_Editor
                 Array.Sort(sortedChoices);
 
                 // Add the rest of the items
-                for (int i = 0; i < sortedChoices.Length; i++)
+                cbList.AddRange(sortedChoices.Select(s => new cbItem
                 {
-                    cbItem ncbi = new cbItem();
-                    ncbi.Text = sortedChoices[i];
-                    ncbi.Value = allowed[Array.IndexOf(unsortedChoices, sortedChoices[i])];
-                    cbList.Add(ncbi);
-                }
+                    Text = s, Value = allowed[Array.IndexOf(unsortedChoices, s)]
+                }));
             }
             return cbList;
         }
@@ -531,9 +509,11 @@ namespace Mass_Editor
             for (int i = 4; i > 1; i--) // add 4,3,2
             {
                 // First 3 Balls are always first
-                cbItem ncbi = new cbItem();
-                ncbi.Text = inStrings[i];
-                ncbi.Value = i;
+                cbItem ncbi = new cbItem
+                {
+                    Text = inStrings[i], 
+                    Value = i
+                };
                 newlist.Add(ncbi);
             }
 
@@ -547,31 +527,85 @@ namespace Mass_Editor
             Array.Sort(sortedballs);
 
             // Add the rest of the balls
-            for (int i = 0; i < sortedballs.Length; i++)
+            newlist.AddRange(sortedballs.Select(t => new cbItem
             {
-                cbItem ncbi = new cbItem();
-                ncbi.Text = sortedballs[i];
-                ncbi.Value = stringVal[Array.IndexOf(ballnames, sortedballs[i])];
-                newlist.Add(ncbi);
-            }
+                Text = t, 
+                Value = stringVal[Array.IndexOf(ballnames, t)]
+            }));
             return newlist;
         }
         internal static List<cbItem> getUnsortedCBList(string textfile)
         {
             // Set up
             List<cbItem> cbList = new List<cbItem>();
-            string[] inputCSV = Util.getSimpleStringList(textfile);
+            string[] inputCSV = getSimpleStringList(textfile);
 
             // Gather our data from the input file
             for (int i = 1; i < inputCSV.Length; i++)
             {
                 string[] inputData = inputCSV[i].Split(',');
-                cbItem ncbi = new cbItem();
-                ncbi.Value = Convert.ToInt32(inputData[0]);
-                ncbi.Text = inputData[1];
+                cbItem ncbi = new cbItem 
+                {
+                    Text = inputData[1], 
+                    Value = Convert.ToInt32(inputData[0])
+                };
                 cbList.Add(ncbi);
             }
             return cbList;
         }
+
+     /*   // QR Utility
+        internal static byte[] getQRData()
+        {
+            // Fetch data from QR code...
+            string address;
+            try { address = Clipboard.GetText(); }
+            catch { Alert("No text (url) in clipboard."); return null; }
+            try { if (address.Length < 4 || address.Substring(0, 3) != "htt") { Alert("Clipboard text is not a valid URL:", address); return null; } }
+            catch { Alert("Clipboard text is not a valid URL:", address); return null; }
+            string webURL = "http://api.qrserver.com/v1/read-qr-code/?fileurl=" + System.Web.HttpUtility.UrlEncode(address);
+            try
+            {
+                System.Net.HttpWebRequest httpWebRequest = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(webURL);
+                System.Net.HttpWebResponse httpWebReponse = (System.Net.HttpWebResponse)httpWebRequest.GetResponse();
+                var reader = new StreamReader(httpWebReponse.GetResponseStream());
+                string data = reader.ReadToEnd();
+                if (data.Contains("could not find")) { Alert("Reader could not find QR data in the image."); return null; }
+                if (data.Contains("filetype not supported")) { Alert("Input URL is not valid. Double check that it is an image (jpg/png).", address); return null; }
+                // Quickly convert the json response to a data string
+                string pkstr = data.Substring(data.IndexOf("#", StringComparison.Ordinal) + 1); // Trim intro
+                pkstr = pkstr.Substring(0, pkstr.IndexOf("\",\"error\":null}]}]", StringComparison.Ordinal)); // Trim outro
+                if (pkstr.Contains("nQR-Code:")) pkstr = pkstr.Substring(0, pkstr.IndexOf("nQR-Code:", StringComparison.Ordinal)); //  Remove multiple QR codes in same image
+                pkstr = pkstr.Replace("\\", ""); // Rectify response
+
+                try { return Convert.FromBase64String(pkstr); }
+                catch { Alert("QR string to Data failed.", pkstr); return null; }
+            }
+            catch { Alert("Unable to connect to the internet to decode QR code."); return null;}
+        }
+        internal static Image getQRImage(byte[] data, string server)
+        {
+            string qrdata = Convert.ToBase64String(data);
+            string message = server + qrdata;
+            string webURL = "http://chart.apis.google.com/chart?chs=365x365&cht=qr&chl=" + System.Web.HttpUtility.UrlEncode(message);
+
+            try
+            {
+                System.Net.HttpWebRequest httpWebRequest = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(webURL);
+                System.Net.HttpWebResponse httpWebReponse = (System.Net.HttpWebResponse)httpWebRequest.GetResponse();
+                Stream stream = httpWebReponse.GetResponseStream();
+                if (stream != null) return Image.FromStream(stream);
+            }
+            catch
+            {
+                if (Prompt(MessageBoxButtons.YesNo, 
+                        "Unable to connect to the internet to receive QR code.",
+                        "Copy QR URL to Clipboard?")
+                        != DialogResult.Yes) return null;
+                try { Clipboard.SetText(webURL); }
+                catch { Alert("Failed to set text to Clipboard"); }
+            }
+            return null;
+        }*/
     }
 }

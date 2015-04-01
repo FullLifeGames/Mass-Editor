@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace Mass_Editor
 {
@@ -19,13 +14,13 @@ namespace Mass_Editor
         PKX.Structures.SaveGame SaveGame = new PKX.Structures.SaveGame(null);
 
         Form1 m_parent;
-        byte[] tabdata = null;
+        byte[] tabdata;
         public CodeGenerator(Form1 frm1, byte[] formdata)
         {
             m_parent = frm1;
             tabdata = formdata;
             InitializeComponent();
-            this.CenterToParent();
+            CenterToParent();
             RTB_Code.Clear();
             TB_Write.Clear();
             SaveGame = m_parent.SaveGame;
@@ -59,11 +54,10 @@ namespace Mass_Editor
                         + CB_Slot.SelectedIndex * 232,      // Slot Shift
                     newdata, 0, 0xE8);
 
-                if (newdata.SequenceEqual(new byte[0xE8]))
-                {
-                    System.Media.SystemSounds.Exclamation.Play();
-                    return false;
-                }
+                if (!newdata.SequenceEqual(new byte[0xE8])) return true;
+
+                System.Media.SystemSounds.Exclamation.Play();
+                return false;
             }
             else if (CB_Source.SelectedIndex == 2)
             {
@@ -74,11 +68,10 @@ namespace Mass_Editor
                 // copy from save, the chosen wondercard offset, to new data
                 Array.Copy(m_parent.savefile, SaveGame.Wondercard + wcn * 0x108 + 0x100, newdata, 0, 0x108);
                 byte[] zerodata = new byte[0x108];
-                if (newdata.SequenceEqual(zerodata))
-                {
-                    System.Media.SystemSounds.Exclamation.Play();
-                    return false;
-                }
+                if (!newdata.SequenceEqual(zerodata)) return true;
+
+                System.Media.SystemSounds.Exclamation.Play();
+                return false;
             }
             return true;
         }
@@ -157,33 +150,31 @@ namespace Mass_Editor
         }
         private void B_Load_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "Code File|*.bin";
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                string path = ofd.FileName;
-                byte[] ncf = File.ReadAllBytes(path);
-                uint length = BitConverter.ToUInt32(ncf, 0);
+            OpenFileDialog ofd = new OpenFileDialog {Filter = "Code File|*.bin"};
+            if (ofd.ShowDialog() != DialogResult.OK) return;
 
-                if (ncf.Length != length + 4)
-                {
-                    Util.Error("Not a valid code file.");
+            string path = ofd.FileName;
+            byte[] ncf = File.ReadAllBytes(path);
+            uint length = BitConverter.ToUInt32(ncf, 0);
+
+            if (ncf.Length != length + 4)
+            {
+                Util.Error("Not a valid code file.");
+                return;
+            }
+            if (RTB_Code.Text.Length > 0)
+            {
+                DialogResult ld = Util.Prompt(MessageBoxButtons.YesNo, "Replace current code?");
+                if (ld == DialogResult.Yes)
+                    RTB_Code.Clear();
+                else if (ld != DialogResult.No)
                     return;
-                }
-                if (RTB_Code.Text.Length > 0)
-                {
-                    DialogResult ld = Util.Prompt(MessageBoxButtons.YesNo, "Replace current code?");
-                    if (ld == DialogResult.Yes)
-                        RTB_Code.Clear();
-                    else if (ld != DialogResult.No)
-                        return;
-                }
-                for (int i = 4; i <= ncf.Length-12; i+=12)
-                {
-                    RTB_Code.AppendText(BitConverter.ToUInt32(ncf, i + 0 * 4).ToString("X8") + " ");
-                    RTB_Code.AppendText(BitConverter.ToUInt32(ncf, i + 1 * 4).ToString("X8") + " ");
-                    RTB_Code.AppendText(BitConverter.ToUInt32(ncf, i + 2 * 4).ToString("X8") + Environment.NewLine);
-                }
+            }
+            for (int i = 4; i <= ncf.Length-12; i+=12)
+            {
+                RTB_Code.AppendText(BitConverter.ToUInt32(ncf, i + 0 * 4).ToString("X8") + " ");
+                RTB_Code.AppendText(BitConverter.ToUInt32(ncf, i + 1 * 4).ToString("X8") + " ");
+                RTB_Code.AppendText(BitConverter.ToUInt32(ncf, i + 2 * 4).ToString("X8") + Environment.NewLine);
             }
         }
         private void B_Save_Click(object sender, EventArgs e)
@@ -205,20 +196,17 @@ namespace Mass_Editor
                 Array.Copy(BitConverter.GetBytes(UInt32.Parse(rip[2], NumberStyles.HexNumber)),0,ncf,4+i*12+8,4);
             }
 
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.FileName = "code.bin";
-            sfd.Filter = "Code File|*.bin";
-            if (sfd.ShowDialog() == DialogResult.OK)
+            SaveFileDialog sfd = new SaveFileDialog {FileName = "code.bin", Filter = "Code File|*.bin"};
+            if (sfd.ShowDialog() != DialogResult.OK) return;
+
+            string path = sfd.FileName;
+            if (File.Exists(path))
             {
-                string path = sfd.FileName;
-                if (File.Exists(path))
-                {
-                    // File already exists, save a .bak
-                    byte[] backupfile = File.ReadAllBytes(path);
-                    File.WriteAllBytes(path + ".bak", backupfile);
-                }
-                File.WriteAllBytes(path, ncf);
+                // File already exists, save a .bak
+                byte[] backupfile = File.ReadAllBytes(path);
+                File.WriteAllBytes(path + ".bak", backupfile);
             }
+            File.WriteAllBytes(path, ncf);
         }
         private void B_Copy_Click(object sender, EventArgs e)
         {
@@ -256,16 +244,15 @@ namespace Mass_Editor
                 // Skip Party and Boxes
                 if (i == 0x14200) i += (260 * 6 + 4); // +4 to skip over party count
                 if (i == boxoffset) i += (232 * 30 * 31);
-                if (BitConverter.ToUInt32(cybersav, i) != BitConverter.ToUInt32(newcyber, i))
-                {
-                    result += ((0x20000000 + i).ToString("X8") + " ");
-                    result += (BitConverter.ToUInt32(newcyber, i).ToString("X8") + Environment.NewLine);
+                if (BitConverter.ToUInt32(cybersav, i) == BitConverter.ToUInt32(newcyber, i)) continue;
 
-                    lines++;
-                    if ((lines % 128 == 0) && CHK_Break.Checked)
-                    { result += (Environment.NewLine + "--- Segment " + (lines / 128 + 1).ToString() + " ---" + Environment.NewLine + Environment.NewLine); }
-                    if (lines > 10000) goto toomany;
-                }
+                result += ((0x20000000 + i).ToString("X8") + " ");
+                result += (BitConverter.ToUInt32(newcyber, i).ToString("X8") + Environment.NewLine);
+
+                lines++;
+                if ((lines % 128 == 0) && CHK_Break.Checked)
+                { result += (Environment.NewLine + "--- Segment " + (lines / 128 + 1) + " ---" + Environment.NewLine + Environment.NewLine); }
+                if (lines > 10000) goto toomany;
             }
 
             // Loop Through Party
@@ -273,18 +260,17 @@ namespace Mass_Editor
             {
                 byte[] newdata = new byte[260]; Array.Copy(newcyber, i, newdata, 0, 260);
                 byte[] olddata = new byte[260]; Array.Copy(cybersav, i, olddata, 0, 260);
-                if (!newdata.SequenceEqual(olddata))
-                {
-                    for (int z = 0; z < newdata.Length; z += 4)
-                    {
-                        result += ((0x20000000 + i + z).ToString("X8") + " ");
-                        result += (BitConverter.ToUInt32(newdata, z).ToString("X8") + Environment.NewLine);
+                if (newdata.SequenceEqual(olddata)) continue;
 
-                        lines++;
-                        if ((lines % 128 == 0) && CHK_Break.Checked)
-                        { result += (Environment.NewLine + "--- Segment " + (lines / 128 + 1).ToString() + " ---" + Environment.NewLine + Environment.NewLine); }
-                        if (lines > 10000) goto toomany;
-                    }
+                for (int z = 0; z < newdata.Length; z += 4)
+                {
+                    result += ((0x20000000 + i + z).ToString("X8") + " ");
+                    result += (BitConverter.ToUInt32(newdata, z).ToString("X8") + Environment.NewLine);
+
+                    lines++;
+                    if ((lines % 128 == 0) && CHK_Break.Checked)
+                    { result += (Environment.NewLine + "--- Segment " + (lines / 128 + 1) + " ---" + Environment.NewLine + Environment.NewLine); }
+                    if (lines > 10000) goto toomany;
                 }
             }
 
@@ -296,7 +282,7 @@ namespace Mass_Editor
 
                 lines++;
                 if ((lines % 128 == 0) && CHK_Break.Checked)
-                { result += (Environment.NewLine + "--- Segment " + (lines / 128 + 1).ToString() + " ---" + Environment.NewLine + Environment.NewLine); }
+                { result += (Environment.NewLine + "--- Segment " + (lines / 128 + 1) + " ---" + Environment.NewLine + Environment.NewLine); }
                 if (lines > 10000) goto toomany;
             }
 
@@ -305,24 +291,23 @@ namespace Mass_Editor
             {
                 byte[] newdata = new byte[232]; Array.Copy(newcyber, i, newdata, 0, 232);
                 byte[] olddata = new byte[232]; Array.Copy(cybersav, i, olddata, 0, 232);
-                if (!newdata.SequenceEqual(olddata))
-                {
-                    for (int z = 0; z < newdata.Length; z += 4)
-                    {
-                        result += ((0x20000000 + i + z).ToString("X8") + " ");
-                        result += (BitConverter.ToUInt32(newdata, z).ToString("X8") + Environment.NewLine);
+                if (newdata.SequenceEqual(olddata)) continue;
 
-                        lines++;
-                        if ((lines % 128 == 0) && CHK_Break.Checked)
-                        { result += (Environment.NewLine + "--- Segment " + (lines / 128 + 1).ToString() + " ---" + Environment.NewLine + Environment.NewLine); }
-                        if (lines > 10000) goto toomany;
-                    }
+                for (int z = 0; z < newdata.Length; z += 4)
+                {
+                    result += ((0x20000000 + i + z).ToString("X8") + " ");
+                    result += (BitConverter.ToUInt32(newdata, z).ToString("X8") + Environment.NewLine);
+
+                    lines++;
+                    if ((lines % 128 == 0) && CHK_Break.Checked)
+                    { result += (Environment.NewLine + "--- Segment " + (lines / 128 + 1) + " ---" + Environment.NewLine + Environment.NewLine); }
+                    if (lines > 10000) goto toomany;
                 }
             }
 
             if ((lines / 128 > 0) && CHK_Break.Checked)
             {
-                Util.Alert(String.Format("{0} Code Segments.", (1 + (lines / 128)).ToString()), String.Format("{0} Lines.", lines.ToString()));
+                Util.Alert(String.Format("{0} Code Segments.", (1 + (lines / 128))), String.Format("{0} Lines.", lines));
             }
             RTB_Code.Text = result; return;
 
@@ -346,24 +331,21 @@ namespace Mass_Editor
             // Get Actual Lines
             for (int i = 0; i < RTB_Code.Lines.Count(); i++)
             {
-                if (RTB_Code.Lines[i].Length > 0)
+                if (RTB_Code.Lines[i].Length <= 0) continue;
+
+                if (RTB_Code.Lines[i].Length <= 2 * 8 && RTB_Code.Lines[i].Length > 2 * 8 + 2)
+                { Util.Error("Invalid code pasted (Type)"); return; }
+
+                try
                 {
-                    if (RTB_Code.Lines[i].Length <= 2 * 8 && RTB_Code.Lines[i].Length > 2 * 8 + 2)
-                    { Util.Error("Invalid code pasted (Type)"); return; }
-                    else
-                    {
-                        try
-                        {
-                            // Grab Line Data
-                            string line = RTB_Code.Lines[i];
-                            string[] rip = Regex.Split(line, " ");
-                            Array.Resize(ref data, data.Length + 4);
-                            Array.Copy(BitConverter.GetBytes(UInt32.Parse(rip[1], NumberStyles.HexNumber)), 0, data, data.Length - 4, 4);
-                        }
-                        catch (Exception x)
-                        { Util.Error("Invalid code pasted (Content):", x.ToString()); return; }
-                    }
+                    // Grab Line Data
+                    string line = RTB_Code.Lines[i];
+                    string[] rip = Regex.Split(line, " ");
+                    Array.Resize(ref data, data.Length + 4);
+                    Array.Copy(BitConverter.GetBytes(UInt32.Parse(rip[1], NumberStyles.HexNumber)), 0, data, data.Length - 4, 4);
                 }
+                catch (Exception x)
+                { Util.Error("Invalid code pasted (Content):", x.ToString()); return; }
             }
             // Go over the data
             if ((data.Length == 232 - 4) || (data.Length == 260 - 4))
@@ -373,14 +355,8 @@ namespace Mass_Editor
                 data[0] = data[1] = data[2] = data[3] = 0;
             }
             if ((data.Length == 232) || (data.Length == 260))
-            {
-                this.returnArray = data;
-                this.Close();
-            }
-            else
-            {
-                Util.Error("Invalid code pasted (Length)"); return;
-            }
+            { returnArray = data; Close(); }
+            else { Util.Error("Invalid code pasted (Length)"); }
         }
     }
 }

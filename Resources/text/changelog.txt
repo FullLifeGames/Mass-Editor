@@ -402,7 +402,7 @@ http://projectpokemon.org/forums/showthread.php?36986
  --- Window titles are translatable too; change the existing title within the translation file.
  - Added: Hall of Fame Editor. Thank you SciresM for the implementation!
  - Added: Country / Region text for all languages. Thank you Slashmolder for the raw data!
- - Added: Ingame Font characters. To manually enter them, right click the Nickname label. Thank you mapaler (枫谷剑仙)!
+ - Added: Ingame Font characters. To manually enter them, right click the Nickname label. Thank you mapaler!
  - Changed: Replaced the Quick-Dragouts for exporting with an overall 'tabs' sprite. Functionality is the same; for encrypted export hold Control.
  - Changed: A few O-Power labels for X/Y. Thank you RainThunder!
  - Internal: Tons of code reorganization, might be a little faster/lighter.
@@ -457,6 +457,75 @@ http://projectpokemon.org/forums/showthread.php?36986
  - Update (b): Improved injectiondebug.bin loading to load all variants.
  - Update (c): Implemented box/pc import/export completely (future).
 
-1/27/15 - New Update: 
- - Fixed: Scatterbug / Spewpa form selection.
+1/27/15 - New Update: (13500)
+ - Fixed: Scatterbug / Spewpa form selection. Thanks LunarCookies!
  - Changed: Saving "pokemon.ekx" will always export extracted and won't tack on extra extensions if you don't have the correct filter.
+
+1/28/15 - New Update: (9900)
+ - Added: Save editing for retail games. Load ramsav.bin and export with Export SAV button in the SAV tab. 
+ - - Change the target RAM binary by holding shift while exporting.
+ - Fixed: PKRS display logic should now behave as intended.
+ - Changed: Gender/Game changing in Trainer Info has been disabled (it's not a simple 'switch').
+ - Improved: Loading Box/Debug binaries will display the boxes if they are not visible.
+ - Update (b): Added 2 more types of XY RAMSav types.
+
+1/29/15 - New Update: (24200)
+ - Changed: ramsav detection to allow users to store backups with unique names. Be sure it contains "ram" in the file name!
+ - Fixed: Gen4 Egg Locations should now load for pre-GenV origin mons. Thanks Omicron!
+ - Fixed: Unown forms M & F won't alter the gender label. Thanks Favna!
+ - Fixed: ram2sav usage with X/Y after OR/AS and not deleting the OR/AS save before dumping X/Y (data past sav length). Thanks trainboy2019!
+ - Added: Symbol selection for OT/Latest Handler like for Nicknames; access changed to control clicking the TextBox. Thanks ProfShroomish!
+ - Changed: FindIndex hunting to account for rare ramsav types. Thanks Crowhogan33 for reporting and SciresM for fixing!
+
+2/1/15 - New Update: (102,555)
+ - Fixed: Characteristics now match those ingame (EC%6 instead of PID%6). Thanks JubalTheLion!
+ - Fixed: A few Exceptions with loading have been corrected (bad initialization).
+ - Fixed: Splash screen image no longer tiles for some systems with a larger scale.
+ - Fixed: Source code recompiling will no longer cause the program to text-translate improperly. Thanks Slashmolder!
+ - Fixed: Box Report 3DSRegion and Language no longer shows the index number; just the text. Thanks Kaisonic!
+ - Fixed: Ingame Fonts should no longer cause the program to crash when being drawn (FontFamily will no longer be GC'd).
+ - Changed: Special Characters are now accessible by Control Clicking within the TextBox.
+ - Added: Ingame font to Trainer and Hall of Fame windows.
+ - Added: Deletion of Hall of Fame Entries (except First Clear), and Deletion of Favorite Secret Bases.
+ - Added: Loading of multiple Wondercards via Drag & Drop.
+ - Added: Boot Status to help debug some users being stuck on the splash screen.
+ - Added: Event Constant editing to Event Flag window.
+
+3/1/15 - New Update: (14140)
+ - Added: QR Code Generation; click "QR!" and a QR window will appear with a scannable image. Requires an active internet connection.
+ - Added: QR Code to Tabs; hold ALT when clicking "QR!" after copying the URL of the QR to your clipboard (CTRL-C). Requires internet.
+ - Added: Decrypted Battle Video scraping for ek6 data; battle stats are not kept.
+ - Added: ramsavs can now be loaded in the Event Flag Editor's FlagDiff researcher.
+ - Added: Nature stat +/- on hover of Nature ComboBox (arrow). Thanks swarley!
+ - Added: Box Data Report now shows level and the proper Language/3DS region text will display. Thanks Kaisonic!
+ - Added: More Trainer Stat descriptions. Thanks codem8kr & Luciela!
+ - Fixed: Memory text prediction should no longer list the wrong text. Thanks Ceveth & evandixon!
+ - Fixed: Wondercard flags greater than 2047 will not be erroneously added to the received list.
+ - Fixed: Shedinja HP stat prediction should now properly show something not '1'.
+ - Fixed: Jellicent/Meowstic sprites now update properly and have their forms. Thanks Favna & sora10pls!
+ - Fixed: Xerneas sprite forms being inverted. Thanks trainboy2019!
+ - Fixed: CTRL+X will no longer close the program. Thanks forsureitsme!
+ - Fixed: Encounter Types are now included for uncommon Pt/HGSS types. Thanks The_RickyAll!
+ - Changed: Checksum validity checking disabled for ramsavs.
+ - Changed: ID numbers with a prepended Zero will not be auto trimmed.
+ - Changed: Window sizing for mono compatibility on Inventory and other editors. Thanks SoujiSeta!
+ - Changed: Chinese Translation text improved. Thanks piva223!
+ - Changed: ' will be replaced with the ingame ’. Thanks supercarotte!
+ - Hotfix: Changing ID/SID & Gender will refresh the preview.
+ - Hotfix: Opening the program via a loaded pkx/ekx will properly load the Species/Language. Thanks rskoopa!
+ - Hotfix: Importing QR! will copy all ribbons / nonMain data. Thanks hiten!
+
+4/1/15 - New Update:
+ - Added: Hidden Power selection drop-down. Changing the selection will modify the IVs appropriately.
+ - Added: Showdown/Smogon import (copy text, control click Species label).
+ - Added: Wondercard QR exporting/importing (alt-click). No editing is supported.
+ - Added: Opening a Wondercard in the main window (via File->Open or Drag&Drop) will open the Wondercard UI, no save file needed.
+ - Added: Portuguese language and capability for more languages in the future if necessary. Thanks Sharinflan!
+ - Fixed: Clicking OT with an ORAS savegame loaded will load the OT/Region data to the tabbed Pokémon (XY already worked).
+ - Fixed: Changing Countries with certain SubRegions selected will no longer error. Thanks FullLifeGames!
+ - Fixed: Add ORAS Items to Memory Item Usage List. Thanks liopds!
+ - Fixed: Trash Bytes now are no longer cleared when saving data. Thanks SciresM & Lunarcookies!
+ - Fixed: Re-ordered controls to make tabbing flow down the form. Thanks Favna!
+ - Fixed: Vivillon Form selection in the Trainer Info editor will now function with refactored code. Thanks KingGengar & Favna!
+ - Changed: PKRS Days capped at legal limits.
+ - Changed: Forms drop-down and label will be hidden if a Pokémon has no forms.

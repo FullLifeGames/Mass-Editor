@@ -15040,26 +15040,24 @@ namespace Mass_Editor.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die If you are having issues viewing gender symbols, Options -&gt; Toggle Unicode Text.
+        ///   Sucht eine lokalisierte Zeichenfolge, die If you are having issues viewing certain symbols/text: Options -&gt; Toggle Font.
         ///
         ///
         ///// Main Window
         ///
         ///Hold Control when dragging out the Tab PKM to save as ekx.
-        ///Right Click on Nickname/Nickname box to bring up the ingame-special characters.
+        ///Control Click on a Nickname/OT box to bring up the ingame-special characters.
         ///
         ///Control + Click on...
         ///Randomize IVs: Set all IVs to max.
         ///Randomize EVs: Set all EVs to 0.
         ///PP Ups Label: Set all PP Ups to 3.
         ///Friendship Label: Reset Friendship
+        ///QR! to wrap text around QR code.
         ///
-        ///Click on the OT label to set relevant details to that of the save file.
+        ///Alt click QR! to load ekx data from a QR url loaded to your clipboard.
         ///
-        ///
-        ///// Save File
-        ///
-        ///Click on the Save File p [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        ///Click on th [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
         /// </summary>
         internal static string shortcuts {
             get {
@@ -19059,7 +19057,7 @@ namespace Mass_Editor.Properties {
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die None
-        ///
+        ///Rock Smash (HGSS)
         ///Tall Grass
         ///
         ///Dialga/Palkia
@@ -19070,6 +19068,7 @@ namespace Mass_Editor.Properties {
         ///Building
         ///Marsh/Safari
         ///
+        ///Starter/Fossil/Gift (DP)
         ///
         ///
         ///
@@ -19080,9 +19079,8 @@ namespace Mass_Editor.Properties {
         ///
         ///
         ///
-        ///
-        ///
-        ///Starter/Fossil/Gift ähnelt.
+        ///Distortion World (Pt)
+        ///Starter/Fossil/Gift (Pt) ähnelt.
         /// </summary>
         internal static string text_EncounterType_de {
             get {
@@ -19092,7 +19090,7 @@ namespace Mass_Editor.Properties {
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die None
-        ///
+        ///Rock Smash (HGSS)
         ///Tall Grass
         ///
         ///Dialga/Palkia
@@ -19103,6 +19101,7 @@ namespace Mass_Editor.Properties {
         ///Building
         ///Marsh/Safari
         ///
+        ///Starter/Fossil/Gift (DP)
         ///
         ///
         ///
@@ -19113,9 +19112,8 @@ namespace Mass_Editor.Properties {
         ///
         ///
         ///
-        ///
-        ///
-        ///Starter/Fossil/Gift ähnelt.
+        ///Distortion World (Pt)
+        ///Starter/Fossil/Gift (Pt) ähnelt.
         /// </summary>
         internal static string text_EncounterType_en {
             get {
@@ -19125,7 +19123,7 @@ namespace Mass_Editor.Properties {
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die None
-        ///
+        ///Rock Smash (HGSS)
         ///Tall Grass
         ///
         ///Dialga/Palkia
@@ -19136,6 +19134,7 @@ namespace Mass_Editor.Properties {
         ///Building
         ///Marsh/Safari
         ///
+        ///Starter/Fossil/Gift (DP)
         ///
         ///
         ///
@@ -19146,9 +19145,8 @@ namespace Mass_Editor.Properties {
         ///
         ///
         ///
-        ///
-        ///
-        ///Starter/Fossil/Gift ähnelt.
+        ///Distortion World (Pt)
+        ///Starter/Fossil/Gift (Pt) ähnelt.
         /// </summary>
         internal static string text_EncounterType_es {
             get {
@@ -19158,7 +19156,7 @@ namespace Mass_Editor.Properties {
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die None
-        ///
+        ///Rock Smash (HGSS)
         ///Tall Grass
         ///
         ///Dialga/Palkia
@@ -19169,6 +19167,7 @@ namespace Mass_Editor.Properties {
         ///Building
         ///Marsh/Safari
         ///
+        ///Starter/Fossil/Gift (DP)
         ///
         ///
         ///
@@ -19179,9 +19178,8 @@ namespace Mass_Editor.Properties {
         ///
         ///
         ///
-        ///
-        ///
-        ///Starter/Fossil/Gift ähnelt.
+        ///Distortion World (Pt)
+        ///Starter/Fossil/Gift (Pt) ähnelt.
         /// </summary>
         internal static string text_EncounterType_fr {
             get {
@@ -19191,7 +19189,7 @@ namespace Mass_Editor.Properties {
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die None
-        ///
+        ///Rock Smash (HGSS)
         ///Tall Grass
         ///
         ///Dialga/Palkia
@@ -19202,6 +19200,7 @@ namespace Mass_Editor.Properties {
         ///Building
         ///Marsh/Safari
         ///
+        ///Starter/Fossil/Gift (DP)
         ///
         ///
         ///
@@ -19212,9 +19211,8 @@ namespace Mass_Editor.Properties {
         ///
         ///
         ///
-        ///
-        ///
-        ///Starter/Fossil/Gift ähnelt.
+        ///Distortion World (Pt)
+        ///Starter/Fossil/Gift (Pt) ähnelt.
         /// </summary>
         internal static string text_EncounterType_it {
             get {
@@ -19224,7 +19222,7 @@ namespace Mass_Editor.Properties {
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die None
-        ///
+        ///Rock Smash (HGSS)
         ///Tall Grass
         ///
         ///Dialga/Palkia
@@ -19235,6 +19233,7 @@ namespace Mass_Editor.Properties {
         ///Building
         ///Marsh/Safari
         ///
+        ///Starter/Fossil/Gift (DP)
         ///
         ///
         ///
@@ -19245,9 +19244,8 @@ namespace Mass_Editor.Properties {
         ///
         ///
         ///
-        ///
-        ///
-        ///Starter/Fossil/Gift ähnelt.
+        ///Distortion World (Pt)
+        ///Starter/Fossil/Gift (Pt) ähnelt.
         /// </summary>
         internal static string text_EncounterType_ja {
             get {
@@ -19257,7 +19255,7 @@ namespace Mass_Editor.Properties {
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die None
-        ///
+        ///Rock Smash (HGSS)
         ///Tall Grass
         ///
         ///Dialga/Palkia
@@ -19268,6 +19266,7 @@ namespace Mass_Editor.Properties {
         ///Building
         ///Marsh/Safari
         ///
+        ///Starter/Fossil/Gift (DP)
         ///
         ///
         ///
@@ -19278,9 +19277,8 @@ namespace Mass_Editor.Properties {
         ///
         ///
         ///
-        ///
-        ///
-        ///Starter/Fossil/Gift ähnelt.
+        ///Distortion World (Pt)
+        ///Starter/Fossil/Gift (Pt) ähnelt.
         /// </summary>
         internal static string text_EncounterType_ko {
             get {
@@ -19290,7 +19288,7 @@ namespace Mass_Editor.Properties {
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die None
-        ///
+        ///Rock Smash (HGSS)
         ///Tall Grass
         ///
         ///Dialga/Palkia
@@ -19301,6 +19299,7 @@ namespace Mass_Editor.Properties {
         ///Building
         ///Marsh/Safari
         ///
+        ///Starter/Fossil/Gift (DP)
         ///
         ///
         ///
@@ -19311,9 +19310,8 @@ namespace Mass_Editor.Properties {
         ///
         ///
         ///
-        ///
-        ///
-        ///Starter/Fossil/Gift ähnelt.
+        ///Distortion World (Pt)
+        ///Starter/Fossil/Gift (Pt) ähnelt.
         /// </summary>
         internal static string text_EncounterType_zh {
             get {
@@ -23236,18 +23234,18 @@ namespace Mass_Editor.Properties {
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die 
-        ///サファイア
-        ///ルビー
-        ///エメラルド
-        ///ファイアレッド
-        ///リーフグリーン
+        ///蓝宝石
+        ///红宝石
+        ///绿宝石
+        ///火红
+        ///叶绿
         ///
-        ///ハートゴールド
-        ///ソウルシルバー
+        ///心金
+        ///魂银
         ///
-        ///ダイヤモンド
-        ///パール
-        ///プラチナ
+        ///钻石
+        ///珍珠
+        ///白金
         ///
         ///
         ///コロシアム/XD
@@ -23255,14 +23253,15 @@ namespace Mass_Editor.Properties {
         ///
         ///
         ///
-        ///ホワイト
-        ///ブラック
-        ///ホワイト2
-        ///ブラック2
+        ///白
+        ///黑
+        ///白2
+        ///黑2
         ///X
         ///Y
         ///AS
-        ///OR ähnelt.
+        ///OR
+        /// ähnelt.
         /// </summary>
         internal static string text_Games_zh {
             get {

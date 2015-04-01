@@ -28,4 +28,3 @@ C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.Prope
 C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass Editor.csproj.GenerateResource.Cache
 C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass Editor.exe
 C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass Editor.pdb
-C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass Editor.csprojResolveAssemblyReference.cache

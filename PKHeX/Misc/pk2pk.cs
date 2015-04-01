@@ -1,18 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Windows.Forms;
-using System.IO;
 
 namespace Mass_Editor
 {
-    public partial class pk2pk
+    public class pk2pk
     {
-        public byte[] ConvertPKM(byte[] input, byte[] savefile, int savindex)
+        public byte[] ConvertPKM(byte[] input, byte[] savefile = null, int savindex = -1)
         {
             #region Initialize Everything
 
@@ -27,22 +21,16 @@ namespace Mass_Editor
             // Get the 6th Gen Data from the save file if it exists.
             int savshift = savindex * 0x7F000;
 
-            // Import trainer details for importing
-            if (BitConverter.ToUInt32(savefile, 0x6A810 + savshift) == 0x42454546) // Is set for X/Y when a SAV is loaded.
+            // Import trainer details for importing, else use the default values that are already defined.
+            if ((savefile != null && savindex != -1) && (
+                BitConverter.ToUInt32(savefile, 0x6A810 + savshift) == 0x42454546 || 
+                BitConverter.ToUInt32(savefile, 0x7B210 + savshift) == 0x42454546)) // Set for X/Y/OR/AS loaded saves.
             {
                 subreg = savefile[0x19426 + savshift];
                 country = savefile[0x19427 + savshift];
                 _3DSreg = savefile[0x1942C + savshift];
                 g6trname = Util.TrimFromZero(Encoding.Unicode.GetString(savefile, 0x19448 + savshift, 0x1A));
                 g6trgend = savefile[0x19405 + savshift];
-            }
-            else
-            {
-                country = 0x31; // US
-                subreg = 0x7;   // California
-                _3DSreg = 0x1;  // Americas
-                g6trname = "PKHeX";
-                g6trgend = 0;
             }
             #endregion
             #region Convert
@@ -53,20 +41,18 @@ namespace Mass_Editor
                 byte[] g6data = convertPK5toPK6(g5data);
                 return g6data;
             }
-            else if (input.Length == 136 || input.Length == 236 || input.Length == 220)    // Ambiguous Gen4/5 file.
+            if (input.Length != 136 && input.Length != 236 && input.Length != 220)
+                return input; // Should never get here.
+            if (((BitConverter.ToUInt16(input, 0x80) >= 0x3333) || (input[0x5F] >= 0x10)) &&
+                (BitConverter.ToUInt16(input, 0x46) == 0)) return convertPK5toPK6(input);
+            // If from Gen4-- && Not Met Location Poketransfer
+            // Or if Pt met data is set... it'd be hard to mess something up but someone will probably do just that.
             {
-                if (((BitConverter.ToUInt16(input, 0x80) < 0x3333) && (input[0x5F] < 0x10)) || (BitConverter.ToUInt16(input, 0x46) != 0))
-                {
-                    // If from Gen4-- && Not Met Location Poketransfer
-                    // Or if Pt met data is set... it'd be hard to mess something up but someone will probably do just that.
-                    byte[] g5data = convertPK4toPK5(input);
-                    byte[] g6data = convertPK5toPK6(g5data);
-                    return g6data;
-                }
-                else return convertPK5toPK6(input);
+                byte[] g5data = convertPK4toPK5(input);
+                byte[] g6data = convertPK5toPK6(g5data);
+                return g6data;
             }
             #endregion
-            else return input; // Should never get here.
         }
         #region Utility
         public DateTime moment = DateTime.Now;
@@ -80,16 +66,16 @@ namespace Mass_Editor
         public int subreg = 0x7;   // California
         public int _3DSreg = 0x1;  // Americas
         public string g6trname = "PKHeX";
-        public byte g6trgend = 0;
+        public byte g6trgend;
         private int getAbilityNumber(int species, int ability, int formnum)
         {
-               PKX.PersonalParser.Personal MonData = PKX.PersonalGetter.GetPersonal(species, formnum);
-               int[] spec_abilities = new int[3];
-               Array.Copy(MonData.Abilities, spec_abilities, 3);
-               int abilval = Array.IndexOf(spec_abilities, ability);
-               if (abilval >= 0)
-                   return 1 << abilval;
-               else return -1;
+            PKX.PersonalParser.Personal MonData = PKX.PersonalGetter.GetPersonal(species, formnum);
+            int[] spec_abilities = new int[3];
+            Array.Copy(MonData.Abilities, spec_abilities, 3);
+            int abilval = Array.IndexOf(spec_abilities, ability);
+            if (abilval >= 0)
+                return 1 << abilval;
+            return -1;
         }
         public byte[] convertPK3toPK4(byte[] pk3)
         {
@@ -104,7 +90,7 @@ namespace Mass_Editor
             pk4[0x8] = (byte)(species & 0xFF); pk4[0x9] = (byte)(species >> 8);
 
             uint exp = BitConverter.ToUInt32(pk4, 0x10);
-            pk4[0x14] = (byte)70;
+            pk4[0x14] = 70;
             // ability later
             pk4[0x16] = pk3[27]; // Copy markings
             pk4[0x17] = pk3[18]; // Language
@@ -114,7 +100,7 @@ namespace Mass_Editor
             uint ribo = BitConverter.ToUInt32(pk3, 0x4C);
             int fateful = (int)(ribo >> 31);
             uint newrib = 0;
-            uint mask = 0xF;
+            const uint mask = 0xF;
             for (int i = 0; i < 5; i++) // copy contest ribbons
             {
                 uint oldval = (ribo >> (3 * i)) & 0x7; // get 01234 stage
@@ -161,7 +147,7 @@ namespace Mass_Editor
             int genderratio = MonData.GenderRatio;
             uint PID = BitConverter.ToUInt32(pk4, 0);
             int gv = (int)(PID & 0xFF);
-            int gender = 0;
+            int gender;
 
             if (genderratio == 255)
                 gender = 2;
@@ -170,12 +156,7 @@ namespace Mass_Editor
             else if (genderratio == 0)
                 gender = 0;
             else
-            {
-                if (gv <= genderratio)
-                    gender = 1;
-                else
-                    gender = 0;
-            }
+                gender = gv <= genderratio ? 1 : 0;
 
             int formnum = 0;
             // unown
@@ -216,7 +197,7 @@ namespace Mass_Editor
                 chartable = Char3to4J();
 
             // Get Species Names
-            string[] names = new string[] 
+            string[] names =
             {
                 speclang_ja[species].ToUpper(), 
                 speclang_en[species].ToUpper(),
@@ -238,12 +219,10 @@ namespace Mass_Editor
                     char ch = nickname[i];
                     for (int j = 0; j < 247; j++)
                     {
-                        if ((char)chartable.Rows[j][2] == ch)
-                        {
-                            int val = (int)chartable.Rows[j][0];    // fetch gen3 value
-                            pk3[0x8 + i] = (byte)val;
-                            break;
-                        }
+                        if ((char)chartable.Rows[j][2] != ch) continue;
+                        int val = (int)chartable.Rows[j][0];    // fetch gen3 value
+                        pk3[0x8 + i] = (byte)val;
+                        break;
                     }
                 }
                 pk3[0x8 + nickname.Length + 1] = 0xFF; // cap off nickname
@@ -263,12 +242,9 @@ namespace Mass_Editor
                         Array.Copy(BitConverter.GetBytes(0xFFFF), 0, pk4, 0x48 + i * 2, 2);
                         break;
                     }
-                    else
-                    {
-                        nickname += (char)chartable.Rows[val][2];
-                        int newval = (int)chartable.Rows[val][1];
-                        Array.Copy(BitConverter.GetBytes(newval), 0, pk4, 0x48 + i * 2, 2);
-                    }
+                    nickname += (char)chartable.Rows[val][2];
+                    int newval = (int)chartable.Rows[val][1];
+                    Array.Copy(BitConverter.GetBytes(newval), 0, pk4, 0x48 + i * 2, 2);
                 }
 
                 // nickname detection
@@ -278,7 +254,6 @@ namespace Mass_Editor
 
             // Set Trainer Name
             // First, transfer the Nickname to trashbytes for OT
-            string trainer = "";
             Array.Copy(pk4, 0x48, pk4, 0x68, 0x10);
             {
                 for (int i = 0; i < 8; i++)
@@ -290,12 +265,8 @@ namespace Mass_Editor
                         Array.Copy(BitConverter.GetBytes(0xFFFF), 0, pk4, 0x68 + i * 2, 2);
                         break;
                     }
-                    else
-                    {
-                        trainer += (char)chartable.Rows[val][2];
-                        int newval = (int)chartable.Rows[val][1];
-                        Array.Copy(BitConverter.GetBytes(newval), 0, pk4, 0x68 + i * 2, 2);
-                    }
+                    int newval = (int)chartable.Rows[val][1];
+                    Array.Copy(BitConverter.GetBytes(newval), 0, pk4, 0x68 + i * 2, 2);
                 }
             }
 
@@ -338,7 +309,7 @@ namespace Mass_Editor
             // Met / Crown Data Detection
             int species = BitConverter.ToInt16(pk5, 0x8);
             bool fateful = Convert.ToBoolean(BitConverter.ToUInt16(pk5, 0x40) & 0x1);
-            int[] crownspec = new int[] { 251, 243, 244, 245 };
+            int[] crownspec = { 251, 243, 244, 245 };
             if (fateful && Array.IndexOf(crownspec, species) >= 0)
             {
                 if (species == 251)
@@ -361,8 +332,6 @@ namespace Mass_Editor
             // Transfer Nickname and OT Name
             DataTable CT45 = Char4to5();
             byte[] nicknamestr = new byte[24];
-            string nickname = "";
-            string trainer = "";
             nicknamestr[22] = nicknamestr[23] = 0xFF;
             try
             {
@@ -375,7 +344,6 @@ namespace Mass_Editor
                     // find entry
                     int newval = (int)CT45.Rows.Find(val)[1];
                     Array.Copy(BitConverter.GetBytes(newval), 0, pk5, 0x48 + i, 2);
-                    nickname += (char)newval;
                 }
 
                 byte[] OTstr = new byte[24];
@@ -388,7 +356,6 @@ namespace Mass_Editor
 
                     // find entry
                     int newval = (int)CT45.Rows.Find(val)[1];
-                    trainer += (char)newval;
                     Array.Copy(BitConverter.GetBytes(newval), 0, pk5, 0x68 + i, 2);
                 }
             } catch { return pk4; }
@@ -488,8 +455,7 @@ namespace Mass_Editor
             {
                 if (BitConverter.ToUInt16(pk5, 0x68 + i) == 0xFFFF)  // If terminated, stop
                     break;
-                else 
-                    Array.Copy(pk5, 0x68 + i, pk6, 0xB0 + i, 2); // Copy 16bit Character
+                Array.Copy(pk5, 0x68 + i, pk6, 0xB0 + i, 2); // Copy 16bit Character
             }
 
             // Copy Met Info
@@ -506,11 +472,12 @@ namespace Mass_Editor
 
             // Get the current level of the specimen to be transferred
             int species = BitConverter.ToInt16(pk6, 0x08);
-            uint exp = BitConverter.ToUInt32(pk6, 0x10);
 
             // Level isn't altered, keeps Gen5 Met Level
-                // int currentlevel = getLevel((species), (exp));
-                // (byte)(((pk5[0x84]) & 0x80) + currentlevel);  
+            // uint exp = BitConverter.ToUInt32(pk6, 0x10);
+            // int currentlevel = getLevel((species), (exp));
+            // (byte)(((pk5[0x84]) & 0x80) + currentlevel);
+  
             pk6[0xDD] = pk5[0x84];  // OT Gender & Encounter Level
             pk6[0xDE] = pk5[0x85];  // Encounter Type
 
@@ -521,31 +488,24 @@ namespace Mass_Editor
             // Contest Ribbon Counter
             for (int i = 0; i < 8; i++) // Sinnoh 3, Hoenn 1
             {
-                if (((pk5[0x60] >> i) & 1) == 1)
-                    contestribbons++;
-                if (((pk5[0x61] >> i) & 1) == 1)
-                    contestribbons++;
-                if (((pk5[0x3C] >> i) & 1) == 1)
-                    contestribbons++;
-                if (((pk5[0x3D] >> i) & 1) == 1)
-                    contestribbons++;
+                if (((pk5[0x60] >> i) & 1) == 1) contestribbons++;
+                if (((pk5[0x61] >> i) & 1) == 1) contestribbons++;
+                if (((pk5[0x3C] >> i) & 1) == 1) contestribbons++;
+                if (((pk5[0x3D] >> i) & 1) == 1) contestribbons++;
             }
             for (int i = 0; i < 4; i++) // Sinnoh 4, Hoenn 2
             {
-                if (((pk5[0x62] >> i) & 1) == 1)
-                    contestribbons++;
-                if (((pk5[0x3E] >> i) & 1) == 1)
-                    contestribbons++;
+                if (((pk5[0x62] >> i) & 1) == 1) contestribbons++;
+                if (((pk5[0x3E] >> i) & 1) == 1) contestribbons++;
             }
 
             // Battle Ribbon Counter
-            if ((pk5[0x3E] & 0x20) >> 5 == 1)    // Winning Ribbon
-                battleribbons++;
-            if ((pk5[0x3E] & 0x40) >> 6 == 1)    // Victory Ribbon
-                battleribbons++;
+            // Winning Ribbon
+            if ((pk5[0x3E] & 0x20) >> 5 == 1) battleribbons++;
+            // Victory Ribbon
+            if ((pk5[0x3E] & 0x40) >> 6 == 1) battleribbons++;
             for (int i = 1; i < 7; i++)     // Sinnoh Battle Ribbons
-                if (((pk5[0x24] >> i) & 1) == 1)
-                    battleribbons++;
+            if (((pk5[0x24] >> i) & 1) == 1) battleribbons++;
 
             // Fill the Ribbon Counter Bytes
             pk6[0x38] = contestribbons;
@@ -618,10 +578,10 @@ namespace Mass_Editor
             // 01 - Not handled by OT
             // 07 - CA
             // 31 - USA
-            byte[] x90x = new byte[] { 0x00, 0x00, g6trgend, 0x01, (byte)subreg, (byte)country, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, (byte)PKX.getBaseFriendship(species), 0x00, 0x01, 0x04, (byte)(Util.rnd32() % 10), 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+            byte[] x90x = { 0x00, 0x00, g6trgend, 0x01, (byte)subreg, (byte)country, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, PKX.getBaseFriendship(species), 0x00, 0x01, 0x04, (byte)(Util.rnd32() % 10), 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
             Array.Copy(x90x, 0, pk6, 0x90, x90x.Length);
             // When transferred, friendship gets reset.
-            pk6[0xCA] = (byte)PKX.getBaseFriendship(species);
+            pk6[0xCA] = PKX.getBaseFriendship(species);
 
             // Write Origin (USA California) - location is dependent on 3DS system that transfers.
             pk6[0xE0] = (byte)country;   
@@ -646,8 +606,6 @@ namespace Mass_Editor
 
             // Apply New Checksum
             Array.Copy(BitConverter.GetBytes(chk), 0, pk6, 06, 2);
-
-            string trainer = Util.TrimFromZero(Encoding.Unicode.GetString(pk6, 0xB0, 24));
             
             return pk6; // Done!
         }
@@ -3906,7 +3864,7 @@ namespace Mass_Editor
 
         private int getg3species(int g3index)
         {
-            int[] newindex = new int[] 
+            int[] newindex =
             {
                 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,
                 31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,
@@ -3927,7 +3885,7 @@ namespace Mass_Editor
                 345,346,347,348,280,281,282,371,372,373,374,375,376,377,378,379,382,383,384,380,381,
                 385,386,358,
             };
-            int[] oldindex = new int[] 
+            int[] oldindex =
             {
                 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,
                 31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,

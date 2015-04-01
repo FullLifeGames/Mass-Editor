@@ -1335,13 +1335,13 @@ namespace Mass_Editor
             }
 
             // Set the Preview Box
-            getQuickFiller(dragout);
+        //    getQuickFiller(dragout);
 
             // Highlight the Current Handler
             clickGT((buff[0x93] == 1) ? GB_nOT : GB_OT, null);
 
-            if (!PKX.verifychk(buff))
-                Util.Alert("PKX File has an invalid checksum.");
+          //  if (!PKX.verifychk(buff))
+                //Util.Alert("PKX File has an invalid checksum.");
         }
         // General Use Functions shared by other Forms // 
         public void setCountrySubRegion(object sender, string type)
