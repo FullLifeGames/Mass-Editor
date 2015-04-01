@@ -2536,29 +2536,28 @@ namespace Mass_Editor
             for (int i = 0; i < cba.Length; i++)
             {
                 int back = cba[i].BackColor.ToArgb();
-                if (back != System.Drawing.SystemColors.Control.ToArgb() && back != 0 && back != -1 & back != defaultControlWhite.ToArgb())
-                {
-                    if (i < 6)      // Main Tab
-                        tabMain.SelectedIndex = 0;
-                    else if (i < 9) // Met Tab
-                        tabMain.SelectedIndex = 1;
-                    else            // Moves
-                        tabMain.SelectedIndex = 3;
-                    goto invalid;
-                }
+                if (back == SystemColors.Control.ToArgb() || back == 0 ||
+                    !(back != -1 & back != defaultControlWhite.ToArgb())) continue;
+                if (i < 6)      // Main Tab
+                    tabMain.SelectedIndex = 0;
+                else if (i < 9) // Met Tab
+                    tabMain.SelectedIndex = 1;
+                else            // Moves
+                    tabMain.SelectedIndex = 3;
+                goto invalid;
             }
             #endregion
             // Further logic checking
             if (Convert.ToUInt32(TB_EVTotal.Text) > 510 && !CHK_HackedStats.Checked)
             { tabMain.SelectedIndex = 2; goto invalid; }
-            if (Util.getIndex(CB_Species) == 0) // Not gonna write 0 species.
-            { tabMain.SelectedIndex = 0; goto invalid; }
-
             // If no errors detected...
-            return true;
-        // else...
+            if (Util.getIndex(CB_Species) != 0) return true;
+            // Else
+            tabMain.SelectedIndex = 0;
+
+            // else...
         invalid:
-            { System.Media.SystemSounds.Exclamation.Play(); return false; }
+            { return false; }
         }
         private byte[] preparepkx(byte[] buff, bool click = true)
         {
