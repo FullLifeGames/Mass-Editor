@@ -4960,6 +4960,8 @@ namespace Mass_Editor
                     return;
                 }
 
+                bool onebox = true;
+
                 for (int i = 0; i < C_BoxSelect.Items.Count; i++)
                 {
                     C_BoxSelect.SelectedIndex = i;
@@ -4975,6 +4977,10 @@ namespace Mass_Editor
                         bool worked = clickView(pictureBox);
                         if (worked)
                         {
+                            if (i > 0)
+                            {
+                                onebox = false;
+                            }
                             try
                             {
                                 massEdit(sender, e);
@@ -4998,6 +5004,7 @@ namespace Mass_Editor
                     bool worked = clickView(pictureBox);
                     if (worked)
                     {
+                        onebox = false;
                         try
                         {
                             massEdit(sender, e);
@@ -5018,7 +5025,16 @@ namespace Mass_Editor
                     File.WriteAllBytes(s + ".bak", backupfile);
                 }
 
-                File.WriteAllBytes(s, savefile.Skip(SaveGame.Box).Take(0xE8 * 30 * 31).ToArray());
+                C_BoxSelect.SelectedIndex = 0;
+
+                if (onebox)
+                {                    
+                    File.WriteAllBytes(s, savefile.Skip(SaveGame.Box + 0xE8 * 30 * C_BoxSelect.SelectedIndex).Take(0xE8 * 30).ToArray());
+                }
+                else
+                {
+                    File.WriteAllBytes(s, savefile.Skip(SaveGame.Box).Take(0xE8 * 30 * 31).ToArray());
+                }
 
             }
             else

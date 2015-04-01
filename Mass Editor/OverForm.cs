@@ -102,6 +102,7 @@ namespace Mass_Editor
             groupBox4.Enabled = b;
             CHK_Country.Enabled = b;
             groupBox5.Enabled = b;
+            CHK_Memories.Enabled = b;
         }
 
         private void enableAll()
@@ -138,6 +139,7 @@ namespace Mass_Editor
             groupBox4.Enabled = CHK_Country.Checked;
             CHK_Country.Enabled = b;
             groupBox5.Enabled = CHK_Memories.Checked;
+            CHK_Memories.Enabled = b;
         }
         #endregion
 
