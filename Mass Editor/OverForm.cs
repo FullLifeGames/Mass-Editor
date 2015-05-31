@@ -2418,7 +2418,7 @@ namespace Mass_Editor
             this.groupBox6.Size = new System.Drawing.Size(528, 322);
             this.groupBox6.TabIndex = 58;
             this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Change Badges to";
+            this.groupBox6.Text = "Change Ribbons to";
             // 
             // CHK_Badges
             // 
