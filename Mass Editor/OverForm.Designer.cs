@@ -2064,7 +2064,7 @@
             this.groupBox6.Size = new System.Drawing.Size(528, 322);
             this.groupBox6.TabIndex = 58;
             this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "changeBadges";
+            this.groupBox6.Text = "Change Ribbons To";
             // 
             // BTN_None
             // 
