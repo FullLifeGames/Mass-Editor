@@ -36,8 +36,6 @@ namespace Mass_Editor
                 Util.Alert("Illegal mode activated.", "Please behave.");
             }
             enableAll();
-            BTN_All.PerformClick();
-            BTN_None.PerformClick();
         }
 
         #region Drag and Drop
@@ -193,6 +191,9 @@ namespace Mass_Editor
 
                 Met m = new Met(CB_GameOrigin.SelectedIndex, CB_MetLocation.SelectedIndex, CB_Ball.SelectedIndex, TB_MetLevel.Text, CAL_MetDate.Value, CHK_Fateful.Checked, CB_EncounterType.Enabled, CB_EncounterType.SelectedIndex, CHK_AsEgg.Checked, CB_EggLocation.SelectedIndex, CAL_EggDate.Value);
 
+                bool[] badgeChecks = getBadgeChecks();
+                int[] badgeInts = { (TB_PastContest.Text == "") ? 0 : int.Parse(TB_PastContest.Text), (TB_PastBattle.Text == "") ? 0 : int.Parse(TB_PastBattle.Text), comboBox1.SelectedIndex, (int) numericUpDown1.Value };
+
                 if (CHK_Unshiny.Checked)
                 {
                     modes.Add(1);
@@ -241,10 +242,14 @@ namespace Mass_Editor
                 {
                     modes.Add(12);
                 }
+                if (CHK_Badges.Checked)
+                {
+                    modes.Add(13);
+                }
 
                 string filename = Path.GetFileNameWithoutExtension(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
                 // thread for free UI
-                thread = new Thread(delegate() { Form1 f1 = new Form1(litems, modes, this.progressBar1, ret, friendship, level, m, bak, otindexes, countrybool, metbool, otbool, amienabled, amiindex, otgenders, (filename.IndexOf("Mess") >= 0), amilite, amilitebool, amiliteint, allintobox); f1.Form1_Load(new object(), new EventArgs()); f1.Dispose(); });
+                thread = new Thread(delegate() { Form1 f1 = new Form1(litems, modes, this.progressBar1, ret, friendship, level, m, bak, otindexes, countrybool, metbool, otbool, amienabled, amiindex, otgenders, (filename.IndexOf("Mess") >= 0), amilite, amilitebool, amiliteint, allintobox, badgeChecks, badgeInts); f1.Form1_Load(new object(), new EventArgs()); f1.Dispose(); });
                 thread.SetApartmentState(ApartmentState.STA);
 
                 // thread2 is basically my thread_finished_Eventhandler
@@ -252,6 +257,95 @@ namespace Mass_Editor
                 thread.Start();
                 thread2.Start();
             }
+        }
+
+        private bool[] getBadgeChecks()
+        {
+            bool[] cba = {
+                                   Kalos1a_0.Checked,
+								   Kalos1a_1.Checked,
+								   Kalos1a_2.Checked,
+								   Kalos1a_3.Checked,
+								   Kalos1a_4.Checked,
+								   Kalos1a_5.Checked,
+								   Kalos1a_6.Checked,
+								   Kalos1a_7.Checked,
+                                   Kalos1b_0.Checked,
+								   Kalos1b_1.Checked,
+								   Kalos1b_2.Checked,
+								   Kalos1b_3.Checked,
+								   Kalos1b_4.Checked,
+								   Kalos1b_5.Checked,
+								   Kalos1b_6.Checked,
+								   Kalos1b_7.Checked,
+                                   Kalos2a_0.Checked,
+								   Kalos2a_1.Checked,
+								   Kalos2a_2.Checked,
+								   Kalos2a_3.Checked,
+								   Kalos2a_4.Checked,
+								   Kalos2a_5.Checked,
+								   Kalos2a_6.Checked,
+								   Kalos2a_7.Checked,
+                                   Kalos2b_0.Checked,
+								   Kalos2b_1.Checked,
+								   Kalos2b_2.Checked,
+								   Kalos2b_3.Checked,
+								   Kalos2b_4.Checked,
+								   Kalos2b_5.Checked,
+								   Kalos2b_6.Checked,
+								   Kalos2b_7.Checked,
+                                   Extra1_0.Checked,
+								   Extra1_1.Checked,
+								   Extra1_2.Checked,
+								   Extra1_3.Checked,
+								   Extra1_4.Checked,
+                                   Extra1_7.Checked,
+								   ORAS_0.Checked,
+								   ORAS_1.Checked,
+								   ORAS_2.Checked,
+								   ORAS_3.Checked,
+								   ORAS_4.Checked,
+								   ORAS_5.Checked,
+                                  TMedal3_4.Checked,
+                                  TMedal3_5.Checked,
+								  TMedal3_6.Checked,
+								  TMedal3_7.Checked,
+								  TMedal4_0.Checked,
+                                  TMedal4_1.Checked,
+								  TMedal4_2.Checked,
+								  TMedal4_3.Checked,
+                                  TMedal4_4.Checked,
+								  TMedal4_5.Checked,
+								  TMedal4_6.Checked,
+                                  TMedal4_7.Checked,
+                                  TMedal1_2.Checked,
+								  TMedal1_3.Checked,
+								  TMedal1_4.Checked,
+								  TMedal1_5.Checked,
+								  TMedal1_6.Checked,
+								  TMedal1_7.Checked,
+                                  TMedal2_0.Checked,
+								  TMedal2_1.Checked,
+								  TMedal2_2.Checked,
+								  TMedal2_3.Checked,
+								  TMedal2_4.Checked,
+								  TMedal2_5.Checked,
+                                  TMedal2_6.Checked,
+								  TMedal2_7.Checked,
+								  TMedal3_0.Checked,
+								  TMedal3_1.Checked,
+								  TMedal3_2.Checked,
+								  TMedal3_3.Checked,
+                                  CHK_Secret.Checked,
+								CHK_D0.Checked,
+								CHK_D1.Checked,
+								CHK_D2.Checked,
+								CHK_D3.Checked,
+								CHK_D4.Checked,
+								CHK_D5.Checked,
+								};
+            return cba;
+
         }
 
         private void InitializeComponents()
@@ -4219,6 +4313,14 @@ namespace Mass_Editor
         {
             f.clickTRGender(Label_OTGender, e);
             f.clickTRGender(Label_CTGender, e);
+            CHK_Badges.Checked = true;
+            BTN_All.PerformClick();
+            BTN_None.PerformClick();
+            tabControl2.SelectedIndex = 1;
+            BTN_All.PerformClick();
+            BTN_None.PerformClick();
+            tabControl2.SelectedIndex = 0;
+            CHK_Badges.Checked = false;
         }
         #endregion
 

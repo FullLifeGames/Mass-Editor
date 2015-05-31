@@ -2695,6 +2695,7 @@
             this.Name = "RibbMedal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Ribbon / Medal Editor";
+            this.Load += new System.EventHandler(this.RibbMedal_Load);
             this.Tab_Medals.ResumeLayout(false);
             this.Tab_Medals.PerformLayout();
             this.GB_Medals1.ResumeLayout(false);

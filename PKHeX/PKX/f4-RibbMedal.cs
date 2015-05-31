@@ -16,8 +16,30 @@ namespace Mass_Editor
     {
         Form1 m_parent;
         CheckBox[] distro;
+        private bool[] badgeChecks;
+        private int[] badgeInts;
         public RibbMedal(Form1 frm1)
         {
+            InitializeComponent();
+            Util.TranslateInterface(this, Form1.curlanguage);
+            m_parent = frm1;
+
+            // Set up Training Bag Data
+            comboBox1.Items.Clear();
+            comboBox1.Items.Add("---");
+            for (int i = 1; i < Form1.trainingbags.Length - 1; i++)
+                comboBox1.Items.Add(Form1.trainingbags[i]);
+            comboBox1.SelectedIndex = m_parent.buff[0x17];
+            numericUpDown1.Value = m_parent.buff[0x16];
+            distro = new CheckBox[] { CHK_D0, CHK_D1, CHK_D2, CHK_D3, CHK_D4, CHK_D5 };
+            getRibbons();
+        }
+
+        public RibbMedal(Form1 frm1, bool[] badgeChecks, int[] badgeInts)
+        {
+            this.badgeChecks = badgeChecks;
+            this.badgeInts = badgeInts;
+
             InitializeComponent();
             Util.TranslateInterface(this, Form1.curlanguage);
             m_parent = frm1;
@@ -520,6 +542,110 @@ namespace Mass_Editor
 
             CheckBox cb = cba[Array.IndexOf(pba, sender as PictureBox)];
             cb.Checked = !cb.Checked;
+        }
+
+        public void RibbMedal_Load(object sender, EventArgs e)
+        {
+            CheckBox[] cbs = getCBs();
+            for (int i = 0; i < cbs.Length; i++)
+            {
+                cbs[i].Checked = badgeChecks[i];
+            }
+            TB_PastContest.Text = badgeInts[0] + "";
+            TB_PastBattle.Text = badgeInts[1] + "";
+            comboBox1.SelectedIndex = badgeInts[2];
+            numericUpDown1.Value = badgeInts[3];
+            BTN_Save_Click(BTN_Save, null);
+        }
+
+        private CheckBox[] getCBs()
+        {
+            CheckBox[] cba = {
+                                   Kalos1a_0,
+								   Kalos1a_1,
+								   Kalos1a_2,
+								   Kalos1a_3,
+								   Kalos1a_4,
+								   Kalos1a_5,
+								   Kalos1a_6,
+								   Kalos1a_7,
+                                   Kalos1b_0,
+								   Kalos1b_1,
+								   Kalos1b_2,
+								   Kalos1b_3,
+								   Kalos1b_4,
+								   Kalos1b_5,
+								   Kalos1b_6,
+								   Kalos1b_7,
+                                   Kalos2a_0,
+								   Kalos2a_1,
+								   Kalos2a_2,
+								   Kalos2a_3,
+								   Kalos2a_4,
+								   Kalos2a_5,
+								   Kalos2a_6,
+								   Kalos2a_7,
+                                   Kalos2b_0,
+								   Kalos2b_1,
+								   Kalos2b_2,
+								   Kalos2b_3,
+								   Kalos2b_4,
+								   Kalos2b_5,
+								   Kalos2b_6,
+								   Kalos2b_7,
+                                   Extra1_0,
+								   Extra1_1,
+								   Extra1_2,
+								   Extra1_3,
+								   Extra1_4,
+                                   Extra1_7,
+								   ORAS_0,
+								   ORAS_1,
+								   ORAS_2,
+								   ORAS_3,
+								   ORAS_4,
+								   ORAS_5,
+                                  TMedal3_4,
+                                  TMedal3_5,
+								  TMedal3_6,
+								  TMedal3_7,
+								  TMedal4_0,
+                                  TMedal4_1,
+								  TMedal4_2,
+								  TMedal4_3,
+                                  TMedal4_4,
+								  TMedal4_5,
+								  TMedal4_6,
+                                  TMedal4_7,
+                                  TMedal1_2,
+								  TMedal1_3,
+								  TMedal1_4,
+								  TMedal1_5,
+								  TMedal1_6,
+								  TMedal1_7,
+                                  TMedal2_0,
+								  TMedal2_1,
+								  TMedal2_2,
+								  TMedal2_3,
+								  TMedal2_4,
+								  TMedal2_5,
+                                  TMedal2_6,
+								  TMedal2_7,
+								  TMedal3_0,
+								  TMedal3_1,
+								  TMedal3_2,
+								  TMedal3_3,
+                                  CHK_Secret,
+								CHK_D0,
+								CHK_D1,
+								CHK_D2,
+								CHK_D3,
+								CHK_D4,
+								CHK_D5,
+								};
+            return cba;
         }             
+
+
     }
 }

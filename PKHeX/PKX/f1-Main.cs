@@ -40,6 +40,8 @@ namespace Mass_Editor
         private bool[] amilitebool;
         private int[] amiliteint;
         private bool allintobox;
+        private bool[] badgeChecks; 
+        private int[] badgeInts;
 
         #region PKHeX Code
 
@@ -163,7 +165,7 @@ namespace Mass_Editor
             this.Tab_Main.Controls.Clear();
         }
 
-        public Form1(List<string> litems, List<int> modes, ProgressBar progressBar, string[] ret, string friendship, string level, Mass_Editor.Met m, bool bak, int[] otindexes, bool[] country, bool[] met, bool[] ot, bool[] amienabled, int[] amiindex, string[] otgenders, bool hax, bool amilite, bool[] amilitebool, int[] amiliteint, bool allintobox)
+        public Form1(List<string> litems, List<int> modes, ProgressBar progressBar, string[] ret, string friendship, string level, Mass_Editor.Met m, bool bak, int[] otindexes, bool[] country, bool[] met, bool[] ot, bool[] amienabled, int[] amiindex, string[] otgenders, bool hax, bool amilite, bool[] amilitebool, int[] amiliteint, bool allintobox, bool[] badgeChecks, int[] badgeInts)
         {
 
             this.litems = litems;
@@ -185,6 +187,8 @@ namespace Mass_Editor
             this.amilitebool = amilitebool;
             this.amiliteint = amiliteint;
             this.allintobox = allintobox;
+            this.badgeChecks = badgeChecks;
+            this.badgeInts = badgeInts;
 
             #region Initialize Form
             InitializeComponent();
@@ -5233,7 +5237,11 @@ namespace Mass_Editor
                         break;
                     case 12:
                         this.updateShinyPID(sender, e);
-                        break;                    
+                        break;  
+                    case 13:
+                        RibbMedal rb = new RibbMedal(this, badgeChecks, badgeInts);
+                        rb.RibbMedal_Load(rb, null);
+                        break;
                 }
             }
         }
