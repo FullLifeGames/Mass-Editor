@@ -34,6 +34,13 @@
             this.BTN_None = new System.Windows.Forms.Button();
             this.BTN_Cancel = new System.Windows.Forms.Button();
             this.Tab_Medals = new System.Windows.Forms.TabPage();
+            this.CHK_D5 = new System.Windows.Forms.CheckBox();
+            this.CHK_D4 = new System.Windows.Forms.CheckBox();
+            this.L_Distro = new System.Windows.Forms.Label();
+            this.CHK_D3 = new System.Windows.Forms.CheckBox();
+            this.CHK_D0 = new System.Windows.Forms.CheckBox();
+            this.CHK_D1 = new System.Windows.Forms.CheckBox();
+            this.CHK_D2 = new System.Windows.Forms.CheckBox();
             this.CHK_Secret = new System.Windows.Forms.CheckBox();
             this.GB_Medals1 = new System.Windows.Forms.GroupBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -183,7 +190,7 @@
             this.Kalos1a_2 = new System.Windows.Forms.CheckBox();
             this.Kalos1a_1 = new System.Windows.Forms.CheckBox();
             this.Kalos1a_0 = new System.Windows.Forms.CheckBox();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
             this.Sinnoh3a_0 = new System.Windows.Forms.CheckBox();
             this.Sinnoh3a_1 = new System.Windows.Forms.CheckBox();
             this.Sinnoh3a_2 = new System.Windows.Forms.CheckBox();
@@ -236,13 +243,6 @@
             this.Hoenn1b_5 = new System.Windows.Forms.CheckBox();
             this.Hoenn1b_6 = new System.Windows.Forms.CheckBox();
             this.Hoenn1b_7 = new System.Windows.Forms.CheckBox();
-            this.CHK_D5 = new System.Windows.Forms.CheckBox();
-            this.CHK_D4 = new System.Windows.Forms.CheckBox();
-            this.L_Distro = new System.Windows.Forms.Label();
-            this.CHK_D3 = new System.Windows.Forms.CheckBox();
-            this.CHK_D0 = new System.Windows.Forms.CheckBox();
-            this.CHK_D1 = new System.Windows.Forms.CheckBox();
-            this.CHK_D2 = new System.Windows.Forms.CheckBox();
             this.Tab_Medals.SuspendLayout();
             this.GB_Medals1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -299,7 +299,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PB_12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_10)).BeginInit();
-            this.tabControl1.SuspendLayout();
+            this.tabControl2.SuspendLayout();
             this.SuspendLayout();
             // 
             // BTN_Save
@@ -361,6 +361,75 @@
             this.Tab_Medals.TabIndex = 2;
             this.Tab_Medals.Text = "Training Medals";
             this.Tab_Medals.UseVisualStyleBackColor = true;
+            // 
+            // CHK_D5
+            // 
+            this.CHK_D5.AutoSize = true;
+            this.CHK_D5.Location = new System.Drawing.Point(447, 16);
+            this.CHK_D5.Name = "CHK_D5";
+            this.CHK_D5.Size = new System.Drawing.Size(32, 17);
+            this.CHK_D5.TabIndex = 44;
+            this.CHK_D5.Text = "5";
+            this.CHK_D5.UseVisualStyleBackColor = true;
+            // 
+            // CHK_D4
+            // 
+            this.CHK_D4.AutoSize = true;
+            this.CHK_D4.Location = new System.Drawing.Point(415, 16);
+            this.CHK_D4.Name = "CHK_D4";
+            this.CHK_D4.Size = new System.Drawing.Size(32, 17);
+            this.CHK_D4.TabIndex = 43;
+            this.CHK_D4.Text = "4";
+            this.CHK_D4.UseVisualStyleBackColor = true;
+            // 
+            // L_Distro
+            // 
+            this.L_Distro.AutoSize = true;
+            this.L_Distro.Location = new System.Drawing.Point(318, 3);
+            this.L_Distro.Name = "L_Distro";
+            this.L_Distro.Size = new System.Drawing.Size(62, 13);
+            this.L_Distro.TabIndex = 38;
+            this.L_Distro.Text = "Distribution:";
+            // 
+            // CHK_D3
+            // 
+            this.CHK_D3.AutoSize = true;
+            this.CHK_D3.Location = new System.Drawing.Point(382, 16);
+            this.CHK_D3.Name = "CHK_D3";
+            this.CHK_D3.Size = new System.Drawing.Size(32, 17);
+            this.CHK_D3.TabIndex = 42;
+            this.CHK_D3.Text = "3";
+            this.CHK_D3.UseVisualStyleBackColor = true;
+            // 
+            // CHK_D0
+            // 
+            this.CHK_D0.AutoSize = true;
+            this.CHK_D0.Location = new System.Drawing.Point(382, 2);
+            this.CHK_D0.Name = "CHK_D0";
+            this.CHK_D0.Size = new System.Drawing.Size(32, 17);
+            this.CHK_D0.TabIndex = 39;
+            this.CHK_D0.Text = "0";
+            this.CHK_D0.UseVisualStyleBackColor = true;
+            // 
+            // CHK_D1
+            // 
+            this.CHK_D1.AutoSize = true;
+            this.CHK_D1.Location = new System.Drawing.Point(415, 2);
+            this.CHK_D1.Name = "CHK_D1";
+            this.CHK_D1.Size = new System.Drawing.Size(32, 17);
+            this.CHK_D1.TabIndex = 40;
+            this.CHK_D1.Text = "1";
+            this.CHK_D1.UseVisualStyleBackColor = true;
+            // 
+            // CHK_D2
+            // 
+            this.CHK_D2.AutoSize = true;
+            this.CHK_D2.Location = new System.Drawing.Point(447, 2);
+            this.CHK_D2.Name = "CHK_D2";
+            this.CHK_D2.Size = new System.Drawing.Size(32, 17);
+            this.CHK_D2.TabIndex = 41;
+            this.CHK_D2.Text = "2";
+            this.CHK_D2.UseVisualStyleBackColor = true;
             // 
             // CHK_Secret
             // 
@@ -2078,16 +2147,16 @@
             this.Kalos1a_0.UseVisualStyleBackColor = true;
             this.Kalos1a_0.CheckedChanged += new System.EventHandler(this.toggleribbon);
             // 
-            // tabControl1
+            // tabControl2
             // 
-            this.tabControl1.Controls.Add(this.Tab_Kalos);
-            this.tabControl1.Controls.Add(this.Tab_Extra);
-            this.tabControl1.Controls.Add(this.Tab_Medals);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(490, 240);
-            this.tabControl1.TabIndex = 0;
+            this.tabControl2.Controls.Add(this.Tab_Kalos);
+            this.tabControl2.Controls.Add(this.Tab_Extra);
+            this.tabControl2.Controls.Add(this.Tab_Medals);
+            this.tabControl2.Location = new System.Drawing.Point(12, 12);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(490, 240);
+            this.tabControl2.TabIndex = 0;
             // 
             // Sinnoh3a_0
             // 
@@ -2609,75 +2678,6 @@
             this.Hoenn1b_7.Text = "Smart Master";
             this.Hoenn1b_7.UseVisualStyleBackColor = true;
             // 
-            // CHK_D5
-            // 
-            this.CHK_D5.AutoSize = true;
-            this.CHK_D5.Location = new System.Drawing.Point(447, 16);
-            this.CHK_D5.Name = "CHK_D5";
-            this.CHK_D5.Size = new System.Drawing.Size(32, 17);
-            this.CHK_D5.TabIndex = 44;
-            this.CHK_D5.Text = "5";
-            this.CHK_D5.UseVisualStyleBackColor = true;
-            // 
-            // CHK_D4
-            // 
-            this.CHK_D4.AutoSize = true;
-            this.CHK_D4.Location = new System.Drawing.Point(415, 16);
-            this.CHK_D4.Name = "CHK_D4";
-            this.CHK_D4.Size = new System.Drawing.Size(32, 17);
-            this.CHK_D4.TabIndex = 43;
-            this.CHK_D4.Text = "4";
-            this.CHK_D4.UseVisualStyleBackColor = true;
-            // 
-            // L_Distro
-            // 
-            this.L_Distro.AutoSize = true;
-            this.L_Distro.Location = new System.Drawing.Point(318, 3);
-            this.L_Distro.Name = "L_Distro";
-            this.L_Distro.Size = new System.Drawing.Size(62, 13);
-            this.L_Distro.TabIndex = 38;
-            this.L_Distro.Text = "Distribution:";
-            // 
-            // CHK_D3
-            // 
-            this.CHK_D3.AutoSize = true;
-            this.CHK_D3.Location = new System.Drawing.Point(382, 16);
-            this.CHK_D3.Name = "CHK_D3";
-            this.CHK_D3.Size = new System.Drawing.Size(32, 17);
-            this.CHK_D3.TabIndex = 42;
-            this.CHK_D3.Text = "3";
-            this.CHK_D3.UseVisualStyleBackColor = true;
-            // 
-            // CHK_D0
-            // 
-            this.CHK_D0.AutoSize = true;
-            this.CHK_D0.Location = new System.Drawing.Point(382, 2);
-            this.CHK_D0.Name = "CHK_D0";
-            this.CHK_D0.Size = new System.Drawing.Size(32, 17);
-            this.CHK_D0.TabIndex = 39;
-            this.CHK_D0.Text = "0";
-            this.CHK_D0.UseVisualStyleBackColor = true;
-            // 
-            // CHK_D1
-            // 
-            this.CHK_D1.AutoSize = true;
-            this.CHK_D1.Location = new System.Drawing.Point(415, 2);
-            this.CHK_D1.Name = "CHK_D1";
-            this.CHK_D1.Size = new System.Drawing.Size(32, 17);
-            this.CHK_D1.TabIndex = 40;
-            this.CHK_D1.Text = "1";
-            this.CHK_D1.UseVisualStyleBackColor = true;
-            // 
-            // CHK_D2
-            // 
-            this.CHK_D2.AutoSize = true;
-            this.CHK_D2.Location = new System.Drawing.Point(447, 2);
-            this.CHK_D2.Name = "CHK_D2";
-            this.CHK_D2.Size = new System.Drawing.Size(32, 17);
-            this.CHK_D2.TabIndex = 41;
-            this.CHK_D2.Text = "2";
-            this.CHK_D2.UseVisualStyleBackColor = true;
-            // 
             // RibbMedal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2687,7 +2687,7 @@
             this.Controls.Add(this.BTN_None);
             this.Controls.Add(this.BTN_All);
             this.Controls.Add(this.BTN_Save);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabControl2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -2758,226 +2758,226 @@
             ((System.ComponentModel.ISupportInitialize)(this.PB_12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_10)).EndInit();
-            this.tabControl1.ResumeLayout(false);
+            this.tabControl2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button BTN_Save;
-        private System.Windows.Forms.Button BTN_All;
-        private System.Windows.Forms.Button BTN_None;
-        private System.Windows.Forms.Button BTN_Cancel;
-        private System.Windows.Forms.TabPage Tab_Medals;
-        private System.Windows.Forms.GroupBox GB_Medals1;
-        private System.Windows.Forms.CheckBox TMedal2_7;
-        private System.Windows.Forms.CheckBox TMedal2_6;
-        private System.Windows.Forms.CheckBox TMedal2_5;
-        private System.Windows.Forms.CheckBox TMedal2_4;
-        private System.Windows.Forms.CheckBox TMedal2_3;
-        private System.Windows.Forms.CheckBox TMedal2_2;
-        private System.Windows.Forms.CheckBox TMedal2_1;
-        private System.Windows.Forms.CheckBox TMedal2_0;
-        private System.Windows.Forms.CheckBox TMedal1_7;
-        private System.Windows.Forms.CheckBox TMedal1_6;
-        private System.Windows.Forms.CheckBox TMedal1_5;
-        private System.Windows.Forms.CheckBox TMedal1_4;
-        private System.Windows.Forms.CheckBox TMedal1_3;
-        private System.Windows.Forms.CheckBox TMedal1_2;
-        private System.Windows.Forms.CheckBox TMedal1_1;
-        private System.Windows.Forms.CheckBox TMedal1_0;
-        private System.Windows.Forms.GroupBox GB_Medals2;
-        private System.Windows.Forms.CheckBox TMedal4_7;
-        private System.Windows.Forms.CheckBox TMedal4_6;
-        private System.Windows.Forms.CheckBox TMedal4_5;
-        private System.Windows.Forms.CheckBox TMedal4_4;
-        private System.Windows.Forms.CheckBox TMedal4_3;
-        private System.Windows.Forms.CheckBox TMedal4_2;
-        private System.Windows.Forms.CheckBox TMedal4_1;
-        private System.Windows.Forms.CheckBox TMedal4_0;
-        private System.Windows.Forms.CheckBox TMedal3_7;
-        private System.Windows.Forms.CheckBox TMedal3_6;
-        private System.Windows.Forms.CheckBox TMedal3_5;
-        private System.Windows.Forms.CheckBox TMedal3_4;
-        private System.Windows.Forms.CheckBox TMedal3_3;
-        private System.Windows.Forms.CheckBox TMedal3_2;
-        private System.Windows.Forms.CheckBox TMedal3_1;
-        private System.Windows.Forms.CheckBox TMedal3_0;
-        private System.Windows.Forms.TabPage Tab_Extra;
-        private System.Windows.Forms.GroupBox GB_Extra1;
-        private System.Windows.Forms.CheckBox Extra1_4;
-        private System.Windows.Forms.CheckBox Extra1_3;
-        private System.Windows.Forms.CheckBox Extra1_2;
-        private System.Windows.Forms.CheckBox Extra1_1;
-        private System.Windows.Forms.CheckBox Extra1_0;
-        private System.Windows.Forms.TabPage Tab_Kalos;
-        private System.Windows.Forms.GroupBox GB_Kalos34;
-        private System.Windows.Forms.CheckBox Kalos2b_7;
-        private System.Windows.Forms.CheckBox Kalos2b_6;
-        private System.Windows.Forms.CheckBox Kalos2b_5;
-        private System.Windows.Forms.CheckBox Kalos2b_4;
-        private System.Windows.Forms.CheckBox Kalos2b_3;
-        private System.Windows.Forms.CheckBox Kalos2b_2;
-        private System.Windows.Forms.CheckBox Kalos2b_1;
-        private System.Windows.Forms.CheckBox Kalos2b_0;
-        private System.Windows.Forms.CheckBox Kalos2a_7;
-        private System.Windows.Forms.CheckBox Kalos2a_6;
-        private System.Windows.Forms.CheckBox Kalos2a_5;
-        private System.Windows.Forms.CheckBox Kalos2a_4;
-        private System.Windows.Forms.CheckBox Kalos2a_3;
-        private System.Windows.Forms.CheckBox Kalos2a_2;
-        private System.Windows.Forms.CheckBox Kalos2a_1;
-        private System.Windows.Forms.CheckBox Kalos2a_0;
-        private System.Windows.Forms.GroupBox GB_Kalos12;
-        private System.Windows.Forms.CheckBox Kalos1b_7;
-        private System.Windows.Forms.CheckBox Kalos1b_6;
-        private System.Windows.Forms.CheckBox Kalos1b_5;
-        private System.Windows.Forms.CheckBox Kalos1b_4;
-        private System.Windows.Forms.CheckBox Kalos1b_3;
-        private System.Windows.Forms.CheckBox Kalos1b_2;
-        private System.Windows.Forms.CheckBox Kalos1b_1;
-        private System.Windows.Forms.CheckBox Kalos1b_0;
-        private System.Windows.Forms.CheckBox Kalos1a_7;
-        private System.Windows.Forms.CheckBox Kalos1a_6;
-        private System.Windows.Forms.CheckBox Kalos1a_5;
-        private System.Windows.Forms.CheckBox Kalos1a_4;
-        private System.Windows.Forms.CheckBox Kalos1a_3;
-        private System.Windows.Forms.CheckBox Kalos1a_2;
-        private System.Windows.Forms.CheckBox Kalos1a_1;
-        private System.Windows.Forms.CheckBox Kalos1a_0;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.CheckBox Sinnoh3a_0;
-        private System.Windows.Forms.CheckBox Sinnoh3a_1;
-        private System.Windows.Forms.CheckBox Sinnoh3a_2;
-        private System.Windows.Forms.CheckBox Sinnoh3a_3;
-        private System.Windows.Forms.CheckBox Sinnoh3a_4;
-        private System.Windows.Forms.CheckBox Sinnoh3a_5;
-        private System.Windows.Forms.CheckBox Sinnoh3a_6;
-        private System.Windows.Forms.CheckBox Sinnoh3a_7;
-        private System.Windows.Forms.CheckBox Sinnoh3b_0;
-        private System.Windows.Forms.CheckBox Sinnoh3b_1;
-        private System.Windows.Forms.CheckBox Sinnoh3b_2;
-        private System.Windows.Forms.CheckBox Sinnoh3b_3;
-        private System.Windows.Forms.CheckBox Sinnoh3b_4;
-        private System.Windows.Forms.CheckBox Sinnoh3b_5;
-        private System.Windows.Forms.CheckBox Sinnoh3b_6;
-        private System.Windows.Forms.CheckBox Sinnoh3b_7;
-        private System.Windows.Forms.CheckBox Sinnoh4a_0;
-        private System.Windows.Forms.CheckBox Sinnoh4a_1;
-        private System.Windows.Forms.CheckBox Sinnoh4a_2;
-        private System.Windows.Forms.CheckBox Sinnoh4a_3;
-        private System.Windows.Forms.CheckBox Hoenn2a_0;
-        private System.Windows.Forms.CheckBox Hoenn2a_1;
-        private System.Windows.Forms.CheckBox Hoenn2a_2;
-        private System.Windows.Forms.CheckBox Hoenn2a_3;
-        private System.Windows.Forms.CheckBox Hoenn2a_4;
-        private System.Windows.Forms.CheckBox Hoenn2a_5;
-        private System.Windows.Forms.CheckBox Hoenn2a_6;
-        private System.Windows.Forms.CheckBox Hoenn2a_7;
-        private System.Windows.Forms.CheckBox Hoenn2b_0;
-        private System.Windows.Forms.CheckBox Hoenn2b_1;
-        private System.Windows.Forms.CheckBox Hoenn2b_2;
-        private System.Windows.Forms.CheckBox Hoenn2b_3;
-        private System.Windows.Forms.CheckBox Hoenn2b_4;
-        private System.Windows.Forms.CheckBox Hoenn2b_5;
-        private System.Windows.Forms.CheckBox Hoenn2b_6;
-        private System.Windows.Forms.CheckBox Hoenn2b_7;
-        private System.Windows.Forms.CheckBox Hoenn1a_0;
-        private System.Windows.Forms.CheckBox Hoenn1a_1;
-        private System.Windows.Forms.CheckBox Hoenn1a_2;
-        private System.Windows.Forms.CheckBox Hoenn1a_3;
-        private System.Windows.Forms.CheckBox Hoenn1a_4;
-        private System.Windows.Forms.CheckBox Hoenn1a_5;
-        private System.Windows.Forms.CheckBox Hoenn1a_6;
-        private System.Windows.Forms.CheckBox Hoenn1a_7;
-        private System.Windows.Forms.CheckBox Hoenn1b_0;
-        private System.Windows.Forms.CheckBox Hoenn1b_1;
-        private System.Windows.Forms.CheckBox Hoenn1b_2;
-        private System.Windows.Forms.CheckBox Hoenn1b_3;
-        private System.Windows.Forms.CheckBox Hoenn1b_4;
-        private System.Windows.Forms.CheckBox Hoenn1b_5;
-        private System.Windows.Forms.CheckBox Hoenn1b_6;
-        private System.Windows.Forms.CheckBox Hoenn1b_7;
-        private System.Windows.Forms.GroupBox GB_Extra2;
-        private System.Windows.Forms.Label L_Rank3;
-        private System.Windows.Forms.Label L_Rank2;
-        private System.Windows.Forms.Label L_Rank1;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label L_Rank8;
-        private System.Windows.Forms.Label L_Rank7;
-        private System.Windows.Forms.Label L_Rank6;
-        private System.Windows.Forms.Label L_Rank5;
-        private System.Windows.Forms.Label L_Rank4;
-        private System.Windows.Forms.Label L_PastBattle;
-        private System.Windows.Forms.Label L_PastContest;
-        private System.Windows.Forms.MaskedTextBox TB_PastBattle;
-        private System.Windows.Forms.MaskedTextBox TB_PastContest;
-        private System.Windows.Forms.CheckBox CHK_Secret;
-        private System.Windows.Forms.Label L_SuperTraining;
-        private System.Windows.Forms.PictureBox PB_47;
-        private System.Windows.Forms.PictureBox PB_46;
-        private System.Windows.Forms.PictureBox PB_45;
-        private System.Windows.Forms.PictureBox PB_44;
-        private System.Windows.Forms.PictureBox PB_43;
-        private System.Windows.Forms.PictureBox PB_42;
-        private System.Windows.Forms.PictureBox PB_41;
-        private System.Windows.Forms.PictureBox PB_40;
-        private System.Windows.Forms.PictureBox PB_37;
-        private System.Windows.Forms.PictureBox PB_36;
-        private System.Windows.Forms.PictureBox PB_35;
-        private System.Windows.Forms.PictureBox PB_34;
-        private System.Windows.Forms.PictureBox PB_33;
-        private System.Windows.Forms.PictureBox PB_32;
-        private System.Windows.Forms.PictureBox PB_31;
-        private System.Windows.Forms.PictureBox PB_30;
-        private System.Windows.Forms.PictureBox PB_27;
-        private System.Windows.Forms.PictureBox PB_26;
-        private System.Windows.Forms.PictureBox PB_25;
-        private System.Windows.Forms.PictureBox PB_24;
-        private System.Windows.Forms.PictureBox PB_23;
-        private System.Windows.Forms.PictureBox PB_22;
-        private System.Windows.Forms.PictureBox PB_21;
-        private System.Windows.Forms.PictureBox PB_20;
-        private System.Windows.Forms.PictureBox PB_17;
-        private System.Windows.Forms.PictureBox PB_16;
-        private System.Windows.Forms.PictureBox PB_15;
-        private System.Windows.Forms.PictureBox PB_14;
-        private System.Windows.Forms.PictureBox PB_13;
-        private System.Windows.Forms.PictureBox PB_12;
-        private System.Windows.Forms.PictureBox PB_11;
-        private System.Windows.Forms.PictureBox PB_10;
-        private System.Windows.Forms.PictureBox PastBattle;
-        private System.Windows.Forms.PictureBox PastContest;
-        private System.Windows.Forms.PictureBox PB_54;
-        private System.Windows.Forms.PictureBox PB_50;
-        private System.Windows.Forms.PictureBox PB_53;
-        private System.Windows.Forms.PictureBox PB_52;
-        private System.Windows.Forms.PictureBox PB_51;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label L_Bag;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.Label L_Hits;
-        private System.Windows.Forms.CheckBox ORAS_5;
-        private System.Windows.Forms.CheckBox ORAS_4;
-        private System.Windows.Forms.PictureBox PB_57;
-        private System.Windows.Forms.PictureBox PB_O5;
-        private System.Windows.Forms.CheckBox ORAS_3;
-        private System.Windows.Forms.PictureBox PB_O4;
-        private System.Windows.Forms.PictureBox PB_O0;
-        private System.Windows.Forms.PictureBox PB_O3;
-        private System.Windows.Forms.PictureBox PB_O2;
-        private System.Windows.Forms.PictureBox PB_O1;
-        private System.Windows.Forms.CheckBox ORAS_2;
-        private System.Windows.Forms.CheckBox ORAS_1;
-        private System.Windows.Forms.CheckBox ORAS_0;
-        private System.Windows.Forms.CheckBox Extra1_7;
-        private System.Windows.Forms.CheckBox CHK_D5;
-        private System.Windows.Forms.CheckBox CHK_D4;
-        private System.Windows.Forms.Label L_Distro;
-        private System.Windows.Forms.CheckBox CHK_D3;
-        private System.Windows.Forms.CheckBox CHK_D0;
-        private System.Windows.Forms.CheckBox CHK_D1;
-        private System.Windows.Forms.CheckBox CHK_D2;
+        public System.Windows.Forms.Button BTN_Save;
+        public System.Windows.Forms.Button BTN_All;
+        public System.Windows.Forms.Button BTN_None;
+        public System.Windows.Forms.Button BTN_Cancel;
+        public System.Windows.Forms.TabPage Tab_Medals;
+        public System.Windows.Forms.GroupBox GB_Medals1;
+        public System.Windows.Forms.CheckBox TMedal2_7;
+        public System.Windows.Forms.CheckBox TMedal2_6;
+        public System.Windows.Forms.CheckBox TMedal2_5;
+        public System.Windows.Forms.CheckBox TMedal2_4;
+        public System.Windows.Forms.CheckBox TMedal2_3;
+        public System.Windows.Forms.CheckBox TMedal2_2;
+        public System.Windows.Forms.CheckBox TMedal2_1;
+        public System.Windows.Forms.CheckBox TMedal2_0;
+        public System.Windows.Forms.CheckBox TMedal1_7;
+        public System.Windows.Forms.CheckBox TMedal1_6;
+        public System.Windows.Forms.CheckBox TMedal1_5;
+        public System.Windows.Forms.CheckBox TMedal1_4;
+        public System.Windows.Forms.CheckBox TMedal1_3;
+        public System.Windows.Forms.CheckBox TMedal1_2;
+        public System.Windows.Forms.CheckBox TMedal1_1;
+        public System.Windows.Forms.CheckBox TMedal1_0;
+        public System.Windows.Forms.GroupBox GB_Medals2;
+        public System.Windows.Forms.CheckBox TMedal4_7;
+        public System.Windows.Forms.CheckBox TMedal4_6;
+        public System.Windows.Forms.CheckBox TMedal4_5;
+        public System.Windows.Forms.CheckBox TMedal4_4;
+        public System.Windows.Forms.CheckBox TMedal4_3;
+        public System.Windows.Forms.CheckBox TMedal4_2;
+        public System.Windows.Forms.CheckBox TMedal4_1;
+        public System.Windows.Forms.CheckBox TMedal4_0;
+        public System.Windows.Forms.CheckBox TMedal3_7;
+        public System.Windows.Forms.CheckBox TMedal3_6;
+        public System.Windows.Forms.CheckBox TMedal3_5;
+        public System.Windows.Forms.CheckBox TMedal3_4;
+        public System.Windows.Forms.CheckBox TMedal3_3;
+        public System.Windows.Forms.CheckBox TMedal3_2;
+        public System.Windows.Forms.CheckBox TMedal3_1;
+        public System.Windows.Forms.CheckBox TMedal3_0;
+        public System.Windows.Forms.TabPage Tab_Extra;
+        public System.Windows.Forms.GroupBox GB_Extra1;
+        public System.Windows.Forms.CheckBox Extra1_4;
+        public System.Windows.Forms.CheckBox Extra1_3;
+        public System.Windows.Forms.CheckBox Extra1_2;
+        public System.Windows.Forms.CheckBox Extra1_1;
+        public System.Windows.Forms.CheckBox Extra1_0;
+        public System.Windows.Forms.TabPage Tab_Kalos;
+        public System.Windows.Forms.GroupBox GB_Kalos34;
+        public System.Windows.Forms.CheckBox Kalos2b_7;
+        public System.Windows.Forms.CheckBox Kalos2b_6;
+        public System.Windows.Forms.CheckBox Kalos2b_5;
+        public System.Windows.Forms.CheckBox Kalos2b_4;
+        public System.Windows.Forms.CheckBox Kalos2b_3;
+        public System.Windows.Forms.CheckBox Kalos2b_2;
+        public System.Windows.Forms.CheckBox Kalos2b_1;
+        public System.Windows.Forms.CheckBox Kalos2b_0;
+        public System.Windows.Forms.CheckBox Kalos2a_7;
+        public System.Windows.Forms.CheckBox Kalos2a_6;
+        public System.Windows.Forms.CheckBox Kalos2a_5;
+        public System.Windows.Forms.CheckBox Kalos2a_4;
+        public System.Windows.Forms.CheckBox Kalos2a_3;
+        public System.Windows.Forms.CheckBox Kalos2a_2;
+        public System.Windows.Forms.CheckBox Kalos2a_1;
+        public System.Windows.Forms.CheckBox Kalos2a_0;
+        public System.Windows.Forms.GroupBox GB_Kalos12;
+        public System.Windows.Forms.CheckBox Kalos1b_7;
+        public System.Windows.Forms.CheckBox Kalos1b_6;
+        public System.Windows.Forms.CheckBox Kalos1b_5;
+        public System.Windows.Forms.CheckBox Kalos1b_4;
+        public System.Windows.Forms.CheckBox Kalos1b_3;
+        public System.Windows.Forms.CheckBox Kalos1b_2;
+        public System.Windows.Forms.CheckBox Kalos1b_1;
+        public System.Windows.Forms.CheckBox Kalos1b_0;
+        public System.Windows.Forms.CheckBox Kalos1a_7;
+        public System.Windows.Forms.CheckBox Kalos1a_6;
+        public System.Windows.Forms.CheckBox Kalos1a_5;
+        public System.Windows.Forms.CheckBox Kalos1a_4;
+        public System.Windows.Forms.CheckBox Kalos1a_3;
+        public System.Windows.Forms.CheckBox Kalos1a_2;
+        public System.Windows.Forms.CheckBox Kalos1a_1;
+        public System.Windows.Forms.CheckBox Kalos1a_0;
+        public System.Windows.Forms.TabControl tabControl2;
+        public System.Windows.Forms.CheckBox Sinnoh3a_0;
+        public System.Windows.Forms.CheckBox Sinnoh3a_1;
+        public System.Windows.Forms.CheckBox Sinnoh3a_2;
+        public System.Windows.Forms.CheckBox Sinnoh3a_3;
+        public System.Windows.Forms.CheckBox Sinnoh3a_4;
+        public System.Windows.Forms.CheckBox Sinnoh3a_5;
+        public System.Windows.Forms.CheckBox Sinnoh3a_6;
+        public System.Windows.Forms.CheckBox Sinnoh3a_7;
+        public System.Windows.Forms.CheckBox Sinnoh3b_0;
+        public System.Windows.Forms.CheckBox Sinnoh3b_1;
+        public System.Windows.Forms.CheckBox Sinnoh3b_2;
+        public System.Windows.Forms.CheckBox Sinnoh3b_3;
+        public System.Windows.Forms.CheckBox Sinnoh3b_4;
+        public System.Windows.Forms.CheckBox Sinnoh3b_5;
+        public System.Windows.Forms.CheckBox Sinnoh3b_6;
+        public System.Windows.Forms.CheckBox Sinnoh3b_7;
+        public System.Windows.Forms.CheckBox Sinnoh4a_0;
+        public System.Windows.Forms.CheckBox Sinnoh4a_1;
+        public System.Windows.Forms.CheckBox Sinnoh4a_2;
+        public System.Windows.Forms.CheckBox Sinnoh4a_3;
+        public System.Windows.Forms.CheckBox Hoenn2a_0;
+        public System.Windows.Forms.CheckBox Hoenn2a_1;
+        public System.Windows.Forms.CheckBox Hoenn2a_2;
+        public System.Windows.Forms.CheckBox Hoenn2a_3;
+        public System.Windows.Forms.CheckBox Hoenn2a_4;
+        public System.Windows.Forms.CheckBox Hoenn2a_5;
+        public System.Windows.Forms.CheckBox Hoenn2a_6;
+        public System.Windows.Forms.CheckBox Hoenn2a_7;
+        public System.Windows.Forms.CheckBox Hoenn2b_0;
+        public System.Windows.Forms.CheckBox Hoenn2b_1;
+        public System.Windows.Forms.CheckBox Hoenn2b_2;
+        public System.Windows.Forms.CheckBox Hoenn2b_3;
+        public System.Windows.Forms.CheckBox Hoenn2b_4;
+        public System.Windows.Forms.CheckBox Hoenn2b_5;
+        public System.Windows.Forms.CheckBox Hoenn2b_6;
+        public System.Windows.Forms.CheckBox Hoenn2b_7;
+        public System.Windows.Forms.CheckBox Hoenn1a_0;
+        public System.Windows.Forms.CheckBox Hoenn1a_1;
+        public System.Windows.Forms.CheckBox Hoenn1a_2;
+        public System.Windows.Forms.CheckBox Hoenn1a_3;
+        public System.Windows.Forms.CheckBox Hoenn1a_4;
+        public System.Windows.Forms.CheckBox Hoenn1a_5;
+        public System.Windows.Forms.CheckBox Hoenn1a_6;
+        public System.Windows.Forms.CheckBox Hoenn1a_7;
+        public System.Windows.Forms.CheckBox Hoenn1b_0;
+        public System.Windows.Forms.CheckBox Hoenn1b_1;
+        public System.Windows.Forms.CheckBox Hoenn1b_2;
+        public System.Windows.Forms.CheckBox Hoenn1b_3;
+        public System.Windows.Forms.CheckBox Hoenn1b_4;
+        public System.Windows.Forms.CheckBox Hoenn1b_5;
+        public System.Windows.Forms.CheckBox Hoenn1b_6;
+        public System.Windows.Forms.CheckBox Hoenn1b_7;
+        public System.Windows.Forms.GroupBox GB_Extra2;
+        public System.Windows.Forms.Label L_Rank3;
+        public System.Windows.Forms.Label L_Rank2;
+        public System.Windows.Forms.Label L_Rank1;
+        public System.Windows.Forms.Label label11;
+        public System.Windows.Forms.Label L_Rank8;
+        public System.Windows.Forms.Label L_Rank7;
+        public System.Windows.Forms.Label L_Rank6;
+        public System.Windows.Forms.Label L_Rank5;
+        public System.Windows.Forms.Label L_Rank4;
+        public System.Windows.Forms.Label L_PastBattle;
+        public System.Windows.Forms.Label L_PastContest;
+        public System.Windows.Forms.MaskedTextBox TB_PastBattle;
+        public System.Windows.Forms.MaskedTextBox TB_PastContest;
+        public System.Windows.Forms.CheckBox CHK_Secret;
+        public System.Windows.Forms.Label L_SuperTraining;
+        public System.Windows.Forms.PictureBox PB_47;
+        public System.Windows.Forms.PictureBox PB_46;
+        public System.Windows.Forms.PictureBox PB_45;
+        public System.Windows.Forms.PictureBox PB_44;
+        public System.Windows.Forms.PictureBox PB_43;
+        public System.Windows.Forms.PictureBox PB_42;
+        public System.Windows.Forms.PictureBox PB_41;
+        public System.Windows.Forms.PictureBox PB_40;
+        public System.Windows.Forms.PictureBox PB_37;
+        public System.Windows.Forms.PictureBox PB_36;
+        public System.Windows.Forms.PictureBox PB_35;
+        public System.Windows.Forms.PictureBox PB_34;
+        public System.Windows.Forms.PictureBox PB_33;
+        public System.Windows.Forms.PictureBox PB_32;
+        public System.Windows.Forms.PictureBox PB_31;
+        public System.Windows.Forms.PictureBox PB_30;
+        public System.Windows.Forms.PictureBox PB_27;
+        public System.Windows.Forms.PictureBox PB_26;
+        public System.Windows.Forms.PictureBox PB_25;
+        public System.Windows.Forms.PictureBox PB_24;
+        public System.Windows.Forms.PictureBox PB_23;
+        public System.Windows.Forms.PictureBox PB_22;
+        public System.Windows.Forms.PictureBox PB_21;
+        public System.Windows.Forms.PictureBox PB_20;
+        public System.Windows.Forms.PictureBox PB_17;
+        public System.Windows.Forms.PictureBox PB_16;
+        public System.Windows.Forms.PictureBox PB_15;
+        public System.Windows.Forms.PictureBox PB_14;
+        public System.Windows.Forms.PictureBox PB_13;
+        public System.Windows.Forms.PictureBox PB_12;
+        public System.Windows.Forms.PictureBox PB_11;
+        public System.Windows.Forms.PictureBox PB_10;
+        public System.Windows.Forms.PictureBox PastBattle;
+        public System.Windows.Forms.PictureBox PastContest;
+        public System.Windows.Forms.PictureBox PB_54;
+        public System.Windows.Forms.PictureBox PB_50;
+        public System.Windows.Forms.PictureBox PB_53;
+        public System.Windows.Forms.PictureBox PB_52;
+        public System.Windows.Forms.PictureBox PB_51;
+        public System.Windows.Forms.ComboBox comboBox1;
+        public System.Windows.Forms.Label L_Bag;
+        public System.Windows.Forms.NumericUpDown numericUpDown1;
+        public System.Windows.Forms.Label L_Hits;
+        public System.Windows.Forms.CheckBox ORAS_5;
+        public System.Windows.Forms.CheckBox ORAS_4;
+        public System.Windows.Forms.PictureBox PB_57;
+        public System.Windows.Forms.PictureBox PB_O5;
+        public System.Windows.Forms.CheckBox ORAS_3;
+        public System.Windows.Forms.PictureBox PB_O4;
+        public System.Windows.Forms.PictureBox PB_O0;
+        public System.Windows.Forms.PictureBox PB_O3;
+        public System.Windows.Forms.PictureBox PB_O2;
+        public System.Windows.Forms.PictureBox PB_O1;
+        public System.Windows.Forms.CheckBox ORAS_2;
+        public System.Windows.Forms.CheckBox ORAS_1;
+        public System.Windows.Forms.CheckBox ORAS_0;
+        public System.Windows.Forms.CheckBox Extra1_7;
+        public System.Windows.Forms.CheckBox CHK_D5;
+        public System.Windows.Forms.CheckBox CHK_D4;
+        public System.Windows.Forms.Label L_Distro;
+        public System.Windows.Forms.CheckBox CHK_D3;
+        public System.Windows.Forms.CheckBox CHK_D0;
+        public System.Windows.Forms.CheckBox CHK_D1;
+        public System.Windows.Forms.CheckBox CHK_D2;
     }
 }

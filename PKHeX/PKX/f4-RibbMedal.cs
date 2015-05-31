@@ -32,7 +32,7 @@ namespace Mass_Editor
             distro = new CheckBox[] { CHK_D0, CHK_D1, CHK_D2, CHK_D3, CHK_D4, CHK_D5 };
             getRibbons();
         }
-        private void getRibbons()
+        public void getRibbons()
         {
             Bitmap[] bma = {
                                    Properties.Resources.kaloschamp, Properties.Resources.hoennchamp,        Properties.Resources.sinnohchamp,   Properties.Resources.bestfriends,
@@ -318,7 +318,7 @@ namespace Mass_Editor
         }                // Checkbox flipping dependent on T/F
         private void buttonFlag(bool b)
         {
-            if (tabControl1.SelectedTab == Tab_Kalos)
+            if (tabControl2.SelectedTab == Tab_Kalos)
             {
                 // Kalos
                 CheckBox[] ck = { 
@@ -329,7 +329,7 @@ namespace Mass_Editor
                                 };
                 checkboxFlag(ck, b);
             }
-            else if (tabControl1.SelectedTab == Tab_Extra)
+            else if (tabControl2.SelectedTab == Tab_Extra)
             {
                 // Extra
                 CheckBox[] ck = { 
@@ -347,7 +347,7 @@ namespace Mass_Editor
                     TB_PastBattle.Text = 0.ToString();
                 }
             }
-            else if (tabControl1.SelectedTab == Tab_Medals)
+            else if (tabControl2.SelectedTab == Tab_Medals)
             {
                 // Medals
                 if (CHK_Secret.Checked)

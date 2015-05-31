@@ -98,6 +98,11 @@ namespace Mass_Editor
             }
         }
 
+        private void CHK_Badges_CheckedChanged(object sender, EventArgs e)
+        {
+            groupBox6.Enabled = CHK_Badges.Checked;
+        }
+
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             Label_OTGender.Enabled = checkBox1.Checked;
