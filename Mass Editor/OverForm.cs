@@ -246,6 +246,10 @@ namespace Mass_Editor
                 {
                     modes.Add(13);
                 }
+                if (CHK_No_Pokerus.Checked)
+                {
+                    modes.Add(14);
+                }
 
                 string filename = Path.GetFileNameWithoutExtension(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
                 // thread for free UI
@@ -629,6 +633,7 @@ namespace Mass_Editor
             this.checkBox20 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.CHK_PPMax = new System.Windows.Forms.CheckBox();
+            this.CHK_No_Pokerus = new System.Windows.Forms.CheckBox();
 
             this.Label_EggDate = new System.Windows.Forms.Label();
             this.Label_EggLocation = new System.Windows.Forms.Label();
@@ -1405,7 +1410,7 @@ namespace Mass_Editor
             // CHK_Frienship
             // 
             this.CHK_Frienship.AutoSize = true;
-            this.CHK_Frienship.Location = new System.Drawing.Point(9, 27);
+            this.CHK_Frienship.Location = new System.Drawing.Point(6, 21);
             this.CHK_Frienship.Name = "CHK_Frienship";
             this.CHK_Frienship.Size = new System.Drawing.Size(71, 17);
             this.CHK_Frienship.TabIndex = 46;
@@ -1415,7 +1420,7 @@ namespace Mass_Editor
             // CHK_Level
             // 
             this.CHK_Level.AutoSize = true;
-            this.CHK_Level.Location = new System.Drawing.Point(9, 62);
+            this.CHK_Level.Location = new System.Drawing.Point(6, 48);
             this.CHK_Level.Name = "CHK_Level";
             this.CHK_Level.Size = new System.Drawing.Size(55, 17);
             this.CHK_Level.TabIndex = 47;
@@ -1424,6 +1429,7 @@ namespace Mass_Editor
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.CHK_No_Pokerus);
             this.groupBox2.Controls.Add(this.CHK_PPMax);
             this.groupBox2.Controls.Add(this.textBox6);
             this.groupBox2.Controls.Add(this.textBox5);
@@ -1454,7 +1460,7 @@ namespace Mass_Editor
             // textBox6
             // 
             this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox6.Location = new System.Drawing.Point(78, 59);
+            this.textBox6.Location = new System.Drawing.Point(75, 47);
             this.textBox6.Mask = "000";
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(22, 20);
@@ -1465,7 +1471,7 @@ namespace Mass_Editor
             // textBox5
             // 
             this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox5.Location = new System.Drawing.Point(78, 25);
+            this.textBox5.Location = new System.Drawing.Point(75, 20);
             this.textBox5.Mask = "000";
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(22, 20);
@@ -2429,6 +2435,16 @@ namespace Mass_Editor
             this.CHK_Badges.TabIndex = 59;
             this.CHK_Badges.UseVisualStyleBackColor = true;
             this.CHK_Badges.CheckedChanged += new System.EventHandler(this.CHK_Badges_CheckedChanged);
+            // 
+            // CHK_Pokerus
+            // 
+            this.CHK_No_Pokerus.AutoSize = true;
+            this.CHK_No_Pokerus.Location = new System.Drawing.Point(6, 71);
+            this.CHK_No_Pokerus.Name = "CHK_Pokerus";
+            this.CHK_No_Pokerus.Size = new System.Drawing.Size(103, 17);
+            this.CHK_No_Pokerus.TabIndex = 53;
+            this.CHK_No_Pokerus.Text = "Disable Pokérus";
+            this.CHK_No_Pokerus.UseVisualStyleBackColor = true;
             // 
             // BTN_None
             // 

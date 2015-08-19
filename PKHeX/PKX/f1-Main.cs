@@ -5242,6 +5242,10 @@ namespace Mass_Editor
                         RibbMedal rb = new RibbMedal(this, badgeChecks, badgeInts);
                         rb.RibbMedal_Load(rb, null);
                         break;
+                    case 14:
+                        CHK_Cured.Checked = false;
+                        CHK_Infected.Checked = false;
+                        break;
                 }
             }
         }
