@@ -42,6 +42,7 @@ namespace Mass_Editor
         private bool allintobox;
         private bool[] badgeChecks; 
         private int[] badgeInts;
+        private bool[] symbolChecks;
 
         #region PKHeX Code
 
@@ -165,7 +166,7 @@ namespace Mass_Editor
             this.Tab_Main.Controls.Clear();
         }
 
-        public Form1(List<string> litems, List<int> modes, ProgressBar progressBar, string[] ret, string friendship, string level, Mass_Editor.Met m, bool bak, int[] otindexes, bool[] country, bool[] met, bool[] ot, bool[] amienabled, int[] amiindex, string[] otgenders, bool hax, bool amilite, bool[] amilitebool, int[] amiliteint, bool allintobox, bool[] badgeChecks, int[] badgeInts)
+        public Form1(List<string> litems, List<int> modes, ProgressBar progressBar, string[] ret, string friendship, string level, Mass_Editor.Met m, bool bak, int[] otindexes, bool[] country, bool[] met, bool[] ot, bool[] amienabled, int[] amiindex, string[] otgenders, bool hax, bool amilite, bool[] amilitebool, int[] amiliteint, bool allintobox, bool[] badgeChecks, int[] badgeInts, bool[] symbolChecks)
         {
 
             this.litems = litems;
@@ -189,6 +190,7 @@ namespace Mass_Editor
             this.allintobox = allintobox;
             this.badgeChecks = badgeChecks;
             this.badgeInts = badgeInts;
+            this.symbolChecks = symbolChecks;
 
             #region Initialize Form
             InitializeComponent();
@@ -5245,6 +5247,13 @@ namespace Mass_Editor
                     case 14:
                         CHK_Cured.Checked = false;
                         CHK_Infected.Checked = false;
+                        break;
+                    case 15:
+                        CheckBox[] cba = { CHK_Circle, CHK_Triangle, CHK_Square, CHK_Heart, CHK_Star, CHK_Diamond };
+                        for (int i = 0; i < cba.Length; i++)
+                        {
+                            cba[i].Checked = symbolChecks[i];
+                        }
                         break;
                 }
             }

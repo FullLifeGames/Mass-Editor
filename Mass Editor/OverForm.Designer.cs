@@ -339,6 +339,15 @@
             this.TMedal1_0 = new System.Windows.Forms.CheckBox();
             this.TMedal1_1 = new System.Windows.Forms.CheckBox();
             this.CHK_Badges = new System.Windows.Forms.CheckBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.CHK_Symbols = new System.Windows.Forms.CheckBox();
+            this.CHK_Diamond = new System.Windows.Forms.CheckBox();
+            this.CHK_Star = new System.Windows.Forms.CheckBox();
+            this.CHK_Heart = new System.Windows.Forms.CheckBox();
+            this.Label_Diamond = new System.Windows.Forms.Label();
+            this.CHK_Square = new System.Windows.Forms.CheckBox();
+            this.CHK_Triangle = new System.Windows.Forms.CheckBox();
+            this.CHK_Circle = new System.Windows.Forms.CheckBox();
             this.GB_EggConditions.SuspendLayout();
             this.GB_Met.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -411,6 +420,7 @@
             this.GB_Medals1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.GB_Medals2.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -1092,11 +1102,11 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Set";
             // 
-            // CHK_Pokerus
+            // CHK_No_Pokerus
             // 
             this.CHK_No_Pokerus.AutoSize = true;
             this.CHK_No_Pokerus.Location = new System.Drawing.Point(6, 71);
-            this.CHK_No_Pokerus.Name = "CHK_Pokerus";
+            this.CHK_No_Pokerus.Name = "CHK_No_Pokerus";
             this.CHK_No_Pokerus.Size = new System.Drawing.Size(103, 17);
             this.CHK_No_Pokerus.TabIndex = 53;
             this.CHK_No_Pokerus.Text = "Disable Pokérus";
@@ -3829,11 +3839,121 @@
             this.CHK_Badges.UseVisualStyleBackColor = true;
             this.CHK_Badges.CheckedChanged += new System.EventHandler(this.CHK_Badges_CheckedChanged);
             // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.CHK_Symbols);
+            this.groupBox7.Controls.Add(this.CHK_Diamond);
+            this.groupBox7.Controls.Add(this.CHK_Star);
+            this.groupBox7.Controls.Add(this.CHK_Heart);
+            this.groupBox7.Controls.Add(this.Label_Diamond);
+            this.groupBox7.Controls.Add(this.CHK_Square);
+            this.groupBox7.Controls.Add(this.CHK_Triangle);
+            this.groupBox7.Controls.Add(this.CHK_Circle);
+            this.groupBox7.Location = new System.Drawing.Point(872, 7);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(95, 391);
+            this.groupBox7.TabIndex = 60;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Set";
+            // 
+            // CHK_Symbols
+            // 
+            this.CHK_Symbols.AutoSize = true;
+            this.CHK_Symbols.Location = new System.Drawing.Point(43, 71);
+            this.CHK_Symbols.Name = "CHK_Symbols";
+            this.CHK_Symbols.Size = new System.Drawing.Size(15, 14);
+            this.CHK_Symbols.TabIndex = 19;
+            this.CHK_Symbols.UseVisualStyleBackColor = true;
+            this.CHK_Symbols.CheckedChanged += new System.EventHandler(this.CHK_Symbols_CheckedChanged);
+            // 
+            // CHK_Diamond
+            // 
+            this.CHK_Diamond.AutoSize = true;
+            this.CHK_Diamond.Enabled = false;
+            this.CHK_Diamond.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CHK_Diamond.Location = new System.Drawing.Point(51, 51);
+            this.CHK_Diamond.Name = "CHK_Diamond";
+            this.CHK_Diamond.Size = new System.Drawing.Size(15, 14);
+            this.CHK_Diamond.TabIndex = 17;
+            this.CHK_Diamond.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.CHK_Diamond.UseVisualStyleBackColor = true;
+            // 
+            // CHK_Star
+            // 
+            this.CHK_Star.AutoSize = true;
+            this.CHK_Star.Enabled = false;
+            this.CHK_Star.Location = new System.Drawing.Point(51, 36);
+            this.CHK_Star.Name = "CHK_Star";
+            this.CHK_Star.Size = new System.Drawing.Size(35, 17);
+            this.CHK_Star.TabIndex = 18;
+            this.CHK_Star.Text = "★";
+            this.CHK_Star.UseVisualStyleBackColor = true;
+            // 
+            // CHK_Heart
+            // 
+            this.CHK_Heart.AutoSize = true;
+            this.CHK_Heart.Enabled = false;
+            this.CHK_Heart.Location = new System.Drawing.Point(51, 22);
+            this.CHK_Heart.Name = "CHK_Heart";
+            this.CHK_Heart.Size = new System.Drawing.Size(37, 17);
+            this.CHK_Heart.TabIndex = 16;
+            this.CHK_Heart.Text = " ♥";
+            this.CHK_Heart.UseVisualStyleBackColor = true;
+            // 
+            // Label_Diamond
+            // 
+            this.Label_Diamond.AutoSize = true;
+            this.Label_Diamond.Enabled = false;
+            this.Label_Diamond.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_Diamond.Location = new System.Drawing.Point(61, 47);
+            this.Label_Diamond.Name = "Label_Diamond";
+            this.Label_Diamond.Size = new System.Drawing.Size(26, 20);
+            this.Label_Diamond.TabIndex = 15;
+            this.Label_Diamond.Text = " ♦";
+            // 
+            // CHK_Square
+            // 
+            this.CHK_Square.AutoSize = true;
+            this.CHK_Square.Enabled = false;
+            this.CHK_Square.Location = new System.Drawing.Point(9, 51);
+            this.CHK_Square.Name = "CHK_Square";
+            this.CHK_Square.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.CHK_Square.Size = new System.Drawing.Size(35, 17);
+            this.CHK_Square.TabIndex = 14;
+            this.CHK_Square.Text = "■";
+            this.CHK_Square.UseVisualStyleBackColor = true;
+            // 
+            // CHK_Triangle
+            // 
+            this.CHK_Triangle.AutoSize = true;
+            this.CHK_Triangle.Enabled = false;
+            this.CHK_Triangle.Location = new System.Drawing.Point(9, 37);
+            this.CHK_Triangle.Name = "CHK_Triangle";
+            this.CHK_Triangle.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.CHK_Triangle.Size = new System.Drawing.Size(35, 17);
+            this.CHK_Triangle.TabIndex = 13;
+            this.CHK_Triangle.Text = "▲";
+            this.CHK_Triangle.UseVisualStyleBackColor = true;
+            // 
+            // CHK_Circle
+            // 
+            this.CHK_Circle.AutoSize = true;
+            this.CHK_Circle.Enabled = false;
+            this.CHK_Circle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CHK_Circle.Location = new System.Drawing.Point(4, 17);
+            this.CHK_Circle.Name = "CHK_Circle";
+            this.CHK_Circle.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.CHK_Circle.Size = new System.Drawing.Size(40, 28);
+            this.CHK_Circle.TabIndex = 12;
+            this.CHK_Circle.Text = "●";
+            this.CHK_Circle.UseVisualStyleBackColor = true;
+            // 
             // OverForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(977, 782);
+            this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.CHK_Badges);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.CHK_Memories);
@@ -3943,6 +4063,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.GB_Medals2.ResumeLayout(false);
             this.GB_Medals2.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4261,5 +4383,14 @@
         private System.Windows.Forms.CheckBox TMedal1_0;
         private System.Windows.Forms.CheckBox TMedal1_1;
         private System.Windows.Forms.CheckBox CHK_No_Pokerus;
+        private System.Windows.Forms.GroupBox groupBox7;
+        public System.Windows.Forms.CheckBox CHK_Square;
+        public System.Windows.Forms.CheckBox CHK_Triangle;
+        public System.Windows.Forms.CheckBox CHK_Circle;
+        private System.Windows.Forms.CheckBox CHK_Symbols;
+        public System.Windows.Forms.CheckBox CHK_Diamond;
+        public System.Windows.Forms.CheckBox CHK_Star;
+        public System.Windows.Forms.CheckBox CHK_Heart;
+        public System.Windows.Forms.Label Label_Diamond;
     }
 }

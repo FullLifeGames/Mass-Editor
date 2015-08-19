@@ -70,6 +70,7 @@
             this.Label_EXP = new System.Windows.Forms.Label();
             this.Label_Species = new System.Windows.Forms.Label();
             this.Label_HatchCounter = new System.Windows.Forms.Label();
+            this.Label_IsShiny = new System.Windows.Forms.PictureBox();
             this.BTN_Shinytize = new System.Windows.Forms.Button();
             this.Label_PID = new System.Windows.Forms.Label();
             this.TB_AbilityNumber = new System.Windows.Forms.MaskedTextBox();
@@ -330,9 +331,9 @@
             this.B_OpenSuperTraining = new System.Windows.Forms.Button();
             this.L_SAVINDEX = new System.Windows.Forms.Label();
             this.dragout = new System.Windows.Forms.PictureBox();
-            this.Label_IsShiny = new System.Windows.Forms.PictureBox();
             this.tabMain.SuspendLayout();
             this.Tab_Main.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Label_IsShiny)).BeginInit();
             this.Tab_Met.SuspendLayout();
             this.GB_EggConditions.SuspendLayout();
             this.Tab_Stats.SuspendLayout();
@@ -418,7 +419,6 @@
             this.Tab_SAV.SuspendLayout();
             this.GB_SAVtools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dragout)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Label_IsShiny)).BeginInit();
             this.SuspendLayout();
             // 
             // tabMain
@@ -925,6 +925,18 @@
             this.Label_HatchCounter.TabIndex = 61;
             this.Label_HatchCounter.Text = "Hatch Counter:";
             this.Label_HatchCounter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // Label_IsShiny
+            // 
+            this.Label_IsShiny.Image = global::Mass_Editor.Properties.Resources.rare_icon;
+            this.Label_IsShiny.InitialImage = global::Mass_Editor.Properties.Resources.rare_icon;
+            this.Label_IsShiny.Location = new System.Drawing.Point(53, 7);
+            this.Label_IsShiny.Name = "Label_IsShiny";
+            this.Label_IsShiny.Size = new System.Drawing.Size(20, 20);
+            this.Label_IsShiny.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.Label_IsShiny.TabIndex = 62;
+            this.Label_IsShiny.TabStop = false;
+            this.Label_IsShiny.Visible = false;
             // 
             // BTN_Shinytize
             // 
@@ -2112,7 +2124,7 @@
             this.CHK_Star.AutoSize = true;
             this.CHK_Star.Location = new System.Drawing.Point(205, 213);
             this.CHK_Star.Name = "CHK_Star";
-            this.CHK_Star.Size = new System.Drawing.Size(38, 17);
+            this.CHK_Star.Size = new System.Drawing.Size(35, 17);
             this.CHK_Star.TabIndex = 13;
             this.CHK_Star.Text = "★";
             this.CHK_Star.UseVisualStyleBackColor = true;
@@ -2135,7 +2147,7 @@
             this.CHK_Square.Location = new System.Drawing.Point(29, 227);
             this.CHK_Square.Name = "CHK_Square";
             this.CHK_Square.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.CHK_Square.Size = new System.Drawing.Size(38, 17);
+            this.CHK_Square.Size = new System.Drawing.Size(35, 17);
             this.CHK_Square.TabIndex = 11;
             this.CHK_Square.Text = "■";
             this.CHK_Square.UseVisualStyleBackColor = true;
@@ -2204,7 +2216,7 @@
             this.CHK_Triangle.Location = new System.Drawing.Point(29, 213);
             this.CHK_Triangle.Name = "CHK_Triangle";
             this.CHK_Triangle.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.CHK_Triangle.Size = new System.Drawing.Size(38, 17);
+            this.CHK_Triangle.Size = new System.Drawing.Size(35, 17);
             this.CHK_Triangle.TabIndex = 10;
             this.CHK_Triangle.Text = "▲";
             this.CHK_Triangle.UseVisualStyleBackColor = true;
@@ -2612,34 +2624,34 @@
             this.reportToolStripMenuItem,
             this.codeGeneratorToolStripMenuItem});
             this.Menu_Tools.Name = "Menu_Tools";
-            this.Menu_Tools.Size = new System.Drawing.Size(48, 20);
+            this.Menu_Tools.Size = new System.Drawing.Size(47, 20);
             this.Menu_Tools.Text = "Tools";
             // 
             // Menu_ToggleBoxUI
             // 
             this.Menu_ToggleBoxUI.Name = "Menu_ToggleBoxUI";
-            this.Menu_ToggleBoxUI.Size = new System.Drawing.Size(182, 22);
+            this.Menu_ToggleBoxUI.Size = new System.Drawing.Size(181, 22);
             this.Menu_ToggleBoxUI.Text = "Toggle Box Interface";
             this.Menu_ToggleBoxUI.Click += new System.EventHandler(this.mainMenuWiden);
             // 
             // Menu_BoxIO
             // 
             this.Menu_BoxIO.Name = "Menu_BoxIO";
-            this.Menu_BoxIO.Size = new System.Drawing.Size(182, 22);
+            this.Menu_BoxIO.Size = new System.Drawing.Size(181, 22);
             this.Menu_BoxIO.Text = "Load/Dump Boxes";
             this.Menu_BoxIO.Click += new System.EventHandler(this.mainMenuBoxDumpLoad);
             // 
             // reportToolStripMenuItem
             // 
             this.reportToolStripMenuItem.Name = "reportToolStripMenuItem";
-            this.reportToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.reportToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.reportToolStripMenuItem.Text = "Box Data Report";
             this.reportToolStripMenuItem.Click += new System.EventHandler(this.mainMenuBoxReport);
             // 
             // codeGeneratorToolStripMenuItem
             // 
             this.codeGeneratorToolStripMenuItem.Name = "codeGeneratorToolStripMenuItem";
-            this.codeGeneratorToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.codeGeneratorToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.codeGeneratorToolStripMenuItem.Text = "Code Generator";
             this.codeGeneratorToolStripMenuItem.Click += new System.EventHandler(this.mainMenuCodeGen);
             // 
@@ -2658,7 +2670,7 @@
             this.Menu_Language.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.CB_MainLanguage});
             this.Menu_Language.Name = "Menu_Language";
-            this.Menu_Language.Size = new System.Drawing.Size(183, 22);
+            this.Menu_Language.Size = new System.Drawing.Size(181, 22);
             this.Menu_Language.Text = "Language";
             // 
             // CB_MainLanguage
@@ -2673,14 +2685,14 @@
             this.Menu_About.Name = "Menu_About";
             this.Menu_About.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
             this.Menu_About.ShowShortcutKeys = false;
-            this.Menu_About.Size = new System.Drawing.Size(183, 22);
+            this.Menu_About.Size = new System.Drawing.Size(181, 22);
             this.Menu_About.Text = "A&bout PKHeX";
             this.Menu_About.Click += new System.EventHandler(this.mainMenuAbout);
             // 
             // Menu_Unicode
             // 
             this.Menu_Unicode.Name = "Menu_Unicode";
-            this.Menu_Unicode.Size = new System.Drawing.Size(183, 22);
+            this.Menu_Unicode.Size = new System.Drawing.Size(181, 22);
             this.Menu_Unicode.Text = "Toggle Unicode Text";
             this.Menu_Unicode.Click += new System.EventHandler(this.mainMenuUnicode);
             // 
@@ -4016,18 +4028,6 @@
             this.dragout.MouseLeave += new System.EventHandler(this.dragoutLeave);
             this.dragout.MouseHover += new System.EventHandler(this.dragoutHover);
             // 
-            // Label_IsShiny
-            // 
-            this.Label_IsShiny.Image = global::Mass_Editor.Properties.Resources.rare_icon;
-            this.Label_IsShiny.InitialImage = global::Mass_Editor.Properties.Resources.rare_icon;
-            this.Label_IsShiny.Location = new System.Drawing.Point(53, 7);
-            this.Label_IsShiny.Name = "Label_IsShiny";
-            this.Label_IsShiny.Size = new System.Drawing.Size(20, 20);
-            this.Label_IsShiny.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.Label_IsShiny.TabIndex = 62;
-            this.Label_IsShiny.TabStop = false;
-            this.Label_IsShiny.Visible = false;
-            // 
             // Form1
             // 
             this.AllowDrop = true;
@@ -4051,6 +4051,7 @@
             this.tabMain.ResumeLayout(false);
             this.Tab_Main.ResumeLayout(false);
             this.Tab_Main.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Label_IsShiny)).EndInit();
             this.Tab_Met.ResumeLayout(false);
             this.Tab_Met.PerformLayout();
             this.GB_EggConditions.ResumeLayout(false);
@@ -4152,7 +4153,6 @@
             this.Tab_SAV.PerformLayout();
             this.GB_SAVtools.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dragout)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Label_IsShiny)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
