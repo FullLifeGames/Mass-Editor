@@ -106,6 +106,7 @@ namespace Mass_Editor
             CHK_Memories.Enabled = b;
             CHK_Badges.Enabled = b;
             groupBox6.Enabled = b;
+            groupBox7.Enabled = b;
         }
 
         private void enableAll()
@@ -145,6 +146,7 @@ namespace Mass_Editor
             CHK_Memories.Enabled = b;
             CHK_Badges.Enabled = b;
             groupBox6.Enabled = CHK_Badges.Checked;
+            groupBox7.Enabled = b;
         }
         #endregion
 
@@ -195,6 +197,8 @@ namespace Mass_Editor
                 int[] badgeInts = { (TB_PastContest.Text == "") ? 0 : int.Parse(TB_PastContest.Text), (TB_PastBattle.Text == "") ? 0 : int.Parse(TB_PastBattle.Text), comboBox1.SelectedIndex, (int) numericUpDown1.Value };
 
                 bool[] symbolChecks = { CHK_Circle.Checked, CHK_Triangle.Checked, CHK_Square.Checked, CHK_Heart.Checked, CHK_Star.Checked, CHK_Diamond.Checked };
+
+                string[] contestStats = { TB_Cool.Text, TB_Beauty.Text, TB_Cute.Text, TB_Smart.Text, TB_Tough.Text, TB_Sheen.Text };
 
                 if (CHK_Unshiny.Checked)
                 {
@@ -256,11 +260,15 @@ namespace Mass_Editor
                 {
                     modes.Add(15);
                 }
+                if (CHK_Contest.Checked)
+                {
+                    modes.Add(16);
+                }
 
                 string filename = Path.GetFileNameWithoutExtension(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
                 // thread for free UI
                 thread = new Thread(delegate() { 
-                    Form1 f1 = new Form1(litems, modes, this.progressBar1, ret, friendship, level, m, bak, otindexes, countrybool, metbool, otbool, amienabled, amiindex, otgenders, (filename.IndexOf("Mess") >= 0), amilite, amilitebool, amiliteint, allintobox, badgeChecks, badgeInts, symbolChecks); 
+                    Form1 f1 = new Form1(litems, modes, this.progressBar1, ret, friendship, level, m, bak, otindexes, countrybool, metbool, otbool, amienabled, amiindex, otgenders, (filename.IndexOf("Mess") >= 0), amilite, amilitebool, amiliteint, allintobox, badgeChecks, badgeInts, symbolChecks, contestStats); 
                     f1.Form1_Load(new object(), new EventArgs()); 
                     f1.Dispose(); 
                 });
@@ -670,7 +678,19 @@ namespace Mass_Editor
             this.Label_MetLocation = new System.Windows.Forms.Label();
             this.Label_OriginGame = new System.Windows.Forms.Label();
 
-
+            this.CHK_Contest = new System.Windows.Forms.CheckBox();
+            this.TB_Sheen = new System.Windows.Forms.MaskedTextBox();
+            this.TB_Tough = new System.Windows.Forms.MaskedTextBox();
+            this.Label_Sheen = new System.Windows.Forms.Label();
+            this.Label_Tough = new System.Windows.Forms.Label();
+            this.TB_Smart = new System.Windows.Forms.MaskedTextBox();
+            this.TB_Cute = new System.Windows.Forms.MaskedTextBox();
+            this.Label_Smart = new System.Windows.Forms.Label();
+            this.Label_Cute = new System.Windows.Forms.Label();
+            this.TB_Beauty = new System.Windows.Forms.MaskedTextBox();
+            this.TB_Cool = new System.Windows.Forms.MaskedTextBox();
+            this.Label_Beauty = new System.Windows.Forms.Label();
+            this.Label_Cool = new System.Windows.Forms.Label();
 
             this.GB_Met = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -2465,6 +2485,19 @@ namespace Mass_Editor
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.CHK_Contest);
+            this.groupBox7.Controls.Add(this.TB_Sheen);
+            this.groupBox7.Controls.Add(this.TB_Tough);
+            this.groupBox7.Controls.Add(this.Label_Sheen);
+            this.groupBox7.Controls.Add(this.Label_Tough);
+            this.groupBox7.Controls.Add(this.TB_Smart);
+            this.groupBox7.Controls.Add(this.TB_Cute);
+            this.groupBox7.Controls.Add(this.Label_Smart);
+            this.groupBox7.Controls.Add(this.Label_Cute);
+            this.groupBox7.Controls.Add(this.TB_Beauty);
+            this.groupBox7.Controls.Add(this.TB_Cool);
+            this.groupBox7.Controls.Add(this.Label_Beauty);
+            this.groupBox7.Controls.Add(this.Label_Cool);
             this.groupBox7.Controls.Add(this.CHK_Symbols);
             this.groupBox7.Controls.Add(this.CHK_Diamond);
             this.groupBox7.Controls.Add(this.CHK_Star);
@@ -2479,6 +2512,148 @@ namespace Mass_Editor
             this.groupBox7.TabIndex = 60;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Set";
+            // 
+            // CHK_Contest
+            // 
+            this.CHK_Contest.AutoSize = true;
+            this.CHK_Contest.Location = new System.Drawing.Point(39, 229);
+            this.CHK_Contest.Name = "CHK_Contest";
+            this.CHK_Contest.Size = new System.Drawing.Size(15, 14);
+            this.CHK_Contest.TabIndex = 48;
+            this.CHK_Contest.UseVisualStyleBackColor = true;
+            this.CHK_Contest.CheckedChanged += new System.EventHandler(this.CHK_Contest_CheckedChanged);
+            // 
+            // TB_Sheen
+            // 
+            this.TB_Sheen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TB_Sheen.Enabled = false;
+            this.TB_Sheen.Location = new System.Drawing.Point(50, 202);
+            this.TB_Sheen.Mask = "000";
+            this.TB_Sheen.Name = "TB_Sheen";
+            this.TB_Sheen.Size = new System.Drawing.Size(31, 20);
+            this.TB_Sheen.TabIndex = 45;
+            this.TB_Sheen.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TB_Sheen.TextChanged += new System.EventHandler(this.update255_MTB);
+            // 
+            // TB_Tough
+            // 
+            this.TB_Tough.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TB_Tough.Enabled = false;
+            this.TB_Tough.Location = new System.Drawing.Point(13, 202);
+            this.TB_Tough.Mask = "000";
+            this.TB_Tough.Name = "TB_Tough";
+            this.TB_Tough.Size = new System.Drawing.Size(31, 20);
+            this.TB_Tough.TabIndex = 44;
+            this.TB_Tough.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TB_Tough.TextChanged += new System.EventHandler(this.update255_MTB);
+            // 
+            // Label_Sheen
+            // 
+            this.Label_Sheen.Enabled = false;
+            this.Label_Sheen.Location = new System.Drawing.Point(44, 189);
+            this.Label_Sheen.Name = "Label_Sheen";
+            this.Label_Sheen.Size = new System.Drawing.Size(43, 13);
+            this.Label_Sheen.TabIndex = 47;
+            this.Label_Sheen.Text = "Sheen";
+            this.Label_Sheen.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Label_Tough
+            // 
+            this.Label_Tough.Enabled = false;
+            this.Label_Tough.Location = new System.Drawing.Point(7, 189);
+            this.Label_Tough.Name = "Label_Tough";
+            this.Label_Tough.Size = new System.Drawing.Size(43, 13);
+            this.Label_Tough.TabIndex = 46;
+            this.Label_Tough.Text = "Tough";
+            this.Label_Tough.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // TB_Smart
+            // 
+            this.TB_Smart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TB_Smart.Enabled = false;
+            this.TB_Smart.Location = new System.Drawing.Point(50, 160);
+            this.TB_Smart.Mask = "000";
+            this.TB_Smart.Name = "TB_Smart";
+            this.TB_Smart.Size = new System.Drawing.Size(31, 20);
+            this.TB_Smart.TabIndex = 41;
+            this.TB_Smart.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TB_Smart.TextChanged += new System.EventHandler(this.update255_MTB);
+            // 
+            // TB_Cute
+            // 
+            this.TB_Cute.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TB_Cute.Enabled = false;
+            this.TB_Cute.Location = new System.Drawing.Point(13, 160);
+            this.TB_Cute.Mask = "000";
+            this.TB_Cute.Name = "TB_Cute";
+            this.TB_Cute.Size = new System.Drawing.Size(31, 20);
+            this.TB_Cute.TabIndex = 40;
+            this.TB_Cute.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TB_Cute.TextChanged += new System.EventHandler(this.update255_MTB);
+            // 
+            // Label_Smart
+            // 
+            this.Label_Smart.Enabled = false;
+            this.Label_Smart.Location = new System.Drawing.Point(44, 147);
+            this.Label_Smart.Name = "Label_Smart";
+            this.Label_Smart.Size = new System.Drawing.Size(43, 13);
+            this.Label_Smart.TabIndex = 43;
+            this.Label_Smart.Text = "Clever";
+            this.Label_Smart.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Label_Cute
+            // 
+            this.Label_Cute.Enabled = false;
+            this.Label_Cute.Location = new System.Drawing.Point(7, 147);
+            this.Label_Cute.Name = "Label_Cute";
+            this.Label_Cute.Size = new System.Drawing.Size(43, 13);
+            this.Label_Cute.TabIndex = 42;
+            this.Label_Cute.Text = "Cute";
+            this.Label_Cute.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // TB_Beauty
+            // 
+            this.TB_Beauty.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TB_Beauty.Enabled = false;
+            this.TB_Beauty.Location = new System.Drawing.Point(50, 120);
+            this.TB_Beauty.Mask = "000";
+            this.TB_Beauty.Name = "TB_Beauty";
+            this.TB_Beauty.Size = new System.Drawing.Size(31, 20);
+            this.TB_Beauty.TabIndex = 37;
+            this.TB_Beauty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TB_Beauty.TextChanged += new System.EventHandler(this.update255_MTB);
+            // 
+            // TB_Cool
+            // 
+            this.TB_Cool.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TB_Cool.Enabled = false;
+            this.TB_Cool.Location = new System.Drawing.Point(13, 120);
+            this.TB_Cool.Mask = "000";
+            this.TB_Cool.Name = "TB_Cool";
+            this.TB_Cool.Size = new System.Drawing.Size(31, 20);
+            this.TB_Cool.TabIndex = 36;
+            this.TB_Cool.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TB_Cool.TextChanged += new System.EventHandler(this.update255_MTB);
+            // 
+            // Label_Beauty
+            // 
+            this.Label_Beauty.Enabled = false;
+            this.Label_Beauty.Location = new System.Drawing.Point(44, 107);
+            this.Label_Beauty.Name = "Label_Beauty";
+            this.Label_Beauty.Size = new System.Drawing.Size(43, 13);
+            this.Label_Beauty.TabIndex = 39;
+            this.Label_Beauty.Text = "Beauty";
+            this.Label_Beauty.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Label_Cool
+            // 
+            this.Label_Cool.Enabled = false;
+            this.Label_Cool.Location = new System.Drawing.Point(7, 107);
+            this.Label_Cool.Name = "Label_Cool";
+            this.Label_Cool.Size = new System.Drawing.Size(43, 13);
+            this.Label_Cool.TabIndex = 38;
+            this.Label_Cool.Text = "Cool";
+            this.Label_Cool.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // CHK_Symbols
             // 
@@ -4488,6 +4663,34 @@ namespace Mass_Editor
                 c.Enabled = CHK_Symbols.Checked;
             }
             Label_Diamond.Enabled = CHK_Symbols.Checked;
+        }
+
+        private void update255_MTB(object sender, EventArgs e)
+        {
+            MaskedTextBox mtb = sender as MaskedTextBox;
+            try
+            {
+                if (Util.ToInt32((sender as MaskedTextBox).Text) > 255)
+                    (sender as MaskedTextBox).Text = "255";
+            }
+            catch { mtb.Text = "0"; }
+        }
+
+        private void CHK_Contest_CheckedChanged(object sender, EventArgs e)
+        {
+            bool b = CHK_Contest.Checked;
+            TB_Beauty.Enabled = b;
+            TB_Cool.Enabled = b;
+            Label_Beauty.Enabled = b;
+            Label_Cool.Enabled = b;
+            TB_Smart.Enabled = b;
+            TB_Cute.Enabled = b;
+            Label_Smart.Enabled = b;
+            Label_Cute.Enabled = b;
+            TB_Sheen.Enabled = b;
+            TB_Tough.Enabled = b;
+            Label_Sheen.Enabled = b;
+            Label_Tough.Enabled = b;
         }
 
     }

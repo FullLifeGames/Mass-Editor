@@ -43,6 +43,7 @@ namespace Mass_Editor
         private bool[] badgeChecks; 
         private int[] badgeInts;
         private bool[] symbolChecks;
+        private string[] contestStats;
 
         #region PKHeX Code
 
@@ -166,7 +167,7 @@ namespace Mass_Editor
             this.Tab_Main.Controls.Clear();
         }
 
-        public Form1(List<string> litems, List<int> modes, ProgressBar progressBar, string[] ret, string friendship, string level, Mass_Editor.Met m, bool bak, int[] otindexes, bool[] country, bool[] met, bool[] ot, bool[] amienabled, int[] amiindex, string[] otgenders, bool hax, bool amilite, bool[] amilitebool, int[] amiliteint, bool allintobox, bool[] badgeChecks, int[] badgeInts, bool[] symbolChecks)
+        public Form1(List<string> litems, List<int> modes, ProgressBar progressBar, string[] ret, string friendship, string level, Mass_Editor.Met m, bool bak, int[] otindexes, bool[] country, bool[] met, bool[] ot, bool[] amienabled, int[] amiindex, string[] otgenders, bool hax, bool amilite, bool[] amilitebool, int[] amiliteint, bool allintobox, bool[] badgeChecks, int[] badgeInts, bool[] symbolChecks, string[] contestStats)
         {
 
             this.litems = litems;
@@ -191,6 +192,7 @@ namespace Mass_Editor
             this.badgeChecks = badgeChecks;
             this.badgeInts = badgeInts;
             this.symbolChecks = symbolChecks;
+            this.contestStats = contestStats;
 
             #region Initialize Form
             InitializeComponent();
@@ -5253,6 +5255,13 @@ namespace Mass_Editor
                         for (int i = 0; i < cba.Length; i++)
                         {
                             cba[i].Checked = symbolChecks[i];
+                        }
+                        break;
+                    case 16:
+                        MaskedTextBox[] TB_Contests = { TB_Cool, TB_Beauty, TB_Cute, TB_Smart, TB_Tough, TB_Sheen };
+                        for (int i = 0; i < TB_Contests.Length; i++)
+                        {
+                            TB_Contests[i].Text = contestStats[i];
                         }
                         break;
                 }
