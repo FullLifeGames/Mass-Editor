@@ -80,6 +80,9 @@
     <Compile Include="Mass Editor\OverForm_Changed.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Mass Editor\OverForm_Design.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="PKHeX\Misc\About.cs">
       <SubType>Form</SubType>
     </Compile>

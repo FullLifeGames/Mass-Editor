@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Mass_Editor
 {
@@ -27,6 +28,19 @@ namespace Mass_Editor
                 {
                     textBox5.Text = "255";
                 }
+            }
+        }
+        
+        private void Label_Gender_Click(object sender, EventArgs e)
+        {
+            string[] gender = { "♂", "♀" };
+            if (Label_Gender.Text == gender[0])
+            {
+                Label_Gender.Text = gender[1];
+            }
+            else
+            {
+                Label_Gender.Text = gender[0];
             }
         }
 
@@ -236,6 +250,50 @@ namespace Mass_Editor
                 switchChecks = true;
             }
             tabControl1.Enabled = checkBox24.Checked;
+        }
+
+        private void CHK_Symbols_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox[] cba = { CHK_Circle, CHK_Triangle, CHK_Square, CHK_Heart, CHK_Star, CHK_Diamond };
+
+            foreach (CheckBox c in cba)
+            {
+                c.Enabled = CHK_Symbols.Checked;
+            }
+            Label_Diamond.Enabled = CHK_Symbols.Checked;
+        }
+
+        private void update255_MTB(object sender, EventArgs e)
+        {
+            MaskedTextBox mtb = sender as MaskedTextBox;
+            try
+            {
+                if (Util.ToInt32((sender as MaskedTextBox).Text) > 255)
+                    (sender as MaskedTextBox).Text = "255";
+            }
+            catch { mtb.Text = "0"; }
+        }
+
+        private void CHK_Contest_CheckedChanged(object sender, EventArgs e)
+        {
+            bool b = CHK_Contest.Checked;
+            TB_Beauty.Enabled = b;
+            TB_Cool.Enabled = b;
+            Label_Beauty.Enabled = b;
+            Label_Cool.Enabled = b;
+            TB_Smart.Enabled = b;
+            TB_Cute.Enabled = b;
+            Label_Smart.Enabled = b;
+            Label_Cute.Enabled = b;
+            TB_Sheen.Enabled = b;
+            TB_Tough.Enabled = b;
+            Label_Sheen.Enabled = b;
+            Label_Tough.Enabled = b;
+        }
+
+        private void CHK_Gender_CheckedChanged(object sender, EventArgs e)
+        {
+            Label_Gender.Enabled = CHK_Gender.Checked;
         }
 
     }
