@@ -44,6 +44,7 @@ namespace Mass_Editor
         private int[] badgeInts;
         private bool[] symbolChecks;
         private string[] contestStats;
+        private string gender;
 
         #region PKHeX Code
 
@@ -167,7 +168,7 @@ namespace Mass_Editor
             this.Tab_Main.Controls.Clear();
         }
 
-        public Form1(List<string> litems, List<int> modes, ProgressBar progressBar, string[] ret, string friendship, string level, Mass_Editor.Met m, bool bak, int[] otindexes, bool[] country, bool[] met, bool[] ot, bool[] amienabled, int[] amiindex, string[] otgenders, bool hax, bool amilite, bool[] amilitebool, int[] amiliteint, bool allintobox, bool[] badgeChecks, int[] badgeInts, bool[] symbolChecks, string[] contestStats)
+        public Form1(List<string> litems, List<int> modes, ProgressBar progressBar, string[] ret, string friendship, string level, Mass_Editor.Met m, bool bak, int[] otindexes, bool[] country, bool[] met, bool[] ot, bool[] amienabled, int[] amiindex, string[] otgenders, bool hax, bool amilite, bool[] amilitebool, int[] amiliteint, bool allintobox, bool[] badgeChecks, int[] badgeInts, bool[] symbolChecks, string[] contestStats, string gender)
         {
 
             this.litems = litems;
@@ -193,6 +194,7 @@ namespace Mass_Editor
             this.badgeInts = badgeInts;
             this.symbolChecks = symbolChecks;
             this.contestStats = contestStats;
+            this.gender = gender;
 
             #region Initialize Form
             InitializeComponent();
@@ -5263,6 +5265,20 @@ namespace Mass_Editor
                         {
                             TB_Contests[i].Text = contestStats[i];
                         }
+                        break;
+                    case 17:
+                        PKX.PersonalParser.Personal MonData = PKX.PersonalGetter.GetPersonal(Util.getIndex(CB_Species));
+                        int gt = MonData.GenderRatio;
+
+                        // Exclude Pokémon with no gender or just one
+                        if (!(gt == 255 || gt == 0 || gt == 254))
+                        {
+                            if (Label_Gender.Text != gender)
+                            {
+                                clickGender(Label_Gender, null);
+                            }
+                        }                            
+
                         break;
                 }
             }

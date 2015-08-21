@@ -200,6 +200,8 @@ namespace Mass_Editor
 
                 string[] contestStats = { TB_Cool.Text, TB_Beauty.Text, TB_Cute.Text, TB_Smart.Text, TB_Tough.Text, TB_Sheen.Text };
 
+                string gender = Label_Gender.Text;
+
                 if (CHK_Unshiny.Checked)
                 {
                     modes.Add(1);
@@ -264,11 +266,15 @@ namespace Mass_Editor
                 {
                     modes.Add(16);
                 }
+                if (CHK_Gender.Checked)
+                {
+                    modes.Add(17);
+                }
 
                 string filename = Path.GetFileNameWithoutExtension(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
                 // thread for free UI
                 thread = new Thread(delegate() { 
-                    Form1 f1 = new Form1(litems, modes, this.progressBar1, ret, friendship, level, m, bak, otindexes, countrybool, metbool, otbool, amienabled, amiindex, otgenders, (filename.IndexOf("Mess") >= 0), amilite, amilitebool, amiliteint, allintobox, badgeChecks, badgeInts, symbolChecks, contestStats); 
+                    Form1 f1 = new Form1(litems, modes, this.progressBar1, ret, friendship, level, m, bak, otindexes, countrybool, metbool, otbool, amienabled, amiindex, otgenders, (filename.IndexOf("Mess") >= 0), amilite, amilitebool, amiliteint, allintobox, badgeChecks, badgeInts, symbolChecks, contestStats, gender); 
                     f1.Form1_Load(new object(), new EventArgs()); 
                     f1.Dispose(); 
                 });
@@ -668,6 +674,8 @@ namespace Mass_Editor
             this.CHK_Square = new System.Windows.Forms.CheckBox();
             this.CHK_Triangle = new System.Windows.Forms.CheckBox();
             this.CHK_Circle = new System.Windows.Forms.CheckBox();
+            this.CHK_Gender = new System.Windows.Forms.CheckBox();
+            this.Label_Gender = new System.Windows.Forms.Label();
 
             this.Label_EggDate = new System.Windows.Forms.Label();
             this.Label_EggLocation = new System.Windows.Forms.Label();
@@ -2485,6 +2493,8 @@ namespace Mass_Editor
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.Label_Gender);
+            this.groupBox7.Controls.Add(this.CHK_Gender);
             this.groupBox7.Controls.Add(this.CHK_Contest);
             this.groupBox7.Controls.Add(this.TB_Sheen);
             this.groupBox7.Controls.Add(this.TB_Tough);
@@ -2747,15 +2757,35 @@ namespace Mass_Editor
             this.CHK_Circle.Text = "●";
             this.CHK_Circle.UseVisualStyleBackColor = true;
             // 
-            // CHK_No_Pokerus
+            // CHK_Gender
             // 
-            this.CHK_No_Pokerus.AutoSize = true;
-            this.CHK_No_Pokerus.Location = new System.Drawing.Point(6, 71);
-            this.CHK_No_Pokerus.Name = "CHK_No_Pokerus";
-            this.CHK_No_Pokerus.Size = new System.Drawing.Size(103, 17);
-            this.CHK_No_Pokerus.TabIndex = 53;
-            this.CHK_No_Pokerus.Text = "Disable Pokérus";
-            this.CHK_No_Pokerus.UseVisualStyleBackColor = true;
+            this.CHK_Gender.AutoSize = true;
+            this.CHK_Gender.Location = new System.Drawing.Point(39, 286);
+            this.CHK_Gender.Name = "CHK_Gender";
+            this.CHK_Gender.Size = new System.Drawing.Size(15, 14);
+            this.CHK_Gender.TabIndex = 49;
+            this.CHK_Gender.UseVisualStyleBackColor = true;
+            // 
+            // Label_Gender
+            // 
+            this.Label_Gender.AutoSize = true;
+            this.Label_Gender.Enabled = false;
+            this.Label_Gender.Location = new System.Drawing.Point(39, 266);
+            this.Label_Gender.Name = "Label_Gender";
+            this.Label_Gender.Size = new System.Drawing.Size(15, 13);
+            this.Label_Gender.TabIndex = 50;
+            this.Label_Gender.Text = "♂";
+            this.Label_Gender.Click += new System.EventHandler(this.Label_Gender_Click);
+            // 
+            // CHK_Gender
+            // 
+            this.CHK_Gender.AutoSize = true;
+            this.CHK_Gender.Location = new System.Drawing.Point(39, 286);
+            this.CHK_Gender.Name = "CHK_Gender";
+            this.CHK_Gender.Size = new System.Drawing.Size(15, 14);
+            this.CHK_Gender.TabIndex = 49;
+            this.CHK_Gender.UseVisualStyleBackColor = true;
+            this.CHK_Gender.CheckedChanged += new System.EventHandler(this.CHK_Gender_CheckedChanged);
             // 
             // BTN_None
             // 
@@ -4691,6 +4721,24 @@ namespace Mass_Editor
             TB_Tough.Enabled = b;
             Label_Sheen.Enabled = b;
             Label_Tough.Enabled = b;
+        }
+
+        private void Label_Gender_Click(object sender, EventArgs e)
+        {
+            string[] gender = { "♂", "♀" };
+            if (Label_Gender.Text == gender[0])
+            {
+                Label_Gender.Text = gender[1];
+            }
+            else
+            {
+                Label_Gender.Text = gender[0];
+            }
+        }
+
+        private void CHK_Gender_CheckedChanged(object sender, EventArgs e)
+        {
+            Label_Gender.Enabled = CHK_Gender.Checked;
         }
 
     }

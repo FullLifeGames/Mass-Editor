@@ -340,6 +340,8 @@
             this.TMedal1_1 = new System.Windows.Forms.CheckBox();
             this.CHK_Badges = new System.Windows.Forms.CheckBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.Label_Gender = new System.Windows.Forms.Label();
+            this.CHK_Gender = new System.Windows.Forms.CheckBox();
             this.CHK_Contest = new System.Windows.Forms.CheckBox();
             this.TB_Sheen = new System.Windows.Forms.MaskedTextBox();
             this.TB_Tough = new System.Windows.Forms.MaskedTextBox();
@@ -3854,6 +3856,8 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.Label_Gender);
+            this.groupBox7.Controls.Add(this.CHK_Gender);
             this.groupBox7.Controls.Add(this.CHK_Contest);
             this.groupBox7.Controls.Add(this.TB_Sheen);
             this.groupBox7.Controls.Add(this.TB_Tough);
@@ -3881,6 +3885,27 @@
             this.groupBox7.TabIndex = 60;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Set";
+            // 
+            // Label_Gender
+            // 
+            this.Label_Gender.AutoSize = true;
+            this.Label_Gender.Enabled = false;
+            this.Label_Gender.Location = new System.Drawing.Point(39, 266);
+            this.Label_Gender.Name = "Label_Gender";
+            this.Label_Gender.Size = new System.Drawing.Size(15, 13);
+            this.Label_Gender.TabIndex = 50;
+            this.Label_Gender.Text = "♂";
+            this.Label_Gender.Click += new System.EventHandler(this.Label_Gender_Click);
+            // 
+            // CHK_Gender
+            // 
+            this.CHK_Gender.AutoSize = true;
+            this.CHK_Gender.Location = new System.Drawing.Point(39, 286);
+            this.CHK_Gender.Name = "CHK_Gender";
+            this.CHK_Gender.Size = new System.Drawing.Size(15, 14);
+            this.CHK_Gender.TabIndex = 49;
+            this.CHK_Gender.UseVisualStyleBackColor = true;
+            this.CHK_Gender.CheckedChanged += new System.EventHandler(this.CHK_Gender_CheckedChanged);
             // 
             // CHK_Contest
             // 
@@ -4573,5 +4598,7 @@
         public System.Windows.Forms.MaskedTextBox TB_Tough;
         public System.Windows.Forms.Label Label_Sheen;
         public System.Windows.Forms.Label Label_Tough;
+        private System.Windows.Forms.Label Label_Gender;
+        private System.Windows.Forms.CheckBox CHK_Gender;
     }
 }
