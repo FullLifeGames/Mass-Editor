@@ -1502,6 +1502,16 @@ namespace Mass_Editor
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Set";
             // 
+            // CHK_No_Pokerus
+            // 
+            this.CHK_No_Pokerus.AutoSize = true;
+            this.CHK_No_Pokerus.Location = new System.Drawing.Point(6, 71);
+            this.CHK_No_Pokerus.Name = "CHK_No_Pokerus";
+            this.CHK_No_Pokerus.Size = new System.Drawing.Size(103, 17);
+            this.CHK_No_Pokerus.TabIndex = 53;
+            this.CHK_No_Pokerus.Text = "Disable Pokérus";
+            this.CHK_No_Pokerus.UseVisualStyleBackColor = true;
+            //
             // CHK_PPMax
             // 
             this.CHK_PPMax.AutoSize = true;
