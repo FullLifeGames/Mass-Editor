@@ -43,7 +43,6 @@ namespace Mass_Editor
         private bool[] badgeChecks; 
         private int[] badgeInts;
         private bool[] symbolChecks;
-        private int languageCheck;
 
         #region PKHeX Code
 
@@ -167,7 +166,7 @@ namespace Mass_Editor
             this.Tab_Main.Controls.Clear();
         }
 
-        public Form1(List<string> litems, List<int> modes, ProgressBar progressBar, string[] ret, string friendship, string level, Mass_Editor.Met m, bool bak, int[] otindexes, bool[] country, bool[] met, bool[] ot, bool[] amienabled, int[] amiindex, string[] otgenders, bool hax, bool amilite, bool[] amilitebool, int[] amiliteint, bool allintobox, bool[] badgeChecks, int[] badgeInts, bool[] symbolChecks, int languageCheck)
+        public Form1(List<string> litems, List<int> modes, ProgressBar progressBar, string[] ret, string friendship, string level, Mass_Editor.Met m, bool bak, int[] otindexes, bool[] country, bool[] met, bool[] ot, bool[] amienabled, int[] amiindex, string[] otgenders, bool hax, bool amilite, bool[] amilitebool, int[] amiliteint, bool allintobox, bool[] badgeChecks, int[] badgeInts, bool[] symbolChecks)
         {
 
             this.litems = litems;
@@ -192,7 +191,6 @@ namespace Mass_Editor
             this.badgeChecks = badgeChecks;
             this.badgeInts = badgeInts;
             this.symbolChecks = symbolChecks;
-            this.languageCheck = languageCheck;
 
             #region Initialize Form
             InitializeComponent();
@@ -5256,9 +5254,6 @@ namespace Mass_Editor
                         {
                             cba[i].Checked = symbolChecks[i];
                         }
-                        break;
-                    case 16:
-                        CB_Language.SelectedIndex = languageCheck;
                         break;
                 }
             }
