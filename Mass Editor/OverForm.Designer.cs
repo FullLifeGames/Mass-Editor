@@ -340,6 +340,8 @@
             this.TMedal1_1 = new System.Windows.Forms.CheckBox();
             this.CHK_Badges = new System.Windows.Forms.CheckBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.CHK_Language = new System.Windows.Forms.CheckBox();
+            this.CB_MainLanguage = new System.Windows.Forms.ComboBox();
             this.CHK_Symbols = new System.Windows.Forms.CheckBox();
             this.CHK_Diamond = new System.Windows.Forms.CheckBox();
             this.CHK_Star = new System.Windows.Forms.CheckBox();
@@ -3841,6 +3843,8 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.CHK_Language);
+            this.groupBox7.Controls.Add(this.CB_MainLanguage);
             this.groupBox7.Controls.Add(this.CHK_Symbols);
             this.groupBox7.Controls.Add(this.CHK_Diamond);
             this.groupBox7.Controls.Add(this.CHK_Star);
@@ -3856,13 +3860,34 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Set";
             // 
+            // CHK_Language
+            // 
+            this.CHK_Language.AutoSize = true;
+            this.CHK_Language.Location = new System.Drawing.Point(7, 128);
+            this.CHK_Language.Name = "CHK_Language";
+            this.CHK_Language.Size = new System.Drawing.Size(74, 17);
+            this.CHK_Language.TabIndex = 20;
+            this.CHK_Language.Text = "Language";
+            this.CHK_Language.UseVisualStyleBackColor = true;
+            this.CHK_Language.CheckedChanged += new System.EventHandler(this.CHK_Language_CheckedChanged);
+            // 
+            // CB_MainLanguage
+            // 
+            this.CB_MainLanguage.Enabled = false;
+            this.CB_MainLanguage.FormattingEnabled = true;
+            this.CB_MainLanguage.Location = new System.Drawing.Point(5, 102);
+            this.CB_MainLanguage.Name = "CB_MainLanguage";
+            this.CB_MainLanguage.Size = new System.Drawing.Size(84, 21);
+            this.CB_MainLanguage.TabIndex = 7;
+            // 
             // CHK_Symbols
             // 
             this.CHK_Symbols.AutoSize = true;
-            this.CHK_Symbols.Location = new System.Drawing.Point(43, 71);
+            this.CHK_Symbols.Location = new System.Drawing.Point(6, 77);
             this.CHK_Symbols.Name = "CHK_Symbols";
-            this.CHK_Symbols.Size = new System.Drawing.Size(15, 14);
+            this.CHK_Symbols.Size = new System.Drawing.Size(65, 17);
             this.CHK_Symbols.TabIndex = 19;
+            this.CHK_Symbols.Text = "Symbols";
             this.CHK_Symbols.UseVisualStyleBackColor = true;
             this.CHK_Symbols.CheckedChanged += new System.EventHandler(this.CHK_Symbols_CheckedChanged);
             // 
@@ -4392,5 +4417,7 @@
         public System.Windows.Forms.CheckBox CHK_Star;
         public System.Windows.Forms.CheckBox CHK_Heart;
         public System.Windows.Forms.Label Label_Diamond;
+        private System.Windows.Forms.CheckBox CHK_Language;
+        private System.Windows.Forms.ComboBox CB_MainLanguage;
     }
 }
