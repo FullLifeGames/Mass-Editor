@@ -6,6 +6,8 @@ namespace Mass_Editor
 
         private void InitializeComponents()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OverForm));
+
             f = new Form1();
             f.TB_OT.Text = "PKHeX";
             f.TB_OTt2.Text = "Mass Edit (Last OT)";
@@ -4163,6 +4165,7 @@ namespace Mass_Editor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(977, 782);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.CHK_Badges);
@@ -4181,8 +4184,9 @@ namespace Mass_Editor
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.progressBar1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = true;
             this.Name = "OverForm";
             this.Text = "Mass Editor";
             this.Load += new System.EventHandler(this.OverForm_Load);
