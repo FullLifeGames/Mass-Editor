@@ -150,6 +150,11 @@ namespace Mass_Editor
         }
         #endregion
 
+        private bool filterMemoryBoxes(ComboBox cb)
+        {
+            return (cb.DataSource != null) && (((List<Util.cbItem>)cb.DataSource).Count > 1);
+        }
+
         private void B_Mass_Edit_Click(object sender, EventArgs e)
         {
             if (!running)
@@ -173,9 +178,8 @@ namespace Mass_Editor
                 {
                     litems.Add(l.Text);
                 }
-
-                bool[] amienabled = { M_OT_Friendship.Enabled, M_OT_Affection.Enabled, CB_OTMemory.Enabled && CB_OTMemory.Visible, CB_OTVar.Enabled && CB_OTVar.Visible, CB_OTQual.Enabled && CB_OTQual.Visible, CB_OTFeel.Enabled && CB_OTFeel.Visible,
-                                    M_CT_Friendship.Enabled, M_CT_Affection.Enabled, CB_CTMemory.Enabled && CB_CTMemory.Visible, CB_CTVar.Enabled && CB_CTVar.Visible, CB_CTQual.Enabled && CB_CTQual.Visible, CB_CTFeel.Enabled && CB_CTFeel.Visible,
+                bool[] amienabled = { M_OT_Friendship.Enabled, M_OT_Affection.Enabled, CB_OTMemory.Enabled && CB_OTMemory.Visible, filterMemoryBoxes(CB_OTVar), CB_OTQual.Visible, CB_OTFeel.Visible,
+                                    M_CT_Friendship.Enabled, M_CT_Affection.Enabled, CB_CTMemory.Enabled && CB_CTMemory.Visible, filterMemoryBoxes(CB_CTVar), CB_CTQual.Visible, CB_CTFeel.Visible,
                                     (CB_Country0.SelectedIndex != -1) && CB_Country0.Enabled, (CB_Country1.SelectedIndex != -1) && CB_Country1.Enabled, (CB_Country2.SelectedIndex != -1) && CB_Country2.Enabled, (CB_Country3.SelectedIndex != -1) && CB_Country3.Enabled, (CB_Country4.SelectedIndex != -1) && CB_Country4.Enabled, 
                                     (Region0.Items.Count > 1) && Region0.Enabled, (Region1.Items.Count > 1) && Region1.Enabled, (Region2.Items.Count > 1) && Region2.Enabled, (Region3.Items.Count > 1) && Region3.Enabled, (Region4.Items.Count > 1) && Region4.Enabled,
                                     CB_Handler.Enabled, M_Fullness.Enabled, M_Enjoyment.Enabled };

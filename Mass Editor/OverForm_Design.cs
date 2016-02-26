@@ -1554,14 +1554,14 @@ namespace Mass_Editor
             // 
             this.CB_OTQual.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_OTQual.FormattingEnabled = true;
-            this.CB_OTQual.Items.AddRange(new object[] {
+        /*    this.CB_OTQual.Items.AddRange(new object[] {
             "The Pokémon remembers",
             "The Pokémon remembers",
             "The Pokémon remembers",
             "The Pokémon remembers",
             "The Pokémon fondly remembers",
             "The Pokémon clearly remembers",
-            "The Pokémon definitely remembers"});
+            "The Pokémon definitely remembers"});*/
             this.CB_OTQual.Location = new System.Drawing.Point(86, 88);
             this.CB_OTQual.Name = "CB_OTQual";
             this.CB_OTQual.Size = new System.Drawing.Size(240, 21);
@@ -1571,7 +1571,7 @@ namespace Mass_Editor
             // 
             this.CB_OTFeel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_OTFeel.FormattingEnabled = true;
-            this.CB_OTFeel.Items.AddRange(new object[] {
+      /*      this.CB_OTFeel.Items.AddRange(new object[] {
             "it was happy",
             "it had fun",
             "it was glad",
@@ -1595,7 +1595,7 @@ namespace Mass_Editor
             "they ended up in a foul mood",
             "it got angry",
             "it got jealous",
-            "it got sleepy"});
+            "it got sleepy"});*/
             this.CB_OTFeel.Location = new System.Drawing.Point(86, 111);
             this.CB_OTFeel.Name = "CB_OTFeel";
             this.CB_OTFeel.Size = new System.Drawing.Size(170, 21);
@@ -1736,14 +1736,14 @@ namespace Mass_Editor
             // 
             this.CB_CTQual.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_CTQual.FormattingEnabled = true;
-            this.CB_CTQual.Items.AddRange(new object[] {
+      /*      this.CB_CTQual.Items.AddRange(new object[] {
             "The Pokémon remembers",
             "The Pokémon remembers",
             "The Pokémon remembers",
             "The Pokémon remembers",
             "The Pokémon fondly remembers",
             "The Pokémon clearly remembers",
-            "The Pokémon definitely remembers"});
+            "The Pokémon definitely remembers"});*/
             this.CB_CTQual.Location = new System.Drawing.Point(86, 88);
             this.CB_CTQual.Name = "CB_CTQual";
             this.CB_CTQual.Size = new System.Drawing.Size(240, 21);
@@ -1753,7 +1753,7 @@ namespace Mass_Editor
             // 
             this.CB_CTFeel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_CTFeel.FormattingEnabled = true;
-            this.CB_CTFeel.Items.AddRange(new object[] {
+         /*   this.CB_CTFeel.Items.AddRange(new object[] {
             "it was happy",
             "it had fun",
             "it was glad",
@@ -1777,7 +1777,7 @@ namespace Mass_Editor
             "they ended up in a foul mood",
             "it got angry",
             "it got jealous",
-            "it got sleepy"});
+            "it got sleepy"});*/
             this.CB_CTFeel.Location = new System.Drawing.Point(86, 111);
             this.CB_CTFeel.Name = "CB_CTFeel";
             this.CB_CTFeel.Size = new System.Drawing.Size(170, 21);
