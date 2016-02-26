@@ -5280,6 +5280,14 @@ namespace Mass_Editor
                         }                            
 
                         break;
+                    case 18:
+                        TB_ATKEV.Text = "0";
+                        TB_DEFEV.Text = "0";
+                        TB_SPAEV.Text = "0";
+                        TB_SPDEV.Text = "0";
+                        TB_HPEV.Text = "0";
+                        TB_SPEEV.Text = "0";
+                        break;
                 }
             }
         }

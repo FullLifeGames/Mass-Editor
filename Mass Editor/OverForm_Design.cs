@@ -300,6 +300,7 @@ namespace Mass_Editor
             this.CHK_Gender = new System.Windows.Forms.CheckBox();
             this.Label_Gender = new System.Windows.Forms.Label();
 
+            this.CHK_EVS_0 = new System.Windows.Forms.CheckBox();
             this.Label_EggDate = new System.Windows.Forms.Label();
             this.Label_EggLocation = new System.Windows.Forms.Label();
             this.Label_EncounterType = new System.Windows.Forms.Label();
@@ -2126,6 +2127,7 @@ namespace Mass_Editor
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.CHK_EVS_0);
             this.groupBox7.Controls.Add(this.Label_Gender);
             this.groupBox7.Controls.Add(this.CHK_Gender);
             this.groupBox7.Controls.Add(this.CHK_Contest);
@@ -2389,6 +2391,16 @@ namespace Mass_Editor
             this.CHK_Circle.TabIndex = 12;
             this.CHK_Circle.Text = "●";
             this.CHK_Circle.UseVisualStyleBackColor = true;
+            // 
+            // CHK_EVS_0
+            // 
+            this.CHK_EVS_0.AutoSize = true;
+            this.CHK_EVS_0.Location = new System.Drawing.Point(4, 318);
+            this.CHK_EVS_0.Name = "CHK_EVS_0";
+            this.CHK_EVS_0.Size = new System.Drawing.Size(85, 17);
+            this.CHK_EVS_0.TabIndex = 51;
+            this.CHK_EVS_0.Text = "Set EVs to 0";
+            this.CHK_EVS_0.UseVisualStyleBackColor = true;
             // 
             // CHK_Gender
             // 

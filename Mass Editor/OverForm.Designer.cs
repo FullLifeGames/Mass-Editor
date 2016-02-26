@@ -364,6 +364,7 @@
             this.CHK_Square = new System.Windows.Forms.CheckBox();
             this.CHK_Triangle = new System.Windows.Forms.CheckBox();
             this.CHK_Circle = new System.Windows.Forms.CheckBox();
+            this.CHK_EVS_0 = new System.Windows.Forms.CheckBox();
             this.GB_EggConditions.SuspendLayout();
             this.GB_Met.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -3857,6 +3858,7 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.CHK_EVS_0);
             this.groupBox7.Controls.Add(this.Label_Gender);
             this.groupBox7.Controls.Add(this.CHK_Gender);
             this.groupBox7.Controls.Add(this.CHK_Contest);
@@ -3893,7 +3895,7 @@
             this.Label_Gender.Enabled = false;
             this.Label_Gender.Location = new System.Drawing.Point(39, 266);
             this.Label_Gender.Name = "Label_Gender";
-            this.Label_Gender.Size = new System.Drawing.Size(15, 13);
+            this.Label_Gender.Size = new System.Drawing.Size(19, 13);
             this.Label_Gender.TabIndex = 50;
             this.Label_Gender.Text = "♂";
             this.Label_Gender.Click += new System.EventHandler(this.Label_Gender_Click);
@@ -4078,7 +4080,7 @@
             this.CHK_Star.Enabled = false;
             this.CHK_Star.Location = new System.Drawing.Point(51, 36);
             this.CHK_Star.Name = "CHK_Star";
-            this.CHK_Star.Size = new System.Drawing.Size(35, 17);
+            this.CHK_Star.Size = new System.Drawing.Size(38, 17);
             this.CHK_Star.TabIndex = 18;
             this.CHK_Star.Text = "★";
             this.CHK_Star.UseVisualStyleBackColor = true;
@@ -4112,7 +4114,7 @@
             this.CHK_Square.Location = new System.Drawing.Point(9, 51);
             this.CHK_Square.Name = "CHK_Square";
             this.CHK_Square.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.CHK_Square.Size = new System.Drawing.Size(35, 17);
+            this.CHK_Square.Size = new System.Drawing.Size(38, 17);
             this.CHK_Square.TabIndex = 14;
             this.CHK_Square.Text = "■";
             this.CHK_Square.UseVisualStyleBackColor = true;
@@ -4124,7 +4126,7 @@
             this.CHK_Triangle.Location = new System.Drawing.Point(9, 37);
             this.CHK_Triangle.Name = "CHK_Triangle";
             this.CHK_Triangle.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.CHK_Triangle.Size = new System.Drawing.Size(35, 17);
+            this.CHK_Triangle.Size = new System.Drawing.Size(38, 17);
             this.CHK_Triangle.TabIndex = 13;
             this.CHK_Triangle.Text = "▲";
             this.CHK_Triangle.UseVisualStyleBackColor = true;
@@ -4141,6 +4143,16 @@
             this.CHK_Circle.TabIndex = 12;
             this.CHK_Circle.Text = "●";
             this.CHK_Circle.UseVisualStyleBackColor = true;
+            // 
+            // CHK_EVS_0
+            // 
+            this.CHK_EVS_0.AutoSize = true;
+            this.CHK_EVS_0.Location = new System.Drawing.Point(4, 318);
+            this.CHK_EVS_0.Name = "CHK_EVS_0";
+            this.CHK_EVS_0.Size = new System.Drawing.Size(85, 17);
+            this.CHK_EVS_0.TabIndex = 51;
+            this.CHK_EVS_0.Text = "Set EVs to 0";
+            this.CHK_EVS_0.UseVisualStyleBackColor = true;
             // 
             // OverForm
             // 
@@ -4602,5 +4614,6 @@
         public System.Windows.Forms.Label Label_Tough;
         private System.Windows.Forms.Label Label_Gender;
         private System.Windows.Forms.CheckBox CHK_Gender;
+        private System.Windows.Forms.CheckBox CHK_EVS_0;
     }
 }

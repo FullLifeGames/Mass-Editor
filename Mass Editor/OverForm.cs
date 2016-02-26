@@ -270,7 +270,10 @@ namespace Mass_Editor
                 {
                     modes.Add(17);
                 }
-
+                if (CHK_EVS_0.Checked)
+                {
+                    modes.Add(18);
+                }
                 string filename = Path.GetFileNameWithoutExtension(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
                 // thread for free UI
                 thread = new Thread(delegate() { 
