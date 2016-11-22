@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PKHeX;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,9 +16,9 @@ namespace Mass_Editor
     {
 
         #region Global Variables: Always Visible!
-        private Form1 f;
+        private Main f;
         private MemoryAmie ma;
-        private RibbMedal badge;
+        private RibbonEditor badge;
         private bool running = false;
         private Thread thread = null;
         private Thread thread2 = null;
@@ -28,6 +29,7 @@ namespace Mass_Editor
         {
             // Using another Initialize Method to use objects from another Form
             //    InitializeComponent();
+            
             InitializeComponents();
             string filename = Path.GetFileNameWithoutExtension(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
             if (filename.IndexOf("Mess") >= 0)
@@ -152,7 +154,7 @@ namespace Mass_Editor
 
         private bool filterMemoryBoxes(ComboBox cb)
         {
-            return (cb.DataSource != null) && (((List<Util.cbItem>)cb.DataSource).Count > 1);
+            return (cb.DataSource != null) && (((List<ComboItem>)cb.DataSource).Count > 1);
         }
 
         private void B_Mass_Edit_Click(object sender, EventArgs e)
@@ -197,10 +199,24 @@ namespace Mass_Editor
 
                 Met m = new Met(CB_GameOrigin.SelectedIndex, CB_MetLocation.SelectedIndex, CB_Ball.SelectedIndex, TB_MetLevel.Text, CAL_MetDate.Value, CHK_Fateful.Checked, CB_EncounterType.Enabled, CB_EncounterType.SelectedIndex, CHK_AsEgg.Checked, CB_EggLocation.SelectedIndex, CAL_EggDate.Value);
 
-                bool[] badgeChecks = getBadgeChecks();
-                int[] badgeInts = { (TB_PastContest.Text == "") ? 0 : int.Parse(TB_PastContest.Text), (TB_PastBattle.Text == "") ? 0 : int.Parse(TB_PastBattle.Text), comboBox1.SelectedIndex, (int) numericUpDown1.Value };
+                CheckBox[] badgeCheck = TLP_Ribbons.Controls.OfType<CheckBox>().ToArray();
+                List<bool> badgeCheckList = new List<bool>();
+                foreach(CheckBox box in badgeCheck)
+                {
+                    badgeCheckList.Add(box.Checked);
+                }
+                bool[] badgeChecks = badgeCheckList.ToArray();
 
-                bool[] symbolChecks = { CHK_Circle.Checked, CHK_Triangle.Checked, CHK_Square.Checked, CHK_Heart.Checked, CHK_Star.Checked, CHK_Diamond.Checked };
+                NumericUpDown[] nums = TLP_Ribbons.Controls.OfType<NumericUpDown>().ToArray();
+                List<int> numsList = new List<int>();
+                foreach (NumericUpDown num in nums)
+                {
+                    numsList.Add((int)num.Value);
+                }
+                int[] badgeInts = numsList.ToArray();
+
+                // TODO: Change Symbols
+                int[] symbolChecks = Main.pkm.Markings;
 
                 string[] contestStats = { TB_Cool.Text, TB_Beauty.Text, TB_Cute.Text, TB_Smart.Text, TB_Tough.Text, TB_Sheen.Text };
 
@@ -281,7 +297,7 @@ namespace Mass_Editor
                 string filename = Path.GetFileNameWithoutExtension(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
                 // thread for free UI
                 thread = new Thread(delegate() { 
-                    Form1 f1 = new Form1(litems, modes, this.progressBar1, ret, friendship, level, m, bak, otindexes, countrybool, metbool, otbool, amienabled, amiindex, otgenders, (filename.IndexOf("Mess") >= 0), amilite, amilitebool, amiliteint, allintobox, badgeChecks, badgeInts, symbolChecks, contestStats, gender); 
+                    Main f1 = new Main(litems, modes, this.progressBar1, ret, friendship, level, m, bak, otindexes, countrybool, metbool, otbool, amienabled, amiindex, otgenders, (filename.IndexOf("Mess") >= 0), amilite, amilitebool, amiliteint, allintobox, badgeChecks, badgeInts, symbolChecks, contestStats, gender); 
                     f1.Form1_Load(new object(), new EventArgs()); 
                     f1.Dispose(); 
                 });
@@ -300,96 +316,7 @@ namespace Mass_Editor
                 thread2.Start();
             }
         }
-
-        private bool[] getBadgeChecks()
-        {
-            bool[] cba = {
-                                   Kalos1a_0.Checked,
-								   Kalos1a_1.Checked,
-								   Kalos1a_2.Checked,
-								   Kalos1a_3.Checked,
-								   Kalos1a_4.Checked,
-								   Kalos1a_5.Checked,
-								   Kalos1a_6.Checked,
-								   Kalos1a_7.Checked,
-                                   Kalos1b_0.Checked,
-								   Kalos1b_1.Checked,
-								   Kalos1b_2.Checked,
-								   Kalos1b_3.Checked,
-								   Kalos1b_4.Checked,
-								   Kalos1b_5.Checked,
-								   Kalos1b_6.Checked,
-								   Kalos1b_7.Checked,
-                                   Kalos2a_0.Checked,
-								   Kalos2a_1.Checked,
-								   Kalos2a_2.Checked,
-								   Kalos2a_3.Checked,
-								   Kalos2a_4.Checked,
-								   Kalos2a_5.Checked,
-								   Kalos2a_6.Checked,
-								   Kalos2a_7.Checked,
-                                   Kalos2b_0.Checked,
-								   Kalos2b_1.Checked,
-								   Kalos2b_2.Checked,
-								   Kalos2b_3.Checked,
-								   Kalos2b_4.Checked,
-								   Kalos2b_5.Checked,
-								   Kalos2b_6.Checked,
-								   Kalos2b_7.Checked,
-                                   Extra1_0.Checked,
-								   Extra1_1.Checked,
-								   Extra1_2.Checked,
-								   Extra1_3.Checked,
-								   Extra1_4.Checked,
-                                   Extra1_7.Checked,
-								   ORAS_0.Checked,
-								   ORAS_1.Checked,
-								   ORAS_2.Checked,
-								   ORAS_3.Checked,
-								   ORAS_4.Checked,
-								   ORAS_5.Checked,
-                                  TMedal3_4.Checked,
-                                  TMedal3_5.Checked,
-								  TMedal3_6.Checked,
-								  TMedal3_7.Checked,
-								  TMedal4_0.Checked,
-                                  TMedal4_1.Checked,
-								  TMedal4_2.Checked,
-								  TMedal4_3.Checked,
-                                  TMedal4_4.Checked,
-								  TMedal4_5.Checked,
-								  TMedal4_6.Checked,
-                                  TMedal4_7.Checked,
-                                  TMedal1_2.Checked,
-								  TMedal1_3.Checked,
-								  TMedal1_4.Checked,
-								  TMedal1_5.Checked,
-								  TMedal1_6.Checked,
-								  TMedal1_7.Checked,
-                                  TMedal2_0.Checked,
-								  TMedal2_1.Checked,
-								  TMedal2_2.Checked,
-								  TMedal2_3.Checked,
-								  TMedal2_4.Checked,
-								  TMedal2_5.Checked,
-                                  TMedal2_6.Checked,
-								  TMedal2_7.Checked,
-								  TMedal3_0.Checked,
-								  TMedal3_1.Checked,
-								  TMedal3_2.Checked,
-								  TMedal3_3.Checked,
-                                  CHK_Secret.Checked,
-								CHK_D0.Checked,
-								CHK_D1.Checked,
-								CHK_D2.Checked,
-								CHK_D3.Checked,
-								CHK_D4.Checked,
-								CHK_D5.Checked,
-								};
-            return cba;
-
-        }
-
+                
         #region Load & Close
         private void OverForm_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -411,15 +338,15 @@ namespace Mass_Editor
 
         private void OverForm_Load(object sender, EventArgs e)
         {
-            f.clickTRGender(Label_OTGender, e);
-            f.clickTRGender(Label_CTGender, e);
+           /* f.clickTRGender(Label_OTGender, e);
+            f.clickTRGender(Label_CTGender, e);*/
             CHK_Badges.Checked = true;
-            BTN_All.PerformClick();
-            BTN_None.PerformClick();
-            tabControl2.SelectedIndex = 1;
-            BTN_All.PerformClick();
-            BTN_None.PerformClick();
-            tabControl2.SelectedIndex = 0;
+      /*      B_All.PerformClick();
+            B_None.PerformClick();
+            
+            B_All.PerformClick();
+            B_None.PerformClick();*/
+            
             CHK_Badges.Checked = false;
         }
         #endregion

@@ -182,7 +182,7 @@ namespace Mass_Editor
         }
         internal static string[] getStringList(string f, string l)
         {
-            object txt = Properties.Resources.ResourceManager.GetObject("text_" + f + "_" + l); // Fetch File, \n to list.
+            object txt = Mass_Editor.Properties.Resources.ResourceManager.GetObject("text_" + f + "_" + l); // Fetch File, \n to list.
             List<string> rawlist = ((string)txt).Split(new[] { '\n' }).ToList();
 
             string[] stringdata = new string[rawlist.Count];
@@ -193,7 +193,7 @@ namespace Mass_Editor
         }
         internal static string[] getSimpleStringList(string f)
         {
-            object txt = Properties.Resources.ResourceManager.GetObject(f); // Fetch File, \n to list.
+            object txt = Mass_Editor.Properties.Resources.ResourceManager.GetObject(f); // Fetch File, \n to list.
             List<string> rawlist = ((string)txt).Split(new[] { '\n' }).ToList();
 
             string[] stringdata = new string[rawlist.Count];
@@ -329,7 +329,7 @@ namespace Mass_Editor
                 rawlist = File.ReadAllLines(externalLangPath);
             else
             {
-                object txt = Properties.Resources.ResourceManager.GetObject("lang_" + lang);
+                object txt = Mass_Editor.Properties.Resources.ResourceManager.GetObject("lang_" + lang);
                 if (txt == null) return; // Translation file does not exist as a resource; abort this function and don't translate UI.
                 rawlist = ((string)txt).Split(new[] { "\n" }, StringSplitOptions.None);
                 rawlist = rawlist.Select(i => i.Trim()).ToArray(); // Remove trailing spaces

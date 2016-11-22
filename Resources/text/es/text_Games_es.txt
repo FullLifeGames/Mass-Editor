@@ -5,8 +5,8 @@ Esmeralda
 RojoFuego
 VerdeHoja
 
-HeartGold
-SoulSilver
+Oro HeartGold
+Plata SoulSilver
 
 Diamante
 Perla
@@ -20,9 +20,13 @@ Colosseum/XD
 
 Blanca
 Negra
-Blanca2
-Negra2
+Blanca 2
+Negra 2
 X
 Y
-AS
-OR
+Zafiro Alfa
+Rubí Omega
+
+
+Sol
+Luna

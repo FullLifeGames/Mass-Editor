@@ -1,4 +1,4 @@
-﻿namespace Mass_Editor
+﻿namespace PKHeX
 {
     partial class SplashScreen
     {
