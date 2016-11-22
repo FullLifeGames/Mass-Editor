@@ -1,0 +1,44 @@
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\bin\Release\Mass Editor.exe.config
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\bin\Release\Mass Editor.exe
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\bin\Release\Mass Editor.pdb
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.OverForm.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.Main.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.About.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.Misc.ErrorWindow.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.QR.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.SplashScreen.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.frmReport.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.KChart.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.BatchEditor.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.MemoryAmie.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.RibbonEditor.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.SuperTrainingEditor.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.f2_Text.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.SAV_CGearSkin.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.SAV_BerryFieldXY.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.SAV_BoxLayout.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.SAV_HallOfFame.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.SAV_Link6.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.SAV_OPower.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.SAV_PokeBlockORAS.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.SAV_PokedexORAS.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.SAV_PokedexXY.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.SAV_Pokepuff.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.SAV_SecretBase.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.SAV_SuperTrain.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.SAV_Trainer.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.SAV_Pokebean.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.SAV_PokedexSM.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.SAV_Trainer7.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.SAV_BoxViewer.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.SAV_EventFlags.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.SAV_Inventory.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.SAV_SimplePokedex.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.SAV_SimpleTrainer.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.SAV_Wondercard.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.SAV_Database.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\PKHeX.SAV_MysteryGiftDB.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass_Editor.Properties.Resources.resources
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass Editor.csproj.GenerateResource.Cache
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass Editor.exe
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Release\Mass Editor.pdb
