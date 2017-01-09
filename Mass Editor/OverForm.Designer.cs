@@ -49,6 +49,26 @@
             this.CHK_Bak = new System.Windows.Forms.CheckBox();
             this.CHK_Met = new System.Windows.Forms.CheckBox();
             this.GB_Met = new System.Windows.Forms.GroupBox();
+            this.GB_EggConditions = new System.Windows.Forms.GroupBox();
+            this.CB_EggLocation = new System.Windows.Forms.ComboBox();
+            this.CAL_EggDate = new System.Windows.Forms.DateTimePicker();
+            this.Label_EggDate = new System.Windows.Forms.Label();
+            this.Label_EggLocation = new System.Windows.Forms.Label();
+            this.CHK_AsEgg = new System.Windows.Forms.CheckBox();
+            this.L_MetTimeOfDay = new System.Windows.Forms.Label();
+            this.CB_MetTimeOfDay = new System.Windows.Forms.ComboBox();
+            this.CB_EncounterType = new System.Windows.Forms.ComboBox();
+            this.CHK_Fateful = new System.Windows.Forms.CheckBox();
+            this.Label_MetDate = new System.Windows.Forms.Label();
+            this.CAL_MetDate = new System.Windows.Forms.DateTimePicker();
+            this.Label_MetLevel = new System.Windows.Forms.Label();
+            this.TB_MetLevel = new System.Windows.Forms.MaskedTextBox();
+            this.Label_Ball = new System.Windows.Forms.Label();
+            this.CB_Ball = new System.Windows.Forms.ComboBox();
+            this.Label_MetLocation = new System.Windows.Forms.Label();
+            this.CB_MetLocation = new System.Windows.Forms.ComboBox();
+            this.Label_OriginGame = new System.Windows.Forms.Label();
+            this.CB_GameOrigin = new System.Windows.Forms.ComboBox();
             this.checkBox15 = new System.Windows.Forms.CheckBox();
             this.checkBox14 = new System.Windows.Forms.CheckBox();
             this.checkBox13 = new System.Windows.Forms.CheckBox();
@@ -192,29 +212,9 @@
             this.CHK_Square = new System.Windows.Forms.CheckBox();
             this.CHK_Triangle = new System.Windows.Forms.CheckBox();
             this.CHK_Circle = new System.Windows.Forms.CheckBox();
-            this.Label_OriginGame = new System.Windows.Forms.Label();
-            this.CB_GameOrigin = new System.Windows.Forms.ComboBox();
-            this.Label_MetLocation = new System.Windows.Forms.Label();
-            this.CB_MetLocation = new System.Windows.Forms.ComboBox();
-            this.Label_Ball = new System.Windows.Forms.Label();
-            this.CB_Ball = new System.Windows.Forms.ComboBox();
-            this.Label_MetLevel = new System.Windows.Forms.Label();
-            this.TB_MetLevel = new System.Windows.Forms.MaskedTextBox();
-            this.Label_MetDate = new System.Windows.Forms.Label();
-            this.CAL_MetDate = new System.Windows.Forms.DateTimePicker();
-            this.CHK_Fateful = new System.Windows.Forms.CheckBox();
-            this.CB_EncounterType = new System.Windows.Forms.ComboBox();
-            this.CB_TimeOfDay = new System.Windows.Forms.CheckBox();
             this.Label_EncounterType = new System.Windows.Forms.Label();
-            this.L_MetTimeOfDay = new System.Windows.Forms.Label();
-            this.CB_MetTimeOfDay = new System.Windows.Forms.ComboBox();
-            this.CHK_AsEgg = new System.Windows.Forms.CheckBox();
-            this.GB_EggConditions = new System.Windows.Forms.GroupBox();
-            this.CB_EggLocation = new System.Windows.Forms.ComboBox();
-            this.CAL_EggDate = new System.Windows.Forms.DateTimePicker();
-            this.Label_EggDate = new System.Windows.Forms.Label();
-            this.Label_EggLocation = new System.Windows.Forms.Label();
             this.GB_Met.SuspendLayout();
+            this.GB_EggConditions.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -234,7 +234,6 @@
             this.SPLIT_Ribbons.Panel2.SuspendLayout();
             this.SPLIT_Ribbons.SuspendLayout();
             this.groupBox7.SuspendLayout();
-            this.GB_EggConditions.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -420,7 +419,6 @@
             this.GB_Met.Controls.Add(this.CHK_AsEgg);
             this.GB_Met.Controls.Add(this.L_MetTimeOfDay);
             this.GB_Met.Controls.Add(this.CB_MetTimeOfDay);
-            this.GB_Met.Controls.Add(this.CB_TimeOfDay);
             this.GB_Met.Controls.Add(this.CB_EncounterType);
             this.GB_Met.Controls.Add(this.CHK_Fateful);
             this.GB_Met.Controls.Add(this.Label_MetDate);
@@ -449,6 +447,228 @@
             this.GB_Met.TabIndex = 44;
             this.GB_Met.TabStop = false;
             this.GB_Met.Text = "Change Met to";
+            // 
+            // GB_EggConditions
+            // 
+            this.GB_EggConditions.Controls.Add(this.CB_EggLocation);
+            this.GB_EggConditions.Controls.Add(this.CAL_EggDate);
+            this.GB_EggConditions.Controls.Add(this.Label_EggDate);
+            this.GB_EggConditions.Controls.Add(this.Label_EggLocation);
+            this.GB_EggConditions.Enabled = false;
+            this.GB_EggConditions.Location = new System.Drawing.Point(7, 216);
+            this.GB_EggConditions.Name = "GB_EggConditions";
+            this.GB_EggConditions.Size = new System.Drawing.Size(200, 67);
+            this.GB_EggConditions.TabIndex = 70;
+            this.GB_EggConditions.TabStop = false;
+            this.GB_EggConditions.Text = "Egg Met Conditions";
+            // 
+            // CB_EggLocation
+            // 
+            this.CB_EggLocation.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.CB_EggLocation.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.CB_EggLocation.DropDownWidth = 150;
+            this.CB_EggLocation.FormattingEnabled = true;
+            this.CB_EggLocation.Location = new System.Drawing.Point(71, 19);
+            this.CB_EggLocation.Name = "CB_EggLocation";
+            this.CB_EggLocation.Size = new System.Drawing.Size(122, 21);
+            this.CB_EggLocation.TabIndex = 10;
+            // 
+            // CAL_EggDate
+            // 
+            this.CAL_EggDate.CustomFormat = "MM/dd/yyyy";
+            this.CAL_EggDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.CAL_EggDate.Location = new System.Drawing.Point(71, 40);
+            this.CAL_EggDate.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
+            this.CAL_EggDate.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.CAL_EggDate.Name = "CAL_EggDate";
+            this.CAL_EggDate.Size = new System.Drawing.Size(122, 20);
+            this.CAL_EggDate.TabIndex = 11;
+            this.CAL_EggDate.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            // 
+            // Label_EggDate
+            // 
+            this.Label_EggDate.Location = new System.Drawing.Point(5, 44);
+            this.Label_EggDate.Name = "Label_EggDate";
+            this.Label_EggDate.Size = new System.Drawing.Size(63, 13);
+            this.Label_EggDate.TabIndex = 8;
+            this.Label_EggDate.Text = "Date:";
+            this.Label_EggDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // Label_EggLocation
+            // 
+            this.Label_EggLocation.Location = new System.Drawing.Point(5, 24);
+            this.Label_EggLocation.Name = "Label_EggLocation";
+            this.Label_EggLocation.Size = new System.Drawing.Size(63, 13);
+            this.Label_EggLocation.TabIndex = 6;
+            this.Label_EggLocation.Text = "Location:";
+            this.Label_EggLocation.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // CHK_AsEgg
+            // 
+            this.CHK_AsEgg.AutoSize = true;
+            this.CHK_AsEgg.Location = new System.Drawing.Point(81, 193);
+            this.CHK_AsEgg.Name = "CHK_AsEgg";
+            this.CHK_AsEgg.Size = new System.Drawing.Size(60, 17);
+            this.CHK_AsEgg.TabIndex = 69;
+            this.CHK_AsEgg.Text = "As Egg";
+            this.CHK_AsEgg.UseVisualStyleBackColor = true;
+            // 
+            // L_MetTimeOfDay
+            // 
+            this.L_MetTimeOfDay.Location = new System.Drawing.Point(-29, 170);
+            this.L_MetTimeOfDay.Margin = new System.Windows.Forms.Padding(0);
+            this.L_MetTimeOfDay.Name = "L_MetTimeOfDay";
+            this.L_MetTimeOfDay.Size = new System.Drawing.Size(110, 21);
+            this.L_MetTimeOfDay.TabIndex = 67;
+            this.L_MetTimeOfDay.Text = "Time of Day:";
+            this.L_MetTimeOfDay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.L_MetTimeOfDay.Visible = false;
+            // 
+            // CB_MetTimeOfDay
+            // 
+            this.CB_MetTimeOfDay.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.CB_MetTimeOfDay.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.CB_MetTimeOfDay.DropDownWidth = 150;
+            this.CB_MetTimeOfDay.FormattingEnabled = true;
+            this.CB_MetTimeOfDay.Items.AddRange(new object[] {
+            "(None)",
+            "Morning",
+            "Day",
+            "Night"});
+            this.CB_MetTimeOfDay.Location = new System.Drawing.Point(81, 170);
+            this.CB_MetTimeOfDay.Margin = new System.Windows.Forms.Padding(0);
+            this.CB_MetTimeOfDay.Name = "CB_MetTimeOfDay";
+            this.CB_MetTimeOfDay.Size = new System.Drawing.Size(126, 21);
+            this.CB_MetTimeOfDay.TabIndex = 68;
+            this.CB_MetTimeOfDay.Visible = false;
+            // 
+            // CB_EncounterType
+            // 
+            this.CB_EncounterType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_EncounterType.DropDownWidth = 160;
+            this.CB_EncounterType.FormattingEnabled = true;
+            this.CB_EncounterType.Location = new System.Drawing.Point(81, 147);
+            this.CB_EncounterType.Margin = new System.Windows.Forms.Padding(0);
+            this.CB_EncounterType.Name = "CB_EncounterType";
+            this.CB_EncounterType.Size = new System.Drawing.Size(126, 21);
+            this.CB_EncounterType.TabIndex = 65;
+            // 
+            // CHK_Fateful
+            // 
+            this.CHK_Fateful.AutoSize = true;
+            this.CHK_Fateful.Location = new System.Drawing.Point(81, 127);
+            this.CHK_Fateful.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.CHK_Fateful.Name = "CHK_Fateful";
+            this.CHK_Fateful.Size = new System.Drawing.Size(110, 17);
+            this.CHK_Fateful.TabIndex = 64;
+            this.CHK_Fateful.Text = "Fateful Encounter";
+            this.CHK_Fateful.UseVisualStyleBackColor = true;
+            // 
+            // Label_MetDate
+            // 
+            this.Label_MetDate.Location = new System.Drawing.Point(-29, 101);
+            this.Label_MetDate.Margin = new System.Windows.Forms.Padding(0);
+            this.Label_MetDate.Name = "Label_MetDate";
+            this.Label_MetDate.Size = new System.Drawing.Size(110, 21);
+            this.Label_MetDate.TabIndex = 62;
+            this.Label_MetDate.Text = "Met Date:";
+            this.Label_MetDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // CAL_MetDate
+            // 
+            this.CAL_MetDate.CustomFormat = "MM/dd/yyyy";
+            this.CAL_MetDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.CAL_MetDate.Location = new System.Drawing.Point(81, 101);
+            this.CAL_MetDate.Margin = new System.Windows.Forms.Padding(0);
+            this.CAL_MetDate.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
+            this.CAL_MetDate.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.CAL_MetDate.Name = "CAL_MetDate";
+            this.CAL_MetDate.Size = new System.Drawing.Size(126, 20);
+            this.CAL_MetDate.TabIndex = 63;
+            this.CAL_MetDate.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            // 
+            // Label_MetLevel
+            // 
+            this.Label_MetLevel.Location = new System.Drawing.Point(-29, 81);
+            this.Label_MetLevel.Margin = new System.Windows.Forms.Padding(0);
+            this.Label_MetLevel.Name = "Label_MetLevel";
+            this.Label_MetLevel.Size = new System.Drawing.Size(110, 21);
+            this.Label_MetLevel.TabIndex = 60;
+            this.Label_MetLevel.Text = "Met Level:";
+            this.Label_MetLevel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // TB_MetLevel
+            // 
+            this.TB_MetLevel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TB_MetLevel.Location = new System.Drawing.Point(81, 81);
+            this.TB_MetLevel.Margin = new System.Windows.Forms.Padding(0);
+            this.TB_MetLevel.Mask = "000";
+            this.TB_MetLevel.Name = "TB_MetLevel";
+            this.TB_MetLevel.Size = new System.Drawing.Size(126, 20);
+            this.TB_MetLevel.TabIndex = 61;
+            // 
+            // Label_Ball
+            // 
+            this.Label_Ball.Location = new System.Drawing.Point(-29, 59);
+            this.Label_Ball.Margin = new System.Windows.Forms.Padding(0);
+            this.Label_Ball.Name = "Label_Ball";
+            this.Label_Ball.Size = new System.Drawing.Size(110, 21);
+            this.Label_Ball.TabIndex = 58;
+            this.Label_Ball.Text = "Ball:";
+            this.Label_Ball.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // CB_Ball
+            // 
+            this.CB_Ball.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.CB_Ball.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.CB_Ball.FormattingEnabled = true;
+            this.CB_Ball.Location = new System.Drawing.Point(81, 59);
+            this.CB_Ball.Margin = new System.Windows.Forms.Padding(0);
+            this.CB_Ball.Name = "CB_Ball";
+            this.CB_Ball.Size = new System.Drawing.Size(126, 21);
+            this.CB_Ball.TabIndex = 59;
+            // 
+            // Label_MetLocation
+            // 
+            this.Label_MetLocation.Location = new System.Drawing.Point(-29, 39);
+            this.Label_MetLocation.Margin = new System.Windows.Forms.Padding(0);
+            this.Label_MetLocation.Name = "Label_MetLocation";
+            this.Label_MetLocation.Size = new System.Drawing.Size(110, 21);
+            this.Label_MetLocation.TabIndex = 56;
+            this.Label_MetLocation.Text = "Met Location:";
+            this.Label_MetLocation.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // CB_MetLocation
+            // 
+            this.CB_MetLocation.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.CB_MetLocation.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.CB_MetLocation.DropDownWidth = 150;
+            this.CB_MetLocation.FormattingEnabled = true;
+            this.CB_MetLocation.Location = new System.Drawing.Point(81, 39);
+            this.CB_MetLocation.Margin = new System.Windows.Forms.Padding(0);
+            this.CB_MetLocation.Name = "CB_MetLocation";
+            this.CB_MetLocation.Size = new System.Drawing.Size(126, 21);
+            this.CB_MetLocation.TabIndex = 57;
+            // 
+            // Label_OriginGame
+            // 
+            this.Label_OriginGame.Location = new System.Drawing.Point(-29, 19);
+            this.Label_OriginGame.Margin = new System.Windows.Forms.Padding(0);
+            this.Label_OriginGame.Name = "Label_OriginGame";
+            this.Label_OriginGame.Size = new System.Drawing.Size(110, 21);
+            this.Label_OriginGame.TabIndex = 54;
+            this.Label_OriginGame.Text = "Origin Game:";
+            this.Label_OriginGame.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // CB_GameOrigin
+            // 
+            this.CB_GameOrigin.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_GameOrigin.FormattingEnabled = true;
+            this.CB_GameOrigin.Location = new System.Drawing.Point(81, 19);
+            this.CB_GameOrigin.Margin = new System.Windows.Forms.Padding(0);
+            this.CB_GameOrigin.Name = "CB_GameOrigin";
+            this.CB_GameOrigin.Size = new System.Drawing.Size(126, 21);
+            this.CB_GameOrigin.TabIndex = 55;
             // 
             // checkBox15
             // 
@@ -2103,145 +2323,6 @@
             this.CHK_Circle.Text = "●";
             this.CHK_Circle.UseVisualStyleBackColor = true;
             // 
-            // Label_OriginGame
-            // 
-            this.Label_OriginGame.Location = new System.Drawing.Point(-29, 19);
-            this.Label_OriginGame.Margin = new System.Windows.Forms.Padding(0);
-            this.Label_OriginGame.Name = "Label_OriginGame";
-            this.Label_OriginGame.Size = new System.Drawing.Size(110, 21);
-            this.Label_OriginGame.TabIndex = 54;
-            this.Label_OriginGame.Text = "Origin Game:";
-            this.Label_OriginGame.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // CB_GameOrigin
-            // 
-            this.CB_GameOrigin.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CB_GameOrigin.FormattingEnabled = true;
-            this.CB_GameOrigin.Location = new System.Drawing.Point(81, 19);
-            this.CB_GameOrigin.Margin = new System.Windows.Forms.Padding(0);
-            this.CB_GameOrigin.Name = "CB_GameOrigin";
-            this.CB_GameOrigin.Size = new System.Drawing.Size(126, 21);
-            this.CB_GameOrigin.TabIndex = 55;
-            // 
-            // Label_MetLocation
-            // 
-            this.Label_MetLocation.Location = new System.Drawing.Point(-29, 39);
-            this.Label_MetLocation.Margin = new System.Windows.Forms.Padding(0);
-            this.Label_MetLocation.Name = "Label_MetLocation";
-            this.Label_MetLocation.Size = new System.Drawing.Size(110, 21);
-            this.Label_MetLocation.TabIndex = 56;
-            this.Label_MetLocation.Text = "Met Location:";
-            this.Label_MetLocation.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // CB_MetLocation
-            // 
-            this.CB_MetLocation.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.CB_MetLocation.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.CB_MetLocation.DropDownWidth = 150;
-            this.CB_MetLocation.FormattingEnabled = true;
-            this.CB_MetLocation.Location = new System.Drawing.Point(81, 39);
-            this.CB_MetLocation.Margin = new System.Windows.Forms.Padding(0);
-            this.CB_MetLocation.Name = "CB_MetLocation";
-            this.CB_MetLocation.Size = new System.Drawing.Size(126, 21);
-            this.CB_MetLocation.TabIndex = 57;
-            // 
-            // Label_Ball
-            // 
-            this.Label_Ball.Location = new System.Drawing.Point(-29, 59);
-            this.Label_Ball.Margin = new System.Windows.Forms.Padding(0);
-            this.Label_Ball.Name = "Label_Ball";
-            this.Label_Ball.Size = new System.Drawing.Size(110, 21);
-            this.Label_Ball.TabIndex = 58;
-            this.Label_Ball.Text = "Ball:";
-            this.Label_Ball.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // CB_Ball
-            // 
-            this.CB_Ball.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.CB_Ball.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.CB_Ball.FormattingEnabled = true;
-            this.CB_Ball.Location = new System.Drawing.Point(81, 59);
-            this.CB_Ball.Margin = new System.Windows.Forms.Padding(0);
-            this.CB_Ball.Name = "CB_Ball";
-            this.CB_Ball.Size = new System.Drawing.Size(126, 21);
-            this.CB_Ball.TabIndex = 59;
-            // 
-            // Label_MetLevel
-            // 
-            this.Label_MetLevel.Location = new System.Drawing.Point(-29, 81);
-            this.Label_MetLevel.Margin = new System.Windows.Forms.Padding(0);
-            this.Label_MetLevel.Name = "Label_MetLevel";
-            this.Label_MetLevel.Size = new System.Drawing.Size(110, 21);
-            this.Label_MetLevel.TabIndex = 60;
-            this.Label_MetLevel.Text = "Met Level:";
-            this.Label_MetLevel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // TB_MetLevel
-            // 
-            this.TB_MetLevel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TB_MetLevel.Location = new System.Drawing.Point(81, 81);
-            this.TB_MetLevel.Margin = new System.Windows.Forms.Padding(0);
-            this.TB_MetLevel.Mask = "000";
-            this.TB_MetLevel.Name = "TB_MetLevel";
-            this.TB_MetLevel.Size = new System.Drawing.Size(126, 20);
-            this.TB_MetLevel.TabIndex = 61;
-            // 
-            // Label_MetDate
-            // 
-            this.Label_MetDate.Location = new System.Drawing.Point(-29, 101);
-            this.Label_MetDate.Margin = new System.Windows.Forms.Padding(0);
-            this.Label_MetDate.Name = "Label_MetDate";
-            this.Label_MetDate.Size = new System.Drawing.Size(110, 21);
-            this.Label_MetDate.TabIndex = 62;
-            this.Label_MetDate.Text = "Met Date:";
-            this.Label_MetDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // CAL_MetDate
-            // 
-            this.CAL_MetDate.CustomFormat = "MM/dd/yyyy";
-            this.CAL_MetDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.CAL_MetDate.Location = new System.Drawing.Point(81, 101);
-            this.CAL_MetDate.Margin = new System.Windows.Forms.Padding(0);
-            this.CAL_MetDate.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
-            this.CAL_MetDate.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
-            this.CAL_MetDate.Name = "CAL_MetDate";
-            this.CAL_MetDate.Size = new System.Drawing.Size(126, 20);
-            this.CAL_MetDate.TabIndex = 63;
-            this.CAL_MetDate.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
-            // 
-            // CHK_Fateful
-            // 
-            this.CHK_Fateful.AutoSize = true;
-            this.CHK_Fateful.Location = new System.Drawing.Point(81, 127);
-            this.CHK_Fateful.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.CHK_Fateful.Name = "CHK_Fateful";
-            this.CHK_Fateful.Size = new System.Drawing.Size(110, 17);
-            this.CHK_Fateful.TabIndex = 64;
-            this.CHK_Fateful.Text = "Fateful Encounter";
-            this.CHK_Fateful.UseVisualStyleBackColor = true;
-            // 
-            // CB_EncounterType
-            // 
-            this.CB_EncounterType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CB_EncounterType.DropDownWidth = 160;
-            this.CB_EncounterType.FormattingEnabled = true;
-            this.CB_EncounterType.Location = new System.Drawing.Point(81, 147);
-            this.CB_EncounterType.Margin = new System.Windows.Forms.Padding(0);
-            this.CB_EncounterType.Name = "CB_EncounterType";
-            this.CB_EncounterType.Size = new System.Drawing.Size(126, 21);
-            this.CB_EncounterType.TabIndex = 65;
-            // 
-            // CB_TimeOfDay
-            // 
-            this.CB_TimeOfDay.AutoSize = true;
-            this.CB_TimeOfDay.Checked = true;
-            this.CB_TimeOfDay.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CB_TimeOfDay.Location = new System.Drawing.Point(210, 174);
-            this.CB_TimeOfDay.Name = "CB_TimeOfDay";
-            this.CB_TimeOfDay.Size = new System.Drawing.Size(15, 14);
-            this.CB_TimeOfDay.TabIndex = 66;
-            this.CB_TimeOfDay.UseVisualStyleBackColor = true;
-            // 
             // Label_EncounterType
             // 
             this.Label_EncounterType.Location = new System.Drawing.Point(596, 278);
@@ -2251,100 +2332,6 @@
             this.Label_EncounterType.TabIndex = 67;
             this.Label_EncounterType.Text = "Encounter:";
             this.Label_EncounterType.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // L_MetTimeOfDay
-            // 
-            this.L_MetTimeOfDay.Location = new System.Drawing.Point(-29, 170);
-            this.L_MetTimeOfDay.Margin = new System.Windows.Forms.Padding(0);
-            this.L_MetTimeOfDay.Name = "L_MetTimeOfDay";
-            this.L_MetTimeOfDay.Size = new System.Drawing.Size(110, 21);
-            this.L_MetTimeOfDay.TabIndex = 67;
-            this.L_MetTimeOfDay.Text = "Time of Day:";
-            this.L_MetTimeOfDay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.L_MetTimeOfDay.Visible = false;
-            // 
-            // CB_MetTimeOfDay
-            // 
-            this.CB_MetTimeOfDay.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.CB_MetTimeOfDay.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.CB_MetTimeOfDay.DropDownWidth = 150;
-            this.CB_MetTimeOfDay.FormattingEnabled = true;
-            this.CB_MetTimeOfDay.Items.AddRange(new object[] {
-            "(None)",
-            "Morning",
-            "Day",
-            "Night"});
-            this.CB_MetTimeOfDay.Location = new System.Drawing.Point(81, 170);
-            this.CB_MetTimeOfDay.Margin = new System.Windows.Forms.Padding(0);
-            this.CB_MetTimeOfDay.Name = "CB_MetTimeOfDay";
-            this.CB_MetTimeOfDay.Size = new System.Drawing.Size(126, 21);
-            this.CB_MetTimeOfDay.TabIndex = 68;
-            this.CB_MetTimeOfDay.Visible = false;
-            // 
-            // CHK_AsEgg
-            // 
-            this.CHK_AsEgg.AutoSize = true;
-            this.CHK_AsEgg.Location = new System.Drawing.Point(81, 193);
-            this.CHK_AsEgg.Name = "CHK_AsEgg";
-            this.CHK_AsEgg.Size = new System.Drawing.Size(60, 17);
-            this.CHK_AsEgg.TabIndex = 69;
-            this.CHK_AsEgg.Text = "As Egg";
-            this.CHK_AsEgg.UseVisualStyleBackColor = true;
-            // 
-            // GB_EggConditions
-            // 
-            this.GB_EggConditions.Controls.Add(this.CB_EggLocation);
-            this.GB_EggConditions.Controls.Add(this.CAL_EggDate);
-            this.GB_EggConditions.Controls.Add(this.Label_EggDate);
-            this.GB_EggConditions.Controls.Add(this.Label_EggLocation);
-            this.GB_EggConditions.Enabled = false;
-            this.GB_EggConditions.Location = new System.Drawing.Point(7, 216);
-            this.GB_EggConditions.Name = "GB_EggConditions";
-            this.GB_EggConditions.Size = new System.Drawing.Size(200, 67);
-            this.GB_EggConditions.TabIndex = 70;
-            this.GB_EggConditions.TabStop = false;
-            this.GB_EggConditions.Text = "Egg Met Conditions";
-            // 
-            // CB_EggLocation
-            // 
-            this.CB_EggLocation.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.CB_EggLocation.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.CB_EggLocation.DropDownWidth = 150;
-            this.CB_EggLocation.FormattingEnabled = true;
-            this.CB_EggLocation.Location = new System.Drawing.Point(71, 19);
-            this.CB_EggLocation.Name = "CB_EggLocation";
-            this.CB_EggLocation.Size = new System.Drawing.Size(122, 21);
-            this.CB_EggLocation.TabIndex = 10;
-            // 
-            // CAL_EggDate
-            // 
-            this.CAL_EggDate.CustomFormat = "MM/dd/yyyy";
-            this.CAL_EggDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.CAL_EggDate.Location = new System.Drawing.Point(71, 40);
-            this.CAL_EggDate.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
-            this.CAL_EggDate.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
-            this.CAL_EggDate.Name = "CAL_EggDate";
-            this.CAL_EggDate.Size = new System.Drawing.Size(122, 20);
-            this.CAL_EggDate.TabIndex = 11;
-            this.CAL_EggDate.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
-            // 
-            // Label_EggDate
-            // 
-            this.Label_EggDate.Location = new System.Drawing.Point(5, 44);
-            this.Label_EggDate.Name = "Label_EggDate";
-            this.Label_EggDate.Size = new System.Drawing.Size(63, 13);
-            this.Label_EggDate.TabIndex = 8;
-            this.Label_EggDate.Text = "Date:";
-            this.Label_EggDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // Label_EggLocation
-            // 
-            this.Label_EggLocation.Location = new System.Drawing.Point(5, 24);
-            this.Label_EggLocation.Name = "Label_EggLocation";
-            this.Label_EggLocation.Size = new System.Drawing.Size(63, 13);
-            this.Label_EggLocation.TabIndex = 6;
-            this.Label_EggLocation.Text = "Location:";
-            this.Label_EggLocation.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // OverForm
             // 
@@ -2378,6 +2365,7 @@
             this.Load += new System.EventHandler(this.OverForm_Load);
             this.GB_Met.ResumeLayout(false);
             this.GB_Met.PerformLayout();
+            this.GB_EggConditions.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -2405,7 +2393,6 @@
             this.SPLIT_Ribbons.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
-            this.GB_EggConditions.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2588,7 +2575,6 @@
         public System.Windows.Forms.DateTimePicker CAL_MetDate;
         public System.Windows.Forms.CheckBox CHK_Fateful;
         public System.Windows.Forms.ComboBox CB_EncounterType;
-        private System.Windows.Forms.CheckBox CB_TimeOfDay;
         public System.Windows.Forms.Label Label_EncounterType;
         public System.Windows.Forms.Label L_MetTimeOfDay;
         public System.Windows.Forms.ComboBox CB_MetTimeOfDay;

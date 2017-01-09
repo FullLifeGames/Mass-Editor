@@ -350,6 +350,6 @@ namespace Mass_Editor
             CHK_Badges.Checked = false;
         }
         #endregion
-
+        
     }
 }

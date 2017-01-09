@@ -552,7 +552,7 @@ namespace PKHeX
         // TODO Problem
         public static SaveFile SAV = new SAV7 { Game = (int)GameVersion.SN, OT = "PKHeX", TID = 12345, SID = 54321, Language = 2, Country = 49, SubRegion = 7, ConsoleRegion = 1 }; // Save File
         public static PKM pkm = SAV.BlankPKM; // Tab Pokemon Data Storage
-        private LegalityAnalysis Legality = new LegalityAnalysis(pkm);
+        //private LegalityAnalysis Legality = new LegalityAnalysis(pkm);
         public static GameInfo.GameStrings GameStrings;
 
         public static string curlanguage = "en";
@@ -960,11 +960,6 @@ namespace PKHeX
         // Main Menu Subfunctions
         private void openQuick(string path, bool force = false)
         {
-            if (!(CanFocus || force))
-            {
-                SystemSounds.Asterisk.Play();
-                return;
-            }
             // detect if it is a folder (load into boxes or not)
             if (Directory.Exists(path))
             { loadBoxesFromDB(path); return; }

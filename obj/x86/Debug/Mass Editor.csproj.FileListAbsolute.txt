@@ -42,3 +42,4 @@ C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Debug\Mass_Editor.Propert
 C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Debug\Mass Editor.csproj.GenerateResource.Cache
 C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Debug\Mass Editor.exe
 C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Debug\Mass Editor.pdb
+C:\Users\Benedikt\Documents\GitHub\Mass-Editor\obj\x86\Debug\Mass Editor.csprojResolveAssemblyReference.cache

@@ -184,7 +184,12 @@ namespace PKHeX
                     Padding = Padding.Empty,
                     Margin = Padding.Empty,
                 };
-                chk.CheckedChanged += (sender, e) => { rib.HasRibbon = chk.Checked; FLP_Ribbons.Controls[PrefixPB + rib.Name].Visible = rib.HasRibbon; };
+                chk.CheckedChanged += (sender, e) => { rib.HasRibbon = chk.Checked;
+                    if (FLP_Ribbons.Controls.ContainsKey(PrefixPB + rib.Name))
+                    {
+                        FLP_Ribbons.Controls[PrefixPB + rib.Name].Visible = rib.HasRibbon;
+                    }
+                };
                 chk.Checked = rib.HasRibbon;
                 TLP_Ribbons.Controls.Add(chk, 0, row);
 
