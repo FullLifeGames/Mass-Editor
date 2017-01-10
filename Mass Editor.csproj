@@ -53,8 +53,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>Mass_Editor.Program</StartupObject>
@@ -622,6 +621,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="icon.ico" />
     <Content Include="Resources\icon.ico" />
     <Content Include="Resources\img\badges\badge_01.png" />
     <Content Include="Resources\img\badges\badge_02.png" />
