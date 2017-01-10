@@ -19,6 +19,7 @@ namespace PKHeX
     {
 
         private bool box_load = false;
+        private bool sav_load = false;
 
         private int picturebox = 0;
         private int box = 0;
@@ -1015,10 +1016,14 @@ namespace PKHeX
             #region SAV/PKM
             else if ((sav = SaveUtil.getVariantSAV(input)) != null)
             {
+                box_load = true;
+                sav_load = true;
                 openSAV(sav, path);
             }
             else if ((temp = PKMConverter.getPKMfromBytes(input)) != null)
             {
+                box_load = true;
+                sav_load = true;
                 PKM pk = PKMConverter.convertToFormat(temp, SAV.PKMType, out c);
                 if (pk == null)
                     Util.Alert("Conversion failed.", c);
@@ -4637,6 +4642,7 @@ namespace PKHeX
                 }
 
                 bool onebox = true;
+                int selIndexSelect = CB_BoxSelect.SelectedIndex;
 
                 for (int i = 0; i < CB_BoxSelect.Items.Count; i++)
                 {
@@ -4703,7 +4709,16 @@ namespace PKHeX
 
                 CB_BoxSelect.SelectedIndex = 0;
 
-                if (onebox)
+                if (sav_load)
+                {
+                    if (SAV.HasBox)
+                        SAV.CurrentBox = selIndexSelect;
+
+                    bool dsv = Path.GetExtension(s)?.ToLower() == ".dsv";
+                    File.WriteAllBytes(s, SAV.Write(dsv));
+                    SAV.Edited = false;
+                }
+                else if (onebox)
                 {
                     File.WriteAllBytes(s, SAV.getBoxBin(CB_BoxSelect.SelectedIndex));
                 }
@@ -4810,6 +4825,7 @@ namespace PKHeX
         {
             string path = s;
             box_load = false;
+            sav_load = false;
             openQuick(path);
         }
 
