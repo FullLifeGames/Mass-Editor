@@ -1037,9 +1037,9 @@ namespace PKHeX
             else if (BitConverter.ToUInt16(input, 4) == 0 && BitConverter.ToUInt32(input, 8) > 0 && PKX.getIsPKM(input.Length / SAV.BoxSlotCount / SAV.BoxCount) || PKX.getIsPKM(input.Length / SAV.BoxSlotCount))
             {
                 if (SAV.setPCBin(input))
-                    Util.Alert("PC Binary loaded.");
+                    box_load = true;
                 else if (SAV.setBoxBin(input, CB_BoxSelect.SelectedIndex))
-                    Util.Alert("Box Binary loaded.");
+                    box_load = true;
                 else
                 {
                     Util.Alert("Binary is not compatible with save file.", "Current SAV Generation: " + SAV.Generation);
