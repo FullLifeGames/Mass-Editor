@@ -1022,8 +1022,6 @@ namespace PKHeX
             }
             else if ((temp = PKMConverter.getPKMfromBytes(input)) != null)
             {
-                box_load = true;
-                sav_load = true;
                 PKM pk = PKMConverter.convertToFormat(temp, SAV.PKMType, out c);
                 if (pk == null)
                     Util.Alert("Conversion failed.", c);
