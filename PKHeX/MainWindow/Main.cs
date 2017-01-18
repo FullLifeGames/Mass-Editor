@@ -4892,7 +4892,7 @@ namespace PKHeX
                         TB_SPEIV.Text = "31";
                         break;
                     case 5:
-                        this.updateRandomPID(sender, e);
+                        this.updateRandomPID(BTN_RerollPID, e);
                         this.updateRandomEC(sender, e);
                         break;
                     case 6:
