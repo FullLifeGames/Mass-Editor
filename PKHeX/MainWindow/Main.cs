@@ -2132,7 +2132,7 @@ namespace PKHeX
             if (!string.IsNullOrWhiteSpace(lbl?.Text)) // set gender label (toggle M/F)
             {
                 int gender = PKX.getGender(lbl.Text) ^ 1;
-                lbl.Text = gendersymbols[gender];
+                lbl.Text = gendersymbols[gender % 3];
                 lbl.ForeColor = gender == 1 ? Color.Red : Color.Blue;
             }
         }
