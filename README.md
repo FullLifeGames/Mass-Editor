@@ -1,4 +1,7 @@
+OUTDATED, use: https://projectpokemon.org/home/tutorials/save-editing/using-pkhex/how-to-use-the-batch-editor-in-pkhex-r77/
+
 # Mass-Editor
+
 This program is a mass editor for every Pokémon file you can read or create with PKHeX, so that you don't have to do it for several Pokémon manually!
 
 How to use it:
