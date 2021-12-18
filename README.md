@@ -1,4 +1,4 @@
-OUTDATED, use: https://projectpokemon.org/home/tutorials/save-editing/using-pkhex/how-to-use-the-batch-editor-in-pkhex-r77/
+[OUTDATED], use: https://projectpokemon.org/home/tutorials/save-editing/using-pkhex/how-to-use-the-batch-editor-in-pkhex-r77/
 
 # Mass-Editor
 
